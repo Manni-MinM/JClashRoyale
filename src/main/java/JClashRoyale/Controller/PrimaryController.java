@@ -5,11 +5,10 @@ import java.io.IOException;
 
 import JClashRoyale.Model.App;
 import javafx.fxml.FXML;
-import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 
@@ -18,6 +17,9 @@ public class PrimaryController {
     private Pane titlePane;
     @FXML
     private ImageView btnMinimize, btnClose;
+    @FXML
+    private Label messageLabel;
+
     private double x, y;
 
     public void init(Stage stage) {
@@ -37,5 +39,27 @@ public class PrimaryController {
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
+    }
+
+
+
+    public void loginFailure(){
+        messageLabel.setTextFill(Color.web("#d91414"));
+        messageLabel.setText("Incorrect Username/Password, Please register first.");
+    }
+
+    public void loginSuccess(){
+        messageLabel.setTextFill(Color.web("#28C76F"));
+        messageLabel.setText("Logged in successfully.");
+    }
+
+    public void registerFailure(){
+        messageLabel.setTextFill(Color.web("#d91414"));
+        messageLabel.setText("Registration failed. The username has already been taken.");
+    }
+
+    public void registerSuccess(){
+        messageLabel.setTextFill(Color.web("#28C76F"));
+        messageLabel.setText("Registered successfully.");
     }
 }

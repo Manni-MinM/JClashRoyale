@@ -8,3 +8,11 @@
     -fx-background-color: linear-gradient(to bottom right, #52E5E7, #130CB7);
     -fx-background-radius: 25;
 }
+
+.loginButton {
+    -fx-background-color: linear-gradient(to bottom right, #81FBB8, #28C76F);
+}
+
+.registerButton {
+    -fx-background-color: linear-gradient(to bottom right, #FEC163, #DE4313);
+}

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -14,23 +15,34 @@
    <children>
       <Pane layoutX="313.0" layoutY="36.0" prefHeight="414.0" prefWidth="346.0">
          <children>
-            <Text fill="WHITE" focusTraversable="true" layoutX="142.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+            <Text fill="WHITE" focusTraversable="true" layoutX="142.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
                <font>
                   <Font name="SansSerif Regular" size="25.0" />
                </font>
             </Text>
-            <Label layoutX="36.0" layoutY="129.0" text="Username:" textFill="WHITE">
+            <Label layoutX="51.0" layoutY="129.0" text="Username:" textFill="WHITE">
                <font>
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Label>
-            <TextField layoutX="121.0" layoutY="127.0" promptText="Username" style="-fx-background-color: #222; -fx-text-inner-color: white;" />
-            <Label layoutX="37.0" layoutY="173.0" text="Password:" textFill="WHITE">
+            <TextField layoutX="136.0" layoutY="127.0" promptText="Username" style="-fx-background-color: #222; -fx-text-inner-color: white;" />
+            <Label layoutX="52.0" layoutY="173.0" text="Password:" textFill="WHITE">
                <font>
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Label>
-            <PasswordField layoutX="121.0" layoutY="171.0" promptText="Password" style="-fx-background-color: #222; -fx-text-inner-color: white;" />
+            <PasswordField layoutX="136.0" layoutY="171.0" promptText="Password" style="-fx-background-color: #222; -fx-text-inner-color: white;" />
+            <Button layoutX="51.0" layoutY="242.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="236.0" styleClass="loginButton" text="Login" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+            <Button layoutX="51.0" layoutY="306.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="236.0" styleClass="registerButton" text="Register" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+            <Label fx:id="messageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="89.0" prefHeight="17.0" prefWidth="236.0" textAlignment="CENTER" textFill="WHITE" />
          </children>
       </Pane>
       <Pane layoutY="36.0" prefHeight="414.0" prefWidth="304.0" styleClass="leftPane">
