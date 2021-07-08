@@ -1,0 +1,10 @@
+.root {
+    -fx-background-radius: 25;
+    -fx-background-color: #222;
+}
+
+
+.leftPane {
+    -fx-background-color: #224b89;
+    -fx-background-radius: 25;
+}
