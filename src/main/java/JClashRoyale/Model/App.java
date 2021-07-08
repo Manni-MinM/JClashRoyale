@@ -30,6 +30,7 @@ public class App extends Application {
         stage.setResizable(false);
         stage.setTitle("JClashRoyale");
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/icon.png"))));
+
         ((PrimaryController)fxmlLoader.getController()).init(stage);
         stage.show();
     }

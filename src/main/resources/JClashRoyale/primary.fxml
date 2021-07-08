@@ -1,15 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JClashRoyale.Controller.PrimaryController">
    <children>
-      <Pane layoutY="36.0" prefHeight="413.0" prefWidth="650.0" />
+      <Pane layoutX="313.0" layoutY="36.0" prefHeight="414.0" prefWidth="346.0">
+         <children>
+            <Text fill="WHITE" focusTraversable="true" layoutX="142.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+               <font>
+                  <Font name="SansSerif Regular" size="25.0" />
+               </font>
+            </Text>
+            <Label layoutX="36.0" layoutY="129.0" text="Username:" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Regular" size="16.0" />
+               </font>
+            </Label>
+            <TextField layoutX="121.0" layoutY="127.0" promptText="Username" style="-fx-background-color: #222; -fx-text-inner-color: white;" />
+            <Label layoutX="37.0" layoutY="173.0" text="Password:" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Regular" size="16.0" />
+               </font>
+            </Label>
+            <PasswordField layoutX="121.0" layoutY="171.0" promptText="Password" style="-fx-background-color: #222; -fx-text-inner-color: white;" />
+         </children>
+      </Pane>
+      <Pane layoutY="36.0" prefHeight="414.0" prefWidth="304.0" styleClass="leftPane">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="300.0" layoutX="2.0" layoutY="39.0">
+               <image>
+                  <Image url="@assets/logo.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="50.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AP00 Final Project" textAlignment="CENTER" wrappingWidth="200.0">
+               <font>
+                  <Font name="SansSerif Regular" size="23.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="50.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mani Moghimi" textAlignment="CENTER" wrappingWidth="200.0">
+               <font>
+                  <Font name="SansSerif Regular" size="23.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="9.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amir Iravanimanesh" textAlignment="CENTER" wrappingWidth="286.4000244140625">
+               <font>
+                  <Font name="SansSerif Regular" size="23.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="52.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dev's:" textAlignment="CENTER" wrappingWidth="200.0">
+               <font>
+                  <Font name="SansSerif Regular" size="23.0" />
+               </font>
+            </Text>
+         </children></Pane>
       <Pane fx:id="titlePane" prefHeight="37.0" prefWidth="650.0">
          <children>
             <Label layoutX="50.0" layoutY="10.0" text="JClashRoyale" textFill="WHITE">

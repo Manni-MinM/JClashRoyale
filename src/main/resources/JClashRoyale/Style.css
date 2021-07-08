@@ -5,6 +5,6 @@
 
 
 .leftPane {
-    -fx-background-color: #224b89;
+    -fx-background-color: linear-gradient(to bottom right, #52E5E7, #130CB7);
     -fx-background-radius: 25;
 }
