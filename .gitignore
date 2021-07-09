@@ -3,3 +3,5 @@
 *.iws
 target/
 /AP-Spring2021-FinalProject.pdf
+*.sh
+
