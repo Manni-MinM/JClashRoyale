@@ -37,12 +37,13 @@ public class Database {
 
     public static boolean successfulLogin(String username, String password) {
         String check = "SELECT * FROM accounts WHERE username='" + username +
-                "\', password='"+password+"';";
+                "'AND password='" + password + "'";
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/JClashRoyale",
                     "root", "pashmak64bit");
             Statement statement = connection.createStatement();
             statement.execute(check);
+            return statement.getResultSet().next();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
