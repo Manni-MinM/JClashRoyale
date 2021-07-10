@@ -55,8 +55,14 @@ public class PrimaryController {
             blankCredentials();
             return;
         }
-        if (Database.successfulLogin(usernameTextField.getText(),passwordPasswordField.getText()))
+        if (Database.successfulLogin(usernameTextField.getText(),passwordPasswordField.getText())) {
             loginSuccess();
+            try {
+                switchToSecondary();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        }
         else
             loginFailure();
     }
