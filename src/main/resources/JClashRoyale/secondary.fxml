@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -32,5 +34,65 @@
                </image>
             </ImageView>
          </children></Pane>
+      <Pane layoutX="75.0" layoutY="269.0" prefHeight="300.0" prefWidth="300.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#switchToProfile" prefHeight="150.0" prefWidth="150.0" style="-fx-background-radius: 60;" styleClass="profileBtn" text="Profile" textFill="WHITE">
+               <font>
+                  <Font name="Swis721 BT Bold" size="33.0" />
+               </font>
+            </Button>
+            <Button layoutX="150.0" layoutY="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-radius: 60;" styleClass="BHBtn" text="Battle&#10;History" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Swis721 BT Bold" size="31.0" />
+               </font>
+            </Button>
+            <Button layoutY="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-radius: 60;" styleClass="BDBtn" text="Battle Deck" textFill="WHITE">
+               <font>
+                  <Font name="Swis721 BT Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button layoutX="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-radius: 60;" styleClass="TrainingBtn" text="Training &#10;Camp" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Swis721 BT Bold" size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane layoutX="25.0" layoutY="133.0" prefHeight="176.0" prefWidth="200.0">
+         <children>
+            <ProgressBar layoutX="20.0" layoutY="74.0" prefHeight="28.0" prefWidth="161.0" progress="0.0" style="background-color: #222;" />
+            <ImageView fitHeight="57.0" fitWidth="57.0" layoutX="4.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/experience.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="19.0" layoutY="74.0" prefHeight="28.0" prefWidth="162.0" text="0/1000" textAlignment="CENTER" />
+            <Label alignment="CENTER" layoutX="14.0" layoutY="67.0" prefHeight="28.0" prefWidth="35.0" text="0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="218.0" layoutY="117.0" prefHeight="122.0" prefWidth="206.0">
+         <children>
+            <Label alignment="CENTER" layoutX="113.0" layoutY="84.0" prefHeight="32.0" prefWidth="70.0" style="-fx-border-color: gray; -fx-border-radius: 15;" text="0" textFill="WHITE" />
+            <ImageView fitHeight="65.0" fitWidth="35.0" layoutX="165.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/cup.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <ImageView fitHeight="182.0" fitWidth="364.0" layoutX="43.0" layoutY="26.0">
+         <image>
+            <Image url="@assets/logo.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="171.0" layoutY="588.0" mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="40.0" prefWidth="107.0" styleClass="LOBtn" text="Log Out" textFill="WHITE">
+         <font>
+            <Font name="Swis721 BT Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

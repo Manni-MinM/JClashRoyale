@@ -16,3 +16,23 @@
 .registerButton {
     -fx-background-color: linear-gradient(to bottom right, #FEC163, #DE4313);
 }
+
+.profileBtn {
+    -fx-background-color: linear-gradient(to bottom right, #7367F0, #CE9FFC);
+}
+
+.TrainingBtn {
+    -fx-background-color: linear-gradient(to bottom left, #F8D800, #FDEB71);
+}
+
+.BHBtn {
+    -fx-background-color: linear-gradient(to top left, #0396FF, #ABDCFF);
+}
+
+.BDBtn {
+    -fx-background-color: linear-gradient(to top right, #EA5455, #FEB692);
+}
+
+.LOBtn {
+    -fx-background-color: linear-gradient(to bottom right, #a13535, #ee0a0a);
+}

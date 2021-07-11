@@ -33,4 +33,14 @@ public class SecondaryController {
         btnClose.setOnMouseClicked(mouseEvent -> stage.close());
         btnMinimize.setOnMouseClicked(mouseEvent -> stage.setIconified(true));
     }
+
+    @FXML
+    private void switchToPrimary() throws IOException {
+        App.setRoot("primary");
+    }
+
+    @FXML
+    private void switchToProfile() throws IOException {
+        App.setRoot("profileSection");
+    }
 }
