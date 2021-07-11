@@ -1,18 +1,18 @@
 package JClashRoyale.Controller;
 
-import java.io.IOException;
-
 import JClashRoyale.Model.App;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class SecondaryController {
+import java.io.IOException;
 
+/**
+ * @author Amir Iravanimanesh & Manni Moghimi
+ * @since 7/11/2021
+ */
+public class BattleDeckSectionController {
     @FXML
     private Pane titlePane;
     @FXML
@@ -35,17 +35,7 @@ public class SecondaryController {
     }
 
     @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
-    }
-
-    @FXML
-    private void switchToProfile() throws IOException {
-        App.setRoot("profileSection");
-    }
-
-    @FXML
-    private void switchToBattleDeck() throws IOException {
-        App.setRoot("BattleDeck");
+    private void switchToSecondary() throws IOException {
+        App.setRoot("secondary");
     }
 }
