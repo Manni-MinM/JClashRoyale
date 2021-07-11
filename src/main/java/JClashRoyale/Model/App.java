@@ -1,6 +1,7 @@
 package JClashRoyale.Model;
 
 import JClashRoyale.Controller.PrimaryController;
+import JClashRoyale.Controller.ProfileSectionController;
 import JClashRoyale.Controller.SecondaryController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -45,6 +46,8 @@ public class App extends Application {
             ((PrimaryController) fxmlLoader.getController()).init(stage);
         else if (fxmlLoader.getController() instanceof SecondaryController)
             ((SecondaryController) fxmlLoader.getController()).init(stage);
+        else if (fxmlLoader.getController() instanceof ProfileSectionController)
+            ((ProfileSectionController) fxmlLoader.getController()).init(stage);
         stage.hide();
         stage.show();
 

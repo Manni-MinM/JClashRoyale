@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="450.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JClashRoyale.Controller.SecondaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="450.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JClashRoyale.Controller.ProfileSectionController">
    <children>
       <Pane fx:id="titlePane" prefHeight="38.0" prefWidth="450.0">
          <children>
@@ -34,30 +34,6 @@
                </image>
             </ImageView>
          </children></Pane>
-      <Pane layoutX="75.0" layoutY="269.0" prefHeight="300.0" prefWidth="300.0">
-         <children>
-            <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-radius: 60;" styleClass="profileBtn" text="Profile" textFill="WHITE">
-               <font>
-                  <Font name="Swis721 BT Bold" size="33.0" />
-               </font>
-            </Button>
-            <Button layoutX="150.0" layoutY="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-radius: 60;" styleClass="BHBtn" text="Battle&#10;History" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="Swis721 BT Bold" size="31.0" />
-               </font>
-            </Button>
-            <Button layoutY="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-radius: 60;" styleClass="BDBtn" text="Battle Deck" textFill="WHITE">
-               <font>
-                  <Font name="Swis721 BT Bold" size="22.0" />
-               </font>
-            </Button>
-            <Button layoutX="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-radius: 60;" styleClass="TrainingBtn" text="Training &#10;Camp" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="Swis721 BT Bold" size="24.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
       <Pane layoutX="25.0" layoutY="133.0" prefHeight="176.0" prefWidth="200.0">
          <children>
             <ProgressBar layoutX="20.0" layoutY="74.0" prefHeight="28.0" prefWidth="161.0" progress="0.0" style="background-color: #222;" />
@@ -89,10 +65,22 @@
             <Image url="@assets/logo.png" />
          </image>
       </ImageView>
-      <Button layoutX="171.0" layoutY="588.0" mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="40.0" prefWidth="107.0" styleClass="LOBtn" text="Log Out" textFill="WHITE">
+      <Button layoutX="171.0" layoutY="588.0" mnemonicParsing="false" onAction="#switchToSecondary" prefHeight="40.0" prefWidth="107.0" styleClass="LOBtn" text="Back" textFill="WHITE">
          <font>
             <Font name="Swis721 BT Bold" size="15.0" />
          </font>
       </Button>
+      <Pane layoutX="33.0" layoutY="287.0" prefHeight="252.0" prefWidth="383.0" style="-fx-border-color: white; -fx-border-radius: 10;">
+         <children>
+            <ImageView fitHeight="125.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" style="-fx-: white;" />
+            <ImageView fitHeight="125.0" fitWidth="96.0" layoutX="96.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="125.0" fitWidth="96.0" layoutX="192.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="125.0" fitWidth="96.0" layoutX="288.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="125.0" fitWidth="96.0" layoutX="287.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="125.0" fitWidth="96.0" layoutX="191.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="125.0" fitWidth="96.0" layoutX="95.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="125.0" fitWidth="96.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
