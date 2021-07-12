@@ -23,7 +23,8 @@ public class Database {
     }
 
     public static boolean registerDone(String username, String password) {
-        String insertion = "INSERT INTO accounts(username,password) values (\"" + username + "\" , \"" + password + "\")";
+        String insertion = "INSERT INTO accounts(username,password,xp,cup) values (\"" + username + "\" , \"" + password + "\"" +
+                ", 0, 0)";
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/JClashRoyale",
                     "root", "pashmak64bit");
@@ -43,7 +44,11 @@ public class Database {
                     "root", "pashmak64bit");
             Statement statement = connection.createStatement();
             statement.execute(check);
-            return statement.getResultSet().next();
+            if (statement.getResultSet().next()) {
+                Player.player = new Player(statement.getResultSet().getString(1), statement.getResultSet().getInt(4)
+                        , statement.getResultSet().getInt(3));
+            }
+            else return false;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
