@@ -26,7 +26,7 @@ public class Player {
         this.cup = cup;
     }
 
-    public int getXp() {
+    public int getXP() {
         return xp;
     }
 
