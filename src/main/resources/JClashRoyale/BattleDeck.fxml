@@ -47,30 +47,7 @@
       </ImageView>
       <ScrollPane hvalue="1.0" layoutX="37.0" layoutY="196.0" prefHeight="325.0" prefWidth="375.0">
          <content>
-            <HBox prefHeight="309.0" prefWidth="374.0">
-               <children>
-                  <ImageView fitHeight="307.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@assets/cup.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="305.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@assets/experience.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="246.0" fitWidth="286.0" layoutX="216.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@assets/experience.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="276.0" fitWidth="346.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@assets/logo.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
+            <HBox prefHeight="309.0" prefWidth="374.0" />
          </content>
       </ScrollPane>
    </children>
