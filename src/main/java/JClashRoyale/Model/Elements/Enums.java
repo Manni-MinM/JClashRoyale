@@ -4,10 +4,10 @@ package JClashRoyale.Model.Elements ;
 
 public class Enums {
 	public enum TroopType {
-		AERIAL , GROUND
+		AERIAL , GROUND , BUILDING
 	} ;
 	public enum TargetType {
-		AERIAL , GROUND , BUILDINGS , ALL
+		AERIAL , GROUND , BUILDING , ALL
 	} ;
 }
 
