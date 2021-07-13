@@ -2,18 +2,9 @@
 
 package JClashRoyale.Model.Elements ;
 
-import javafx.application.Application ;
-import javafx.scene.Group ;
-import javafx.scene.Scene ;
-import javafx.scene.paint.* ;
-import javafx.scene.image.* ;
-import javafx.scene.shape.* ;
-import javafx.scene.canvas.* ;
-import javafx.util.* ;
-import javafx.event.* ;
-import javafx.geometry.* ;
-import javafx.animation.* ;
-import javafx.stage.Stage ;
+import javafx.geometry.Point2D ;
+import javafx.scene.image.Image ;
+import javafx.scene.shape.Circle ;
 
 import JClashRoyale.Model.Elements.Enums ;
 
@@ -146,9 +137,11 @@ public abstract class Sprite {
 	public void showHealthCircle(GraphicsContext graphics) {
 		graphics.fillOval(this.getX() , this.getY() , healthCircle.getRadius() , healthCircle.getRadius()) ;
 	}
-	public void walk() {
+	public void walkAnimation() {
 		// TODO
 	}
-	public abstract void attack() ;
+	public void attackAnimation() {
+		// TODO	
+	}
 }
 
