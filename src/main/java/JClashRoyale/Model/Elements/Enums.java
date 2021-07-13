@@ -7,7 +7,7 @@ public class Enums {
 		AERIAL , GROUND
 	} ;
 	public enum TargetType {
-		AERIAL , GROUND , ALL
+		AERIAL , GROUND , BUILDINGS , ALL
 	} ;
 }
 
