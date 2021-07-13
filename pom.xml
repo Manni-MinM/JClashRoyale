@@ -41,7 +41,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.4</version>
                 <configuration>
-                    <mainClass>JClashRoyale.Model.App</mainClass>
+                    <mainClass>JClashRoyale.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>
