@@ -95,6 +95,5 @@ public abstract class Spell {
 	public boolean rangeIntersects(Circle circle) {
 		return circleIntersects(rangeCircle , circle) ;
 	}
-	public abstract void showAnimation() ;
 }
 
