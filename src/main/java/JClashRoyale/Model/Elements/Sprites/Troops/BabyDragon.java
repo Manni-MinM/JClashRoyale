@@ -4,7 +4,7 @@ package JClashRoyale.Model.Elements.Sprites.Troops ;
 
 import JClashRoyale.Model.Elements.Enums.TroopType ;
 import JClashRoyale.Model.Elements.Enums.TargetType ;
-import JClashRoyale.Model.Elements.Sprites.SingleTargetTroop ;
+import JClashRoyale.Model.Elements.Sprites.AreaSplashTroop ;
 
 public class BabyDragon extends AreaSplashTroop {
 	// Fields : Final
