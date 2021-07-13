@@ -89,7 +89,7 @@ public abstract class Spell {
 		Point2D firstCenter = new Point2D(first.getCenterX() , first.getCenterY()) ;
 		Point2D secondCenter = new Point2D(second.getCenterX() , second.getCenterY()) ;
 
-		return (firstCenter.distance(secondCenter) < first.getRadius() + second.getRadius()) ;
+		return (firstCenter.distance(secondCenter) < (first.getRadius() + second.getRadius()) / 2.0) ;
 	}
 	// Methods : Public 
 	public boolean rangeIntersects(Circle circle) {
