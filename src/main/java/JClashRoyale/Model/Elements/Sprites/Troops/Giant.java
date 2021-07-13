@@ -17,7 +17,7 @@ public class Giant extends SingleTargetTroop {
 	private final double RUN_SPEED = 0.0 ; // TODO : Slow
 	private final double ATTACK_SPEED = 1500.0 ;
 	private final TroopType TROOP_TYPE = TroopType.GROUND ;
-	private final TargetType TARGET_TYPE = TargetType.BUILDINGS ;
+	private final TargetType TARGET_TYPE = TargetType.BUILDING ;
 
 	private final String RUN_ANIMATION_LEFT_PATH = "" /*"/assets/sprites/giant/giant_run_left.png"*/ ;
 	private final String RUN_ANIMATION_RIGHT_PATH = "" /*"/assets/sprites/giant/giant_run_right.png"*/ ;
