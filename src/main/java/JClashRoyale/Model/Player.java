@@ -1,6 +1,10 @@
 package JClashRoyale.Model;
 
 
+import JClashRoyale.Model.Cards.Card;
+
+import java.util.ArrayList;
+
 /**
  * @author Amir Iravanimanesh & Manni Moghimi
  * @since 7/11/2021
@@ -10,13 +14,18 @@ public class Player {
     private int cup;
     private int xp;
     private int level;
+    private ArrayList<Card> deck = new ArrayList<>();
 
     public static Player player;
 
-    public Player(String username, int cup, int xp) {
+    public Player(String username, int cup, int xp, String deck) {
         this.username = username;
         this.cup = cup;
         this.xp = xp;
+        String[] cards = deck.split("-");
+        for (String card : cards) {
+            this.deck.add(Card.gameCards.get(Integer.parseInt(card)));
+        }
     }
 
     public int getCup() {
