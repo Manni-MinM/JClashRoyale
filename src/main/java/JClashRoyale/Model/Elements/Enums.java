@@ -9,8 +9,5 @@ public class Enums {
 	public enum TargetType {
 		AERIAL , GROUND , ALL
 	} ;
-	public enum AttackType {
-		RANGED , MELEE
-	} ;
 }
 

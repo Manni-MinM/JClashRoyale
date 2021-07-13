@@ -21,7 +21,6 @@ public abstract class Sprite {
 	protected double attackSpeed ;
 	protected TroopType troopType ;
 	protected TargetType targetType ;
-	protected AttackType attackType ;
 
 	protected Image runAnimationLeft ;
 	protected Image runAnimationRight ;
@@ -62,19 +61,16 @@ public abstract class Sprite {
 	public void setTargetType(TargetType target) {
 		this.targetType = target ;
 	}
-	public void setAttackType(AttackType attackType) {
-		this.attackType = attackType ;
-	}
 	public void setRunAnimationLeft(String path) {
 		this.runAnimationLeft = new Image(path) ;
 	}
 	public void setRunAnimationRight(String path) {
 		this.runAnimationRight = new Image(path) ;
 	}
-	public void setBattleAnimationLeft(String path) {
+	public void setBattleAnimationFirst(String path) {
 		this.battleAnimationFirst = new Image(path) ;
 	}
-	public void setBattleAnimationRight(String path) {
+	public void setBattleAnimationSecond(String path) {
 		this.battleAnimationSecond = new Image(path) ;
 	}
 	// Methods : Getters
@@ -110,9 +106,6 @@ public abstract class Sprite {
 	}
 	public TargetType getTargetType() {
 		return this.targetType ;
-	}
-	public AttackType getAttackType() {
-		return this.attackType ;
 	}
 	// Methods : Private
 	private boolean circleIntersects(Circle first , Circle second) {
