@@ -5,8 +5,10 @@ package JClashRoyale.Model.Elements ;
 import javafx.geometry.Point2D ;
 import javafx.scene.image.Image ;
 import javafx.scene.shape.Circle ;
+import javafx.scene.canvas.GraphicsContext ;
 
-import JClashRoyale.Model.Elements.Enums ;
+import JClashRoyale.Model.Elements.Enums.TroopType ;
+import JClashRoyale.Model.Elements.Enums.TargetType ;
 
 public abstract class Sprite {
 	// Fields
