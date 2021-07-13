@@ -22,7 +22,7 @@ public class Archer extends SingleTargetTroop {
 	private final String RUN_ANIMATION_LEFT_PATH = "" /*"/assets/sprites/archer/archer_run_left.png"*/ ;
 	private final String RUN_ANIMATION_RIGHT_PATH = "" /*"/assets/sprites/archer/archer_run_right.png"*/ ;
 	private final String BATTLE_ANIMATION_FIRST_PATH = "" /*"/assets/sprites/archer/archer_battle_first.png"*/ ;
-	private final String BATTLE_ANIMATION_SECOND_PATH = "" /*"/assets/sprites/wizard/archer_battle_second.png"*/ ;
+	private final String BATTLE_ANIMATION_SECOND_PATH = "" /*"/assets/sprites/archer/archer_battle_second.png"*/ ;
 	// Constructor
 	public Archer() {
 		setRangeCircle(RANGE_RADIUS) ;
