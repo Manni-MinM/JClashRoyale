@@ -19,10 +19,14 @@ public class Barbarian extends SingleTargetTroop {
 	private final TroopType TROOP_TYPE = TroopType.GROUND ;
 	private final TargetType TARGET_TYPE = TargetType.GROUND ;
 
-	private final String RUN_ANIMATION_LEFT_PATH = "" /*"/assets/sprites/barbarian/barbarian_run_left.png"*/ ;
-	private final String RUN_ANIMATION_RIGHT_PATH = "" /*"/assets/sprites/barbarian/barbarian_run_right.png"*/ ;
-	private final String BATTLE_ANIMATION_FIRST_PATH = "" /*"/assets/sprites/barbarian/barbarian_battle_first.png"*/ ;
-	private final String BATTLE_ANIMATION_SECOND_PATH = "" /*"/assets/sprites/barbarian/barbarian_battle_second.png"*/ ;
+	private final String RED_RUN_ANIMATION_LEFT_PATH = "/assets/sprites/barbarian/barbarian_red_run_left.png" ;
+	private final String RED_RUN_ANIMATION_RIGHT_PATH = "/assets/sprites/barbarian/barbarian_red_run_right.png" ;
+	private final String BLUE_RUN_ANIMATION_LEFT_PATH = "/assets/sprites/barbarian/barbarian_blue_run_left.png" ;
+	private final String BLUE_RUN_ANIMATION_RIGHT_PATH = "/assets/sprites/barbarian/barbarian_blue_run_right.png" ;
+	private final String RED_BATTLE_ANIMATION_FIRST_PATH = "" /*"/assets/sprites/barbarian/barbarian_red_battle_first.png"*/ ;
+	private final String RED_BATTLE_ANIMATION_SECOND_PATH = "" /*"/assets/sprites/barbarian/barbarian_red_battle_second.png"*/ ;
+	private final String BLUE_BATTLE_ANIMATION_FIRST_PATH = "" /*"/assets/sprites/barbarian/barbarian_blue_battle_first.png"*/ ;
+	private final String BLUE_BATTLE_ANIMATION_SECOND_PATH = "" /*"/assets/sprites/barbarian/barbarian_blue_battle_second.png"*/ ;
 	// Constructor
 	public Barbarian() {
 		setRangeCircle(RANGE_RADIUS) ;
@@ -36,10 +40,14 @@ public class Barbarian extends SingleTargetTroop {
 		setTroopType(TROOP_TYPE) ;
 		setTargetType(TARGET_TYPE) ;
 
-		setRunAnimationLeft(RUN_ANIMATION_LEFT_PATH) ;
-		setRunAnimationRight(RUN_ANIMATION_RIGHT_PATH) ;
-		setBattleAnimationFirst(BATTLE_ANIMATION_FIRST_PATH) ;
-		setBattleAnimationSecond(BATTLE_ANIMATION_SECOND_PATH) ;
+		setRedRunAnimationLeft(RED_RUN_ANIMATION_LEFT_PATH) ;
+		setRedRunAnimationRight(RED_RUN_ANIMATION_RIGHT_PATH) ;
+		setBlueRunAnimationLeft(BLUE_RUN_ANIMATION_LEFT_PATH) ;
+		setBlueRunAnimationRight(BLUE_RUN_ANIMATION_RIGHT_PATH) ;
+		setRedBattleAnimationFirst(RED_BATTLE_ANIMATION_FIRST_PATH) ;
+		setRedBattleAnimationSecond(RED_BATTLE_ANIMATION_SECOND_PATH) ;
+		setBlueBattleAnimationFirst(BLUE_BATTLE_ANIMATION_FIRST_PATH) ;
+		setBlueBattleAnimationSecond(BLUE_BATTLE_ANIMATION_SECOND_PATH) ;
 	}
 	// Methods
 	

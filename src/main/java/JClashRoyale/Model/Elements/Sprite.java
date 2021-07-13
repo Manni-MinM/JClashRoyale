@@ -3,7 +3,6 @@
 package JClashRoyale.Model.Elements ;
 
 import javafx.geometry.Point2D ;
-import javafx.scene.image.Image ;
 import javafx.scene.shape.Circle ;
 import javafx.scene.canvas.GraphicsContext ;
 
@@ -23,11 +22,6 @@ public abstract class Sprite {
 	protected double attackSpeed ;
 	protected TroopType troopType ;
 	protected TargetType targetType ;
-
-	protected Image runAnimationLeft ;
-	protected Image runAnimationRight ;
-	protected Image battleAnimationFirst ;
-	protected Image battleAnimationSecond ;
 	// Constructor
 	public Sprite() {
 		// Pass
@@ -62,18 +56,6 @@ public abstract class Sprite {
 	}
 	public void setTargetType(TargetType target) {
 		this.targetType = target ;
-	}
-	public void setRunAnimationLeft(String path) {
-		this.runAnimationLeft = new Image(path) ;
-	}
-	public void setRunAnimationRight(String path) {
-		this.runAnimationRight = new Image(path) ;
-	}
-	public void setBattleAnimationFirst(String path) {
-		this.battleAnimationFirst = new Image(path) ;
-	}
-	public void setBattleAnimationSecond(String path) {
-		this.battleAnimationSecond = new Image(path) ;
 	}
 	// Methods : Getters
 	public double getX() {
