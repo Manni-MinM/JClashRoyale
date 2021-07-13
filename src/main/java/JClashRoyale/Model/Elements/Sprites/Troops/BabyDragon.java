@@ -6,25 +6,25 @@ import JClashRoyale.Model.Elements.Enums.TroopType ;
 import JClashRoyale.Model.Elements.Enums.TargetType ;
 import JClashRoyale.Model.Elements.Sprites.SingleTargetTroop ;
 
-public class Archer extends SingleTargetTroop {
+public class BabyDragon extends AreaSplashTroop {
 	// Fields : Final
 	private final double RANGE_RADIUS = 0.0 ; // TODO : ?
 	private final double HEALTH_RADIUS = 0.0 ; // TODO : ?
 
-	private final int COST = 3 ;
+	private final int COST = 4 ;
 	private final double DAMAGE = 0.0 ; // TODO : Read From DB
 	private final double HITPOINTS = 0.0 ; // TODO : Read From DB
-	private final double RUN_SPEED = 0.0 ; // TODO : Medium
-	private final double ATTACK_SPEED = 1200.0 ;
-	private final TroopType TROOP_TYPE = TroopType.GROUND ;
+	private final double RUN_SPEED = 0.0 ; // TODO : Fast
+	private final double ATTACK_SPEED = 1800.0 ;
+	private final TroopType TROOP_TYPE = TroopType.AERIAL ;
 	private final TargetType TARGET_TYPE = TargetType.ALL ;
 
-	private final String RUN_ANIMATION_LEFT_PATH = "" /*"/assets/sprites/archer/archer_run_left.png"*/ ;
-	private final String RUN_ANIMATION_RIGHT_PATH = "" /*"/assets/sprites/archer/archer_run_right.png"*/ ;
-	private final String BATTLE_ANIMATION_FIRST_PATH = "" /*"/assets/sprites/archer/archer_battle_first.png"*/ ;
-	private final String BATTLE_ANIMATION_SECOND_PATH = "" /*"/assets/sprites/wizard/archer_battle_second.png"*/ ;
+	private final String RUN_ANIMATION_LEFT_PATH = "" /*"/assets/sprites/baby_dragon/baby_dragon_run_left.png"*/ ;
+	private final String RUN_ANIMATION_RIGHT_PATH = "" /*"/assets/sprites/baby_dragon/baby_dragon_run_right.png"*/ ;
+	private final String BATTLE_ANIMATION_FIRST_PATH = "" /*"/assets/sprites/baby_dragon/baby_dragon_battle_first.png"*/ ;
+	private final String BATTLE_ANIMATION_SECOND_PATH = "" /*"/assets/sprites/baby_dragon/baby_dragon_battle_second.png"*/ ;
 	// Constructor
-	public Archer() {
+	public BabyDragon() {
 		setRangeCircle(RANGE_RADIUS) ;
 		setHealthCircle(HEALTH_RADIUS) ;
 
