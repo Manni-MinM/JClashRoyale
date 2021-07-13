@@ -9,6 +9,7 @@ public class Player {
     private final String username;
     private int cup;
     private int xp;
+    private int level;
 
     public static Player player;
 
@@ -28,6 +29,14 @@ public class Player {
 
     public int getXP() {
         return xp;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public void setXp(int xp) {

@@ -66,22 +66,27 @@ public class SecondaryController {
             progressBar.setProgress((double) XP / 300);
             progressBarLabel.setText(Integer.toString(XP) + '/' + "300");
             levelLabel.setText("1");
+            Player.player.setLevel(1);
         } else if (XP <= 800) {
             progressBar.setProgress((double) XP / 800);
             progressBarLabel.setText(Integer.toString(XP) + '/' + "800");
             levelLabel.setText("2");
+            Player.player.setLevel(2);
         } else if (XP <= 1700) {
             progressBar.setProgress((double) XP / 1700);
             progressBarLabel.setText(Integer.toString(XP) + '/' + "1700");
             levelLabel.setText("3");
+            Player.player.setLevel(3);
         } else if (XP <= 3400) {
             progressBar.setProgress((double) XP / 3400);
             progressBarLabel.setText(Integer.toString(XP) + '/' + "3400");
             levelLabel.setText("4");
+            Player.player.setLevel(4);
         } else if (XP <= 5900) {
             progressBar.setProgress((double) XP / 5900);
             progressBarLabel.setText(Integer.toString(XP) + '/' + "5900");
             levelLabel.setText("5");
+            Player.player.setLevel(5);
         }
     }
 }
