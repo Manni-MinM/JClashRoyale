@@ -2,6 +2,7 @@
 
 package JClashRoyale.Model.Elements.Sprites.Troops ;
 
+import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
 import JClashRoyale.Model.Elements.Enums.TargetType ;
 import JClashRoyale.Model.Elements.Sprites.SingleTargetTroop ;
@@ -31,7 +32,7 @@ public class MiniPekka extends SingleTargetTroop {
 	private final String BLUE_BATTLE_ANIMATION_FIRST_PATH = "/JClashRoyale/assets/sprites/mini_pekka/mini_pekka_blue_battle_first.png" ;
 	private final String BLUE_BATTLE_ANIMATION_SECOND_PATH = "/JClashRoyale/assets/sprites/mini_pekka/mini_pekka_blue_battle_second.png" ;
 	// Constructor
-	public MiniPekka() {
+	public MiniPekka(ColorType color) {
 		setRangeCircleRadius(RANGE_RADIUS) ;
 		setHealthCircleRadius(HEALTH_RADIUS) ;
 
@@ -43,14 +44,19 @@ public class MiniPekka extends SingleTargetTroop {
 		setTroopType(TROOP_TYPE) ;
 		setTargetType(TARGET_TYPE) ;
 
-		setRedRunAnimationLeft(RED_RUN_ANIMATION_LEFT_PATH , WIDTH , HEIGHT) ;
-		setRedRunAnimationRight(RED_RUN_ANIMATION_RIGHT_PATH , WIDTH , HEIGHT) ;
-		setBlueRunAnimationLeft(BLUE_RUN_ANIMATION_LEFT_PATH , WIDTH , HEIGHT) ;
-		setBlueRunAnimationRight(BLUE_RUN_ANIMATION_RIGHT_PATH , WIDTH , HEIGHT) ;
-//		setRedBattleAnimationFirst(RED_BATTLE_ANIMATION_FIRST_PATH , WIDTH , HEIGHT) ;
-//		setRedBattleAnimationSecond(RED_BATTLE_ANIMATION_SECOND_PATH , WIDTH , HEIGHT) ;
-//		setBlueBattleAnimationFirst(BLUE_BATTLE_ANIMATION_FIRST_PATH , WIDTH , HEIGHT) ;
-//		setBlueBattleAnimationSecond(BLUE_BATTLE_ANIMATION_SECOND_PATH , WIDTH , HEIGHT) ;
+		if ( color == ColorType.RED ) {
+			setRunAnimationLeft(RED_RUN_ANIMATION_LEFT_PATH , WIDTH , HEIGHT) ;
+			setRunAnimationRight(RED_RUN_ANIMATION_RIGHT_PATH , WIDTH , HEIGHT) ;
+//			setBattleAnimationFirst(RED_BATTLE_ANIMATION_FIRST_PATH , WIDTH , HEIGHT) ;
+//			setBattleAnimationSecond(RED_BATTLE_ANIMATION_SECOND_PATH , WIDTH , HEIGHT) ;
+		} else if ( color == ColorType.BLUE ) {
+			setRunAnimationLeft(BLUE_RUN_ANIMATION_LEFT_PATH , WIDTH , HEIGHT) ;
+			setRunAnimationRight(BLUE_RUN_ANIMATION_RIGHT_PATH , WIDTH , HEIGHT) ;
+//			setBattleAnimationFirst(BLUE_BATTLE_ANIMATION_FIRST_PATH , WIDTH , HEIGHT) ;
+//			setBattleAnimationSecond(BLUE_BATTLE_ANIMATION_SECOND_PATH , WIDTH , HEIGHT) ;
+		} else {
+			// Pass
+		}
 	}
 	// Methods
 	

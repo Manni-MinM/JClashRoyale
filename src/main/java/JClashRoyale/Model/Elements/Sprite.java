@@ -129,5 +129,6 @@ public abstract class Sprite {
 	public void showHealthCircle(GraphicsContext graphics) {
 		graphics.fillOval(this.getX() , this.getY() , healthCircle.getRadius() , healthCircle.getRadius()) ;
 	}
+	public abstract void draw(GraphicsContext graphics) ;
 }
 
