@@ -70,16 +70,21 @@
             <Font name="Swis721 BT Bold" size="15.0" />
          </font>
       </Button>
-      <Pane layoutX="33.0" layoutY="287.0" prefHeight="252.0" prefWidth="383.0" style="-fx-border-color: white; -fx-border-radius: 10;">
+      <Pane layoutX="33.0" layoutY="287.0" prefHeight="252.0" prefWidth="383.0">
          <children>
-            <ImageView fitHeight="125.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" style="-fx-: white;" />
-            <ImageView fitHeight="125.0" fitWidth="96.0" layoutX="96.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="125.0" fitWidth="96.0" layoutX="192.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="125.0" fitWidth="96.0" layoutX="288.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="125.0" fitWidth="96.0" layoutX="287.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="125.0" fitWidth="96.0" layoutX="191.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="125.0" fitWidth="96.0" layoutX="95.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="125.0" fitWidth="96.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="258.0" fitWidth="397.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/deckbackground.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="one" fitHeight="125.0" fitWidth="96.0" layoutX="3.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-: white;" />
+            <ImageView fx:id="two" fitHeight="125.0" fitWidth="96.0" layoutX="97.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="three" fitHeight="125.0" fitWidth="96.0" layoutX="188.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="four" fitHeight="125.0" fitWidth="96.0" layoutX="285.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="eight" fitHeight="125.0" fitWidth="96.0" layoutX="284.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="seven" fitHeight="125.0" fitWidth="96.0" layoutX="190.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="six" fitHeight="125.0" fitWidth="96.0" layoutX="96.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="five" fitHeight="125.0" fitWidth="96.0" layoutX="3.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>

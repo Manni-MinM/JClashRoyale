@@ -5,11 +5,14 @@ import JClashRoyale.Model.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * @author Amir Iravanimanesh & Manni Moghimi
@@ -28,6 +31,24 @@ public class ProfileSectionController {
     private Label progressBarLabel;
     @FXML
     private Label levelLabel;
+    @FXML
+    private ImageView one;
+    @FXML
+    private ImageView two;
+    @FXML
+    private ImageView three;
+    @FXML
+    private ImageView four;
+    @FXML
+    private ImageView five;
+    @FXML
+    private ImageView six;
+    @FXML
+    private ImageView seven;
+    @FXML
+    private ImageView eight;
+    private ArrayList<ImageView> cards = new ArrayList<>();
+
 
     private double x, y;
 
@@ -45,6 +66,7 @@ public class ProfileSectionController {
         btnMinimize.setOnMouseClicked(mouseEvent -> stage.setIconified(true));
         cupLabel.setText(Integer.toString(Player.player.getCup()));
         progressBarUpdate(Player.player.getXP());
+        showDeck();
     }
 
     @FXML
@@ -73,6 +95,22 @@ public class ProfileSectionController {
             progressBar.setProgress((double) XP / 5900);
             progressBarLabel.setText(Integer.toString(XP) + '/' + "5900");
             levelLabel.setText("5");
+        }
+    }
+
+    private void showDeck() {
+        cards.add(one);
+        cards.add(two);
+        cards.add(three);
+        cards.add(four);
+        cards.add(five);
+        cards.add(six);
+        cards.add(seven);
+        cards.add(eight);
+        for (int i = 0; i < 8; i++) {
+            cards.get(i).setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(
+                    Player.player.getDeck().get(i).getImageAddress()
+            ))));
         }
     }
 }

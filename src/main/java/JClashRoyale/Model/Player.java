@@ -4,6 +4,7 @@ package JClashRoyale.Model;
 import JClashRoyale.Model.Cards.Card;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author Amir Iravanimanesh & Manni Moghimi
@@ -23,9 +24,18 @@ public class Player {
         this.cup = cup;
         this.xp = xp;
         String[] cards = deck.split("-");
+        System.out.println(Arrays.toString(cards));
         for (String card : cards) {
             this.deck.add(Card.gameCards.get(Integer.parseInt(card)));
         }
+    }
+
+    public ArrayList<Card> getDeck() {
+        return deck;
+    }
+
+    public void setDeck(ArrayList<Card> deck) {
+        this.deck = deck;
     }
 
     public int getCup() {
