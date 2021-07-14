@@ -22,6 +22,9 @@ public class InfernoTower extends Building {
 	private final TroopType TROOP_TYPE = TroopType.BUILDING ;
 	private final TargetType TARGET_TYPE = TargetType.ALL ;
 
+	private final double WIDTH = 30.0 ;
+	private final double HEIGHT = 30.0 ;
+
 	private final String RED_BODY_PATH = "/assets/sprites/inferno_tower/inferno_tower_red_body.png" ;
 	private final String BLUE_BODY_PATH = "/assets/sprites/inferno_tower/inferno_tower_blue_body.png" ;
 	// Fields : Other
@@ -29,8 +32,8 @@ public class InfernoTower extends Building {
 	private Image blueBody ;
 	// Constructor
 	public InfernoTower() {
-		setRangeCircle(RANGE_RADIUS) ;
-		setHealthCircle(HEALTH_RADIUS) ;
+		setRangeCircleRadius(RANGE_RADIUS) ;
+		setHealthCircleRadius(HEALTH_RADIUS) ;
 
 		setCost(COST) ;
 		setDamage(DAMAGE) ;
@@ -45,11 +48,11 @@ public class InfernoTower extends Building {
 		setBlueBody(BLUE_BODY_PATH) ;
 	}
 	// Methods : Setters
-	public void setRedBody(String path) {
-		this.redBody = new Image(path) ;
+	private void setRedBody(String path) {
+		this.redBody = new Image(path , WIDTH , HEIGHT , false , false) ;
 	}
-	public void setBlueBody(String path) {
-		this.blueBody = new Image(path) ;
+	private void setBlueBody(String path) {
+		this.blueBody = new Image(path , WIDTH , HEIGHT , false , false) ;
 	}
 	// Methods : Getters
 	

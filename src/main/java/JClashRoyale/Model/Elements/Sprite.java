@@ -12,8 +12,12 @@ import JClashRoyale.Model.Elements.Enums.TargetType ;
 public abstract class Sprite {
 	// Fields
 	protected Point2D location ;
+
 	protected Circle rangeCircle ;
 	protected Circle healthCircle ;
+
+	protected double rangeCircleRadius ;
+	protected double healthCircleRadius ;
 
 	protected int cost ;
 	protected double damage ;
@@ -29,12 +33,14 @@ public abstract class Sprite {
 	// Methods : Setters
 	public void setLocation(double x , double y) {
 		this.location = new Point2D(x , y) ;
+		this.rangeCircle = new Circle(location.getX() , location.getY() , rangeCircleRadius) ;
+		this.healthCircle = new Circle(location.getX() , location.getY() , healthCircleRadius) ;
 	}
-	public void setRangeCircle(double radius) {
-		this.rangeCircle = new Circle(location.getX() , location.getY() , radius) ;
+	public void setRangeCircleRadius(double radius) {
+		this.rangeCircleRadius = radius ;
 	}
-	public void setHealthCircle(double radius) {
-		this.healthCircle = new Circle(location.getX() , location.getY() , radius) ;
+	public void setHealthCircleRadius(double radius) {
+		this.healthCircleRadius = radius ;
 	}
 	public void setCost(int cost) {
 		this.cost = cost ;	

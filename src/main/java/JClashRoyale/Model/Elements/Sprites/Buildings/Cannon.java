@@ -22,10 +22,13 @@ public class Cannon extends Building {
 	private final TroopType TROOP_TYPE = TroopType.BUILDING ;
 	private final TargetType TARGET_TYPE = TargetType.GROUND ;
 
-	private final String RED_BODY_PATH = "/assets/sprites/cannon/cannon_red_body.png" ;
-	private final String BLUE_BODY_PATH = "/assets/sprites/cannon/cannon_blue_body.png" ;
-	private final String RED_BLASTER_PATH = "/assets/sprites/cannon/cannon_red_blaster.png" ;
-	private final String BLUE_BLASTER_PATH = "/assets/sprites/cannon/cannon_blue_blaster.png" ;
+	private final double WIDTH = 30.0 ;
+	private final double HEIGHT = 30.0 ;
+
+	private final String RED_BODY_PATH = "/JClashRoyale/assets/sprites/cannon/cannon_red_body.png" ;
+	private final String BLUE_BODY_PATH = "/JClashRoyale/assets/sprites/cannon/cannon_blue_body.png" ;
+	private final String RED_BLASTER_PATH = "/JClashRoyale/assets/sprites/cannon/cannon_red_blaster.png" ;
+	private final String BLUE_BLASTER_PATH = "/JClashRoyale/assets/sprites/cannon/cannon_blue_blaster.png" ;
 	// Fields : Other
 	private Image redBody ;
 	private Image blueBody ;
@@ -33,8 +36,8 @@ public class Cannon extends Building {
 	private Image blueBlaster ;
 	// Constructor
 	public Cannon() {
-		setRangeCircle(RANGE_RADIUS) ;
-		setHealthCircle(HEALTH_RADIUS) ;
+		setRangeCircleRadius(RANGE_RADIUS) ;
+		setHealthCircleRadius(HEALTH_RADIUS) ;
 
 		setCost(COST) ;
 		setDamage(DAMAGE) ;
@@ -51,17 +54,17 @@ public class Cannon extends Building {
 		setBlueBlaster(BLUE_BLASTER_PATH) ;
 	}
 	// Methods : Setters
-	public void setRedBody(String path) {
-		this.redBody = new Image(path) ;
+	private void setRedBody(String path) {
+		this.redBody = new Image(path , WIDTH , HEIGHT , false , false) ;
 	}
-	public void setBlueBody(String path) {
-		this.blueBody = new Image(path) ;
+	private void setBlueBody(String path) {
+		this.blueBody = new Image(path , WIDTH , HEIGHT , false , false) ;
 	}
-	public void setRedBlaster(String path) {
-		this.redBlaster = new Image(path) ;
+	private void setRedBlaster(String path) {
+		this.redBlaster = new Image(path , WIDTH , HEIGHT , false , false) ;
 	}
-	public void setBlueBlaster(String path) {
-		this.blueBlaster = new Image(path) ;
+	private void setBlueBlaster(String path) {
+		this.blueBlaster = new Image(path , WIDTH , HEIGHT , false , false) ;
 	}
 	// Methods : Getters
 
