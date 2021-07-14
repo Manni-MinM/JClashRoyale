@@ -24,7 +24,7 @@ public class Database {
 
     public static boolean registerDone(String username, String password) {
         String insertion = "INSERT INTO accounts(username,password,xp,cup,deck) values (\"" + username + "\" , \"" + password + "\"" +
-                ", 0, 0, 0-1-2-3-4-5-6-7)";
+                ", 0, 0, '0-1-2-3-4-5-6-7')";
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/JClashRoyale",
                     "root", "pashmak64bit");
