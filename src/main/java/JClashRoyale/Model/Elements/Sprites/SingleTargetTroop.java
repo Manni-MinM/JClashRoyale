@@ -51,6 +51,18 @@ public class SingleTargetTroop extends Sprite {
 		return this.redRunAnimationLeft ;
 	}
 	// Methods : Other
-	
+	public void walk(int frameCount) {
+		// TODO
+		double x = getX() + (0.017) * runSpeed ;
+		double y = getY() + (0.017) * runSpeed ;
+		setLocation(x , y) ;
+
+		if ( (frameCount % 15) % 2 == 0 ) {
+			setStateImage(redRunAnimationLeft) ;
+		} else { 
+			setStateImage(redRunAnimationRight) ;
+		
+		}
+	}
 }
 

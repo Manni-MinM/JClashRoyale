@@ -3,6 +3,7 @@
 package JClashRoyale.Model.Elements ;
 
 import javafx.geometry.Point2D ;
+import javafx.scene.image.Image ;
 import javafx.scene.shape.Circle ;
 import javafx.scene.canvas.GraphicsContext ;
 
@@ -26,6 +27,8 @@ public abstract class Sprite {
 	protected double attackSpeed ;
 	protected TroopType troopType ;
 	protected TargetType targetType ;
+
+	protected Image stateImage ;
 	// Constructor
 	public Sprite() {
 		// Pass
@@ -63,6 +66,9 @@ public abstract class Sprite {
 	public void setTargetType(TargetType target) {
 		this.targetType = target ;
 	}
+	public void setStateImage(Image stateImage) {
+		this.stateImage = stateImage ;
+	}
 	// Methods : Getters
 	public double getX() {
 		return this.location.getX() ;
@@ -97,6 +103,9 @@ public abstract class Sprite {
 	public TargetType getTargetType() {
 		return this.targetType ;
 	}
+	public Image getStateImage() {
+		return this.stateImage ;
+	}
 	// Methods : Private
 	private boolean circleIntersects(Circle first , Circle second) {
 		if ( first == null || second == null )
@@ -119,12 +128,6 @@ public abstract class Sprite {
 	}
 	public void showHealthCircle(GraphicsContext graphics) {
 		graphics.fillOval(this.getX() , this.getY() , healthCircle.getRadius() , healthCircle.getRadius()) ;
-	}
-	public void walkAnimation() {
-		// TODO
-	}
-	public void attackAnimation() {
-		// TODO	
 	}
 }
 
