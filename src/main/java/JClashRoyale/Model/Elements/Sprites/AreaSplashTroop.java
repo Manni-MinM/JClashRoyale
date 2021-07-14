@@ -59,7 +59,7 @@ public class AreaSplashTroop extends Sprite {
 		double y = getY() + (0.017) * runSpeed ;
 		setLocation(x , y) ;
 
-		if ( (frameCount % 15) % 2 == 0 ) {
+		if ( (frameCount / 15) % 2 == 0 ) {
 			setStateImage(redRunAnimationLeft) ;
 		} else { 
 			setStateImage(redRunAnimationRight) ;
