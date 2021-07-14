@@ -33,7 +33,10 @@ public class App extends Application {
         stage.setTitle("JClashRoyale");
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/icon.png"))));
 
-        ((BattleController) fxmlLoader.getController()).init(stage);
+		BattleController battleController = (BattleController)fxmlLoader.getController() ;
+        battleController.init(stage) ;
+		battleController.start() ;
+
         stage.show();
     }
 

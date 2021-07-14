@@ -1,6 +1,6 @@
-package JClashRoyale.Controller ;
+// BWOTSHEWCHB
 
-import java.io.IOException ;
+package JClashRoyale.Controller ;
 
 import javafx.fxml.FXML ;
 
@@ -12,27 +12,26 @@ import javafx.scene.layout.Pane ;
 import javafx.scene.image.ImageView ;
 import javafx.scene.control.Label ;
 import javafx.scene.control.TextField ;
-import javafx.scene.canvas.Canvas ;
-import javafx.scene.canvas.GraphicsContext ;
-import javafx.scene.paint.Color ;
+
+import JClashRoyale.Model.Logic.GameStarter ;
 
 public class BattleController {
+	// Fields
+	double x , y ;
+
+	GameStarter gameStarter ;
 
 	@FXML private Pane titlePane ;
-	@FXML private ImageView btnMinimize , btnClose ;
-	@FXML private Label messageLabel ;
-
-	@FXML private TextField elixer ;
-	@FXML private TextField result ;
 	@FXML private TextField timer ;
-
-	@FXML private Pane gameViewPane ;
-
+	@FXML private TextField result ;
+	@FXML private TextField elixer ;
+	@FXML private Label messageLabel ;
 	@FXML private Pane deckViewPane ;
-
-	private double x , y;
-
+	@FXML private Pane gameViewPane ;
+	@FXML private ImageView btnMinimize , btnClose ;
+	// Methods
 	public void init(Stage stage) {
+
 		titlePane.setOnMousePressed(mouseEvent -> {
 			x = mouseEvent.getSceneX() ;
 			y = mouseEvent.getSceneY() ;
@@ -44,12 +43,12 @@ public class BattleController {
 
 		btnClose.setOnMouseClicked(mouseEvent -> stage.close()) ;
 		btnMinimize.setOnMouseClicked(mouseEvent -> stage.setIconified(true)) ;
-	
-		// TODO
-		Canvas canvas = new Canvas(315 , 480) ;
-		GraphicsContext graphics = canvas.getGraphicsContext2D() ;
+	}
+	public void start() {
+		gameStarter = new GameStarter() ;
 
-		gameViewPane.getChildren().add(canvas) ;
+		gameStarter.initDeck(deckViewPane) ;
+		gameStarter.initBattle(gameViewPane) ;
 	}
 }
 
