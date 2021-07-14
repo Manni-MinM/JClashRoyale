@@ -55,7 +55,7 @@ public class AreaSplashTroop extends Sprite {
 	// Methods : Other
 	public void walk(int frameCount) {
 		// TODO
-		double x = getX() + (0.017) * runSpeed ;
+		double x = getX() ;
 		double y = getY() + (0.017) * runSpeed ;
 		setLocation(x , y) ;
 
