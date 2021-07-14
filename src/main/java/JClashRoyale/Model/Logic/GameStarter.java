@@ -32,7 +32,8 @@ public class GameStarter {
 
 		battleViewPane.getChildren().add(canvas) ;
 
-		gameManager.loadBattleMap() ;
+		// TODO
+		gameManager.update() ;
 	}
 }
 
