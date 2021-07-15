@@ -131,7 +131,9 @@ public class GameManager {
 							}
 						}
 					}
-					if ( !defenders.isEmpty() && timeNow - attacker.getLastAttack() > attacker.getAttackSpeed() ) {
+					if ( defenders.isEmpty() ) {
+						attacker.setAttackState(false) ;
+					} else if ( timeNow - attacker.getLastAttack() > attacker.getAttackSpeed() ) {
 						attacker.attack(defenders) ;
 						attacker.setLastAttack(timeNow) ;
 						for ( Sprite defender : defenders ) {
