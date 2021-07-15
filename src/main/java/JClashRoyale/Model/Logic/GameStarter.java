@@ -6,6 +6,7 @@ import javafx.stage.Stage ;
 
 import javafx.scene.paint.Color ;
 import javafx.scene.layout.Pane ;
+import javafx.scene.control.TextField;
 import javafx.scene.canvas.Canvas ;
 import javafx.scene.canvas.GraphicsContext ;
 
@@ -25,7 +26,7 @@ public class GameStarter {
 		return this.gameManager ;
 	}
 	// Methods : Other
-	public void initBattle(Pane battleViewPane) {
+	public void initBattle(TextField timer , TextField result , TextField elixer , Pane battleViewPane) {
 		gameManager.setBattleMap(BATTLE_MAP_PATH) ;
 
 		Canvas canvas = gameManager.getCanvas() ;
@@ -33,8 +34,7 @@ public class GameStarter {
 
 		battleViewPane.getChildren().add(canvas) ;
 
-		// TODO
-		gameManager.update() ;
+		gameManager.update(timer , result , elixer) ;
 	}
 }
 

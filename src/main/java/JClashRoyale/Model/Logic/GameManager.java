@@ -9,6 +9,7 @@ import javafx.animation.AnimationTimer ;
 
 import javafx.scene.image.Image ;
 import javafx.scene.paint.Color ;
+import javafx.scene.control.TextField;
 import javafx.scene.canvas.Canvas ;
 import javafx.scene.canvas.GraphicsContext ;
 
@@ -32,6 +33,8 @@ import JClashRoyale.Model.Elements.Sprites.Buildings.InfernoTower ;
 
 public class GameManager {
 	// Fields
+	private int elixer ;
+	
 	private Image battleMap ;
 
 	private Canvas canvas ;
@@ -40,6 +43,8 @@ public class GameManager {
 	private ArrayList<Sprite> sprites ;
 	// Constructor
 	public GameManager() {
+		elixer = 0 ;
+
 		canvas = new Canvas(315 , 480) ;
 		graphics = canvas.getGraphicsContext2D() ;
 
@@ -49,7 +54,13 @@ public class GameManager {
 	public void setBattleMap(String path) {
 		this.battleMap = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))) ;
 	}
+	public void consumeElixer(int value) {
+		this.elixer -= value ;
+	}
 	// Methods : Getters
+	public int getElixer() {
+		return this.elixer ;
+	}
 	public Canvas getCanvas() {
 		return this.canvas ;
 	}
@@ -65,14 +76,23 @@ public class GameManager {
 	public void loadBattleMap() {
 		graphics.drawImage(battleMap , 0 , 0) ;
 	}
-	public void update() {
+	public void update(TextField timerField , TextField resultField , TextField elixerField) {
 		final long startNanoTime = System.nanoTime() ;
 		new AnimationTimer() {
+			int timeOffset = 0 ;
 			int frameCount = 0 ;
 			public void handle(long currentNanoTime) {
-				double t = (currentNanoTime - startNanoTime) / 1000000000.0 ;
+				double elixerTime = ((currentNanoTime - startNanoTime) / 1000000000.0) - timeOffset ;
 
 				// TODO
+				if ( elixerTime >= 1.0 ) {
+					timeOffset ++ ;
+					elixer = Math.min(elixer + 1 , 10) ;
+				} else {
+					// Pass
+				}
+				elixerField.setText(String.valueOf(elixer)) ;
+
 				loadBattleMap() ;
 				for ( Sprite sprite : sprites ) {
 					if ( sprite instanceof AreaSplashTroop ) {

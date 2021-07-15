@@ -88,7 +88,8 @@ public class BattleController {
     public void start() {
         gameStarter = new GameStarter() ;
 		gameManager = gameStarter.getGameManager() ;
-        gameStarter.initBattle(gameViewPane) ;
+		
+		gameStarter.initBattle(timer , result , elixer , gameViewPane) ;
     }
 
     private void initCards() {
@@ -126,40 +127,103 @@ public class BattleController {
 		// TODO :  Alter Location to Mouse Location
 		if ( selectedCard.getCard() instanceof ArcherCard ) {
 			Archer archer = new Archer(ColorType.BLUE) ;
+			archer.setHitpoints(selectedCard.getCard().getHP()) ;
+			archer.setDamage(selectedCard.getCard().getDamage()) ;
 			archer.setLocation(157.5 , 430) ;
-			gameManager.addSprite(archer) ;
+			if ( gameManager.getElixer() >= archer.getCost() ) {
+				gameManager.addSprite(archer) ;
+				gameManager.consumeElixer(archer.getCost()) ;
+			} else {
+				return ;
+			}
 		} else if ( selectedCard.getCard() instanceof BabyDragonCard ) {
 			BabyDragon babyDragon = new BabyDragon(ColorType.BLUE) ;
+			babyDragon.setHitpoints(selectedCard.getCard().getHP()) ;
+			babyDragon.setDamage(selectedCard.getCard().getDamage()) ;
 			babyDragon.setLocation(157.5 , 430) ;
-			gameManager.addSprite(babyDragon) ;
+			if ( gameManager.getElixer() >= babyDragon.getCost() ) {
+				gameManager.addSprite(babyDragon) ;
+				gameManager.consumeElixer(babyDragon.getCost()) ;
+			} else {
+				return ;
+			}
 		} else if ( selectedCard.getCard() instanceof BarbariansCard ) {
 			Barbarian barbarian = new Barbarian(ColorType.BLUE) ;
 			barbarian.setLocation(157.5 , 430) ;
-			gameManager.addSprite(barbarian) ;
+			barbarian.setHitpoints(selectedCard.getCard().getHP()) ;
+			barbarian.setDamage(selectedCard.getCard().getDamage()) ;
+			if ( gameManager.getElixer() >= barbarian.getCost() ) {
+				gameManager.addSprite(barbarian) ;
+				gameManager.consumeElixer(barbarian.getCost()) ;
+			} else {
+				return ;
+			}
 		} else if ( selectedCard.getCard() instanceof GiantCard ) {
 			Giant giant = new Giant(ColorType.BLUE) ;
 			giant.setLocation(157.5 , 430) ;
-			gameManager.addSprite(giant) ;
+			giant.setHitpoints(selectedCard.getCard().getHP()) ;
+			giant.setDamage(selectedCard.getCard().getDamage()) ;
+			if ( gameManager.getElixer() >= giant.getCost() ) {
+				gameManager.addSprite(giant) ;
+				gameManager.consumeElixer(giant.getCost()) ;
+			} else {
+				return ;
+			}
 		} else if ( selectedCard.getCard() instanceof MiniPekkaCard ) {
 			MiniPekka miniPekka = new MiniPekka(ColorType.BLUE) ;
 			miniPekka.setLocation(157.5 , 430) ;
-			gameManager.addSprite(miniPekka) ;
+			miniPekka.setHitpoints(selectedCard.getCard().getHP()) ;
+			miniPekka.setDamage(selectedCard.getCard().getDamage()) ;
+			if ( gameManager.getElixer() >= miniPekka.getCost() ) {
+				gameManager.addSprite(miniPekka) ;
+				gameManager.consumeElixer(miniPekka.getCost()) ;
+			} else {
+				return ;
+			}
 		} else if ( selectedCard.getCard() instanceof ValkyrieCard ) {
 			Valkyrie valkyrie = new Valkyrie(ColorType.BLUE) ;
 			valkyrie.setLocation(157.5 , 430) ;
-			gameManager.addSprite(valkyrie) ;
+			valkyrie.setHitpoints(selectedCard.getCard().getHP()) ;
+			valkyrie.setDamage(selectedCard.getCard().getDamage()) ;
+			if ( gameManager.getElixer() >= valkyrie.getCost() ) {
+				gameManager.addSprite(valkyrie) ;
+				gameManager.consumeElixer(valkyrie.getCost()) ;
+			} else {
+				return ;
+			}
 		} else if ( selectedCard.getCard() instanceof WizardCard ) {
 			Wizard wizard = new Wizard(ColorType.BLUE) ;
 			wizard.setLocation(157.5 , 430) ;
-			gameManager.addSprite(wizard) ;
+			wizard.setHitpoints(selectedCard.getCard().getHP()) ;
+			wizard.setDamage(selectedCard.getCard().getDamage()) ;
+			if ( gameManager.getElixer() >= wizard.getCost() ) {
+				gameManager.addSprite(wizard) ;
+				gameManager.consumeElixer(wizard.getCost()) ;
+			} else {
+				return ;
+			}
 		} else if ( selectedCard.getCard() instanceof CannonCard ) {
 			Cannon cannon = new Cannon(ColorType.BLUE) ;
 			cannon.setLocation(157.5 , 430) ;
-			gameManager.addSprite(cannon) ;
+			cannon.setHitpoints(selectedCard.getCard().getHP()) ;
+			cannon.setDamage(selectedCard.getCard().getDamage()) ;
+			if ( gameManager.getElixer() >= cannon.getCost() ) {
+				gameManager.addSprite(cannon) ;
+				gameManager.consumeElixer(cannon.getCost()) ;
+			} else {
+				return ;
+			}
 		} else if ( selectedCard.getCard() instanceof InfernoTowerCard ) {
 			InfernoTower infernoTower = new InfernoTower(ColorType.BLUE) ;
 			infernoTower.setLocation(157.7 , 430) ;
-			gameManager.addSprite(infernoTower) ;
+			infernoTower.setHitpoints(selectedCard.getCard().getHP()) ;
+			infernoTower.setDamage(selectedCard.getCard().getDamage()) ;
+			if ( gameManager.getElixer() >= infernoTower.getCost() ) {
+				gameManager.addSprite(infernoTower) ;
+				gameManager.consumeElixer(infernoTower.getCost()) ;
+			} else {
+				return ;
+			}
 		} else {
 			// Pass
 		}
