@@ -15,7 +15,7 @@ public class Cannon extends Building {
 	private final double RANGE_RADIUS = 0.0 ; // TODO : ?
 	private final double HEALTH_RADIUS = 0.0 ; // TODO : ?
 
-	private final int COST = 6 ;
+	private final int COST = 3 ;
 	private final double DAMAGE = 0.0 ; // TODO : Read From DB
 	private final double HITPOINTS = 0.0 ; // TODO : Read From DB
 	private final double RUN_SPEED = 0.0 ;
