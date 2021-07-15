@@ -72,6 +72,7 @@ public class BattleDeckSectionController {
         showDeck();
         showSwapDeck();
         swapCards.forEach(swapCard -> swapCard.setOnMouseClicked(mouseEvent -> onMousePressedAction(mouseEvent, swapCard)));
+        cards.forEach(card -> card.setOnMouseClicked(mouseEvent -> deckCardOnMousePressedAction(mouseEvent, card)));
     }
 
     @FXML
@@ -101,10 +102,24 @@ public class BattleDeckSectionController {
         }
     }
 
-    private void onMousePressedAction(MouseEvent event,ImageView imageView){
-        if (selectedCard != null) selectedCard.setOpacity(1);
-        imageView.setOpacity(0.5);
+    private void onMousePressedAction(MouseEvent event, ImageView imageView) {
+        if (selectedCard == imageView){
+            selectedCard.setOpacity(1);
+            selectedCard = new ImageView();
+            return;
+        } else if (selectedCard != null) selectedCard.setOpacity(1);
         selectedCard = imageView;
+        selectedCard.setOpacity(0.5);
+    }
+
+    private void deckCardOnMousePressedAction(MouseEvent event, ImageView imageView) {
+        if (!swapCards.contains(selectedCard))
+            return;
+        Image temp = selectedCard.getImage();
+        selectedCard.setImage(imageView.getImage());
+        imageView.setImage(temp);
+        selectedCard.setOpacity(1);
+        selectedCard = new ImageView();
     }
 
 }
