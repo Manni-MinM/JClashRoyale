@@ -35,6 +35,6 @@ public class FireballCard extends Card implements Spell {
             case 5:
                 return 474;
         }
-        return 0;
+        return 325;
     }
 }

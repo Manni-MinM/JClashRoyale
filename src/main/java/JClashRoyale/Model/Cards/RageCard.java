@@ -36,6 +36,6 @@ public class RageCard extends Card implements Spell{
             case 5:
                 return 8;
         }
-        return 0;
+        return 6;
     }
 }

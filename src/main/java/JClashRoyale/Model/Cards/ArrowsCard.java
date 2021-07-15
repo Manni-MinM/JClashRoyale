@@ -36,6 +36,6 @@ public class ArrowsCard extends Card implements Spell{
             case 5:
                 return 210;
         }
-        return 0;
+        return 144;
     }
 }

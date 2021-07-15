@@ -25,7 +25,7 @@ public class GiantCard extends Card{
             case 5:
                 return 2920;
         }
-        return 0;
+        return 2000;
     }
 
     @Override
@@ -42,6 +42,6 @@ public class GiantCard extends Card{
             case 5:
                 return 183;
         }
-        return 0;
+        return 126;
     }
 }

@@ -25,7 +25,7 @@ public class ArcherCard extends Card{
             case 5:
                 return 182;
         }
-        return 0;
+        return 125;
     }
 
     @Override
@@ -42,6 +42,6 @@ public class ArcherCard extends Card{
             case 5:
                 return 58;
         }
-        return 0;
+        return 33;
     }
 }

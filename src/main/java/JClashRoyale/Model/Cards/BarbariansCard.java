@@ -25,7 +25,7 @@ public class BarbariansCard extends Card{
             case 5:
                 return 480;
         }
-        return 0;
+        return 300;
     }
 
     @Override
@@ -42,6 +42,6 @@ public class BarbariansCard extends Card{
             case 5:
                 return 109;
         }
-        return 0;
+        return 75;
     }
 }
