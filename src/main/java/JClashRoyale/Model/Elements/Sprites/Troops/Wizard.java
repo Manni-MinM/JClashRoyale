@@ -13,7 +13,7 @@ public class Wizard extends AreaSplashTroop {
 
 	private final int COST = 5 ;
 	private final double RUN_SPEED = 20.0 ;
-	private final double ATTACK_SPEED = 1700.0 ;
+	private final double ATTACK_SPEED = 1.7 ;
 	private final TroopType TROOP_TYPE = TroopType.GROUND ;
 	private final TroopType TARGET_TYPE = TroopType.ALL ;
 	

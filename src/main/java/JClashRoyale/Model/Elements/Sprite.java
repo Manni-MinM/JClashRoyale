@@ -8,6 +8,8 @@ import javafx.scene.paint.Color ;
 import javafx.scene.shape.Circle ;
 import javafx.scene.canvas.GraphicsContext ;
 
+import java.util.ArrayList ;
+
 import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
 
@@ -26,6 +28,8 @@ public abstract class Sprite {
 	protected double runSpeed ;
 	protected double hitpoints ;
 	protected double attackSpeed ;
+	protected double lastAttack ;
+	protected boolean attackState ;
 	protected ColorType colorType ;
 	protected TroopType troopType ;
 	protected TroopType targetType ;
@@ -34,6 +38,8 @@ public abstract class Sprite {
 	// Constructor
 	public Sprite() {
 		// Pass
+		lastAttack = -100.0 ;
+		attackState = false ;
 	}
 	// Methods : Setters
 	public void setLocation(double x , double y) {
@@ -65,6 +71,12 @@ public abstract class Sprite {
 	}
 	public void setAttackSpeed(double speed) {
 		this.attackSpeed = speed ;	
+	}
+	public void setLastAttack(double lastAttack) {
+		this.lastAttack = lastAttack ;
+	}
+	public void setAttackState(boolean attackState) {
+		this.attackState = attackState ;
 	}
 	public void setColorType(ColorType color) {
 		this.colorType = color ;
@@ -106,6 +118,12 @@ public abstract class Sprite {
 	public double getAttackSpeed() {
 		return this.attackSpeed ;
 	}
+	public double getLastAttack() {
+		return this.lastAttack ;
+	}
+	public boolean getAttackState() {
+		return this.attackState ;
+	}
 	public ColorType getColorType() {
 		return this.colorType ;
 	}
@@ -135,6 +153,13 @@ public abstract class Sprite {
 	public boolean healthIntersects(Circle circle) {
 		return circleIntersects(healthCircle , circle) ;
 	}
+	public boolean canAttack(Sprite defender) {
+		if ( this.getColorType() == defender.getColorType() )
+			return false ;
+		if ( !this.rangeIntersects(defender.getHealthCircle()) )
+			return false ;
+		return (this.getTargetType() == TroopType.ALL || this.getTargetType() == defender.getTroopType()) ;
+	}
 	public void showRangeCircle(GraphicsContext graphics) {
 		double offsetX = (stateImage.getWidth() - rangeCircleRadius) / 2.0 ;
 		double offsetY = (stateImage.getHeight() - rangeCircleRadius) / 2.0 ;
@@ -147,6 +172,12 @@ public abstract class Sprite {
 		graphics.setFill(Color.RED) ;
 		graphics.fillOval(this.getX() + offsetX , this.getY() + offsetY , healthCircle.getRadius() , healthCircle.getRadius()) ;
 	}
+	public void attack(ArrayList<Sprite> defenders) {
+		this.setAttackState(true) ;
+		for ( Sprite defender : defenders )
+			defender.setHitpoints(defender.getHitpoints() - this.getDamage()) ;
+	}
+	// Methods : Abstract
 	public abstract void walk(int frameCount) ;
 	public abstract void draw(GraphicsContext graphics) ;
 }

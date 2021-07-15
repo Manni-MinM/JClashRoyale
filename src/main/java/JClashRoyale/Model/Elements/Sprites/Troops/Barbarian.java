@@ -13,7 +13,7 @@ public class Barbarian extends SingleTargetTroop {
 
 	private final int COST = 5 ;
 	private final double RUN_SPEED = 20.0 ;
-	private final double ATTACK_SPEED = 1500.0 ;
+	private final double ATTACK_SPEED = 1.5 ;
 	private final TroopType TROOP_TYPE = TroopType.GROUND ;
 	private final TroopType TARGET_TYPE = TroopType.GROUND ;
 

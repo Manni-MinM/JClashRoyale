@@ -13,7 +13,7 @@ public class Archer extends SingleTargetTroop {
 
 	private final int COST = 3 ;
 	private final double RUN_SPEED = 20.0 ;
-	private final double ATTACK_SPEED = 1200.0 ;
+	private final double ATTACK_SPEED = 1.2 ;
 	private final TroopType TROOP_TYPE = TroopType.GROUND ;
 	private final TroopType TARGET_TYPE = TroopType.ALL ;
 
