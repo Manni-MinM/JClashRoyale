@@ -1,5 +1,7 @@
 package JClashRoyale.Model;
 
+import JClashRoyale.Model.Cards.Card;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -46,12 +48,31 @@ public class Database {
             statement.execute(check);
             if (statement.getResultSet().next()) {
                 Player.player = new Player(statement.getResultSet().getString(1), statement.getResultSet().getInt(4)
-                        , statement.getResultSet().getInt(3),statement.getResultSet().getString(5));
-            }
-            else return false;
+                        , statement.getResultSet().getInt(3), statement.getResultSet().getString(5));
+            } else return false;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return true;
+    }
+
+    public static void updateDeck() {
+        String deck = "";
+        for (Card card : Player.player.getDeck()) {
+            deck = deck.concat(Integer.toString(Card.gameCards.indexOf(card)));
+            if (Player.player.getDeck().indexOf(card) != 7)
+                deck += "-";
+        }
+        String update = "UPDATE accounts " +
+                "SET deck = '" + deck + "'" +
+                "WHERE username = '" + Player.player.getUsername() + "';";
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/JClashRoyale",
+                    "root", "pashmak64bit");
+            Statement statement = connection.createStatement();
+            statement.execute(update);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
