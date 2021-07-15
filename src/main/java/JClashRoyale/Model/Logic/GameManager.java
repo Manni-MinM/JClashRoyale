@@ -113,8 +113,8 @@ public class GameManager {
 				}
 
 				for ( Sprite sprite : sprites ) {
-					sprite.showRangeCircle(graphics) ;
-					sprite.showHealthCircle(graphics) ;
+//					sprite.showRangeCircle(graphics) ;
+//					sprite.showHealthCircle(graphics) ;
 					sprite.draw(graphics) ;
 				}
 				// TODO : Test Run
