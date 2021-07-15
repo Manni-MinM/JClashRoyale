@@ -20,7 +20,11 @@ public class GameStarter {
 	public GameStarter() {
 		gameManager = new GameManager() ;
 	}
-	// Methods
+	// Methods : Getters
+	public GameManager getGameManager() {
+		return this.gameManager ;
+	}
+	// Methods : Other
 	public void initDeck(Pane deckViewPane) {
 		// TODO
 	}
@@ -33,7 +37,7 @@ public class GameStarter {
 		battleViewPane.getChildren().add(canvas) ;
 
 		// TODO
-//		gameManager.update() ;
+		gameManager.update() ;
 	}
 }
 

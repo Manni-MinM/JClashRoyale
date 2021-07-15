@@ -2,8 +2,6 @@
 
 package JClashRoyale.Controller;
 
-import JClashRoyale.Model.Cards.Card;
-import JClashRoyale.Model.Player;
 import javafx.fxml.FXML;
 
 import javafx.scene.image.Image;
@@ -16,9 +14,21 @@ import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import JClashRoyale.Model.Logic.GameStarter;
-
 import java.util.*;
+
+import JClashRoyale.Model.Player ;
+
+import JClashRoyale.Model.Cards.Card ;
+// TODO : Add All Cards
+import JClashRoyale.Model.Cards.ArcherCard ;
+
+import JClashRoyale.Model.Elements.Sprite ;
+import JClashRoyale.Model.Elements.Enums.ColorType ;
+// TODO : Add All Troops
+import JClashRoyale.Model.Elements.Sprites.Troops.Archer ; 
+
+import JClashRoyale.Model.Logic.GameStarter ;
+import JClashRoyale.Model.Logic.GameManager ;
 
 public class BattleController {
     // Fields
@@ -29,27 +39,18 @@ public class BattleController {
     private ImagePackage selectedCard;
     private ImagePackage nextCard;
 
+    GameStarter gameStarter ;
+	GameManager gameManager ;
 
-    GameStarter gameStarter;
-
-    @FXML
-    private Pane titlePane;
-    @FXML
-    private TextField timer;
-    @FXML
-    private TextField result;
-    @FXML
-    private TextField elixer;
-    @FXML
-    private Label messageLabel;
-    @FXML
-    private Pane deckViewPane;
-    @FXML
-    private Pane gameViewPane;
-    @FXML
-    private ImageView btnMinimize, btnClose;
-    @FXML
-    private ImageView one, two, three, four, next;
+    @FXML private Pane titlePane;
+    @FXML private TextField timer;
+    @FXML private TextField result;
+    @FXML private TextField elixer;
+    @FXML private Label messageLabel;
+    @FXML private Pane deckViewPane;
+    @FXML private Pane gameViewPane;
+    @FXML private ImageView btnMinimize, btnClose;
+    @FXML private ImageView one, two, three, four, next;
 
     // Methods
     public void init(Stage stage) {
@@ -71,10 +72,11 @@ public class BattleController {
     }
 
     public void start() {
-        gameStarter = new GameStarter();
+        gameStarter = new GameStarter() ;
+		gameManager = gameStarter.getGameManager() ;
 
-        gameStarter.initDeck(deckViewPane);
-        gameStarter.initBattle(gameViewPane);
+        gameStarter.initDeck(deckViewPane) ;
+        gameStarter.initBattle(gameViewPane) ;
     }
 
     private void initCards() {
@@ -109,6 +111,13 @@ public class BattleController {
     }
 
     public void deployCard() {
+		// TODO : Test Run
+		if ( selectedCard.getCard() instanceof ArcherCard ) {
+			Archer archer = new Archer(ColorType.RED) ;
+			archer.setLocation(50 , 50) ;
+			gameManager.addSprite(archer) ;
+		}
+
         Card temp = selectedCard.getCard();
         selectedCard.getImageView().setOpacity(1);
         selectedCard.setCard(nextCard.getCard());

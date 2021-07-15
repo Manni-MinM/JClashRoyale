@@ -59,26 +59,21 @@ public class GameManager {
 	// Methods : Private
 	
 	// Methods : Other
+	public void addSprite(Sprite sprite) {
+		sprites.add(sprite) ;
+	}
 	public void loadBattleMap() {
 		graphics.drawImage(battleMap , 0 , 0) ;
 	}
 	public void update() {
-		// TODO
-		Archer archer = new Archer(ColorType.BLUE) ;
-		archer.setLocation(75 , 75) ;
-		sprites.add(archer) ;
-
-		BabyDragon babyDragon = new BabyDragon(ColorType.RED) ;
-		babyDragon.setLocation(175 , 75) ;
-		sprites.add(babyDragon) ;
-
 		final long startNanoTime = System.nanoTime() ;
 		new AnimationTimer() {
 			int frameCount = 0 ;
-			boolean found = false ;
 			public void handle(long currentNanoTime) {
 				double t = (currentNanoTime - startNanoTime) / 1000000000.0 ;
 
+				// TODO
+				loadBattleMap() ;
 				for ( Sprite sprite : sprites ) {
 					if ( sprite instanceof AreaSplashTroop ) {
 						AreaSplashTroop troop = (AreaSplashTroop)sprite ;
@@ -91,20 +86,8 @@ public class GameManager {
 					}
 				}
 
-				loadBattleMap() ;
-				for ( Sprite sprite : sprites )
+				for ( Sprite sprite : sprites ) {
 					sprite.draw(graphics) ;
-
-				if ( !found && t > 4.0 ) {
-					Giant giant = new Giant(ColorType.RED) ;
-					giant.setLocation(275 , 75) ;
-					sprites.add(giant) ;
-
-					Cannon cannon = new Cannon(ColorType.BLUE) ;
-					cannon.setLocation(0 , 0) ;
-					sprites.add(cannon) ;
-
-					found = true ;
 				}
 
 				frameCount = (frameCount + 1) % 60 ;
