@@ -68,5 +68,10 @@
             <ImageView fx:id="fourSwap" fitHeight="125.0" fitWidth="96.0" layoutX="278.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" style="-fx-: white;" />
          </children>
       </Pane>
+      <Button layoutX="157.0" layoutY="507.0" mnemonicParsing="false" onAction="#saveDeck" prefHeight="51.0" prefWidth="136.0" styleClass="saveBtn" text="Save" textFill="WHITE">
+         <font>
+            <Font name="Swis721 BT Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

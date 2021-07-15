@@ -36,3 +36,7 @@
 .LOBtn {
     -fx-background-color: linear-gradient(to bottom right, #a13535, #ee0a0a);
 }
+
+.saveBtn {
+    -fx-background-color: linear-gradient(to bottom right, #81FBB8, #28C76F);
+}

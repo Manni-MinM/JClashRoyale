@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -41,7 +40,7 @@ public class BattleDeckSectionController {
     private ImageView seven;
     @FXML
     private ImageView eight;
-    private ArrayList<ImageView> cards = new ArrayList<>();
+    private final ArrayList<ImagePackage> cards = new ArrayList<>();
     @FXML
     private ImageView oneSwap;
     @FXML
@@ -50,10 +49,10 @@ public class BattleDeckSectionController {
     private ImageView threeSwap;
     @FXML
     private ImageView fourSwap;
-    private ArrayList<ImageView> swapCards = new ArrayList<>();
+    private final ArrayList<ImagePackage> swapCards = new ArrayList<>();
 
     @FXML
-    private ImageView selectedCard;
+    private ImagePackage selectedCard;
 
     private double x, y;
 
@@ -71,8 +70,8 @@ public class BattleDeckSectionController {
         btnMinimize.setOnMouseClicked(mouseEvent -> stage.setIconified(true));
         showDeck();
         showSwapDeck();
-        swapCards.forEach(swapCard -> swapCard.setOnMouseClicked(mouseEvent -> onMousePressedAction(mouseEvent, swapCard)));
-        cards.forEach(card -> card.setOnMouseClicked(mouseEvent -> deckCardOnMousePressedAction(mouseEvent, card)));
+        swapCards.forEach(swapCard -> swapCard.getImageView().setOnMouseClicked(mouseEvent -> onMousePressedAction(swapCard.getImageView())));
+        cards.forEach(card -> card.getImageView().setOnMouseClicked(mouseEvent -> deckCardOnMousePressedAction(card.getImageView())));
     }
 
     @FXML
@@ -81,45 +80,95 @@ public class BattleDeckSectionController {
     }
 
     private void showDeck() {
-        cards.addAll(Arrays.asList(one, two, three, four, five, six, seven, eight));
-        for (int i = 0; i < 8; i++) {
-            cards.get(i).setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(
-                    Player.player.getDeck().get(i).getImageAddress()
-            ))));
-        }
+        cards.addAll(Arrays.asList(new ImagePackage(one, Player.player.getDeck().get(0)),
+                new ImagePackage(two, Player.player.getDeck().get(1)),
+                new ImagePackage(three, Player.player.getDeck().get(2)),
+                new ImagePackage(four, Player.player.getDeck().get(3)),
+                new ImagePackage(five, Player.player.getDeck().get(4)),
+                new ImagePackage(six, Player.player.getDeck().get(5)),
+                new ImagePackage(seven, Player.player.getDeck().get(6)),
+                new ImagePackage(eight, Player.player.getDeck().get(7))));
     }
 
     private void showSwapDeck() {
-        swapCards.addAll(Arrays.asList(oneSwap, twoSwap, threeSwap, fourSwap));
+        swapCards.addAll(Arrays.asList(new ImagePackage(oneSwap, null),
+                new ImagePackage(twoSwap, null),
+                new ImagePackage(threeSwap, null),
+                new ImagePackage(fourSwap, null)));
         int i = 0;
         for (Card gameCard : Card.gameCards) {
             if (!Player.player.getDeck().contains(gameCard)) {
-                swapCards.get(i).setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(
-                        gameCard.getImageAddress()
-                ))));
+                swapCards.get(i).setCard(gameCard);
                 i++;
             }
         }
     }
 
-    private void onMousePressedAction(MouseEvent event, ImageView imageView) {
-        if (selectedCard == imageView){
-            selectedCard.setOpacity(1);
-            selectedCard = new ImageView();
-            return;
-        } else if (selectedCard != null) selectedCard.setOpacity(1);
-        selectedCard = imageView;
-        selectedCard.setOpacity(0.5);
+    private void onMousePressedAction(ImageView imageView) {
+        if (selectedCard != null)
+            if (selectedCard.getImageView() == imageView) {
+                selectedCard.getImageView().setOpacity(1);
+                selectedCard = null;
+                return;
+            } else if (selectedCard != null) {
+                selectedCard.getImageView().setOpacity(1);
+                selectedCard = null;
+            }
+        selectedCard = findImagePackageByImageView(swapCards,imageView);
+        assert selectedCard != null;
+        selectedCard.getImageView().setOpacity(0.5);
     }
 
-    private void deckCardOnMousePressedAction(MouseEvent event, ImageView imageView) {
-        if (!swapCards.contains(selectedCard))
+    private void deckCardOnMousePressedAction(ImageView imageView) {
+        if (selectedCard == null)
             return;
-        Image temp = selectedCard.getImage();
-        selectedCard.setImage(imageView.getImage());
-        imageView.setImage(temp);
-        selectedCard.setOpacity(1);
-        selectedCard = new ImageView();
+        Card temp = selectedCard.getCard();
+        selectedCard.setCard(Objects.requireNonNull(findImagePackageByImageView(cards, imageView)).getCard());
+        selectedCard.getImageView().setOpacity(1);
+        Objects.requireNonNull(findImagePackageByImageView(cards, imageView)).setCard(temp);
+        selectedCard = null;
+    }
+
+    public void saveDeck() {
+        Player.player.getDeck().removeAll(Player.player.getDeck());
+        for (ImagePackage card : cards) {
+            Player.player.getDeck().add(card.getCard());
+        }
+    }
+
+    private ImagePackage findImagePackageByImageView(ArrayList<ImagePackage> imagePackages, ImageView imageView) {
+        for (ImagePackage imagePackage : imagePackages) {
+            if (imagePackage.getImageView() == imageView) return imagePackage;
+        }
+        return null;
+    }
+
+    static class ImagePackage {
+        private final ImageView imageView;
+        private Card card;
+
+        public ImagePackage(ImageView imageView, Card card) {
+            this.imageView = imageView;
+            this.card = card;
+            if (card != null) {
+                this.imageView.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(this.card.getImageAddress()
+                ))));
+            }
+        }
+
+        public ImageView getImageView() {
+            return imageView;
+        }
+
+        public Card getCard() {
+            return card;
+        }
+
+        public void setCard(Card card) {
+            this.card = card;
+            this.imageView.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(this.card.getImageAddress()
+            ))));
+        }
     }
 
 }
