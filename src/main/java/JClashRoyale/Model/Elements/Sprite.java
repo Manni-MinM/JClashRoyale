@@ -4,6 +4,7 @@ package JClashRoyale.Model.Elements ;
 
 import javafx.geometry.Point2D ;
 import javafx.scene.image.Image ;
+import javafx.scene.paint.Color ;
 import javafx.scene.shape.Circle ;
 import javafx.scene.canvas.GraphicsContext ;
 
@@ -38,13 +39,11 @@ public abstract class Sprite {
 	public void setLocation(double x , double y) {
 		this.location = new Point2D(x , y) ;
 
-		double rangeOffsetX = (stateImage.getWidth() - rangeCircleRadius) / 2.0 ;
-		double rangeOffsetY = (stateImage.getHeight() - rangeCircleRadius) / 2.0 ;
-		this.rangeCircle = new Circle(location.getX() + rangeOffsetX , location.getY() + rangeOffsetY , rangeCircleRadius) ;
+		double offsetX = stateImage.getWidth() / 2.0 ;
+		double offsetY = stateImage.getHeight() / 2.0 ;
 
-		double healthOffsetX = (stateImage.getWidth() - healthCircleRadius) / 2.0 ;
-		double healthOffsetY = (stateImage.getHeight() - healthCircleRadius) / 2.0 ;
-		this.healthCircle = new Circle(location.getX() + healthOffsetX , location.getY() + healthOffsetY , healthCircleRadius) ;
+		this.rangeCircle = new Circle(location.getX() + offsetX , location.getY() + offsetY , rangeCircleRadius) ;
+		this.healthCircle = new Circle(location.getX() + offsetX , location.getY() + offsetY , healthCircleRadius) ;
 	}
 	public void setRangeCircleRadius(double radius) {
 		this.rangeCircleRadius = radius ;
@@ -139,11 +138,13 @@ public abstract class Sprite {
 	public void showRangeCircle(GraphicsContext graphics) {
 		double offsetX = (stateImage.getWidth() - rangeCircleRadius) / 2.0 ;
 		double offsetY = (stateImage.getHeight() - rangeCircleRadius) / 2.0 ;
+		graphics.setFill(Color.BLUE) ;
 		graphics.fillOval(this.getX() + offsetX , this.getY() + offsetY , rangeCircle.getRadius() , rangeCircle.getRadius()) ;
 	}
 	public void showHealthCircle(GraphicsContext graphics) {
 		double offsetX = (stateImage.getWidth() - healthCircleRadius) / 2.0 ;
 		double offsetY = (stateImage.getHeight() - healthCircleRadius) / 2.0 ;
+		graphics.setFill(Color.RED) ;
 		graphics.fillOval(this.getX() + offsetX , this.getY() + offsetY , healthCircle.getRadius() , healthCircle.getRadius()) ;
 	}
 	public abstract void walk(int frameCount) ;

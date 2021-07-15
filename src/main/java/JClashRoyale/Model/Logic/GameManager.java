@@ -91,7 +91,6 @@ public class GameManager {
 			public void handle(long currentNanoTime) {
 				double elixerTime = ((currentNanoTime - startNanoTime) / 1000000000.0) - timeOffset ;
 
-				// TODO
 				if ( elixerTime >= 1.0 ) {
 					timeOffset ++ ;
 					elixer = Math.min(elixer + 1 , 10) ;
@@ -115,6 +114,7 @@ public class GameManager {
 
 				for ( Sprite sprite : sprites ) {
 					sprite.showRangeCircle(graphics) ;
+					sprite.showHealthCircle(graphics) ;
 					sprite.draw(graphics) ;
 				}
 				// TODO : Test Run
