@@ -16,6 +16,7 @@ import javafx.scene.canvas.GraphicsContext ;
 import JClashRoyale.Model.Elements.Sprite ;
 
 import JClashRoyale.Model.Elements.Enums.ColorType ;
+import JClashRoyale.Model.Elements.Enums.TroopType ;
 
 import JClashRoyale.Model.Elements.Sprites.AreaSplashTroop ;
 import JClashRoyale.Model.Elements.Sprites.SingleTargetTroop ;
@@ -68,7 +69,13 @@ public class GameManager {
 		return this.graphics ;
 	}
 	// Methods : Private
-	
+	private boolean canAttack(Sprite attacker , Sprite defender) {
+		if ( attacker.getColorType() == defender.getColorType() )
+			return false ;
+		if ( !attacker.rangeIntersects(defender.getHealthCircle()) )
+			return false ;
+		return (attacker.getTargetType() == TroopType.ALL || attacker.getTargetType() == defender.getTroopType()) ;
+	}
 	// Methods : Other
 	public void addSprite(Sprite sprite) {
 		sprites.add(sprite) ;
@@ -107,8 +114,22 @@ public class GameManager {
 				}
 
 				for ( Sprite sprite : sprites ) {
+					sprite.showRangeCircle(graphics) ;
 					sprite.draw(graphics) ;
 				}
+				// TODO : Test Run
+				ArrayList<Sprite> toBeRemoved = new ArrayList<Sprite>() ;
+				for ( int it = 0 ; it < sprites.size() ; it ++ )
+					for ( int jt = 0 ; jt < sprites.size() ; jt ++ ) {
+						if ( it == jt )
+							continue ;
+						Sprite attacker = sprites.get(it) ;
+						Sprite defender = sprites.get(jt) ;
+						if ( canAttack(attacker , defender) )
+							toBeRemoved.add(defender) ;
+					}
+				for ( Sprite sprite : toBeRemoved )
+						sprites.remove(sprite) ;
 
 				frameCount = (frameCount + 1) % 60 ;
 			}

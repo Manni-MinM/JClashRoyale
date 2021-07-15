@@ -126,10 +126,10 @@ public class BattleController {
     public void deployCard() {
 		// TODO :  Alter Location to Mouse Location
 		if ( selectedCard.getCard() instanceof ArcherCard ) {
-			Archer archer = new Archer(ColorType.BLUE) ;
+			Archer archer = new Archer(ColorType.RED) ;
 			archer.setHitpoints(selectedCard.getCard().getHP()) ;
 			archer.setDamage(selectedCard.getCard().getDamage()) ;
-			archer.setLocation(157.5 , 430) ;
+			archer.setLocation(157.5 , 30) ;
 			if ( gameManager.getElixer() >= archer.getCost() ) {
 				gameManager.addSprite(archer) ;
 				gameManager.consumeElixer(archer.getCost()) ;
@@ -137,10 +137,10 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof BabyDragonCard ) {
-			BabyDragon babyDragon = new BabyDragon(ColorType.BLUE) ;
+			BabyDragon babyDragon = new BabyDragon(ColorType.RED) ;
 			babyDragon.setHitpoints(selectedCard.getCard().getHP()) ;
 			babyDragon.setDamage(selectedCard.getCard().getDamage()) ;
-			babyDragon.setLocation(157.5 , 430) ;
+			babyDragon.setLocation(157.5 , 30) ;
 			if ( gameManager.getElixer() >= babyDragon.getCost() ) {
 				gameManager.addSprite(babyDragon) ;
 				gameManager.consumeElixer(babyDragon.getCost()) ;
