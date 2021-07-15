@@ -4,19 +4,18 @@ package JClashRoyale.Model.Elements.Sprites.Troops ;
 
 import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
-import JClashRoyale.Model.Elements.Enums.TargetType ;
 import JClashRoyale.Model.Elements.Sprites.AreaSplashTroop ;
 
 public class Wizard extends AreaSplashTroop {
 	// Fields : Final
-	private final double RANGE_RADIUS = 0.0 ; // TODO : ?
-	private final double HEALTH_RADIUS = 0.0 ; // TODO : ?
+	private final double RANGE_RADIUS = 150.0 ;
+	private final double HEALTH_RADIUS = 35.0 ;
 
 	private final int COST = 5 ;
 	private final double RUN_SPEED = 20.0 ;
 	private final double ATTACK_SPEED = 1700.0 ;
 	private final TroopType TROOP_TYPE = TroopType.GROUND ;
-	private final TargetType TARGET_TYPE = TargetType.ALL ;
+	private final TroopType TARGET_TYPE = TroopType.ALL ;
 	
 	private final double WIDTH = 30.0 ;
 	private final double HEIGHT = 30.0 ;
@@ -31,6 +30,8 @@ public class Wizard extends AreaSplashTroop {
 	private final String BLUE_BATTLE_ANIMATION_SECOND_PATH = "/JClashRoyale/assets/sprites/wizard/wizard_blue_battle_second.png" ;
 	// Constructor
 	public Wizard(ColorType color) {
+		setColorType(color) ;
+
 		setRangeCircleRadius(RANGE_RADIUS) ;
 		setHealthCircleRadius(HEALTH_RADIUS) ;
 
@@ -53,6 +54,8 @@ public class Wizard extends AreaSplashTroop {
 		} else {
 			// Pass
 		}
+
+		setStateImage(runAnimationLeft) ;
 	}
 	// Methods
 	

@@ -7,7 +7,6 @@ import javafx.scene.canvas.GraphicsContext ;
 
 import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
-import JClashRoyale.Model.Elements.Enums.TargetType ;
 import JClashRoyale.Model.Elements.Sprites.Building ;
 
 public class Cannon extends Building {
@@ -22,7 +21,7 @@ public class Cannon extends Building {
 	private final double ATTACK_SPEED = 800.0 ;
 	private final double LIFETIME = 30000.0 ;
 	private final TroopType TROOP_TYPE = TroopType.BUILDING ;
-	private final TargetType TARGET_TYPE = TargetType.GROUND ;
+	private final TroopType TARGET_TYPE = TroopType.GROUND ;
 
 	private final double WIDTH = 30.0 ;
 	private final double HEIGHT = 30.0 ;
@@ -36,6 +35,8 @@ public class Cannon extends Building {
 	private Image blaster ;
 	// Constructor
 	public Cannon(ColorType color) {
+		setColorType(color) ;
+
 		setRangeCircleRadius(RANGE_RADIUS) ;
 		setHealthCircleRadius(HEALTH_RADIUS) ;
 

@@ -7,7 +7,6 @@ import javafx.scene.canvas.GraphicsContext ;
 
 import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
-import JClashRoyale.Model.Elements.Enums.TargetType ;
 import JClashRoyale.Model.Elements.Sprites.Building ;
 
 public class InfernoTower extends Building {
@@ -22,7 +21,7 @@ public class InfernoTower extends Building {
 	private final double ATTACK_SPEED = 400.0 ;
 	private final double LIFETIME = 40000.0 ;
 	private final TroopType TROOP_TYPE = TroopType.BUILDING ;
-	private final TargetType TARGET_TYPE = TargetType.ALL ;
+	private final TroopType TARGET_TYPE = TroopType.ALL ;
 
 	private final double WIDTH = 30.0 ;
 	private final double HEIGHT = 30.0 ;
@@ -33,6 +32,8 @@ public class InfernoTower extends Building {
 	private Image body ;
 	// Constructor
 	public InfernoTower(ColorType color) {
+		setColorType(color) ;
+
 		setRangeCircleRadius(RANGE_RADIUS) ;
 		setHealthCircleRadius(HEALTH_RADIUS) ;
 

@@ -2,9 +2,8 @@
 
 package JClashRoyale.Model.Elements.Spells ;
 
-import JClashRoyale.Model.Elements.Enums.TroopType ;
-import JClashRoyale.Model.Elements.Enums.TargetType ;
 import JClashRoyale.Model.Elements.Spell ;
+import JClashRoyale.Model.Elements.Enums.TroopType ;
 
 public class Fireball extends Spell {
 	// Fields : Final

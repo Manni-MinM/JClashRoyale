@@ -5,8 +5,8 @@ package JClashRoyale.Model.Elements.Sprites ;
 import javafx.scene.image.Image ;
 import javafx.scene.canvas.GraphicsContext ;
 
-import JClashRoyale.Model.Elements.Enums ;
 import JClashRoyale.Model.Elements.Sprite ;
+import JClashRoyale.Model.Elements.Enums.ColorType ;
 
 public class AreaSplashTroop extends Sprite {
 	// Fields
@@ -39,7 +39,14 @@ public class AreaSplashTroop extends Sprite {
 	}
 	public void walk(int frameCount) {
 		double x = getX() ;
-		double y = getY() - (0.017) * runSpeed ;
+		double y = getY() ;
+		if ( getColorType() == ColorType.BLUE ) {
+			y -= (0.017) * runSpeed ;
+		} else if ( getColorType() == ColorType.RED ) {
+			y += (0.017) * runSpeed ;
+		} else {
+			// Pass
+		}
 		setLocation(x , y) ;
 
 		if ( (frameCount / 15) % 2 == 0 ) {
