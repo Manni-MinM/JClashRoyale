@@ -1,6 +1,9 @@
 package JClashRoyale.Model;
 
+import JClashRoyale.Controller.BattleDeckSectionController;
 import JClashRoyale.Controller.PrimaryController;
+import JClashRoyale.Controller.ProfileSectionController;
+import JClashRoyale.Controller.SecondaryController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,15 +22,17 @@ import java.util.Objects;
 public class App extends Application {
 
     private static Scene scene;
+    private static Stage stage;
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage1) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/JClashRoyale/" + "primary" + ".fxml"));
         scene = new Scene(fxmlLoader.load());
         scene.setFill(Color.TRANSPARENT);
+        stage = stage1;
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setTitle("JClashRoyale");
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/icon.png"))));
 
@@ -36,12 +41,19 @@ public class App extends Application {
     }
 
     public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/JClashRoyale/" + fxml + ".fxml"));
-        return fxmlLoader.load();
+        scene.setRoot(fxmlLoader.load());
+        if (fxmlLoader.getController() instanceof PrimaryController)
+            ((PrimaryController) fxmlLoader.getController()).init(stage);
+        else if (fxmlLoader.getController() instanceof SecondaryController)
+            ((SecondaryController) fxmlLoader.getController()).init(stage);
+        else if (fxmlLoader.getController() instanceof ProfileSectionController)
+            ((ProfileSectionController) fxmlLoader.getController()).init(stage);
+        else if (fxmlLoader.getController() instanceof BattleDeckSectionController)
+            ((BattleDeckSectionController) fxmlLoader.getController()).init(stage);
+        stage.hide();
+        stage.show();
+
     }
 
     public void run() {

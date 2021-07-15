@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="450.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JClashRoyale.Controller.BattleDeckSectionController">
+   <children>
+      <Pane fx:id="titlePane" prefHeight="38.0" prefWidth="450.0">
+         <children>
+            <Label layoutX="50.0" layoutY="10.0" text="JClashRoyale" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="28.0" fitWidth="200.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btnClose" fitHeight="16.0" fitWidth="16.0" layoutX="420.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/close.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btnMinimize" fitHeight="16.0" fitWidth="16.0" layoutX="397.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/hide.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <Button layoutX="171.0" layoutY="588.0" mnemonicParsing="false" onAction="#switchToSecondary" prefHeight="40.0" prefWidth="107.0" styleClass="LOBtn" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Swis721 BT Bold" size="15.0" />
+         </font>
+      </Button>
+      <Pane layoutX="33.0" layoutY="73.0" prefHeight="252.0" prefWidth="383.0">
+         <children>
+            <ImageView fitHeight="258.0" fitWidth="397.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/deckbackground.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="one" fitHeight="125.0" fitWidth="96.0" layoutX="3.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-: white;" />
+            <ImageView fx:id="two" fitHeight="125.0" fitWidth="96.0" layoutX="97.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="three" fitHeight="125.0" fitWidth="96.0" layoutX="188.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="four" fitHeight="125.0" fitWidth="96.0" layoutX="285.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="eight" fitHeight="125.0" fitWidth="96.0" layoutX="284.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="seven" fitHeight="125.0" fitWidth="96.0" layoutX="190.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="six" fitHeight="125.0" fitWidth="96.0" layoutX="96.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="five" fitHeight="125.0" fitWidth="96.0" layoutX="3.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+      <Pane layoutX="38.0" layoutY="355.0" prefHeight="126.0" prefWidth="374.0">
+         <children>
+            <ImageView fitHeight="126.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/deckswapbackground.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="oneSwap" fitHeight="125.0" fitWidth="96.0" layoutX="1.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" style="-fx-: white;" />
+            <ImageView fx:id="twoSwap" fitHeight="125.0" fitWidth="96.0" layoutX="94.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" style="-fx-: white;" />
+            <ImageView fx:id="threeSwap" fitHeight="125.0" fitWidth="96.0" layoutX="185.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-: white;" />
+            <ImageView fx:id="fourSwap" fitHeight="125.0" fitWidth="96.0" layoutX="278.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" style="-fx-: white;" />
+         </children>
+      </Pane>
+      <Button layoutX="157.0" layoutY="517.0" mnemonicParsing="false" onAction="#saveDeck" prefHeight="51.0" prefWidth="136.0" styleClass="saveBtn" text="Save" textFill="WHITE">
+         <font>
+            <Font name="Swis721 BT Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label fx:id="label" alignment="CENTER" layoutX="157.0" layoutY="488.0" prefHeight="18.0" prefWidth="136.0" textAlignment="CENTER" />
+   </children>
+</AnchorPane>
