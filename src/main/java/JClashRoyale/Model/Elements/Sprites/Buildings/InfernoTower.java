@@ -5,6 +5,7 @@ package JClashRoyale.Model.Elements.Sprites.Buildings ;
 import javafx.scene.image.Image ;
 import javafx.scene.canvas.GraphicsContext ;
 
+import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
 import JClashRoyale.Model.Elements.Enums.TargetType ;
 import JClashRoyale.Model.Elements.Sprites.Building ;
@@ -26,13 +27,12 @@ public class InfernoTower extends Building {
 	private final double WIDTH = 30.0 ;
 	private final double HEIGHT = 30.0 ;
 
-	private final String RED_BODY_PATH = "/assets/sprites/inferno_tower/inferno_tower_red_body.png" ;
-	private final String BLUE_BODY_PATH = "/assets/sprites/inferno_tower/inferno_tower_blue_body.png" ;
+	private final String RED_BODY_PATH = "/JClashRoyale/assets/sprites/inferno_tower/inferno_tower_red_body.png" ;
+	private final String BLUE_BODY_PATH = "/JClashRoyale/assets/sprites/inferno_tower/inferno_tower_blue_body.png" ;
 	// Fields : Other
-	private Image redBody ;
-	private Image blueBody ;
+	private Image body ;
 	// Constructor
-	public InfernoTower() {
+	public InfernoTower(ColorType color) {
 		setRangeCircleRadius(RANGE_RADIUS) ;
 		setHealthCircleRadius(HEALTH_RADIUS) ;
 
@@ -45,21 +45,23 @@ public class InfernoTower extends Building {
 		setTroopType(TROOP_TYPE) ;
 		setTargetType(TARGET_TYPE) ;
 
-		setRedBody(RED_BODY_PATH) ;
-		setBlueBody(BLUE_BODY_PATH) ;
+		if ( color == ColorType.RED ) {
+			setBody(RED_BODY_PATH) ;
+		} else if ( color == ColorType.BLUE ) {
+			setBody(BLUE_BODY_PATH) ;
+		} else {
+			// Pass
+		}
 	}
 	// Methods : Setters
-	private void setRedBody(String path) {
-		this.redBody = new Image(path , WIDTH , HEIGHT , false , false) ;
-	}
-	private void setBlueBody(String path) {
-		this.blueBody = new Image(path , WIDTH , HEIGHT , false , false) ;
+	private void setBody(String path) {
+		this.body = new Image(path , WIDTH , HEIGHT , false , false) ;
 	}
 	// Methods : Getters
 	
 	// Methods : Other
 	public void draw(GraphicsContext graphics) {
-		// TODO
+		graphics.drawImage(body , getX() , getY()) ;
 	}
 }
 

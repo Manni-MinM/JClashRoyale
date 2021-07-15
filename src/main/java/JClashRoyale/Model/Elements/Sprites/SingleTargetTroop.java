@@ -39,7 +39,7 @@ public class SingleTargetTroop extends Sprite {
 	}
 	public void walk(int frameCount) {
 		double x = getX() ;
-		double y = getY() + (0.017) * runSpeed ;
+		double y = getY() - (0.017) * runSpeed ;
 		setLocation(x , y) ;
 
 		if ( (frameCount / 15) % 2 == 0 ) {

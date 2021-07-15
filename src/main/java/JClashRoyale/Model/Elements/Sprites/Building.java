@@ -22,6 +22,8 @@ public abstract class Building extends Sprite {
 		return this.lifetime ;
 	}
 	// Methods : Other
-	
+	public void walk(int frameCount) {
+		// Do Nothing
+	}
 }
 
