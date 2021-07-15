@@ -15,7 +15,7 @@ public class Player {
     private int cup;
     private int xp;
     private int level;
-    private ArrayList<Card> deck = new ArrayList<>();
+    private final ArrayList<Card> deck = new ArrayList<>();
 
     public static Player player;
 
@@ -32,10 +32,6 @@ public class Player {
 
     public ArrayList<Card> getDeck() {
         return deck;
-    }
-
-    public void setDeck(ArrayList<Card> deck) {
-        this.deck = deck;
     }
 
     public int getCup() {
@@ -60,5 +56,9 @@ public class Player {
 
     public void setXp(int xp) {
         this.xp = xp;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

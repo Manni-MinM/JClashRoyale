@@ -2,11 +2,14 @@ package JClashRoyale.Controller;
 
 import JClashRoyale.Model.App;
 import JClashRoyale.Model.Cards.Card;
+import JClashRoyale.Model.Database;
 import JClashRoyale.Model.Player;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -50,6 +53,9 @@ public class BattleDeckSectionController {
     @FXML
     private ImageView fourSwap;
     private final ArrayList<ImagePackage> swapCards = new ArrayList<>();
+
+    @FXML
+    private Label label;
 
     @FXML
     private ImagePackage selectedCard;
@@ -134,6 +140,9 @@ public class BattleDeckSectionController {
         for (ImagePackage card : cards) {
             Player.player.getDeck().add(card.getCard());
         }
+        label.setTextFill(Color.web("#28C76F"));
+        label.setText("Deck saved.");
+        Database.updateDeck();
     }
 
     private ImagePackage findImagePackageByImageView(ArrayList<ImagePackage> imagePackages, ImageView imageView) {
