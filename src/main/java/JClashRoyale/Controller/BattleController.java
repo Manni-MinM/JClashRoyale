@@ -19,13 +19,27 @@ import java.util.*;
 import JClashRoyale.Model.Player ;
 
 import JClashRoyale.Model.Cards.Card ;
-// TODO : Add All Cards
+import JClashRoyale.Model.Cards.GiantCard ;
 import JClashRoyale.Model.Cards.ArcherCard ;
+import JClashRoyale.Model.Cards.WizardCard ;
+import JClashRoyale.Model.Cards.CannonCard ;
+import JClashRoyale.Model.Cards.ValkyrieCard ;
+import JClashRoyale.Model.Cards.MiniPekkaCard ;
+import JClashRoyale.Model.Cards.BabyDragonCard ;
+import JClashRoyale.Model.Cards.BarbariansCard ;
+import JClashRoyale.Model.Cards.InfernoTowerCard ;
 
 import JClashRoyale.Model.Elements.Sprite ;
 import JClashRoyale.Model.Elements.Enums.ColorType ;
-// TODO : Add All Troops
-import JClashRoyale.Model.Elements.Sprites.Troops.Archer ; 
+import JClashRoyale.Model.Elements.Sprites.Troops.Giant ;
+import JClashRoyale.Model.Elements.Sprites.Troops.Archer ;
+import JClashRoyale.Model.Elements.Sprites.Troops.Wizard ;
+import JClashRoyale.Model.Elements.Sprites.Troops.Valkyrie ;
+import JClashRoyale.Model.Elements.Sprites.Troops.MiniPekka ;
+import JClashRoyale.Model.Elements.Sprites.Troops.Barbarian ;
+import JClashRoyale.Model.Elements.Sprites.Troops.BabyDragon ;
+import JClashRoyale.Model.Elements.Sprites.Buildings.Cannon ;
+import JClashRoyale.Model.Elements.Sprites.Buildings.InfernoTower ;
 
 import JClashRoyale.Model.Logic.GameStarter ;
 import JClashRoyale.Model.Logic.GameManager ;
@@ -74,8 +88,6 @@ public class BattleController {
     public void start() {
         gameStarter = new GameStarter() ;
 		gameManager = gameStarter.getGameManager() ;
-
-        gameStarter.initDeck(deckViewPane) ;
         gameStarter.initBattle(gameViewPane) ;
     }
 
@@ -111,11 +123,45 @@ public class BattleController {
     }
 
     public void deployCard() {
-		// TODO : Test Run
+		// TODO :  Alter Location to Mouse Location
 		if ( selectedCard.getCard() instanceof ArcherCard ) {
-			Archer archer = new Archer(ColorType.RED) ;
-			archer.setLocation(50 , 50) ;
+			Archer archer = new Archer(ColorType.BLUE) ;
+			archer.setLocation(157.5 , 430) ;
 			gameManager.addSprite(archer) ;
+		} else if ( selectedCard.getCard() instanceof BabyDragonCard ) {
+			BabyDragon babyDragon = new BabyDragon(ColorType.BLUE) ;
+			babyDragon.setLocation(157.5 , 430) ;
+			gameManager.addSprite(babyDragon) ;
+		} else if ( selectedCard.getCard() instanceof BarbariansCard ) {
+			Barbarian barbarian = new Barbarian(ColorType.BLUE) ;
+			barbarian.setLocation(157.5 , 430) ;
+			gameManager.addSprite(barbarian) ;
+		} else if ( selectedCard.getCard() instanceof GiantCard ) {
+			Giant giant = new Giant(ColorType.BLUE) ;
+			giant.setLocation(157.5 , 430) ;
+			gameManager.addSprite(giant) ;
+		} else if ( selectedCard.getCard() instanceof MiniPekkaCard ) {
+			MiniPekka miniPekka = new MiniPekka(ColorType.BLUE) ;
+			miniPekka.setLocation(157.5 , 430) ;
+			gameManager.addSprite(miniPekka) ;
+		} else if ( selectedCard.getCard() instanceof ValkyrieCard ) {
+			Valkyrie valkyrie = new Valkyrie(ColorType.BLUE) ;
+			valkyrie.setLocation(157.5 , 430) ;
+			gameManager.addSprite(valkyrie) ;
+		} else if ( selectedCard.getCard() instanceof WizardCard ) {
+			Wizard wizard = new Wizard(ColorType.BLUE) ;
+			wizard.setLocation(157.5 , 430) ;
+			gameManager.addSprite(wizard) ;
+		} else if ( selectedCard.getCard() instanceof CannonCard ) {
+			Cannon cannon = new Cannon(ColorType.BLUE) ;
+			cannon.setLocation(157.5 , 430) ;
+			gameManager.addSprite(cannon) ;
+		} else if ( selectedCard.getCard() instanceof InfernoTowerCard ) {
+			InfernoTower infernoTower = new InfernoTower(ColorType.BLUE) ;
+			infernoTower.setLocation(157.7 , 430) ;
+			gameManager.addSprite(infernoTower) ;
+		} else {
+			// Pass
 		}
 
         Card temp = selectedCard.getCard();

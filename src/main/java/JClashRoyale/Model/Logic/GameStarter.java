@@ -25,9 +25,6 @@ public class GameStarter {
 		return this.gameManager ;
 	}
 	// Methods : Other
-	public void initDeck(Pane deckViewPane) {
-		// TODO
-	}
 	public void initBattle(Pane battleViewPane) {
 		gameManager.setBattleMap(BATTLE_MAP_PATH) ;
 
