@@ -13,8 +13,6 @@ public class Archer extends SingleTargetTroop {
 	private final double HEALTH_RADIUS = 0.0 ; // TODO : ?
 
 	private final int COST = 3 ;
-	private final double DAMAGE = 0.0 ; // TODO : Read From DB
-	private final double HITPOINTS = 0.0 ; // TODO : Read From DB
 	private final double RUN_SPEED = 20.0 ;
 	private final double ATTACK_SPEED = 1200.0 ;
 	private final TroopType TROOP_TYPE = TroopType.GROUND ;
@@ -37,9 +35,7 @@ public class Archer extends SingleTargetTroop {
 		setHealthCircleRadius(HEALTH_RADIUS) ;
 
 		setCost(COST) ;
-		setDamage(DAMAGE) ;
 		setRunSpeed(RUN_SPEED) ;
-		setHitpoints(HITPOINTS) ;
 		setAttackSpeed(ATTACK_SPEED) ;
 		setTroopType(TROOP_TYPE) ;
 		setTargetType(TARGET_TYPE) ;
