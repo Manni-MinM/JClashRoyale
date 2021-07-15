@@ -6,24 +6,24 @@ import JClashRoyale.Model.Player;
  * @author Amir Iravanimanesh & Manni Moghimi
  * @since 7/13/2021
  */
-public class Valkyrie extends Card {
-    public Valkyrie() {
-        setImageAddress("/JClashRoyale/assets/valkyrie.png");
+public class GiantCard extends Card{
+    public GiantCard(){
+        setImageAddress("/JClashRoyale/assets/giant.png");
     }
 
     @Override
     public int getHP() {
         switch (Player.player.getLevel()) {
             case 1:
-                return 880;
+                return 2000;
             case 2:
-                return 968;
+                return 2200;
             case 3:
-                return 1064;
+                return 2420;
             case 4:
-                return 1170;
+                return 2660;
             case 5:
-                return 1284;
+                return 2920;
         }
         return 0;
     }
@@ -32,15 +32,15 @@ public class Valkyrie extends Card {
     public int getDamage() {
         switch (Player.player.getLevel()) {
             case 1:
-                return 120;
+                return 126;
             case 2:
-                return 132;
+                return 138;
             case 3:
-                return 145;
+                return 152;
             case 4:
-                return 159;
+                return 167;
             case 5:
-                return 175;
+                return 183;
         }
         return 0;
     }

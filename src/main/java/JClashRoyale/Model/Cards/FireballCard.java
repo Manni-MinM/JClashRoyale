@@ -6,9 +6,9 @@ import JClashRoyale.Model.Player;
  * @author Amir Iravanimanesh & Manni Moghimi
  * @since 7/13/2021
  */
-public class Arrows extends Card implements Spell{
-    public Arrows(){
-        setImageAddress("/JClashRoyale/assets/arrows.png");
+public class FireballCard extends Card implements Spell {
+    public FireballCard() {
+        setImageAddress("/JClashRoyale/assets/fire_fireball.png");
     }
 
     @Override
@@ -23,18 +23,17 @@ public class Arrows extends Card implements Spell{
 
     @Override
     public double getAttribute() {
-
         switch (Player.player.getLevel()) {
             case 1:
-                return 144;
+                return 325;
             case 2:
-                return 156;
+                return 357;
             case 3:
-                return 174;
+                return 393;
             case 4:
-                return 189;
+                return 432;
             case 5:
-                return 210;
+                return 474;
         }
         return 0;
     }

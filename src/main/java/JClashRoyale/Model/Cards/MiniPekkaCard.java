@@ -6,24 +6,24 @@ import JClashRoyale.Model.Player;
  * @author Amir Iravanimanesh & Manni Moghimi
  * @since 7/13/2021
  */
-public class Cannon extends Card{
-    public Cannon(){
-        setImageAddress("/JClashRoyale/assets/cannon.png");
+public class MiniPekkaCard extends Card{
+    public MiniPekkaCard(){
+        setImageAddress("/JClashRoyale/assets/mini_pekka.png");
     }
 
     @Override
     public int getHP() {
         switch (Player.player.getLevel()) {
             case 1:
-                return 380;
+                return 600;
             case 2:
-                return 418;
+                return 660;
             case 3:
-                return 459;
+                return 726;
             case 4:
-                return 505;
+                return 798;
             case 5:
-                return 554;
+                return 876;
         }
         return 0;
     }
@@ -32,15 +32,15 @@ public class Cannon extends Card{
     public int getDamage() {
         switch (Player.player.getLevel()) {
             case 1:
-                return 60;
+                return 325;
             case 2:
-                return 66;
+                return 357;
             case 3:
-                return 72;
+                return 393;
             case 4:
-                return 79;
+                return 432;
             case 5:
-                return 87;
+                return 474;
         }
         return 0;
     }

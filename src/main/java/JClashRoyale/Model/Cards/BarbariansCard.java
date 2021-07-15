@@ -6,24 +6,24 @@ import JClashRoyale.Model.Player;
  * @author Amir Iravanimanesh & Manni Moghimi
  * @since 7/13/2021
  */
-public class MiniPekka extends Card{
-    public MiniPekka(){
-        setImageAddress("/JClashRoyale/assets/mini_pekka.png");
+public class BarbariansCard extends Card{
+    public BarbariansCard(){
+        setImageAddress("/JClashRoyale/assets/barbarians.png");
     }
 
     @Override
     public int getHP() {
         switch (Player.player.getLevel()) {
             case 1:
-                return 600;
+                return 300;
             case 2:
-                return 660;
+                return 330;
             case 3:
-                return 726;
+                return 363;
             case 4:
-                return 798;
+                return 438;
             case 5:
-                return 876;
+                return 480;
         }
         return 0;
     }
@@ -32,15 +32,15 @@ public class MiniPekka extends Card{
     public int getDamage() {
         switch (Player.player.getLevel()) {
             case 1:
-                return 325;
+                return 75;
             case 2:
-                return 357;
+                return 82;
             case 3:
-                return 393;
+                return 90;
             case 4:
-                return 432;
+                return 99;
             case 5:
-                return 474;
+                return 109;
         }
         return 0;
     }

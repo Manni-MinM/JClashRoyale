@@ -6,42 +6,47 @@ import JClashRoyale.Model.Player;
  * @author Amir Iravanimanesh & Manni Moghimi
  * @since 7/13/2021
  */
-public class Wizard extends Card{
-    public Wizard(){
-        setImageAddress("/JClashRoyale/assets/wizard.png");
+public class InfernoTowerCard extends Card implements AdjustableDamage{
+    public InfernoTowerCard(){
+        setImageAddress("/JClashRoyale/assets/inferno_tower.png");
     }
 
     @Override
     public int getHP() {
         switch (Player.player.getLevel()) {
             case 1:
-                return 340;
+                return 800;
             case 2:
-                return 374;
+                return 880;
             case 3:
-                return 411;
+                return 968;
             case 4:
-                return 452;
+                return 1064;
             case 5:
-                return 496;
+                return 1168;
         }
         return 0;
     }
 
     @Override
     public int getDamage() {
+        return 0;
+    }
+
+    @Override
+    public String getRange() {
         switch (Player.player.getLevel()) {
             case 1:
-                return 130;
+                return "20-400";
             case 2:
-                return 143;
+                return "22-440";
             case 3:
-                return 157;
+                return "24-484";
             case 4:
-                return 172;
+                return "26-532";
             case 5:
-                return 189;
+                return "29-584";
         }
-        return 0;
+        return null;
     }
 }

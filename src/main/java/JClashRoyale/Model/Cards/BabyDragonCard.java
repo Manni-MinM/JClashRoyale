@@ -6,8 +6,8 @@ import JClashRoyale.Model.Player;
  * @author Amir Iravanimanesh & Manni Moghimi
  * @since 7/13/2021
  */
-public class BabyDragon extends Card{
-    public BabyDragon(){
+public class BabyDragonCard extends Card{
+    public BabyDragonCard(){
         setImageAddress("/JClashRoyale/assets/baby_dragon.png");
     }
 

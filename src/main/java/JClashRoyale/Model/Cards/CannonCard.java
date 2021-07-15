@@ -6,24 +6,24 @@ import JClashRoyale.Model.Player;
  * @author Amir Iravanimanesh & Manni Moghimi
  * @since 7/13/2021
  */
-public class Giant extends Card{
-    public Giant(){
-        setImageAddress("/JClashRoyale/assets/giant.png");
+public class CannonCard extends Card{
+    public CannonCard(){
+        setImageAddress("/JClashRoyale/assets/cannon.png");
     }
 
     @Override
     public int getHP() {
         switch (Player.player.getLevel()) {
             case 1:
-                return 2000;
+                return 380;
             case 2:
-                return 2200;
+                return 418;
             case 3:
-                return 2420;
+                return 459;
             case 4:
-                return 2660;
+                return 505;
             case 5:
-                return 2920;
+                return 554;
         }
         return 0;
     }
@@ -32,15 +32,15 @@ public class Giant extends Card{
     public int getDamage() {
         switch (Player.player.getLevel()) {
             case 1:
-                return 126;
+                return 60;
             case 2:
-                return 138;
+                return 66;
             case 3:
-                return 152;
+                return 72;
             case 4:
-                return 167;
+                return 79;
             case 5:
-                return 183;
+                return 87;
         }
         return 0;
     }

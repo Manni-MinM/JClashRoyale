@@ -6,24 +6,24 @@ import JClashRoyale.Model.Player;
  * @author Amir Iravanimanesh & Manni Moghimi
  * @since 7/13/2021
  */
-public class Archer extends Card{
-    public Archer(){
-        setImageAddress("/JClashRoyale/assets/archers.png");
+public class WizardCard extends Card{
+    public WizardCard(){
+        setImageAddress("/JClashRoyale/assets/wizard.png");
     }
 
     @Override
     public int getHP() {
         switch (Player.player.getLevel()) {
             case 1:
-                return 125;
+                return 340;
             case 2:
-                return 127;
+                return 374;
             case 3:
-                return 151;
+                return 411;
             case 4:
-                return 166;
+                return 452;
             case 5:
-                return 182;
+                return 496;
         }
         return 0;
     }
@@ -32,15 +32,15 @@ public class Archer extends Card{
     public int getDamage() {
         switch (Player.player.getLevel()) {
             case 1:
-                return 33;
+                return 130;
             case 2:
-                return 44;
+                return 143;
             case 3:
-                return 48;
+                return 157;
             case 4:
-                return 53;
+                return 172;
             case 5:
-                return 58;
+                return 189;
         }
         return 0;
     }
