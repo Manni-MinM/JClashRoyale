@@ -103,7 +103,6 @@ public class GameManager {
 				elixerBar.setProgress(elixer / 10.0);
 				BattleController.updateAvailability(elixer);
 
-
 				loadBattleMap() ;
 				elixerField.setText(String.valueOf(elixer)) ;
 

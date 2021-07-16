@@ -48,7 +48,7 @@ public class Database {
             statement.execute(check);
             if (statement.getResultSet().next()) {
                 Player.player = new Player(statement.getResultSet().getString(1), statement.getResultSet().getInt(4)
-                        , statement.getResultSet().getInt(3), statement.getResultSet().getString(5));
+                        , statement.getResultSet().getInt(3), "11-8-2-3-10-4-6-9"/*statement.getResultSet().getString(5)*/);
             } else return false;
         } catch (SQLException e) {
             System.out.println(e.getMessage());

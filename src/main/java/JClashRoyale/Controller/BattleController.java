@@ -2,7 +2,6 @@
 
 package JClashRoyale.Controller;
 
-import JClashRoyale.Model.Cards.*;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.ProgressBar;
@@ -21,6 +20,20 @@ import javafx.scene.control.TextField;
 import java.util.*;
 
 import JClashRoyale.Model.Player ;
+
+import JClashRoyale.Model.Cards.Card ;
+import JClashRoyale.Model.Cards.GiantCard ;
+import JClashRoyale.Model.Cards.ArcherCard ;
+import JClashRoyale.Model.Cards.WizardCard ;
+import JClashRoyale.Model.Cards.RageCard ;
+import JClashRoyale.Model.Cards.ArrowsCard ;
+import JClashRoyale.Model.Cards.CannonCard ;
+import JClashRoyale.Model.Cards.FireballCard ;
+import JClashRoyale.Model.Cards.ValkyrieCard ;
+import JClashRoyale.Model.Cards.MiniPekkaCard ;
+import JClashRoyale.Model.Cards.BarbariansCard ;
+import JClashRoyale.Model.Cards.BabyDragonCard ;
+import JClashRoyale.Model.Cards.InfernoTowerCard ;
 
 import JClashRoyale.Model.Elements.Sprite ;
 import JClashRoyale.Model.Elements.Enums.ColorType ;
@@ -172,6 +185,7 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof MiniPekkaCard ) {
+			// TODO : Test
 			MiniPekka miniPekka = new MiniPekka(ColorType.BLUE) ;
 			miniPekka.setLocation(event.getX() , event.getY()) ;
 			miniPekka.setHitpoints(selectedCard.getCard().getHP()) ;
