@@ -160,7 +160,7 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof BarbariansCard ) {
-			Barbarian barbarian = new Barbarian(ColorType.RED) ;
+			Barbarian barbarian = new Barbarian(ColorType.BLUE) ;
 			barbarian.setLocation(event.getX() , event.getY()) ;
 			barbarian.setHitpoints(selectedCard.getCard().getHP()) ;
 			barbarian.setDamage(selectedCard.getCard().getDamage()) ;
@@ -171,7 +171,7 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof GiantCard ) {
-			Giant giant = new Giant(ColorType.RED) ;
+			Giant giant = new Giant(ColorType.BLUE) ;
 			giant.setLocation(event.getX() , event.getY()) ;
 			giant.setHitpoints(selectedCard.getCard().getHP()) ;
 			giant.setDamage(selectedCard.getCard().getDamage()) ;

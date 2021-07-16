@@ -14,8 +14,8 @@ public class SingleTargetTroop extends Sprite {
 	// Fields
 	protected Image runAnimationLeft ;
 	protected Image runAnimationRight ;
-	protected Image battleAnimationFirst ;
-	protected Image battleAnimationSecond ;
+	protected Image runAnimationForward ;
+	protected Image battleAnimation ;
 	// Constructor
 	public SingleTargetTroop() {
 		// Pass
@@ -27,11 +27,11 @@ public class SingleTargetTroop extends Sprite {
 	public void setRunAnimationRight(String path , double width , double height) {
 		this.runAnimationRight = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
 	}
-	public void setBattleAnimationFirst(String path , double width , double height) {
-		this.battleAnimationFirst = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
+	public void setRunAnimationForward(String path , double width , double height) {
+		this.runAnimationForward = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
 	}
-	public void setBattleAnimationSecond(String path , double width , double height) {
-		this.battleAnimationSecond = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
+	public void setBattleAnimation(String path , double width , double height) {
+		this.battleAnimation = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
 	}
 	// Methods : Getters
 	
@@ -50,13 +50,8 @@ public class SingleTargetTroop extends Sprite {
 			// Pass
 		}
 		setLocation(x , y) ;
-
-		if ( (frameCount / 15) % 2 == 0 ) {
-			setStateImage(runAnimationLeft) ;
-		} else { 
-			setStateImage(runAnimationRight) ;
-		
-		}
+		// TODO
+		setStateImage(runAnimationForward) ;
 	}
 }
 
