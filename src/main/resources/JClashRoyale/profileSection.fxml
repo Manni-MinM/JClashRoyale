@@ -52,8 +52,8 @@
       </Pane>
       <Pane layoutX="218.0" layoutY="117.0" prefHeight="122.0" prefWidth="206.0">
          <children>
-            <Label fx:id="cupLabel" alignment="CENTER" layoutX="113.0" layoutY="84.0" prefHeight="32.0" prefWidth="70.0" style="-fx-border-color: gray; -fx-border-radius: 15;" text="0" textFill="WHITE" />
-            <ImageView fitHeight="65.0" fitWidth="35.0" layoutX="165.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+            <Label fx:id="cupLabel" alignment="CENTER" layoutX="109.0" layoutY="84.0" prefHeight="32.0" prefWidth="70.0" style="-fx-border-color: gray; -fx-border-radius: 15;" text="0" textFill="WHITE" />
+            <ImageView fx:id="cupIcon" fitHeight="40.0" fitWidth="42.0" layoutX="161.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@assets/cup.png" />
                </image>

@@ -17,11 +17,13 @@ public class Player {
     private int level;
     private final ArrayList<Card> deck = new ArrayList<>();
 
+    public static String league;
     public static Player player;
 
     public Player(String username, int cup, int xp, String deck) {
         this.username = username;
         this.cup = cup;
+        setLeague();
         this.xp = xp;
         String[] cards = deck.split("-");
         System.out.println(Arrays.toString(cards));
@@ -40,6 +42,7 @@ public class Player {
 
     public void setCup(int cup) {
         this.cup = cup;
+        setLeague();
     }
 
     public int getXP() {
@@ -60,5 +63,20 @@ public class Player {
 
     public String getUsername() {
         return username;
+    }
+
+    private void setLeague() {
+        if (cup <= 50)
+            league = "BRONZE";
+        else if (cup <= 100)
+            league = "SILVER";
+        else if (cup <= 150)
+            league = "GOLD";
+        else if (cup <= 200)
+            league = "MASTER";
+        else if (cup <= 250)
+            league = "ROYALE CHAMPION";
+        else
+            league = "ULTIMATE CHAMPION";
     }
 }
