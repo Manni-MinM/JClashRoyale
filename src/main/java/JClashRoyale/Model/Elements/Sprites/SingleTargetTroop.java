@@ -37,6 +37,9 @@ public class SingleTargetTroop extends Sprite {
 	
 	// Methods : Other
 	public void draw(GraphicsContext graphics) {
+		if ( attackState )
+			setStateImage(battleAnimation) ;
+
 		graphics.drawImage(getStateImage() , getX() , getY()) ;
 	}
 	public void walk(int frameCount) {
