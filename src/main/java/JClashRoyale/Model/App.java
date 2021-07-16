@@ -1,9 +1,6 @@
 package JClashRoyale.Model;
 
-import JClashRoyale.Controller.BattleDeckSectionController;
-import JClashRoyale.Controller.PrimaryController;
-import JClashRoyale.Controller.ProfileSectionController;
-import JClashRoyale.Controller.SecondaryController;
+import JClashRoyale.Controller.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,7 +23,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage1) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/JClashRoyale/" + "primary" + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/JClashRoyale/" + "battle" + ".fxml"));
         scene = new Scene(fxmlLoader.load());
         scene.setFill(Color.TRANSPARENT);
         stage = stage1;
@@ -36,7 +33,10 @@ public class App extends Application {
         stage.setTitle("JClashRoyale");
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/icon.png"))));
 
-        ((PrimaryController) fxmlLoader.getController()).init(stage);
+		BattleController battleController = (BattleController)fxmlLoader.getController() ;
+        battleController.init(stage) ;
+		battleController.start() ;
+
         stage.show();
     }
 
@@ -53,7 +53,6 @@ public class App extends Application {
             ((BattleDeckSectionController) fxmlLoader.getController()).init(stage);
         stage.hide();
         stage.show();
-
     }
 
     public void run() {

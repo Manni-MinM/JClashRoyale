@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JClashRoyale.Controller.BattleController">
+   <children>
+      <Pane fx:id="titlePane" prefHeight="38.0" prefWidth="400.0">
+         <children>
+            <Label layoutX="50.0" layoutY="10.0" text="JClashRoyale" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="28.0" fitWidth="200.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btnClose" fitHeight="16.0" fitWidth="16.0" layoutX="370.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/close.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btnMinimize" fitHeight="16.0" fitWidth="16.0" layoutX="348.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/hide.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <Pane layoutX="12.0" layoutY="44.0" prefHeight="50.0" prefWidth="375.0">
+         <children>
+            <TextField fx:id="elixer" editable="false" layoutX="14.0" layoutY="6.0" prefHeight="40.0" prefWidth="85.0" />
+            <TextField fx:id="result" editable="false" layoutX="145.0" layoutY="5.0" prefHeight="40.0" prefWidth="85.0" />
+            <TextField fx:id="timer" editable="false" layoutX="276.0" layoutY="5.0" prefHeight="40.0" prefWidth="85.0" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="NONE" />
+         </cursor>
+      </Pane>
+      <Pane fx:id="gameViewPane" layoutX="42.0" layoutY="110.0" prefHeight="480.0" prefWidth="315.0" />
+      <Pane fx:id="deckViewPane" layoutX="12.0" layoutY="595.0" prefHeight="90.0" prefWidth="375.0">
+         <children>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
