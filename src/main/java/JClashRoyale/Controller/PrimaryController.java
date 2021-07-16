@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import JClashRoyale.Model.App;
 import JClashRoyale.Model.Database;
+import JClashRoyale.Model.SoundSystem;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -51,6 +52,7 @@ public class PrimaryController {
 
 
     public void loginButtonOnAction(ActionEvent e) {
+        SoundSystem.mouseClickSFX();
         if (usernameTextField.getText().isBlank() || passwordPasswordField.getText().isBlank()) {
             blankCredentials();
             return;
@@ -68,6 +70,7 @@ public class PrimaryController {
     }
 
     public void registerButtonOnAction(ActionEvent e) {
+        SoundSystem.mouseClickSFX();
         if (usernameTextField.getText().isBlank() || passwordPasswordField.getText().isBlank()) {
             blankCredentials();
             return;

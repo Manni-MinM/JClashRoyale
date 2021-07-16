@@ -26,7 +26,6 @@ public class Player {
         setLeague();
         this.xp = xp;
         String[] cards = deck.split("-");
-        System.out.println(Arrays.toString(cards));
         for (String card : cards) {
             this.deck.add(Card.gameCards.get(Integer.parseInt(card)));
         }
