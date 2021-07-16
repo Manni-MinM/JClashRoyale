@@ -18,16 +18,17 @@ import javafx.scene.control.TextField;
 
 import JClashRoyale.Model.Logic.GameStarter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Objects;
+import java.util.*;
 
 public class BattleController {
     // Fields
     double x, y;
     private final ArrayList<Card> deck = new ArrayList<>(Player.player.getDeck());
     private final ArrayList<ImagePackage> cards = new ArrayList<>();
+    private final ArrayList<Card> outOfHandCards = new ArrayList<>();
+    private ImagePackage selectedCard;
+    private ImagePackage nextCard;
+
 
     GameStarter gameStarter;
 
@@ -48,7 +49,7 @@ public class BattleController {
     @FXML
     private ImageView btnMinimize, btnClose;
     @FXML
-    private ImageView one, two, three, four;
+    private ImageView one, two, three, four, next;
 
     // Methods
     public void init(Stage stage) {
@@ -66,6 +67,7 @@ public class BattleController {
         btnMinimize.setOnMouseClicked(mouseEvent -> stage.setIconified(true));
         Collections.shuffle(deck);
         initCards();
+        cards.forEach(card -> card.getImageView().setOnMouseClicked(mouseEvent -> deckCardOnMousePressedAction(card.getImageView())));
     }
 
     public void start() {
@@ -80,7 +82,42 @@ public class BattleController {
                 new ImagePackage(two, deck.get(1)),
                 new ImagePackage(three, deck.get(2)),
                 new ImagePackage(four, deck.get(3))));
+        nextCard = new ImagePackage(next, deck.get(4));
+        for (int i = 5; i < 8; i++) outOfHandCards.add(deck.get(i));
     }
+
+    private void deckCardOnMousePressedAction(ImageView imageView) {
+        if (selectedCard != null)
+            if (selectedCard.getImageView() == imageView) {
+                selectedCard.getImageView().setOpacity(1);
+                selectedCard = null;
+                return;
+            } else if (selectedCard != null) {
+                selectedCard.getImageView().setOpacity(1);
+                selectedCard = null;
+            }
+        selectedCard = findImagePackageByImageView(cards, imageView);
+        assert selectedCard != null;
+        selectedCard.getImageView().setOpacity(0.5);
+    }
+
+    private ImagePackage findImagePackageByImageView(ArrayList<ImagePackage> imagePackages, ImageView imageView) {
+        for (ImagePackage imagePackage : imagePackages) {
+            if (imagePackage.getImageView() == imageView) return imagePackage;
+        }
+        return null;
+    }
+
+    public void deployCard() {
+        Card temp = selectedCard.getCard();
+        selectedCard.getImageView().setOpacity(1);
+        selectedCard.setCard(nextCard.getCard());
+        nextCard.setCard(outOfHandCards.get(0));
+        outOfHandCards.remove(0);
+        outOfHandCards.add(temp);
+        selectedCard = null;
+    }
+
 
     static class ImagePackage {
         private final ImageView imageView;
