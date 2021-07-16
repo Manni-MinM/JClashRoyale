@@ -45,8 +45,17 @@
          </cursor>
       </Pane>
       <Pane fx:id="gameViewPane" layoutX="42.0" layoutY="110.0" prefHeight="480.0" prefWidth="315.0" />
-      <Pane fx:id="deckViewPane" layoutX="12.0" layoutY="595.0" prefHeight="90.0" prefWidth="375.0">
+      <Pane layoutX="12.0" layoutY="572.0" prefHeight="127.0" prefWidth="375.0">
          <children>
+            <ImageView fitHeight="104.0" fitWidth="375.0" layoutX="66.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/deckswapbackground.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="four" fitHeight="96.0" fitWidth="80.0" layoutX="296.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="three" fitHeight="96.0" fitWidth="80.0" layoutX="219.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="two" fitHeight="96.0" fitWidth="80.0" layoutX="144.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="one" fitHeight="96.0" fitWidth="80.0" layoutX="65.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>
