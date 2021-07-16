@@ -1,6 +1,7 @@
 package JClashRoyale.Controller;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import JClashRoyale.Model.App;
 import JClashRoyale.Model.Player;
@@ -9,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -27,6 +29,8 @@ public class SecondaryController {
     private Label progressBarLabel;
     @FXML
     private Label levelLabel;
+    @FXML
+    private ImageView cupIcon;
 
     private double x, y;
 
@@ -44,6 +48,7 @@ public class SecondaryController {
         btnMinimize.setOnMouseClicked(mouseEvent -> stage.setIconified(true));
         cupLabel.setText(Integer.toString(Player.player.getCup()));
         progressBarUpdate(Player.player.getXP());
+        showLeague();
     }
 
     @FXML
@@ -88,5 +93,29 @@ public class SecondaryController {
             levelLabel.setText("5");
             Player.player.setLevel(5);
         }
+    }
+
+    private void showLeague() {
+        switch (Player.league) {
+            case "BRONZE":
+                cupIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/bronze.png"))));
+                break;
+            case "SILVER":
+                cupIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/silver.png"))));
+                break;
+            case "GOLD":
+                cupIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/gold.png"))));
+                break;
+            case "MASTER":
+                cupIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/master.png"))));
+                break;
+            case "ROYALE CHAMPION":
+                cupIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/royale_champion.png"))));
+                break;
+            case "ULTIMATE CHAMPION":
+                cupIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/ultimate_champion.png"))));
+                break;
+        }
+
     }
 }

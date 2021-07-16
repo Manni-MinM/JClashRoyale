@@ -24,6 +24,8 @@ public class ProfileSectionController {
     @FXML
     private ImageView btnMinimize, btnClose;
     @FXML
+    private ImageView cupIcon;
+    @FXML
     private Label cupLabel;
     @FXML
     private ProgressBar progressBar;
@@ -67,6 +69,7 @@ public class ProfileSectionController {
         cupLabel.setText(Integer.toString(Player.player.getCup()));
         progressBarUpdate(Player.player.getXP());
         showDeck();
+        showLeague();
     }
 
     @FXML
@@ -112,5 +115,29 @@ public class ProfileSectionController {
                     Player.player.getDeck().get(i).getImageAddress()
             ))));
         }
+    }
+
+    private void showLeague() {
+        switch (Player.league) {
+            case "BRONZE":
+                cupIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/bronze.png"))));
+                break;
+            case "SILVER":
+                cupIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/silver.png"))));
+                break;
+            case "GOLD":
+                cupIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/gold.png"))));
+                break;
+            case "MASTER":
+                cupIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/master.png"))));
+                break;
+            case "ROYALE CHAMPION":
+                cupIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/royale_champion.png"))));
+                break;
+            case "ULTIMATE CHAMPION":
+                cupIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/ultimate_champion.png"))));
+                break;
+        }
+
     }
 }
