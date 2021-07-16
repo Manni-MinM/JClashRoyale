@@ -3,6 +3,7 @@
 package JClashRoyale.Model.Logic ;
 
 import java.util.ArrayList ;
+import java.util.Objects;
 
 import javafx.animation.AnimationTimer ;
 
@@ -41,7 +42,7 @@ public class GameManager {
 	}
 	// Methods : Setters
 	public void setBattleMap(String path) {
-		this.battleMap = new Image(path) ;
+		this.battleMap = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))) ;
 	}
 	// Methods : Getters
 	public Canvas getCanvas() {
