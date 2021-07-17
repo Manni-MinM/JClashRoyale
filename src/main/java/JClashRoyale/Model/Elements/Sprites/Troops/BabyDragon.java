@@ -2,6 +2,7 @@
 
 package JClashRoyale.Model.Elements.Sprites.Troops ;
 
+import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
 import JClashRoyale.Model.Elements.Enums.TargetType ;
 import JClashRoyale.Model.Elements.Sprites.AreaSplashTroop ;
@@ -26,12 +27,12 @@ public class BabyDragon extends AreaSplashTroop {
 	private final String RED_RUN_ANIMATION_RIGHT_PATH = "/JClashRoyale/assets/sprites/baby_dragon/baby_dragon_red_run_right.png" ;
 	private final String BLUE_RUN_ANIMATION_LEFT_PATH = "/JClashRoyale/assets/sprites/baby_dragon/baby_dragon_blue_run_left.png" ;
 	private final String BLUE_RUN_ANIMATION_RIGHT_PATH = "/JClashRoyale/assets/sprites/baby_dragon/baby_dragon_blue_run_right.png" ;
-	private final String RED_BATTLE_ANIMATION_FIRST_PATH = "" /*"/JClashRoyale/assets/sprites/baby_dragon/baby_dragon_red_battle_first.png"*/ ;
-	private final String RED_BATTLE_ANIMATION_SECOND_PATH = "" /*"/JClashRoyale/assets/sprites/baby_dragon/baby_dragon_red_battle_second.png"*/ ;
-	private final String BLUE_BATTLE_ANIMATION_FIRST_PATH = "" /*"/JClashRoyale/assets/sprites/baby_dragon/baby_dragon_blue_battle_first.png"*/ ;
-	private final String BLUE_BATTLE_ANIMATION_SECOND_PATH = "" /*"/JClashRoyale/assets/sprites/baby_dragon/baby_dragon_blue_battle_second.png"*/ ;
+	private final String RED_BATTLE_ANIMATION_FIRST_PATH = "/JClashRoyale/assets/sprites/baby_dragon/baby_dragon_red_battle_first.png" ;
+	private final String RED_BATTLE_ANIMATION_SECOND_PATH = "/JClashRoyale/assets/sprites/baby_dragon/baby_dragon_red_battle_second.png" ;
+	private final String BLUE_BATTLE_ANIMATION_FIRST_PATH = "/JClashRoyale/assets/sprites/baby_dragon/baby_dragon_blue_battle_first.png" ;
+	private final String BLUE_BATTLE_ANIMATION_SECOND_PATH = "/JClashRoyale/assets/sprites/baby_dragon/baby_dragon_blue_battle_second.png" ;
 	// Constructor
-	public BabyDragon() {
+	public BabyDragon(ColorType color) {
 		setRangeCircleRadius(RANGE_RADIUS) ;
 		setHealthCircleRadius(HEALTH_RADIUS) ;
 
@@ -43,14 +44,19 @@ public class BabyDragon extends AreaSplashTroop {
 		setTroopType(TROOP_TYPE) ;
 		setTargetType(TARGET_TYPE) ;
 
-		setRedRunAnimationLeft(RED_RUN_ANIMATION_LEFT_PATH , WIDTH , HEIGHT) ;
-		setRedRunAnimationRight(RED_RUN_ANIMATION_RIGHT_PATH , WIDTH , HEIGHT) ;
-		setBlueRunAnimationLeft(BLUE_RUN_ANIMATION_LEFT_PATH , WIDTH , HEIGHT) ;
-		setBlueRunAnimationRight(BLUE_RUN_ANIMATION_RIGHT_PATH , WIDTH , HEIGHT) ;
-//		setRedBattleAnimationFirst(RED_BATTLE_ANIMATION_FIRST_PATH) ;
-//		setRedBattleAnimationSecond(RED_BATTLE_ANIMATION_SECOND_PATH) ;
-//		setBlueBattleAnimationFirst(BLUE_BATTLE_ANIMATION_FIRST_PATH) ;
-//		setBlueBattleAnimationSecond(BLUE_BATTLE_ANIMATION_SECOND_PATH) ;
+		if ( color == ColorType.RED ) {
+			setRunAnimationLeft(RED_RUN_ANIMATION_LEFT_PATH , WIDTH , HEIGHT) ;
+			setRunAnimationRight(RED_RUN_ANIMATION_RIGHT_PATH , WIDTH , HEIGHT) ;
+//			setBattleAnimationFirst(RED_BATTLE_ANIMATION_FIRST_PATH , WIDTH , HEIGHT) ;
+//			setBattleAnimationSecond(RED_BATTLE_ANIMATION_SECOND_PATH , WIDTH , HEIGHT) ;
+		} else if ( color == ColorType.BLUE ) {
+			setRunAnimationLeft(BLUE_RUN_ANIMATION_LEFT_PATH , WIDTH , HEIGHT) ;
+			setRunAnimationRight(BLUE_RUN_ANIMATION_RIGHT_PATH , WIDTH , HEIGHT) ;
+//			setBattleAnimationFirst(BLUE_BATTLE_ANIMATION_FIRST_PATH , WIDTH , HEIGHT) ;
+//			setBattleAnimationSecond(BLUE_BATTLE_ANIMATION_SECOND_PATH , WIDTH , HEIGHT) ;
+		} else {
+			// Pass
+		}
 	}
 	// Methods
 	

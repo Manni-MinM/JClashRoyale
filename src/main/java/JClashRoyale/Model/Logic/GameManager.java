@@ -14,6 +14,8 @@ import javafx.scene.canvas.GraphicsContext ;
 
 import JClashRoyale.Model.Elements.Sprite ;
 
+import JClashRoyale.Model.Elements.Enums.ColorType ;
+
 import JClashRoyale.Model.Elements.Sprites.AreaSplashTroop ;
 import JClashRoyale.Model.Elements.Sprites.SingleTargetTroop ;
 
@@ -24,6 +26,9 @@ import JClashRoyale.Model.Elements.Sprites.Troops.Valkyrie ;
 import JClashRoyale.Model.Elements.Sprites.Troops.Barbarian ;
 import JClashRoyale.Model.Elements.Sprites.Troops.MiniPekka ;
 import JClashRoyale.Model.Elements.Sprites.Troops.BabyDragon ;
+
+import JClashRoyale.Model.Elements.Sprites.Buildings.Cannon ;
+import JClashRoyale.Model.Elements.Sprites.Buildings.InfernoTower ;
 
 public class GameManager {
 	// Fields
@@ -59,11 +64,11 @@ public class GameManager {
 	}
 	public void update() {
 		// TODO
-		Archer archer = new Archer() ;
+		Archer archer = new Archer(ColorType.BLUE) ;
 		archer.setLocation(75 , 75) ;
 		sprites.add(archer) ;
 
-		BabyDragon babyDragon = new BabyDragon() ;
+		BabyDragon babyDragon = new BabyDragon(ColorType.RED) ;
 		babyDragon.setLocation(175 , 75) ;
 		sprites.add(babyDragon) ;
 
@@ -88,12 +93,17 @@ public class GameManager {
 
 				loadBattleMap() ;
 				for ( Sprite sprite : sprites )
-					graphics.drawImage(sprite.getStateImage() , sprite.getX() , sprite.getY()) ;
+					sprite.draw(graphics) ;
 
 				if ( !found && t > 4.0 ) {
-					Giant giant = new Giant() ;
+					Giant giant = new Giant(ColorType.RED) ;
 					giant.setLocation(275 , 75) ;
 					sprites.add(giant) ;
+
+					Cannon cannon = new Cannon(ColorType.BLUE) ;
+					cannon.setLocation(0 , 0) ;
+					sprites.add(cannon) ;
+
 					found = true ;
 				}
 

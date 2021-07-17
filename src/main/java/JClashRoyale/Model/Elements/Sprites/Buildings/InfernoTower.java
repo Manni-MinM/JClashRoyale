@@ -3,6 +3,7 @@
 package JClashRoyale.Model.Elements.Sprites.Buildings ;
 
 import javafx.scene.image.Image ;
+import javafx.scene.canvas.GraphicsContext ;
 
 import JClashRoyale.Model.Elements.Enums.TroopType ;
 import JClashRoyale.Model.Elements.Enums.TargetType ;
@@ -57,6 +58,8 @@ public class InfernoTower extends Building {
 	// Methods : Getters
 	
 	// Methods : Other
-	
+	public void draw(GraphicsContext graphics) {
+		// TODO
+	}
 }
 

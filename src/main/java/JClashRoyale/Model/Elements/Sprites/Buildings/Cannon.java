@@ -3,7 +3,9 @@
 package JClashRoyale.Model.Elements.Sprites.Buildings ;
 
 import javafx.scene.image.Image ;
+import javafx.scene.canvas.GraphicsContext ;
 
+import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
 import JClashRoyale.Model.Elements.Enums.TargetType ;
 import JClashRoyale.Model.Elements.Sprites.Building ;
@@ -30,12 +32,10 @@ public class Cannon extends Building {
 	private final String RED_BLASTER_PATH = "/JClashRoyale/assets/sprites/cannon/cannon_red_blaster.png" ;
 	private final String BLUE_BLASTER_PATH = "/JClashRoyale/assets/sprites/cannon/cannon_blue_blaster.png" ;
 	// Fields : Other
-	private Image redBody ;
-	private Image blueBody ;
-	private Image redBlaster ;
-	private Image blueBlaster ;
+	private Image body ;
+	private Image blaster ;
 	// Constructor
-	public Cannon() {
+	public Cannon(ColorType color) {
 		setRangeCircleRadius(RANGE_RADIUS) ;
 		setHealthCircleRadius(HEALTH_RADIUS) ;
 
@@ -48,27 +48,29 @@ public class Cannon extends Building {
 		setTroopType(TROOP_TYPE) ;
 		setTargetType(TARGET_TYPE) ;
 
-		setRedBody(RED_BODY_PATH) ;
-		setRedBlaster(RED_BLASTER_PATH) ;
-		setBlueBody(BLUE_BODY_PATH) ;
-		setBlueBlaster(BLUE_BLASTER_PATH) ;
+		if ( color == ColorType.RED ) {
+			setBody(RED_BODY_PATH) ;
+			setBlaster(RED_BLASTER_PATH) ;
+		} else if ( color == ColorType.BLUE ) {
+			setBody(BLUE_BODY_PATH) ;
+			setBlaster(BLUE_BLASTER_PATH) ;
+		} else {
+			// Pass
+		}
 	}
 	// Methods : Setters
-	private void setRedBody(String path) {
-		this.redBody = new Image(path , WIDTH , HEIGHT , false , false) ;
+	private void setBody(String path) {
+		this.body = new Image(path , 1.5 * WIDTH , 1.5 * HEIGHT , false , false) ;
 	}
-	private void setBlueBody(String path) {
-		this.blueBody = new Image(path , WIDTH , HEIGHT , false , false) ;
-	}
-	private void setRedBlaster(String path) {
-		this.redBlaster = new Image(path , WIDTH , HEIGHT , false , false) ;
-	}
-	private void setBlueBlaster(String path) {
-		this.blueBlaster = new Image(path , WIDTH , HEIGHT , false , false) ;
+	private void setBlaster(String path) {
+		this.blaster = new Image(path , WIDTH , HEIGHT , false , false) ;
 	}
 	// Methods : Getters
 
 	// Methods : Other
-	
+	public void draw(GraphicsContext graphics) {
+		graphics.drawImage(body , getX() , getY()) ;
+		graphics.drawImage(blaster , getX() , getY()) ;
+	}
 }
 

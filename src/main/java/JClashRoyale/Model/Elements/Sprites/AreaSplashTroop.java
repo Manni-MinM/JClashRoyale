@@ -3,66 +3,49 @@
 package JClashRoyale.Model.Elements.Sprites ;
 
 import javafx.scene.image.Image ;
+import javafx.scene.canvas.GraphicsContext ;
 
 import JClashRoyale.Model.Elements.Enums ;
 import JClashRoyale.Model.Elements.Sprite ;
 
-import JClashRoyale.Model.Logic.GameManager ;
-
 public class AreaSplashTroop extends Sprite {
 	// Fields
-	protected Image redRunAnimationLeft ;
-	protected Image redRunAnimationRight ;
-	protected Image blueRunAnimationLeft ;
-	protected Image blueRunAnimationRight ;
-	protected Image redBattleAnimationFirst ;
-	protected Image redBattleAnimationSecond ;
-	protected Image blueBattleAnimationFirst ;
-	protected Image blueBattleAnimationSecond ;
+	protected Image runAnimationLeft ;
+	protected Image runAnimationRight ;
+	protected Image battleAnimationFirst ;
+	protected Image battleAnimationSecond ;
 	// Constructor
 	public AreaSplashTroop() {
 		// Pass
 	}
 	// Methods : Setters
-	public void setRedRunAnimationLeft(String path , double width , double height) {
-		this.redRunAnimationLeft = new Image(path , width , height , false , false) ;
+	public void setRunAnimationLeft(String path , double width , double height) {
+		this.runAnimationLeft = new Image(path , width , height , false , false) ;
 	}
-	public void setRedRunAnimationRight(String path , double width , double height) {
-		this.redRunAnimationRight = new Image(path , width , height , false , false) ;
+	public void setRunAnimationRight(String path , double width , double height) {
+		this.runAnimationRight = new Image(path , width , height , false , false) ;
 	}
-	public void setBlueRunAnimationLeft(String path , double width , double height) {
-		this.blueRunAnimationLeft = new Image(path , width , height , false , false) ;
+	public void setBattleAnimationFirst(String path , double width , double height) {
+		this.battleAnimationFirst = new Image(path , width , height , false , false) ;
 	}
-	public void setBlueRunAnimationRight(String path , double width , double height) {
-		this.blueRunAnimationRight = new Image(path , width , height , false , false) ;
-	}
-	public void setRedBattleAnimationFirst(String path , double width , double height) {
-		this.redBattleAnimationFirst = new Image(path , width , height , false , false) ;
-	}
-	public void setRedBattleAnimationSecond(String path , double width , double height) {
-		this.redBattleAnimationSecond = new Image(path , width , height , false , false) ;
-	}
-	public void setBlueBattleAnimationFirst(String path , double width , double height) {
-		this.blueBattleAnimationFirst = new Image(path , width , height , false , false) ;
-	}
-	public void setBlueBattleAnimationSecond(String path , double width , double height) {
-		this.blueBattleAnimationSecond = new Image(path , width , height , false , false) ;
+	public void setBattleAnimationSecond(String path , double width , double height) {
+		this.battleAnimationSecond = new Image(path , width , height , false , false) ;
 	}
 	// Methods : Getters
-	public Image getRedRunAnimationLeft() {
-		return this.redRunAnimationLeft ;
-	}
+	
 	// Methods : Other
+	public void draw(GraphicsContext graphics) {
+		graphics.drawImage(getStateImage() , getX() , getY()) ;
+	}
 	public void walk(int frameCount) {
-		// TODO
 		double x = getX() ;
 		double y = getY() + (0.017) * runSpeed ;
 		setLocation(x , y) ;
 
 		if ( (frameCount / 15) % 2 == 0 ) {
-			setStateImage(redRunAnimationLeft) ;
+			setStateImage(runAnimationLeft) ;
 		} else { 
-			setStateImage(redRunAnimationRight) ;
+			setStateImage(runAnimationRight) ;
 		
 		}
 	}
