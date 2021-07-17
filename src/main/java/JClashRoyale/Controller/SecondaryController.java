@@ -5,11 +5,9 @@ import java.util.Objects;
 
 import JClashRoyale.Model.App;
 import JClashRoyale.Model.Player;
+import JClashRoyale.Model.SoundSystem;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -31,6 +29,8 @@ public class SecondaryController {
     private Label levelLabel;
     @FXML
     private ImageView cupIcon;
+    @FXML
+    private CheckBox SFX;
 
     private double x, y;
 
@@ -49,20 +49,24 @@ public class SecondaryController {
         cupLabel.setText(Integer.toString(Player.player.getCup()));
         progressBarUpdate(Player.player.getXP());
         showLeague();
+        SFX.setSelected(App.sfx);
     }
 
     @FXML
     private void switchToPrimary() throws IOException {
+        SoundSystem.mouseClickSFX();
         App.setRoot("primary");
     }
 
     @FXML
     private void switchToProfile() throws IOException {
+        SoundSystem.mouseClickSFX();
         App.setRoot("profileSection");
     }
 
     @FXML
     private void switchToBattleDeck() throws IOException {
+        SoundSystem.mouseClickSFX();
         App.setRoot("BattleDeck");
     }
 
@@ -117,5 +121,9 @@ public class SecondaryController {
                 break;
         }
 
+    }
+
+    public void updateSFX() {
+        App.sfx = SFX.isSelected();
     }
 }

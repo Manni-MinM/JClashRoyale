@@ -4,6 +4,7 @@ import JClashRoyale.Model.App;
 import JClashRoyale.Model.Cards.Card;
 import JClashRoyale.Model.Database;
 import JClashRoyale.Model.Player;
+import JClashRoyale.Model.SoundSystem;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -82,6 +83,7 @@ public class BattleDeckSectionController {
 
     @FXML
     private void switchToSecondary() throws IOException {
+        SoundSystem.mouseClickSFX();
         App.setRoot("secondary");
     }
 
@@ -111,6 +113,7 @@ public class BattleDeckSectionController {
     }
 
     private void onMousePressedAction(ImageView imageView) {
+        SoundSystem.mouseClickSFX();
         if (selectedCard != null)
             if (selectedCard.getImageView() == imageView) {
                 selectedCard.getImageView().setOpacity(1);
@@ -126,6 +129,7 @@ public class BattleDeckSectionController {
     }
 
     private void deckCardOnMousePressedAction(ImageView imageView) {
+        SoundSystem.mouseClickSFX();
         if (selectedCard == null)
             return;
         Card temp = selectedCard.getCard();

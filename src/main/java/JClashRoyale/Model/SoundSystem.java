@@ -11,6 +11,8 @@ import javax.sound.sampled.LineEvent.Type;
 public class SoundSystem {
 
     public static void mouseClickSFX() {
+        if (!App.sfx)
+            return;
         try {
             InputStream audioSrc = SoundSystem.class.getResourceAsStream("/JClashRoyale/assets/sfx/click.wav");
             InputStream bufferedIn = new BufferedInputStream(audioSrc);

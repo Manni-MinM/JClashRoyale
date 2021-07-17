@@ -2,6 +2,7 @@ package JClashRoyale.Controller;
 
 import JClashRoyale.Model.App;
 import JClashRoyale.Model.Player;
+import JClashRoyale.Model.SoundSystem;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -74,6 +75,7 @@ public class ProfileSectionController {
 
     @FXML
     private void switchToSecondary() throws IOException {
+        SoundSystem.mouseClickSFX();
         App.setRoot("secondary");
     }
 
