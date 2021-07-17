@@ -56,8 +56,11 @@ public class SoundSystem {
     }
 
     public static void updateMusic() {
-        maintheme.interrupt();
+        if (!App.music)
+            maintheme.interrupt();
+        else mainMenuTheme();
     }
+
 
     /**
      * This class allows to play a *.wav sound in a thread. You just have to give it
