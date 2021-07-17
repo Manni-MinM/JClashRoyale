@@ -3,7 +3,6 @@ package JClashRoyale.Model;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Objects;
 import javax.sound.sampled.*;
 import javax.sound.sampled.LineEvent.Type;
 
@@ -15,6 +14,20 @@ public class SoundSystem {
             return;
         try {
             InputStream audioSrc = SoundSystem.class.getResourceAsStream("/JClashRoyale/assets/sfx/click.wav");
+            InputStream bufferedIn = new BufferedInputStream(audioSrc);
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(bufferedIn);
+            SimpleAudioPlayer simpleAudioPlayer = new SimpleAudioPlayer(audioStream);
+            simpleAudioPlayer.start();
+        } catch (UnsupportedAudioFileException | IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void cardSwapSFX() {
+        if (!App.sfx)
+            return;
+        try {
+            InputStream audioSrc = SoundSystem.class.getResourceAsStream("/JClashRoyale/assets/sfx/card_swap.wav");
             InputStream bufferedIn = new BufferedInputStream(audioSrc);
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(bufferedIn);
             SimpleAudioPlayer simpleAudioPlayer = new SimpleAudioPlayer(audioStream);

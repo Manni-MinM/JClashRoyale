@@ -129,9 +129,11 @@ public class BattleDeckSectionController {
     }
 
     private void deckCardOnMousePressedAction(ImageView imageView) {
-        SoundSystem.mouseClickSFX();
-        if (selectedCard == null)
+        if (selectedCard == null) {
+            SoundSystem.mouseClickSFX();
             return;
+        }
+        SoundSystem.cardSwapSFX();
         Card temp = selectedCard.getCard();
         selectedCard.setCard(Objects.requireNonNull(findImagePackageByImageView(cards, imageView)).getCard());
         selectedCard.getImageView().setOpacity(1);
