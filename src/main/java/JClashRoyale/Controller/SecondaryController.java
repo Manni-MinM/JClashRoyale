@@ -31,6 +31,8 @@ public class SecondaryController {
     private ImageView cupIcon;
     @FXML
     private CheckBox SFX;
+    @FXML
+    private CheckBox music;
 
     private double x, y;
 
@@ -50,6 +52,7 @@ public class SecondaryController {
         progressBarUpdate(Player.player.getXP());
         showLeague();
         SFX.setSelected(App.sfx);
+        music.setSelected(App.music);
     }
 
     @FXML
@@ -125,5 +128,10 @@ public class SecondaryController {
 
     public void updateSFX() {
         App.sfx = SFX.isSelected();
+    }
+
+    public void updateMusic() {
+        App.music = music.isSelected();
+        SoundSystem.updateMusic();
     }
 }

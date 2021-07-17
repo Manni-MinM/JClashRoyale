@@ -96,5 +96,6 @@
          </font>
       </Button>
       <CheckBox fx:id="SFX" layoutX="54.0" layoutY="588.0" mnemonicParsing="false" onAction="#updateSFX" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: silver;" text="SFX" />
+      <CheckBox fx:id="music" layoutX="323.0" layoutY="588.0" mnemonicParsing="false" onAction="#updateMusic" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: silver;" text="Music" />
    </children>
 </AnchorPane>

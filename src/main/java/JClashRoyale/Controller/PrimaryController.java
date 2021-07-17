@@ -60,6 +60,7 @@ public class PrimaryController {
         if (Database.successfulLogin(usernameTextField.getText(),passwordPasswordField.getText())) {
             loginSuccess();
             try {
+                SoundSystem.mainMenuTheme();
                 switchToSecondary();
             } catch (IOException ioException) {
                 ioException.printStackTrace();
