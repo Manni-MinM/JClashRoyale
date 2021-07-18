@@ -4,6 +4,7 @@ package JClashRoyale.Controller;
 
 import javafx.fxml.FXML;
 
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -61,6 +62,7 @@ public class BattleController {
     @FXML private TextField timer;
     @FXML private TextField result;
     @FXML private TextField elixer;
+    @FXML private ProgressBar elixerBar;
     @FXML private Label messageLabel;
     @FXML private Pane deckViewPane;
     @FXML private Pane gameViewPane;
@@ -91,7 +93,7 @@ public class BattleController {
         gameStarter = new GameStarter() ;
 		gameManager = gameStarter.getGameManager() ;
 		
-		gameStarter.initBattle(timer , result , elixer , gameViewPane) ;
+		gameStarter.initBattle(timer , result , elixer , elixerBar , gameViewPane) ;
     }
 
     private void initCards() {
