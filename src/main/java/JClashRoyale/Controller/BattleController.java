@@ -5,6 +5,7 @@ package JClashRoyale.Controller;
 import javafx.fxml.FXML;
 
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
@@ -83,6 +84,7 @@ public class BattleController {
         Collections.shuffle(deck);
         initCards();
         cards.forEach(card -> card.getImageView().setOnMouseClicked(mouseEvent -> deckCardOnMousePressedAction(card.getImageView())));
+        gameViewPane.setOnMouseClicked(this::deployCard);
     }
 
     public void start() {
@@ -123,7 +125,8 @@ public class BattleController {
         return null;
     }
 
-    public void deployCard() {
+    public void deployCard(MouseEvent event) {
+		System.out.println(event.getX() + " " + event.getY());
 		// TODO :  Alter Location to Mouse Location
 		if ( selectedCard.getCard() instanceof ArcherCard ) {
 			Archer archer = new Archer(ColorType.RED) ;
