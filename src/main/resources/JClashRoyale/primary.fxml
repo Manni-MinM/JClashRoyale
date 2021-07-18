@@ -47,17 +47,22 @@
       </Pane>
       <Pane layoutY="36.0" prefHeight="414.0" prefWidth="304.0" styleClass="leftPane">
          <children>
+            <ImageView fitHeight="414.0" fitWidth="304.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/login%20background.png" />
+               </image>
+            </ImageView>
             <ImageView fitHeight="150.0" fitWidth="300.0" layoutX="2.0" layoutY="39.0">
                <image>
                   <Image url="@assets/logo.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" layoutX="50.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AP00 Final Project" textAlignment="CENTER" wrappingWidth="200.0">
+            <Text fill="WHITE" layoutX="50.0" layoutY="225.0" stroke="#1a1f24" strokeType="OUTSIDE" strokeWidth="2.0" text="AP00 Final Project" textAlignment="CENTER" wrappingWidth="207.20001220703125">
                <font>
-                  <Font name="SansSerif Regular" size="23.0" />
+                  <Font name="SansSerif Bold" size="23.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="50.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mani Moghimi" textAlignment="CENTER" wrappingWidth="200.0">
+            <Text fill="WHITE" layoutX="50.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manni Moghimi" textAlignment="CENTER" wrappingWidth="200.0">
                <font>
                   <Font name="SansSerif Regular" size="23.0" />
                </font>

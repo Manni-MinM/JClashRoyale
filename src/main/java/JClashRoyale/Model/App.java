@@ -18,6 +18,8 @@ import java.util.Objects;
  */
 public class App extends Application {
 
+    public static boolean sfx = true;
+    public static boolean music = true;
     private static Scene scene;
     private static Stage stage;
 

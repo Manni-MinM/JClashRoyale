@@ -3,6 +3,7 @@ module JClashRoyale {
     requires javafx.fxml;
     requires mysql.connector.java;
     requires java.sql;
+    requires java.desktop;
 
     exports JClashRoyale.Model;
     opens JClashRoyale.Model to javafx.fxml;
