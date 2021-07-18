@@ -5,8 +5,10 @@ package JClashRoyale.Model.Logic ;
 import java.util.ArrayList ;
 import java.util.Objects;
 
+import JClashRoyale.Controller.BattleController;
 import javafx.animation.AnimationTimer ;
 
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image ;
 import javafx.scene.paint.Color ;
 import javafx.scene.control.TextField;
@@ -36,7 +38,7 @@ import JClashRoyale.Model.Elements.Sprites.Buildings.InfernoTower ;
 public class GameManager {
 	// Fields
 	private int elixer ;
-	
+
 	private Image battleMap ;
 
 	private Canvas canvas ;
@@ -63,7 +65,7 @@ public class GameManager {
 	}
 	// Methods : Getters
 	public int getElixer() {
-		return this.elixer ;
+		return elixer ;
 	}
 	public Canvas getCanvas() {
 		return this.canvas ;
@@ -81,7 +83,7 @@ public class GameManager {
 	public void loadBattleMap() {
 		graphics.drawImage(battleMap , 0 , 0) ;
 	}
-	public void update(TextField timerField , TextField resultField , TextField elixerField) {
+	public void update(TextField timerField , TextField resultField , TextField elixerField , ProgressBar elixerBar) {
 		final long startNanoTime = System.nanoTime() ;
 		new AnimationTimer() {
 			int timeOffset = 0 ;
@@ -96,6 +98,11 @@ public class GameManager {
 				} else {
 					// Pass
 				}
+
+				elixerField.setText(String.valueOf(elixer)) ;
+				elixerBar.setProgress(elixer / 10.0);
+				BattleController.updateAvailability(elixer);
+
 
 				loadBattleMap() ;
 				elixerField.setText(String.valueOf(elixer)) ;
