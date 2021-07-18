@@ -25,7 +25,7 @@ public class WizardCard extends Card{
             case 5:
                 return 496;
         }
-        return 0;
+        return 340;
     }
 
     @Override
@@ -42,6 +42,6 @@ public class WizardCard extends Card{
             case 5:
                 return 189;
         }
-        return 0;
+        return 130;
     }
 }

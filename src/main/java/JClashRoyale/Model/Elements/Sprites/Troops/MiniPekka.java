@@ -13,7 +13,7 @@ public class MiniPekka extends SingleTargetTroop {
 
 	private final int COST = 4 ;
 	private final double RUN_SPEED = 30.0 ;
-	private final double ATTACK_SPEED = 1800.0 ;
+	private final double ATTACK_SPEED = 1.8 ;
 	private final TroopType TROOP_TYPE = TroopType.GROUND ;
 	private final TroopType TARGET_TYPE = TroopType.GROUND ;
 

@@ -25,7 +25,7 @@ public class BabyDragonCard extends Card{
             case 5:
                 return 1168;
         }
-        return 0;
+        return 800;
     }
 
     @Override
@@ -42,6 +42,6 @@ public class BabyDragonCard extends Card{
             case 5:
                 return 146;
         }
-        return 0;
+        return 100;
     }
 }

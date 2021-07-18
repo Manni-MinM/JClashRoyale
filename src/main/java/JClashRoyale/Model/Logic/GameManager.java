@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.canvas.Canvas ;
 import javafx.scene.canvas.GraphicsContext ;
 
+import JClashRoyale.Model.Elements.Spell ;
 import JClashRoyale.Model.Elements.Sprite ;
 
 import JClashRoyale.Model.Elements.Enums.ColorType ;
@@ -43,6 +44,7 @@ public class GameManager {
 	private Canvas canvas ;
 	private GraphicsContext graphics ;
 
+	private ArrayList<Spell> spells ;
 	private ArrayList<Sprite> sprites ;
 	// Constructor
 	public GameManager() {
@@ -51,6 +53,7 @@ public class GameManager {
 		canvas = new Canvas(315 , 480) ;
 		graphics = canvas.getGraphicsContext2D() ;
 
+		spells = new ArrayList<Spell>() ;
 		sprites = new ArrayList<Sprite>() ;
 	}
 	// Methods : Setters
@@ -71,12 +74,7 @@ public class GameManager {
 		return this.graphics ;
 	}
 	// Methods : Private
-	private boolean canAttack(Sprite attacker , Sprite defender) {
-		if ( attacker.getColorType() == defender.getColorType() )
-			return false ;
-		if ( !attacker.rangeIntersects(defender.getHealthCircle()) )
-			return false ;
-		return (attacker.getTargetType() == TroopType.ALL || attacker.getTargetType() == defender.getTroopType()) ;
+	private void attack(Sprite attacker , Sprite defender) {
 	}
 	// Methods : Other
 	public void addSprite(Sprite sprite) {
@@ -91,7 +89,8 @@ public class GameManager {
 			int timeOffset = 0 ;
 			int frameCount = 0 ;
 			public void handle(long currentNanoTime) {
-				double elixerTime = ((currentNanoTime - startNanoTime) / 1000000000.0) - timeOffset ;
+				double timeNow = ((currentNanoTime - startNanoTime) / 1000000000.0) ;
+				double elixerTime = timeNow - timeOffset ;
 
 				if ( elixerTime >= 1.0 ) {
 					timeOffset ++ ;
@@ -99,41 +98,71 @@ public class GameManager {
 				} else {
 					// Pass
 				}
+
 				elixerField.setText(String.valueOf(elixer)) ;
 				elixerBar.setProgress(elixer / 10.0);
 				BattleController.updateAvailability(elixer);
 
+
 				loadBattleMap() ;
+				elixerField.setText(String.valueOf(elixer)) ;
+
+				ArrayList<Sprite> walkingSprites = new ArrayList<Sprite>() ;
+				ArrayList<Sprite> attackingSprites = new ArrayList<Sprite>() ;
+
 				for ( Sprite sprite : sprites ) {
-					if ( sprite instanceof AreaSplashTroop ) {
-						AreaSplashTroop troop = (AreaSplashTroop)sprite ;
-						troop.walk(frameCount) ;
-					} else if ( sprite instanceof SingleTargetTroop ) {
-						SingleTargetTroop troop = (SingleTargetTroop)sprite ;
-						troop.walk(frameCount) ;
+					if ( sprite.getAttackState() ) {
+						attackingSprites.add(sprite) ;
+					} else {
+						walkingSprites.add(sprite) ;
+					}
+				}
+
+				for ( Sprite sprite : walkingSprites )
+					sprite.walk(frameCount) ;
+
+				ArrayList<Sprite> toBeRemoved = new ArrayList<Sprite>() ;
+				for ( int it = 0 ; it < sprites.size() ; it ++ ) {
+					Sprite attacker = sprites.get(it) ;
+					ArrayList<Sprite> defenders = new ArrayList<Sprite>() ;
+					for ( int jt = 0 ; jt < sprites.size() ; jt ++ ) {
+						if ( it == jt )
+							continue ;
+						Sprite defender = sprites.get(jt) ;
+						if ( attacker.canAttack(defender) ) {
+							defenders.add(defender) ;
+							if ( attacker instanceof SingleTargetTroop ) {
+								break ;
+							} else {
+								// Pass
+							}
+						}
+					}
+					if ( defenders.isEmpty() ) {
+						attacker.setAttackState(false) ;
+					} else if ( timeNow - attacker.getLastAttack() > attacker.getAttackSpeed() ) {
+						attacker.attack(defenders) ;
+						attacker.setLastAttack(timeNow) ;
+						for ( Sprite defender : defenders ) {
+							if ( defender.getHitpoints() <= 0 ) {
+								attacker.setAttackState(false) ;
+								toBeRemoved.add(defender) ;
+							} else {
+								// Pass
+							}
+						}
 					} else {
 						// Pass
 					}
 				}
+				for ( Sprite sprite : toBeRemoved )
+						sprites.remove(sprite) ;
 
 				for ( Sprite sprite : sprites ) {
 //					sprite.showRangeCircle(graphics) ;
 //					sprite.showHealthCircle(graphics) ;
 					sprite.draw(graphics) ;
 				}
-				// TODO : Test Run
-				ArrayList<Sprite> toBeRemoved = new ArrayList<Sprite>() ;
-				for ( int it = 0 ; it < sprites.size() ; it ++ )
-					for ( int jt = 0 ; jt < sprites.size() ; jt ++ ) {
-						if ( it == jt )
-							continue ;
-						Sprite attacker = sprites.get(it) ;
-						Sprite defender = sprites.get(jt) ;
-						if ( canAttack(attacker , defender) )
-							toBeRemoved.add(defender) ;
-					}
-				for ( Sprite sprite : toBeRemoved )
-						sprites.remove(sprite) ;
 
 				frameCount = (frameCount + 1) % 60 ;
 			}

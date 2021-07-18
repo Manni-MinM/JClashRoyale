@@ -25,7 +25,7 @@ public class MiniPekkaCard extends Card{
             case 5:
                 return 876;
         }
-        return 0;
+        return 600;
     }
 
     @Override
@@ -42,6 +42,6 @@ public class MiniPekkaCard extends Card{
             case 5:
                 return 474;
         }
-        return 0;
+        return 325;
     }
 }

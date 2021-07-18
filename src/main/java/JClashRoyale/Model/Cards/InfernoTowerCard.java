@@ -25,7 +25,7 @@ public class InfernoTowerCard extends Card implements AdjustableDamage{
             case 5:
                 return 1168;
         }
-        return 0;
+        return 800;
     }
 
     @Override

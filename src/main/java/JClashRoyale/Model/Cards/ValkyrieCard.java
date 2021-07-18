@@ -25,7 +25,7 @@ public class ValkyrieCard extends Card {
             case 5:
                 return 1284;
         }
-        return 0;
+        return 880;
     }
 
     @Override
@@ -42,6 +42,6 @@ public class ValkyrieCard extends Card {
             case 5:
                 return 175;
         }
-        return 0;
+        return 120;
     }
 }

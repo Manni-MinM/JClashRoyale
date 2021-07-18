@@ -25,7 +25,7 @@ public class CannonCard extends Card{
             case 5:
                 return 554;
         }
-        return 0;
+        return 380;
     }
 
     @Override
@@ -42,6 +42,6 @@ public class CannonCard extends Card{
             case 5:
                 return 87;
         }
-        return 0;
+        return 60;
     }
 }
