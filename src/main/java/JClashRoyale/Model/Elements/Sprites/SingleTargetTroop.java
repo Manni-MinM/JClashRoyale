@@ -8,6 +8,8 @@ import javafx.scene.canvas.GraphicsContext ;
 import JClashRoyale.Model.Elements.Sprite ;
 import JClashRoyale.Model.Elements.Enums.ColorType ;
 
+import java.util.Objects;
+
 public class SingleTargetTroop extends Sprite {
 	// Fields
 	protected Image runAnimationLeft ;
@@ -20,16 +22,16 @@ public class SingleTargetTroop extends Sprite {
 	}
 	// Methods : Setters
 	public void setRunAnimationLeft(String path , double width , double height) {
-		this.runAnimationLeft = new Image(path , width , height , false , false) ;
+		this.runAnimationLeft = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
 	}
 	public void setRunAnimationRight(String path , double width , double height) {
-		this.runAnimationRight = new Image(path , width , height , false , false) ;
+		this.runAnimationRight = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
 	}
 	public void setBattleAnimationFirst(String path , double width , double height) {
-		this.battleAnimationFirst = new Image(path , width , height , false , false) ;
+		this.battleAnimationFirst = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
 	}
 	public void setBattleAnimationSecond(String path , double width , double height) {
-		this.battleAnimationSecond = new Image(path , width , height , false , false) ;
+		this.battleAnimationSecond = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
 	}
 	// Methods : Getters
 	

@@ -9,6 +9,8 @@ import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
 import JClashRoyale.Model.Elements.Sprites.Building ;
 
+import java.util.Objects;
+
 public class InfernoTower extends Building {
 	// Fields : Final
 	private final double RANGE_RADIUS = 0.0 ; // TODO : ?
@@ -56,7 +58,7 @@ public class InfernoTower extends Building {
 	}
 	// Methods : Setters
 	private void setBody(String path) {
-		this.body = new Image(path , WIDTH , HEIGHT , false , false) ;
+		this.body = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , WIDTH , HEIGHT , false , false) ;
 	}
 	// Methods : Getters
 	

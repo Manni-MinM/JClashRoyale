@@ -9,6 +9,8 @@ import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
 import JClashRoyale.Model.Elements.Sprites.Building ;
 
+import java.util.Objects;
+
 public class Cannon extends Building {
 	// Fields : Final
 	private final double RANGE_RADIUS = 0.0 ; // TODO : ?
@@ -64,7 +66,7 @@ public class Cannon extends Building {
 		this.body = new Image(path , 1.5 * WIDTH , 1.5 * HEIGHT , false , false) ;
 	}
 	private void setBlaster(String path) {
-		this.blaster = new Image(path , WIDTH , HEIGHT , false , false) ;
+		this.blaster = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , WIDTH , HEIGHT , false , false);
 	}
 	// Methods : Getters
 
