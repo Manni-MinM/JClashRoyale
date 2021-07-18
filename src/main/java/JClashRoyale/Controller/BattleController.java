@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
@@ -54,6 +55,7 @@ public class BattleController {
     private final ArrayList<Card> outOfHandCards = new ArrayList<>();
     private ImagePackage selectedCard;
     private ImagePackage nextCard;
+    public static HashMap<ImagePackage , Rectangle> bannedCards = new HashMap<>();
 
     GameStarter gameStarter ;
 	GameManager gameManager ;
@@ -68,6 +70,7 @@ public class BattleController {
     @FXML private Pane gameViewPane;
     @FXML private ImageView btnMinimize, btnClose;
     @FXML private ImageView one, two, three, four, next;
+    @FXML private Rectangle cardBan1 , cardBan2 , cardBan3 , cardBan4;
 
     // Methods
     public void init(Stage stage) {
@@ -92,7 +95,7 @@ public class BattleController {
     public void start() {
         gameStarter = new GameStarter() ;
 		gameManager = gameStarter.getGameManager() ;
-		
+
 		gameStarter.initBattle(timer , result , elixer , elixerBar , gameViewPane) ;
     }
 
@@ -101,6 +104,10 @@ public class BattleController {
                 new ImagePackage(two, deck.get(1)),
                 new ImagePackage(three, deck.get(2)),
                 new ImagePackage(four, deck.get(3))));
+        bannedCards.put(cards.get(0), cardBan1);
+        bannedCards.put(cards.get(1), cardBan2);
+        bannedCards.put(cards.get(2), cardBan3);
+        bannedCards.put(cards.get(3), cardBan4);
         nextCard = new ImagePackage(next, deck.get(4));
         for (int i = 5; i < 8; i++) outOfHandCards.add(deck.get(i));
     }
@@ -242,6 +249,47 @@ public class BattleController {
         selectedCard = null;
     }
 
+    public static void updateAvailability( int elixer ){
+        for (ImagePackage imagePackage : bannedCards.keySet()) {
+            if (elixer >= getCost(imagePackage)){
+                bannedCards.get(imagePackage).setDisable(true);
+                bannedCards.get(imagePackage).setVisible(false);
+            }
+        }
+    }
+
+    private static int getCost(ImagePackage imagePackage) {
+        if ( imagePackage.getCard() instanceof ArcherCard ) {
+            Archer temp = new Archer(ColorType.BLUE);
+            return temp.getCost();
+        } else if ( imagePackage.getCard() instanceof BabyDragonCard ) {
+            BabyDragon temp = new BabyDragon(ColorType.BLUE);
+            return temp.getCost();
+        } else if ( imagePackage.getCard() instanceof BarbariansCard ) {
+            Barbarian temp = new Barbarian(ColorType.BLUE);
+            return temp.getCost();
+        } else if ( imagePackage.getCard() instanceof GiantCard ) {
+            Giant temp = new Giant(ColorType.BLUE);
+            return temp.getCost();
+        } else if ( imagePackage.getCard() instanceof MiniPekkaCard ) {
+            MiniPekka temp = new MiniPekka(ColorType.BLUE);
+            return temp.getCost();
+        } else if ( imagePackage.getCard() instanceof ValkyrieCard ) {
+            Valkyrie temp = new Valkyrie(ColorType.BLUE);
+            return temp.getCost();
+        } else if ( imagePackage.getCard() instanceof WizardCard ) {
+            Wizard temp = new Wizard(ColorType.BLUE);
+            return temp.getCost();
+        } else if ( imagePackage.getCard() instanceof CannonCard ) {
+            Cannon temp = new Cannon(ColorType.BLUE);
+            return temp.getCost();
+        } else if ( imagePackage.getCard() instanceof InfernoTowerCard ) {
+            InfernoTower temp = new InfernoTower(ColorType.BLUE);
+            return temp.getCost();
+        }
+
+        return 0;
+    }
 
     static class ImagePackage {
         private final ImageView imageView;

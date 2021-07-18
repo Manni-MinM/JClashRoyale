@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JClashRoyale.Controller.BattleController">
@@ -62,6 +63,10 @@
                </font>
             </Label>
             <ImageView fx:id="next" fitHeight="63.0" fitWidth="52.0" layoutX="5.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
+            <Rectangle fx:id="cardBan1" arcHeight="5.0" arcWidth="5.0" height="90.0" layoutX="73.0" layoutY="31.0" opacity="0.45" stroke="BLACK" strokeType="INSIDE" width="67.0" />
+            <Rectangle fx:id="cardBan2" arcHeight="5.0" arcWidth="5.0" height="90.0" layoutX="149.0" layoutY="31.0" opacity="0.45" stroke="BLACK" strokeType="INSIDE" width="67.0" />
+            <Rectangle fx:id="cardBan3" arcHeight="5.0" arcWidth="5.0" height="90.0" layoutX="225.0" layoutY="31.0" opacity="0.45" stroke="BLACK" strokeType="INSIDE" width="67.0" />
+            <Rectangle fx:id="cardBan4" arcHeight="5.0" arcWidth="5.0" height="90.0" layoutX="302.0" layoutY="31.0" opacity="0.45" stroke="BLACK" strokeType="INSIDE" width="67.0" />
          </children>
       </Pane>
       <ProgressBar fx:id="elixerBar" layoutX="-174.0" layoutY="302.0" prefHeight="28.0" prefWidth="400.0" progress="0.6" rotate="270.0" style="-fx-accent: D21BCFFF;" />

@@ -5,6 +5,7 @@ package JClashRoyale.Model.Logic ;
 import java.util.ArrayList ;
 import java.util.Objects;
 
+import JClashRoyale.Controller.BattleController;
 import javafx.animation.AnimationTimer ;
 
 import javafx.scene.control.ProgressBar;
@@ -61,7 +62,7 @@ public class GameManager {
 	}
 	// Methods : Getters
 	public int getElixer() {
-		return this.elixer ;
+		return elixer ;
 	}
 	public Canvas getCanvas() {
 		return this.canvas ;
@@ -100,6 +101,7 @@ public class GameManager {
 				}
 				elixerField.setText(String.valueOf(elixer)) ;
 				elixerBar.setProgress(elixer / 10.0);
+				BattleController.updateAvailability(elixer);
 
 				loadBattleMap() ;
 				for ( Sprite sprite : sprites ) {
