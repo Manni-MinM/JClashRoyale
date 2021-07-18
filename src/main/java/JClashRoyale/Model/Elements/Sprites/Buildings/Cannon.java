@@ -63,7 +63,7 @@ public class Cannon extends Building {
 	}
 	// Methods : Setters
 	private void setBody(String path) {
-		this.body = new Image(path , 1.5 * WIDTH , 1.5 * HEIGHT , false , false) ;
+		this.body = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , 1.5 * WIDTH , 1.5 * HEIGHT , false , false) ;
 	}
 	private void setBlaster(String path) {
 		this.blaster = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , WIDTH , HEIGHT , false , false);
