@@ -62,6 +62,7 @@ public class GameManager {
 	}
 	public void consumeElixer(int value) {
 		this.elixer -= value ;
+		BattleController.updateAvailability(elixer);
 	}
 	// Methods : Getters
 	public int getElixer() {

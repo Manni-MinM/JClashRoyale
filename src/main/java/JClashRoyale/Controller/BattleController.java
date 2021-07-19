@@ -258,6 +258,9 @@ public class BattleController {
             if (elixer >= getCost(imagePackage)){
                 bannedCards.get(imagePackage).setDisable(true);
                 bannedCards.get(imagePackage).setVisible(false);
+            } else {
+                bannedCards.get(imagePackage).setDisable(false);
+                bannedCards.get(imagePackage).setVisible(true);
             }
         }
     }
