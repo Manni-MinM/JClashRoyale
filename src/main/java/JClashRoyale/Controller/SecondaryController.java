@@ -79,6 +79,12 @@ public class SecondaryController {
         App.setRoot("TrainingCamp");
     }
 
+    @FXML
+    private void switchToBattleHistory() throws IOException {
+        SoundSystem.mouseClickSFX();
+        App.setRoot("BattleHistory");
+    }
+
     private void progressBarUpdate(int XP) {
         if (XP <= 300) {
             progressBar.setProgress((double) XP / 300);
