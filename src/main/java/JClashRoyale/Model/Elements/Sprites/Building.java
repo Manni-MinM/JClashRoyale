@@ -21,7 +21,16 @@ public abstract class Building extends Sprite {
 		return this.lifetime ;
 	}
 	// Methods : Other
-	public void walk(int frameCount) {
+	public void walkForward() {
+		// Do Nothing
+	}
+	public void walkBridge() {
+		// Do Nothing
+	}
+	public void walkKingTower() {
+		// Do Nothing
+	}
+	public void walk(boolean leftArcherTowerDestroyed , boolean rightArcherTowerDestroyed) {
 		// Do Nothing
 	}
 }

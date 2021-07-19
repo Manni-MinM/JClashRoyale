@@ -37,7 +37,6 @@ public abstract class Sprite {
 	protected Image stateImage ;
 	// Constructor
 	public Sprite() {
-		// Pass
 		lastAttack = -100.0 ;
 		attackState = false ;
 	}
@@ -184,7 +183,10 @@ public abstract class Sprite {
 			defender.setHitpoints(defender.getHitpoints() - this.getDamage()) ;
 	}
 	// Methods : Abstract
-	public abstract void walk(int frameCount) ;
+	public abstract void walkForward() ;
+	public abstract void walkBridge() ;
+	public abstract void walkKingTower() ;
+	public abstract void walk(boolean leftArcherTowerDestroyed , boolean rightArcherTowerDestroyed) ;
 	public abstract void draw(GraphicsContext graphics) ;
 }
 

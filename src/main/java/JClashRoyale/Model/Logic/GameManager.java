@@ -167,8 +167,13 @@ public class GameManager {
 					}
 				}
 
-				for ( Sprite sprite : walkingSprites )
-					sprite.walk(frameCount) ;
+				for ( Sprite sprite : walkingSprites ) {
+					if ( sprite.getColorType() == ColorType.BLUE ) {
+						sprite.walk(redArcherTowerLeft.isDestroyed() , redArcherTowerRight.isDestroyed()) ;
+					} else {
+						sprite.walk(blueArcherTowerLeft.isDestroyed() , blueArcherTowerRight.isDestroyed()) ;
+					}
+				}
 
 				ArrayList<Sprite> toBeRemoved = new ArrayList<Sprite>() ;
 				for ( int it = 0 ; it < sprites.size() ; it ++ ) {

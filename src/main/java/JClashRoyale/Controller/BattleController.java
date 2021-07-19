@@ -138,8 +138,9 @@ public class BattleController {
     }
 
     public void deployCard(MouseEvent event) {
-		if ( event.getY() > 450.0 || event.getY() < 250 )
-			return ;
+		// TODO : Test
+//		if ( event.getY() > 450.0 || event.getY() < 250 )
+//			return ;
 		if ( selectedCard.getCard() instanceof ArcherCard ) {
 			Archer archer = new Archer(ColorType.BLUE) ;
 			archer.setHitpoints(selectedCard.getCard().getHP()) ;

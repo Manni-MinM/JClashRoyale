@@ -66,7 +66,9 @@ public class KingTower extends Building {
 		this.destroyedTower = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , WIDTH , HEIGHT , false , false);
 	}
 	// Methods : Getters
-
+	public boolean isDestroyed() {
+		return this.isDestroyed ;
+	}
 	// Methods : Other
 	public void destroy() {
 		isDestroyed = true ;
