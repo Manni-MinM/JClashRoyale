@@ -47,8 +47,8 @@ public class Archer extends SingleTargetTroop {
 			setRunAnimationForward(RED_RUN_ANIMATION_FORWARD_PATH , WIDTH , HEIGHT) ;
 			setBattleAnimation(RED_BATTLE_ANIMATION_PATH , WIDTH , HEIGHT) ;
 		} else if ( color == ColorType.BLUE ) {
-			setRunAnimationLeft(BLUE_RUN_ANIMATION_LEFT_PATH , WIDTH , HEIGHT) ;
-			setRunAnimationRight(BLUE_RUN_ANIMATION_RIGHT_PATH , WIDTH , HEIGHT) ;
+			setRunAnimationLeft(BLUE_RUN_ANIMATION_LEFT_PATH , WIDTH + 5 , HEIGHT + 5) ;
+			setRunAnimationRight(BLUE_RUN_ANIMATION_RIGHT_PATH , WIDTH + 5 , HEIGHT + 5) ;
 			setRunAnimationForward(BLUE_RUN_ANIMATION_FORWARD_PATH , WIDTH , HEIGHT) ;
 			setBattleAnimation(BLUE_BATTLE_ANIMATION_PATH , WIDTH , HEIGHT) ;
 		} else {

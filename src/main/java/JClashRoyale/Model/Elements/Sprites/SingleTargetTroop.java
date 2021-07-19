@@ -98,13 +98,13 @@ public class SingleTargetTroop extends Sprite {
 	public void walk(boolean leftArcherTowerDestroyed , boolean rightArcherTowerDestroyed) {
 		if ( getX() > 155.0 ) {
 			if ( getColorType() == ColorType.RED ) {
-				// (230 , 220)
-				destinationBridge = new Point2D(230 , 220) ;
+				// (230 , 200)
+				destinationBridge = new Point2D(230 , 200) ;
 				// (180 , 390)
 				destinationKingTower = new Point2D(180 , 390) ;
 			} else if ( getColorType() == ColorType.BLUE ) {
-				// (230 , 260)
-				destinationBridge = new Point2D(230 , 260) ;
+				// (230 , 250)
+				destinationBridge = new Point2D(230 , 250) ;
 				// (180 , 70)
 				destinationKingTower = new Point2D(180 , 70) ;
 			} else {
@@ -112,13 +112,13 @@ public class SingleTargetTroop extends Sprite {
 			}
 		} else {
 			if ( getColorType() == ColorType.RED ) {
-				// (60 , 220)
-				destinationBridge = new Point2D(60 , 220) ;
+				// (60 , 200)
+				destinationBridge = new Point2D(60 , 200) ;
 				// (120 , 390)
 				destinationKingTower = new Point2D(125 , 390) ;
 			} else if ( getColorType() == ColorType.BLUE ) {
-				// (60 , 260)
-				destinationBridge = new Point2D(60 , 260) ;
+				// (60 , 250)
+				destinationBridge = new Point2D(60 , 250) ;
 				// (120 , 70)
 				destinationKingTower = new Point2D(125 , 70) ;
 			} else {

@@ -44,13 +44,13 @@ public class Valkyrie extends AreaSplashTroop {
 		if ( color == ColorType.RED ) {
 			setRunAnimationLeft(RED_RUN_ANIMATION_LEFT_PATH , WIDTH , HEIGHT) ;
 			setRunAnimationRight(RED_RUN_ANIMATION_RIGHT_PATH , WIDTH , HEIGHT) ;
-			setRunAnimationForward(RED_RUN_ANIMATION_FORWARD_PATH , WIDTH , HEIGHT) ;
-			setBattleAnimation(RED_BATTLE_ANIMATION_PATH , WIDTH , HEIGHT) ;
+			setRunAnimationForward(RED_RUN_ANIMATION_FORWARD_PATH , WIDTH + 5 , HEIGHT + 5) ;
+			setBattleAnimation(RED_BATTLE_ANIMATION_PATH , WIDTH + 25 , HEIGHT + 25) ;
 		} else if ( color == ColorType.BLUE ) {
 			setRunAnimationLeft(BLUE_RUN_ANIMATION_LEFT_PATH , WIDTH , HEIGHT) ;
 			setRunAnimationRight(BLUE_RUN_ANIMATION_RIGHT_PATH , WIDTH , HEIGHT) ;
-			setRunAnimationForward(BLUE_RUN_ANIMATION_FORWARD_PATH , WIDTH , HEIGHT) ;
-			setBattleAnimation(BLUE_BATTLE_ANIMATION_PATH , WIDTH , HEIGHT) ;
+			setRunAnimationForward(BLUE_RUN_ANIMATION_FORWARD_PATH , WIDTH + 5 , HEIGHT + 5) ;
+			setBattleAnimation(BLUE_BATTLE_ANIMATION_PATH , WIDTH + 25 , HEIGHT + 25) ;
 		} else {
 			// Pass
 		}

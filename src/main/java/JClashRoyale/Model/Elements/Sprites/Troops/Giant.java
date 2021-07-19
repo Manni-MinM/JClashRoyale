@@ -17,8 +17,8 @@ public class Giant extends SingleTargetTroop {
 	private final TroopType TROOP_TYPE = TroopType.GROUND ;
 	private final TroopType TARGET_TYPE = TroopType.BUILDING ;
 
-	private final double WIDTH = 30.0 ;
-	private final double HEIGHT = 30.0 ;
+	private final double WIDTH = 50.0 ;
+	private final double HEIGHT = 50.0 ;
 
 	private final String RED_RUN_ANIMATION_LEFT_PATH = "/JClashRoyale/assets/sprites/giant/giant_red_run_left.gif" ;
 	private final String RED_RUN_ANIMATION_RIGHT_PATH = "/JClashRoyale/assets/sprites/giant/giant_red_run_right.gif" ;
@@ -45,7 +45,7 @@ public class Giant extends SingleTargetTroop {
 			setRunAnimationLeft(RED_RUN_ANIMATION_LEFT_PATH , WIDTH , HEIGHT) ;
 			setRunAnimationRight(RED_RUN_ANIMATION_RIGHT_PATH , WIDTH , HEIGHT) ;
 			setRunAnimationForward(RED_RUN_ANIMATION_FORWARD_PATH , WIDTH , HEIGHT) ;
-			setBattleAnimation(RED_BATTLE_ANIMATION_PATH , WIDTH , HEIGHT) ;
+			setBattleAnimation(RED_BATTLE_ANIMATION_PATH , WIDTH + 15 , HEIGHT + 15) ;
 		} else if ( color == ColorType.BLUE ) {
 			setRunAnimationLeft(BLUE_RUN_ANIMATION_LEFT_PATH , WIDTH , HEIGHT) ;
 			setRunAnimationRight(BLUE_RUN_ANIMATION_RIGHT_PATH , WIDTH , HEIGHT) ;

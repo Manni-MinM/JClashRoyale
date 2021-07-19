@@ -17,8 +17,8 @@ public class BabyDragon extends AreaSplashTroop {
 	private final TroopType TROOP_TYPE = TroopType.AERIAL ;
 	private final TroopType TARGET_TYPE = TroopType.ALL ;
 
-	private final double WIDTH = 30.0 ;
-	private final double HEIGHT = 30.0 ;
+	private final double WIDTH = 35.0 ;
+	private final double HEIGHT = 35.0 ;
 
 	private final String RED_RUN_ANIMATION_LEFT_PATH = "/JClashRoyale/assets/sprites/baby_dragon/baby_dragon_red_run_left.gif" ;
 	private final String RED_RUN_ANIMATION_RIGHT_PATH = "/JClashRoyale/assets/sprites/baby_dragon/baby_dragon_red_run_right.gif" ;
@@ -42,15 +42,15 @@ public class BabyDragon extends AreaSplashTroop {
 		setTargetType(TARGET_TYPE) ;
 
 		if ( color == ColorType.RED ) {
-			setRunAnimationLeft(RED_RUN_ANIMATION_LEFT_PATH , WIDTH , HEIGHT) ;
-			setRunAnimationRight(RED_RUN_ANIMATION_RIGHT_PATH , WIDTH , HEIGHT) ;
-			setRunAnimationForward(RED_RUN_ANIMATION_FORWARD_PATH , WIDTH , HEIGHT) ;
+			setRunAnimationLeft(RED_RUN_ANIMATION_LEFT_PATH , WIDTH + 5 , HEIGHT + 5) ;
+			setRunAnimationRight(RED_RUN_ANIMATION_RIGHT_PATH , WIDTH + 5 , HEIGHT + 5) ;
+			setRunAnimationForward(RED_RUN_ANIMATION_FORWARD_PATH , WIDTH + 5 , HEIGHT + 5) ;
 			setBattleAnimation(RED_BATTLE_ANIMATION_PATH , WIDTH , HEIGHT) ;
 		} else if ( color == ColorType.BLUE ) {
 			setRunAnimationLeft(BLUE_RUN_ANIMATION_LEFT_PATH , WIDTH , HEIGHT) ;
 			setRunAnimationRight(BLUE_RUN_ANIMATION_RIGHT_PATH , WIDTH , HEIGHT) ;
-			setRunAnimationForward(BLUE_RUN_ANIMATION_FORWARD_PATH , WIDTH , HEIGHT) ;
-			setBattleAnimation(BLUE_BATTLE_ANIMATION_PATH , WIDTH , HEIGHT) ;
+			setRunAnimationForward(BLUE_RUN_ANIMATION_FORWARD_PATH , WIDTH + 5 , HEIGHT + 5) ;
+			setBattleAnimation(BLUE_BATTLE_ANIMATION_PATH , WIDTH + 5 , HEIGHT + 5) ;
 		} else {
 			// Pass
 		}

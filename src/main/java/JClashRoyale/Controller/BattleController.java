@@ -142,7 +142,7 @@ public class BattleController {
 //		if ( event.getY() > 450.0 || event.getY() < 250 )
 //			return ;
 		if ( selectedCard.getCard() instanceof ArcherCard ) {
-			Archer archer = new Archer(ColorType.BLUE) ;
+			Archer archer = new Archer(ColorType.RED) ;
 			archer.setHitpoints(selectedCard.getCard().getHP()) ;
 			archer.setDamage(selectedCard.getCard().getDamage()) ;
 			archer.setLocation(event.getX() , event.getY()) ;
@@ -164,7 +164,7 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof BarbariansCard ) {
-			Barbarian barbarian = new Barbarian(ColorType.RED) ;
+			Barbarian barbarian = new Barbarian(ColorType.BLUE) ;
 			barbarian.setLocation(event.getX() , event.getY()) ;
 			barbarian.setHitpoints(selectedCard.getCard().getHP()) ;
 			barbarian.setDamage(selectedCard.getCard().getDamage()) ;

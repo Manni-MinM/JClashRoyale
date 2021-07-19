@@ -17,8 +17,8 @@ public class Wizard extends AreaSplashTroop {
 	private final TroopType TROOP_TYPE = TroopType.GROUND ;
 	private final TroopType TARGET_TYPE = TroopType.ALL ;
 	
-	private final double WIDTH = 30.0 ;
-	private final double HEIGHT = 30.0 ;
+	private final double WIDTH = 35.0 ;
+	private final double HEIGHT = 35.0 ;
 
 	private final String RED_RUN_ANIMATION_LEFT_PATH = "/JClashRoyale/assets/sprites/wizard/wizard_red_run_left.gif" ;
 	private final String RED_RUN_ANIMATION_RIGHT_PATH = "/JClashRoyale/assets/sprites/wizard/wizard_red_run_right.gif" ;
