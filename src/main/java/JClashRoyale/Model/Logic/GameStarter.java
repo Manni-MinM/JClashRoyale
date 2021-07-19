@@ -17,7 +17,7 @@ public class GameStarter {
 	// Fields
 	GameManager gameManager ;
 	// Fields : Final
-	String BATTLE_MAP_PATH = "/JClashRoyale/assets/battle_map.png" ;
+	String BATTLE_MAP_PATH = "/JClashRoyale/assets/map.png" ;
 	// Constructor
 	public GameStarter() {
 		gameManager = new GameManager() ;

@@ -58,7 +58,7 @@ public class GameManager {
 	}
 	// Methods : Setters
 	public void setBattleMap(String path) {
-		this.battleMap = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))) ;
+		this.battleMap = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , 315 , 480 , false , false) ;
 	}
 	public void consumeElixer(int value) {
 		this.elixer -= value ;
