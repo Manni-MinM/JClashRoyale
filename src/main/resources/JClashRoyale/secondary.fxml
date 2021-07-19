@@ -52,7 +52,7 @@
                   <Font name="Swis721 BT Bold" size="22.0" />
                </font>
             </Button>
-            <Button layoutX="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-radius: 60;" styleClass="TrainingBtn" text="Training &#10;Camp" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="150.0" mnemonicParsing="false" onAction="#switchToTrainingCamp" prefHeight="150.0" prefWidth="150.0" style="-fx-background-radius: 60;" styleClass="TrainingBtn" text="Training &#10;Camp" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Swis721 BT Bold" size="24.0" />
                </font>
