@@ -40,3 +40,15 @@
 .saveBtn {
     -fx-background-color: linear-gradient(to bottom right, #81FBB8, #28C76F);
 }
+
+.scroll-pane{
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+.grid Line {
+    -fx-stroke   : white;
+}
