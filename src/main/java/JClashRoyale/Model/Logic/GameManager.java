@@ -33,6 +33,8 @@ import JClashRoyale.Model.Elements.Sprites.Troops.MiniPekka ;
 import JClashRoyale.Model.Elements.Sprites.Troops.BabyDragon ;
 
 import JClashRoyale.Model.Elements.Sprites.Buildings.Cannon ;
+import JClashRoyale.Model.Elements.Sprites.Buildings.KingTower ;
+import JClashRoyale.Model.Elements.Sprites.Buildings.ArcherTower ;
 import JClashRoyale.Model.Elements.Sprites.Buildings.InfernoTower ;
 
 public class GameManager {
@@ -46,6 +48,14 @@ public class GameManager {
 
 	private ArrayList<Spell> spells ;
 	private ArrayList<Sprite> sprites ;
+
+	private KingTower redKingTower ;
+	private ArcherTower redArcherTowerLeft ;
+	private ArcherTower redArcherTowerRight ;
+	
+	private KingTower blueKingTower ;
+	private ArcherTower blueArcherTowerLeft ;
+	private ArcherTower blueArcherTowerRight ;
 	// Constructor
 	public GameManager() {
 		elixer = 0 ;
@@ -53,12 +63,35 @@ public class GameManager {
 		canvas = new Canvas(315 , 480) ;
 		graphics = canvas.getGraphicsContext2D() ;
 
+		redKingTower = new KingTower(ColorType.RED) ;
+		redKingTower.setLocation(125 , 8) ;
+		redArcherTowerLeft = new ArcherTower(ColorType.RED) ;
+		redArcherTowerLeft.setLocation(44 , 60) ;
+		redArcherTowerRight = new ArcherTower(ColorType.RED) ;
+		redArcherTowerRight.setLocation(212 , 60) ;
+
+		blueKingTower = new KingTower(ColorType.BLUE) ;
+		blueKingTower.setLocation(125 , 398) ;
+		blueArcherTowerLeft = new ArcherTower(ColorType.BLUE) ;
+		blueArcherTowerLeft.setLocation(44 , 345) ;
+		blueArcherTowerRight = new ArcherTower(ColorType.BLUE) ;
+		blueArcherTowerRight.setLocation(212 , 345) ;
+
 		spells = new ArrayList<Spell>() ;
 		sprites = new ArrayList<Sprite>() ;
 	}
 	// Methods : Setters
 	public void setBattleMap(String path) {
 		this.battleMap = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , 315 , 480 , false , false) ;
+	}
+	public void deployTowers() {
+		redKingTower.draw(graphics) ;
+		redArcherTowerLeft.draw(graphics) ;
+		redArcherTowerRight.draw(graphics) ;
+
+		blueKingTower.draw(graphics) ;
+		blueArcherTowerLeft.draw(graphics) ;
+		blueArcherTowerRight.draw(graphics) ;
 	}
 	public void consumeElixer(int value) {
 		this.elixer -= value ;
@@ -105,6 +138,7 @@ public class GameManager {
 				BattleController.updateAvailability(elixer);
 
 				loadBattleMap() ;
+				deployTowers() ;
 				elixerField.setText(String.valueOf(elixer)) ;
 
 				ArrayList<Sprite> walkingSprites = new ArrayList<Sprite>() ;

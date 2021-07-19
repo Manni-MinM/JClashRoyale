@@ -21,16 +21,13 @@ public class KingTower extends Building {
 	private final TroopType TROOP_TYPE = TroopType.BUILDING ;
 	private final TroopType TARGET_TYPE = TroopType.ALL ;
 
-	private final double WIDTH = 90.0 ;
-	private final double HEIGHT = 90.0 ;
+	private final double WIDTH = 70.0 ;
+	private final double HEIGHT = 75.0 ;
 
-	private final String RED_IDLE_TOWER_PATH = "/JClashRoyale/assets/sprites/king_tower/king_tower_red_idle.gif" ;
-	private final String RED_BATTLE_TOWER_PATH = "/JClashRoyale/assets/sprites/king_tower/king_tower_red_battle.gif" ;
-	private final String BLUE_IDLE_TOWER_PATH = "/JClashRoyale/assets/sprites/king_tower/king_tower_blue_idle.gif" ;
-	private final String BLUE_BATTLE_TOWER_PATH = "/JClashRoyale/assets/sprites/king_tower/king_tower_blue_idle.gif" ;
+	private final String RED_TOWER_PATH = "/JClashRoyale/assets/sprites/king_tower/king_tower_red.png" ;
+	private final String BLUE_TOWER_PATH = "/JClashRoyale/assets/sprites/king_tower/king_tower_blue.png" ;
 	// Fields : Other
-	private Image idleTower ;
-	private Image battleTower ;
+	private Image tower ;
 	// Constructor
 	public KingTower(ColorType color) {
 		setColorType(color) ;
@@ -44,30 +41,27 @@ public class KingTower extends Building {
 		setTargetType(TARGET_TYPE) ;
 
 		if ( color == ColorType.RED ) {
-			setIdleTower(RED_IDLE_TOWER_PATH) ;
-			setIdleTower(RED_BATTLE_TOWER_PATH) ;
+			setTower(RED_TOWER_PATH) ;
 		} else if ( color == ColorType.BLUE ) {
-			setIdleTower(BLUE_IDLE_TOWER_PATH) ;
-			setIdleTower(BLUE_BATTLE_TOWER_PATH) ;
+			setTower(BLUE_TOWER_PATH) ;
 		} else {
 			// Pass
 		}
+
+		setStateImage(tower) ;
 	}
 	// Methods : Setters
-	private void setIdleTower(String path) {
-		this.idleTower = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , WIDTH , HEIGHT , false , false) ;
-	}
-	private void setBattleTower(String path) {
-		this.battleTower = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , WIDTH , HEIGHT , false , false);
+	private void setTower(String path) {
+		this.tower = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , WIDTH , HEIGHT , false , false) ;
 	}
 	// Methods : Getters
 
 	// Methods : Other
 	public void draw(GraphicsContext graphics) {
 		if ( attackState )
-			setStateImage(battleTower) ;
+			setStateImage(tower) ;
 
-		graphics.drawImage(idleTower , getX() , getY()) ;
+		graphics.drawImage(stateImage , getX() , getY()) ;
 	}
 }
 

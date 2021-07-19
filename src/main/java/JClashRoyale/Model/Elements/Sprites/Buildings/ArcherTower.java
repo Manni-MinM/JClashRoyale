@@ -21,13 +21,13 @@ public class ArcherTower extends Building {
 	private final TroopType TROOP_TYPE = TroopType.BUILDING ;
 	private final TroopType TARGET_TYPE = TroopType.ALL ;
 
-	private final double WIDTH = 90.0 ;
-	private final double HEIGHT = 90.0 ;
+	private final double WIDTH = 60.0 ;
+	private final double HEIGHT = 65.0 ;
 
-	private final String RED_IDLE_TOWER_PATH = "/JClashRoyale/assets/sprites/archer_tower/archer_tower_red_idle.gif" ;
+	private final String RED_IDLE_TOWER_PATH = "/JClashRoyale/assets/sprites/archer_tower/archer_tower_red_idle.png" ;
 	private final String RED_BATTLE_TOWER_PATH = "/JClashRoyale/assets/sprites/archer_tower/archer_tower_red_battle.gif" ;
-	private final String BLUE_IDLE_TOWER_PATH = "/JClashRoyale/assets/sprites/archer_tower/archer_tower_blue_idle.gif" ;
-	private final String BLUE_BATTLE_TOWER_PATH = "/JClashRoyale/assets/sprites/archer_tower/archer_tower_blue_idle.gif" ;
+	private final String BLUE_IDLE_TOWER_PATH = "/JClashRoyale/assets/sprites/archer_tower/archer_tower_blue_idle.png" ;
+	private final String BLUE_BATTLE_TOWER_PATH = "/JClashRoyale/assets/sprites/archer_tower/archer_tower_blue_battle.gif" ;
 	// Fields : Other
 	private Image idleTower ;
 	private Image battleTower ;
@@ -45,13 +45,15 @@ public class ArcherTower extends Building {
 
 		if ( color == ColorType.RED ) {
 			setIdleTower(RED_IDLE_TOWER_PATH) ;
-			setIdleTower(RED_BATTLE_TOWER_PATH) ;
+			setBattleTower(RED_BATTLE_TOWER_PATH) ;
 		} else if ( color == ColorType.BLUE ) {
 			setIdleTower(BLUE_IDLE_TOWER_PATH) ;
-			setIdleTower(BLUE_BATTLE_TOWER_PATH) ;
+			setBattleTower(BLUE_BATTLE_TOWER_PATH) ;
 		} else {
 			// Pass
 		}
+
+		setStateImage(idleTower) ;
 	}
 	// Methods : Setters
 	private void setIdleTower(String path) {
@@ -67,7 +69,7 @@ public class ArcherTower extends Building {
 		if ( attackState )
 			setStateImage(battleTower) ;
 
-		graphics.drawImage(idleTower , getX() , getY()) ;
+		graphics.drawImage(stateImage , getX() , getY()) ;
 	}
 }
 
