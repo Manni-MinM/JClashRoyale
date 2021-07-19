@@ -2,24 +2,28 @@
 
 package JClashRoyale.Model.Logic ;
 
+import java.util.Objects ;
 import java.util.ArrayList ;
-import java.util.Objects;
 
-import JClashRoyale.Controller.BattleController;
 import javafx.animation.AnimationTimer ;
 
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressBar ;
 import javafx.scene.image.Image ;
 import javafx.scene.paint.Color ;
 import javafx.scene.control.TextField;
 import javafx.scene.canvas.Canvas ;
 import javafx.scene.canvas.GraphicsContext ;
 
+import JClashRoyale.Controller.BattleController ;
+
 import JClashRoyale.Model.Elements.Spell ;
 import JClashRoyale.Model.Elements.Sprite ;
 
 import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
+
+import JClashRoyale.Model.Cards.KingTowerCard ;
+import JClashRoyale.Model.Cards.ArcherTowerCard ;
 
 import JClashRoyale.Model.Elements.Sprites.AreaSplashTroop ;
 import JClashRoyale.Model.Elements.Sprites.SingleTargetTroop ;
@@ -65,33 +69,48 @@ public class GameManager {
 
 		redKingTower = new KingTower(ColorType.RED) ;
 		redKingTower.setLocation(125 , 8) ;
+		redKingTower.setDamage(KingTowerCard.getDamage()) ;
+		redKingTower.setHitpoints(KingTowerCard.getHP()) ;
+
 		redArcherTowerLeft = new ArcherTower(ColorType.RED) ;
 		redArcherTowerLeft.setLocation(44 , 60) ;
+		redArcherTowerLeft.setDamage(ArcherTowerCard.getDamage()) ;
+		redArcherTowerLeft.setHitpoints(ArcherTowerCard.getHP()) ;
+
 		redArcherTowerRight = new ArcherTower(ColorType.RED) ;
 		redArcherTowerRight.setLocation(212 , 60) ;
+		redArcherTowerRight.setDamage(ArcherTowerCard.getDamage()) ;
+		redArcherTowerRight.setHitpoints(ArcherTowerCard.getHP()) ;
 
 		blueKingTower = new KingTower(ColorType.BLUE) ;
 		blueKingTower.setLocation(125 , 398) ;
+		blueKingTower.setDamage(KingTowerCard.getDamage()) ;
+		blueKingTower.setHitpoints(KingTowerCard.getHP()) ;
+
 		blueArcherTowerLeft = new ArcherTower(ColorType.BLUE) ;
 		blueArcherTowerLeft.setLocation(44 , 345) ;
+		blueArcherTowerLeft.setDamage(ArcherTowerCard.getDamage()) ;
+		blueArcherTowerLeft.setHitpoints(ArcherTowerCard.getHP()) ;
+
 		blueArcherTowerRight = new ArcherTower(ColorType.BLUE) ;
 		blueArcherTowerRight.setLocation(212 , 345) ;
+		blueArcherTowerRight.setDamage(ArcherTowerCard.getDamage()) ;
+		blueArcherTowerRight.setHitpoints(ArcherTowerCard.getHP()) ;
 
 		spells = new ArrayList<Spell>() ;
 		sprites = new ArrayList<Sprite>() ;
+
+		sprites.add(redKingTower) ;
+		sprites.add(redArcherTowerLeft) ;
+		sprites.add(redArcherTowerRight) ;
+
+		sprites.add(blueKingTower) ;
+		sprites.add(blueArcherTowerLeft) ;
+		sprites.add(blueArcherTowerRight) ;
 	}
 	// Methods : Setters
 	public void setBattleMap(String path) {
 		this.battleMap = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , 315 , 480 , false , false) ;
-	}
-	public void deployTowers() {
-		redKingTower.draw(graphics) ;
-		redArcherTowerLeft.draw(graphics) ;
-		redArcherTowerRight.draw(graphics) ;
-
-		blueKingTower.draw(graphics) ;
-		blueArcherTowerLeft.draw(graphics) ;
-		blueArcherTowerRight.draw(graphics) ;
 	}
 	public void consumeElixer(int value) {
 		this.elixer -= value ;
@@ -106,9 +125,6 @@ public class GameManager {
 	}
 	public GraphicsContext getGraphics() {
 		return this.graphics ;
-	}
-	// Methods : Private
-	private void attack(Sprite attacker , Sprite defender) {
 	}
 	// Methods : Other
 	public void addSprite(Sprite sprite) {
@@ -138,7 +154,6 @@ public class GameManager {
 				BattleController.updateAvailability(elixer);
 
 				loadBattleMap() ;
-				deployTowers() ;
 				elixerField.setText(String.valueOf(elixer)) ;
 
 				ArrayList<Sprite> walkingSprites = new ArrayList<Sprite>() ;
@@ -180,7 +195,15 @@ public class GameManager {
 						for ( Sprite defender : defenders ) {
 							if ( defender.getHitpoints() <= 0 ) {
 								attacker.setAttackState(false) ;
-								toBeRemoved.add(defender) ;
+								if ( defender instanceof KingTower ) {
+									KingTower kingTower = (KingTower)defender ;
+									kingTower.destroy() ;
+								} else if ( defender instanceof ArcherTower ) {
+									ArcherTower archerTower = (ArcherTower)defender ;
+									archerTower.destroy() ;
+								} else {
+									toBeRemoved.add(defender) ;
+								}
 							} else {
 								// Pass
 							}

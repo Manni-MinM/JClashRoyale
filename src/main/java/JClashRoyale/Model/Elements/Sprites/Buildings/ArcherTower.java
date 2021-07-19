@@ -14,7 +14,7 @@ import java.util.Objects;
 public class ArcherTower extends Building {
 	// Fields : Final
 	private final double RANGE_RADIUS = 225.0 ;
-	private final double HEALTH_RADIUS = 125.0 ;
+	private final double HEALTH_RADIUS = 80.0 ;
 
 	private final double RUN_SPEED = 0.0 ;
 	private final double ATTACK_SPEED = 0.8 ;
@@ -28,11 +28,18 @@ public class ArcherTower extends Building {
 	private final String RED_BATTLE_TOWER_PATH = "/JClashRoyale/assets/sprites/archer_tower/archer_tower_red_battle.gif" ;
 	private final String BLUE_IDLE_TOWER_PATH = "/JClashRoyale/assets/sprites/archer_tower/archer_tower_blue_idle.png" ;
 	private final String BLUE_BATTLE_TOWER_PATH = "/JClashRoyale/assets/sprites/archer_tower/archer_tower_blue_battle.gif" ;
+
+	private final String DESTROYED_TOWER_PATH = "/JClashRoyale/assets/sprites/archer_tower/archer_tower_destroyed.png" ;
 	// Fields : Other
+	private boolean isDestroyed ;
+
 	private Image idleTower ;
 	private Image battleTower ;
+	private Image destroyedTower ;
 	// Constructor
 	public ArcherTower(ColorType color) {
+		isDestroyed = false ;
+
 		setColorType(color) ;
 
 		setRangeCircleRadius(RANGE_RADIUS) ;
@@ -52,6 +59,7 @@ public class ArcherTower extends Building {
 		} else {
 			// Pass
 		}
+		setDestroyedTower(DESTROYED_TOWER_PATH) ;
 
 		setStateImage(idleTower) ;
 	}
@@ -62,12 +70,27 @@ public class ArcherTower extends Building {
 	private void setBattleTower(String path) {
 		this.battleTower = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , WIDTH , HEIGHT , false , false);
 	}
+	private void setDestroyedTower(String path) {
+		this.destroyedTower = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , WIDTH , HEIGHT , false , false);
+	}
 	// Methods : Getters
 
 	// Methods : Other
+	public void destroy() {
+		isDestroyed = true ;
+		setRangeCircleRadius(0) ;
+		setHealthCircleRadius(0) ;
+		removeRangeCircle() ;
+		removeHealthCircle() ;
+	}
 	public void draw(GraphicsContext graphics) {
-		if ( attackState )
+		if ( isDestroyed ) {
+			setStateImage(destroyedTower) ;
+		} else if ( attackState ) {
 			setStateImage(battleTower) ;
+		} else {
+			setStateImage(idleTower) ;
+		}
 
 		graphics.drawImage(stateImage , getX() , getY()) ;
 	}

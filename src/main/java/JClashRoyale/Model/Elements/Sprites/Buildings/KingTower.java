@@ -14,7 +14,7 @@ import java.util.Objects;
 public class KingTower extends Building {
 	// Fields : Final
 	private final double RANGE_RADIUS = 210.0 ;
-	private final double HEALTH_RADIUS = 125.0 ;
+	private final double HEALTH_RADIUS = 95.0 ;
 
 	private final double RUN_SPEED = 0.0 ;
 	private final double ATTACK_SPEED = 1 ;
@@ -26,10 +26,17 @@ public class KingTower extends Building {
 
 	private final String RED_TOWER_PATH = "/JClashRoyale/assets/sprites/king_tower/king_tower_red.png" ;
 	private final String BLUE_TOWER_PATH = "/JClashRoyale/assets/sprites/king_tower/king_tower_blue.png" ;
+
+	private final String DESTROYED_TOWER_PATH = "/JClashRoyale/assets/sprites/king_tower/king_tower_destroyed.png" ;
 	// Fields : Other
+	private boolean isDestroyed ;
+
 	private Image tower ;
+	private Image destroyedTower ;
 	// Constructor
 	public KingTower(ColorType color) {
+		isDestroyed = false ;
+
 		setColorType(color) ;
 
 		setRangeCircleRadius(RANGE_RADIUS) ;
@@ -47,6 +54,7 @@ public class KingTower extends Building {
 		} else {
 			// Pass
 		}
+		setDestroyedTower(DESTROYED_TOWER_PATH) ;
 
 		setStateImage(tower) ;
 	}
@@ -54,12 +62,27 @@ public class KingTower extends Building {
 	private void setTower(String path) {
 		this.tower = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , WIDTH , HEIGHT , false , false) ;
 	}
+	private void setDestroyedTower(String path) {
+		this.destroyedTower = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , WIDTH , HEIGHT , false , false);
+	}
 	// Methods : Getters
 
 	// Methods : Other
+	public void destroy() {
+		isDestroyed = true ;
+		setRangeCircleRadius(0) ;
+		setHealthCircleRadius(0) ;
+		removeRangeCircle() ;
+		removeHealthCircle() ;
+	}
 	public void draw(GraphicsContext graphics) {
-		if ( attackState )
+		if ( isDestroyed ) {
+			setStateImage(destroyedTower) ;
+		} else if ( attackState ) {
 			setStateImage(tower) ;
+		} else {
+			setStateImage(tower) ;
+		}
 
 		graphics.drawImage(stateImage , getX() , getY()) ;
 	}

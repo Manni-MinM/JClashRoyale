@@ -6,21 +6,21 @@ import JClashRoyale.Model.Player;
  * @author Amir Iravanimanesh & Manni Moghimi
  * @since 7/19/2021
  */
-public class KingTower {
+public class ArcherTowerCard {
     public static int getHP() {
         switch (Player.player.getLevel()) {
             case 1:
-                return 2400;
+                return 1400;
             case 2:
-                return 2568;
+                return 1512;
             case 3:
-                return 2736;
+                return 1624;
             case 4:
-                return 2904;
+                return 1750;
             case 5:
-                return 3096;
+                return 1890;
         }
-        return 0;
+        return 1400;
     }
 
     public static int getDamage() {
@@ -28,14 +28,14 @@ public class KingTower {
             case 1:
                 return 50;
             case 2:
-                return 53;
+                return 54;
             case 3:
-                return 57;
+                return 58;
             case 4:
-                return 60;
+                return 62;
             case 5:
-                return 64;
+                return 69;
         }
-        return 0;
+        return 50;
     }
 }

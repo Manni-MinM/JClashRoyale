@@ -57,6 +57,12 @@ public abstract class Sprite {
 	public void setHealthCircleRadius(double radius) {
 		this.healthCircleRadius = radius ;
 	}
+	public void removeRangeCircle() {
+		this.rangeCircle = null ;
+	}
+	public void removeHealthCircle() {
+		this.healthCircle = null ;
+	}
 	public void setCost(int cost) {
 		this.cost = cost ;	
 	}
@@ -158,7 +164,7 @@ public abstract class Sprite {
 			return false ;
 		if ( !this.rangeIntersects(defender.getHealthCircle()) )
 			return false ;
-		return (this.getTargetType() == TroopType.ALL || this.getTargetType() == defender.getTroopType()) ;
+		return (this.getTargetType() == TroopType.ALL || this.getTargetType() == defender.getTroopType() || defender.getTroopType() == TroopType.BUILDING) ;
 	}
 	public void showRangeCircle(GraphicsContext graphics) {
 		double offsetX = (stateImage.getWidth() - rangeCircleRadius) / 2.0 ;

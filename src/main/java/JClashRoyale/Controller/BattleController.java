@@ -185,7 +185,6 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof MiniPekkaCard ) {
-			// TODO : Test
 			MiniPekka miniPekka = new MiniPekka(ColorType.BLUE) ;
 			miniPekka.setLocation(event.getX() , event.getY()) ;
 			miniPekka.setHitpoints(selectedCard.getCard().getHP()) ;
