@@ -2,6 +2,7 @@
 
 package JClashRoyale.Controller;
 
+import JClashRoyale.Model.Cards.*;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.ProgressBar;
@@ -20,17 +21,6 @@ import javafx.scene.control.TextField;
 import java.util.*;
 
 import JClashRoyale.Model.Player ;
-
-import JClashRoyale.Model.Cards.Card ;
-import JClashRoyale.Model.Cards.GiantCard ;
-import JClashRoyale.Model.Cards.ArcherCard ;
-import JClashRoyale.Model.Cards.WizardCard ;
-import JClashRoyale.Model.Cards.CannonCard ;
-import JClashRoyale.Model.Cards.ValkyrieCard ;
-import JClashRoyale.Model.Cards.MiniPekkaCard ;
-import JClashRoyale.Model.Cards.BabyDragonCard ;
-import JClashRoyale.Model.Cards.BarbariansCard ;
-import JClashRoyale.Model.Cards.InfernoTowerCard ;
 
 import JClashRoyale.Model.Elements.Sprite ;
 import JClashRoyale.Model.Elements.Enums.ColorType ;
@@ -160,7 +150,7 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof BarbariansCard ) {
-			Barbarian barbarian = new Barbarian(ColorType.BLUE) ;
+			Barbarian barbarian = new Barbarian(ColorType.RED) ;
 			barbarian.setLocation(event.getX() , event.getY()) ;
 			barbarian.setHitpoints(selectedCard.getCard().getHP()) ;
 			barbarian.setDamage(selectedCard.getCard().getDamage()) ;
@@ -260,32 +250,29 @@ public class BattleController {
 
     private static int getCost(ImagePackage imagePackage) {
         if ( imagePackage.getCard() instanceof ArcherCard ) {
-            Archer temp = new Archer(ColorType.BLUE);
-            return temp.getCost();
+            return 3;
         } else if ( imagePackage.getCard() instanceof BabyDragonCard ) {
-            BabyDragon temp = new BabyDragon(ColorType.BLUE);
-            return temp.getCost();
+            return 4;
         } else if ( imagePackage.getCard() instanceof BarbariansCard ) {
-            Barbarian temp = new Barbarian(ColorType.BLUE);
-            return temp.getCost();
+            return 5;
         } else if ( imagePackage.getCard() instanceof GiantCard ) {
-            Giant temp = new Giant(ColorType.BLUE);
-            return temp.getCost();
+            return 5;
         } else if ( imagePackage.getCard() instanceof MiniPekkaCard ) {
-            MiniPekka temp = new MiniPekka(ColorType.BLUE);
-            return temp.getCost();
+            return 4;
         } else if ( imagePackage.getCard() instanceof ValkyrieCard ) {
-            Valkyrie temp = new Valkyrie(ColorType.BLUE);
-            return temp.getCost();
+            return 4;
         } else if ( imagePackage.getCard() instanceof WizardCard ) {
-            Wizard temp = new Wizard(ColorType.BLUE);
-            return temp.getCost();
+            return 5;
         } else if ( imagePackage.getCard() instanceof CannonCard ) {
-            Cannon temp = new Cannon(ColorType.BLUE);
-            return temp.getCost();
+            return 3;
+        } else if ( imagePackage.getCard() instanceof RageCard ) {
+            return 2;
+        } else if ( imagePackage.getCard() instanceof ArrowsCard ) {
+            return 3;
+        } else if ( imagePackage.getCard() instanceof FireballCard ) {
+            return 4;
         } else if ( imagePackage.getCard() instanceof InfernoTowerCard ) {
-            InfernoTower temp = new InfernoTower(ColorType.BLUE);
-            return temp.getCost();
+            return 5;
         }
 
         return 0;
