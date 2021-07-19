@@ -1,9 +1,6 @@
 package JClashRoyale.Model;
 
-import JClashRoyale.Controller.BattleDeckSectionController;
-import JClashRoyale.Controller.PrimaryController;
-import JClashRoyale.Controller.ProfileSectionController;
-import JClashRoyale.Controller.SecondaryController;
+import JClashRoyale.Controller.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -53,6 +50,10 @@ public class App extends Application {
             ((ProfileSectionController) fxmlLoader.getController()).init(stage);
         else if (fxmlLoader.getController() instanceof BattleDeckSectionController)
             ((BattleDeckSectionController) fxmlLoader.getController()).init(stage);
+        else if (fxmlLoader.getController() instanceof TrainingCampController)
+            ((TrainingCampController) fxmlLoader.getController()).init(stage);
+        else if (fxmlLoader.getController() instanceof BattleHistoryController)
+            ((BattleHistoryController) fxmlLoader.getController()).init(stage);
         stage.hide();
         stage.show();
 
