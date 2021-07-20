@@ -182,13 +182,18 @@ public class GameManager {
 
 		if ( randomInt == 0 ) {
 			ArcherCard archerCard = new ArcherCard() ;
-			Archer archer = new Archer(ColorType.RED) ;
-			archer.setHitpoints(archerCard.getHP()) ;
-			archer.setDamage(archerCard.getDamage()) ;
-			archer.setLocation(randomX , randomY) ;
-			if ( getElixerBot() >= archer.getCost() ) {
-				addSprite(archer) ;
-				consumeElixerBot(archer.getCost()) ;
+			Archer archer1 = new Archer(ColorType.RED) ;
+			archer1.setHitpoints(archerCard.getHP()) ;
+			archer1.setDamage(archerCard.getDamage()) ;
+			archer1.setLocation(randomX - 10 , randomY) ;
+			Archer archer2 = new Archer(ColorType.RED) ;
+			archer2.setHitpoints(archerCard.getHP()) ;
+			archer2.setDamage(archerCard.getDamage()) ;
+			archer2.setLocation(randomX + 10 , randomY) ;
+			if ( getElixerBot() >= archer1.getCost() ) {
+				addSprite(archer1) ;
+				addSprite(archer2) ;
+				consumeElixerBot(archer1.getCost()) ;
 			} else {
 				return ;
 			}
@@ -206,13 +211,28 @@ public class GameManager {
 			}
 		} else if ( randomInt == 2 ) {
 			BarbariansCard barbariansCard = new BarbariansCard() ;
-			Barbarian barbarian = new Barbarian(ColorType.RED) ;
-			barbarian.setLocation(randomX , randomY) ;
-			barbarian.setHitpoints(barbariansCard.getHP()) ;
-			barbarian.setDamage(barbariansCard.getDamage()) ;
-			if ( getElixerBot() >= barbarian.getCost() ) {
-				addSprite(barbarian) ;
-				consumeElixerBot(barbarian.getCost()) ;
+			Barbarian barbarian1 = new Barbarian(ColorType.RED) ;
+			barbarian1.setHitpoints(barbariansCard.getHP()) ;
+			barbarian1.setDamage(barbariansCard.getDamage()) ;
+			barbarian1.setLocation(randomX + 15 , randomY + 10) ;
+			Barbarian barbarian2 = new Barbarian(ColorType.RED) ;
+			barbarian2.setHitpoints(barbariansCard.getHP()) ;
+			barbarian2.setDamage(barbariansCard.getDamage()) ;
+			barbarian2.setLocation(randomX - 15 , randomY + 10) ;
+			Barbarian barbarian3 = new Barbarian(ColorType.RED) ;
+			barbarian3.setHitpoints(barbariansCard.getHP()) ;
+			barbarian3.setDamage(barbariansCard.getDamage()) ;
+			barbarian3.setLocation(randomX + 15 , randomY - 10) ;
+			Barbarian barbarian4 = new Barbarian(ColorType.RED) ;
+			barbarian4.setHitpoints(barbariansCard.getHP()) ;
+			barbarian4.setDamage(barbariansCard.getDamage()) ;
+			barbarian4.setLocation(randomX - 15 , randomY - 10) ;
+			if ( getElixerBot() >= barbarian1.getCost() ) {
+				addSprite(barbarian1) ;
+				addSprite(barbarian2) ;
+				addSprite(barbarian3) ;
+				addSprite(barbarian4) ;
+				consumeElixerBot(barbarian1.getCost()) ;
 			} else {
 				return ;
 			}

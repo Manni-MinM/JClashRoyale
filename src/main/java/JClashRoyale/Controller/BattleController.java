@@ -163,20 +163,37 @@ public class BattleController {
 		if ( selectedCard.getCard() instanceof ArcherCard ) {
 			if ( event.getY() > 450.0 || event.getY() < 250 )
 				return ;
-			Archer archer = new Archer(ColorType.BLUE) ;
-			archer.setHitpoints(selectedCard.getCard().getHP()) ;
-			archer.setDamage(selectedCard.getCard().getDamage()) ;
-			archer.setLocation(event.getX() , event.getY()) ;
-			if ( gameManager.getElixer() >= archer.getCost() ) {
-				gameManager.addSprite(archer) ;
-				gameManager.consumeElixer(archer.getCost()) ;
+			ArcherCard archerCard = (ArcherCard)selectedCard.getCard() ;
+
+			Archer archer1 = new Archer(ColorType.BLUE) ;
+			Archer archer2 = new Archer(ColorType.BLUE) ;
+
+			double X = event.getX() - (archer1.getStateImage().getHeight()) / 2.0 ;
+			double Y = event.getY() - (archer1.getStateImage().getHeight()) / 2.0 ;
+
+			archer1.setHitpoints(archerCard.getHP()) ;
+			archer1.setDamage(archerCard.getDamage()) ;
+			archer1.setLocation(X - 10 , Y) ;
+			archer2.setHitpoints(archerCard.getHP()) ;
+			archer2.setDamage(archerCard.getDamage()) ;
+			archer2.setLocation(X + 10 , Y) ;
+			if ( gameManager.getElixer() >= archer1.getCost() ) {
+				gameManager.addSprite(archer1) ;
+				gameManager.addSprite(archer2) ;
+				gameManager.consumeElixer(archer1.getCost()) ;
 			} else {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof BabyDragonCard ) {
 			if ( event.getY() > 450.0 || event.getY() < 250 )
 				return ;
+			BabyDragonCard babyDragonCard = (BabyDragonCard)selectedCard.getCard() ;
+
 			BabyDragon babyDragon = new BabyDragon(ColorType.BLUE) ;
+
+			double X = event.getX() - (babyDragon.getStateImage().getHeight()) / 2.0 ;
+			double Y = event.getY() - (babyDragon.getStateImage().getHeight()) / 2.0 ;
+
 			babyDragon.setHitpoints(selectedCard.getCard().getHP()) ;
 			babyDragon.setDamage(selectedCard.getCard().getDamage()) ;
 			babyDragon.setLocation(event.getX() , event.getY()) ;
@@ -189,21 +206,48 @@ public class BattleController {
 		} else if ( selectedCard.getCard() instanceof BarbariansCard ) {
 			if ( event.getY() > 450.0 || event.getY() < 250 )
 				return ;
-			Barbarian barbarian = new Barbarian(ColorType.BLUE) ;
-			barbarian.setLocation(event.getX() , event.getY()) ;
-			barbarian.setHitpoints(selectedCard.getCard().getHP()) ;
-			barbarian.setDamage(selectedCard.getCard().getDamage()) ;
-			if ( gameManager.getElixer() >= barbarian.getCost() ) {
-				gameManager.addSprite(barbarian) ;
-				gameManager.consumeElixer(barbarian.getCost()) ;
+			BarbariansCard barbariansCard = (BarbariansCard)selectedCard.getCard() ;
+
+			Barbarian barbarian1 = new Barbarian(ColorType.BLUE) ;
+			Barbarian barbarian2 = new Barbarian(ColorType.BLUE) ;
+			Barbarian barbarian3 = new Barbarian(ColorType.BLUE) ;
+			Barbarian barbarian4 = new Barbarian(ColorType.BLUE) ;
+
+			double X = event.getX() - (barbarian1.getStateImage().getHeight()) / 2.0 ;
+			double Y = event.getY() - (barbarian1.getStateImage().getHeight()) / 2.0 ;
+
+			barbarian1.setHitpoints(barbariansCard.getHP()) ;
+			barbarian1.setDamage(barbariansCard.getDamage()) ;
+			barbarian1.setLocation(X + 15 , Y + 10) ;
+			barbarian2.setHitpoints(barbariansCard.getHP()) ;
+			barbarian2.setDamage(barbariansCard.getDamage()) ;
+			barbarian2.setLocation(X - 15 , Y + 10) ;
+			barbarian3.setHitpoints(barbariansCard.getHP()) ;
+			barbarian3.setDamage(barbariansCard.getDamage()) ;
+			barbarian3.setLocation(X + 15 , Y - 10) ;
+			barbarian4.setHitpoints(barbariansCard.getHP()) ;
+			barbarian4.setDamage(barbariansCard.getDamage()) ;
+			barbarian4.setLocation(X - 15 , Y - 10) ;
+			if ( gameManager.getElixer() >= barbarian1.getCost() ) {
+				gameManager.addSprite(barbarian1) ;
+				gameManager.addSprite(barbarian2) ;
+				gameManager.addSprite(barbarian3) ;
+				gameManager.addSprite(barbarian4) ;
+				gameManager.consumeElixer(barbarian1.getCost()) ;
 			} else {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof GiantCard ) {
 			if ( event.getY() > 450.0 || event.getY() < 250 )
 				return ;
+			GiantCard giantCard = (GiantCard)selectedCard.getCard() ;
+
 			Giant giant = new Giant(ColorType.BLUE) ;
-			giant.setLocation(event.getX() , event.getY()) ;
+
+			double X = event.getX() - (giant.getStateImage().getHeight()) / 2.0 ;
+			double Y = event.getY() - (giant.getStateImage().getHeight()) / 2.0 ;
+
+			giant.setLocation(X , Y) ;
 			giant.setHitpoints(selectedCard.getCard().getHP()) ;
 			giant.setDamage(selectedCard.getCard().getDamage()) ;
 			if ( gameManager.getElixer() >= giant.getCost() ) {
@@ -215,8 +259,14 @@ public class BattleController {
 		} else if ( selectedCard.getCard() instanceof MiniPekkaCard ) {
 			if ( event.getY() > 450.0 || event.getY() < 250 )
 				return ;
+			MiniPekkaCard miniPekkaCard = (MiniPekkaCard)selectedCard.getCard() ;
+
 			MiniPekka miniPekka = new MiniPekka(ColorType.BLUE) ;
-			miniPekka.setLocation(event.getX() , event.getY()) ;
+
+			double X = event.getX() - (miniPekka.getStateImage().getHeight()) / 2.0 ;
+			double Y = event.getY() - (miniPekka.getStateImage().getHeight()) / 2.0 ;
+
+			miniPekka.setLocation(X , Y) ;
 			miniPekka.setHitpoints(selectedCard.getCard().getHP()) ;
 			miniPekka.setDamage(selectedCard.getCard().getDamage()) ;
 			if ( gameManager.getElixer() >= miniPekka.getCost() ) {
@@ -228,8 +278,14 @@ public class BattleController {
 		} else if ( selectedCard.getCard() instanceof ValkyrieCard ) {
 			if ( event.getY() > 450.0 || event.getY() < 250 )
 				return ;
+			ValkyrieCard valkyrieCard = (ValkyrieCard)selectedCard.getCard() ;
+
 			Valkyrie valkyrie = new Valkyrie(ColorType.BLUE) ;
-			valkyrie.setLocation(event.getX() , event.getY()) ;
+
+			double X = event.getX() - (valkyrie.getStateImage().getHeight()) / 2.0 ;
+			double Y = event.getY() - (valkyrie.getStateImage().getHeight()) / 2.0 ;
+
+			valkyrie.setLocation(X , Y) ;
 			valkyrie.setHitpoints(selectedCard.getCard().getHP()) ;
 			valkyrie.setDamage(selectedCard.getCard().getDamage()) ;
 			if ( gameManager.getElixer() >= valkyrie.getCost() ) {
@@ -241,8 +297,14 @@ public class BattleController {
 		} else if ( selectedCard.getCard() instanceof WizardCard ) {
 			if ( event.getY() > 450.0 || event.getY() < 250 )
 				return ;
+			WizardCard wizardCard = (WizardCard)selectedCard.getCard() ;
+
 			Wizard wizard = new Wizard(ColorType.BLUE) ;
-			wizard.setLocation(event.getX() , event.getY()) ;
+
+			double X = event.getX() - (wizard.getStateImage().getHeight()) / 2.0 ;
+			double Y = event.getY() - (wizard.getStateImage().getHeight()) / 2.0 ;
+
+			wizard.setLocation(X , Y) ;
 			wizard.setHitpoints(selectedCard.getCard().getHP()) ;
 			wizard.setDamage(selectedCard.getCard().getDamage()) ;
 			if ( gameManager.getElixer() >= wizard.getCost() ) {
@@ -254,7 +316,13 @@ public class BattleController {
 		} else if ( selectedCard.getCard() instanceof CannonCard ) {
 			if ( event.getY() > 450.0 || event.getY() < 250 )
 				return ;
+			CannonCard cannonCard = (CannonCard)selectedCard.getCard() ;
+
 			Cannon cannon = new Cannon(ColorType.BLUE) ;
+
+			double X = event.getX() - (cannon.getStateImage().getHeight()) / 2.0 ;
+			double Y = event.getY() - (cannon.getStateImage().getHeight()) / 2.0 ;
+
 			cannon.setLocation(event.getX() , event.getY()) ;
 			cannon.setHitpoints(selectedCard.getCard().getHP()) ;
 			cannon.setDamage(selectedCard.getCard().getDamage()) ;
@@ -269,8 +337,14 @@ public class BattleController {
 		} else if ( selectedCard.getCard() instanceof InfernoTowerCard ) {
 			if ( event.getY() > 450.0 || event.getY() < 250 )
 				return ;
+			InfernoTowerCard infernoTowerCard = (InfernoTowerCard)selectedCard.getCard() ;
+
 			InfernoTower infernoTower = new InfernoTower(ColorType.BLUE) ;
-			infernoTower.setLocation(event.getX() , event.getY()) ;
+
+			double X = event.getX() - (infernoTower.getStateImage().getHeight()) / 2.0 ;
+			double Y = event.getY() - (infernoTower.getStateImage().getHeight()) / 2.0 ;
+
+			infernoTower.setLocation(X , Y) ;
 			infernoTower.setHitpoints(selectedCard.getCard().getHP()) ;
 			infernoTower.setDamage(selectedCard.getCard().getDamage()) ;
 			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
@@ -284,7 +358,11 @@ public class BattleController {
 		} else if ( selectedCard.getCard() instanceof RageCard ) {
 			RageCard rageCard = (RageCard)selectedCard.getCard() ;
 			Rage rage = new Rage(ColorType.BLUE) ;
-			rage.setLocation(event.getX() , event.getY()) ;
+
+			double X = event.getX() - (rage.getStateImage().getHeight()) / 2.0 ;
+			double Y = event.getY() - (rage.getStateImage().getHeight()) / 2.0 ;
+
+			rage.setLocation(X , Y) ;
 			rage.setDuration(rageCard.getAttribute()) ;
 			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
 			rage.setDeploymentTime(timeNow) ;
@@ -297,7 +375,11 @@ public class BattleController {
 		} else if ( selectedCard.getCard() instanceof FireballCard ) {
 			FireballCard fireballCard = (FireballCard)selectedCard.getCard() ;
 			Fireball fireball = new Fireball(ColorType.BLUE) ;
-			fireball.setLocation(event.getX() , event.getY()) ;
+
+			double X = event.getX() - (fireball.getStateImage().getHeight()) / 2.0 ;
+			double Y = event.getY() - (fireball.getStateImage().getHeight()) / 2.0 ;
+
+			fireball.setLocation(X , Y) ;
 			fireball.setDamage(fireballCard.getAttribute()) ;
 			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
 			fireball.setDeploymentTime(timeNow) ;
@@ -310,7 +392,11 @@ public class BattleController {
 		} else if ( selectedCard.getCard() instanceof ArrowsCard ) {
 			ArrowsCard arrowsCard = (ArrowsCard)selectedCard.getCard() ;
 			Arrows arrows = new Arrows(ColorType.BLUE) ;
-			arrows.setLocation(event.getX() , event.getY()) ;
+
+			double X = event.getX() - (arrows.getStateImage().getHeight()) / 2.0 ;
+			double Y = event.getY() - (arrows.getStateImage().getHeight()) / 2.0 ;
+
+			arrows.setLocation(X , Y) ;
 			arrows.setDamage(arrowsCard.getAttribute()) ;
 			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
 			arrows.setDeploymentTime(timeNow) ;

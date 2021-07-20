@@ -110,6 +110,9 @@ public abstract class Spell {
 	public double getDeploymentTime() {
 		return this.deploymentTime ;
 	}
+	public Image getStateImage() {
+		return this.animation ;
+	}
 	// Methods : Private
 	private boolean circleIntersects(Circle first , Circle second) {
 		if ( first == null || second == null )
