@@ -6,6 +6,7 @@ import java.util.Random ;
 import java.util.Objects ;
 import java.util.ArrayList ;
 
+import JClashRoyale.Model.Database;
 import javafx.animation.AnimationTimer ;
 
 import javafx.scene.control.ProgressBar ;
@@ -282,6 +283,22 @@ public class GameManager {
 				double elixerTime = timeNow - timeOffset ;
 				double elixerBotTime = timeNow - timeOffset ;
 
+				if (blueKingTower.isDestroyed() || redKingTower.isDestroyed() || (timeNow >= 180)){
+					int playerScore = 0;
+					int opponentScore = 0;
+
+					if (blueArcherTowerLeft.isDestroyed()) playerScore++;
+					if (blueArcherTowerRight.isDestroyed()) playerScore++;
+					if (blueKingTower.isDestroyed()) playerScore++;
+					if (redArcherTowerLeft.isDestroyed()) opponentScore++;
+					if (redArcherTowerRight.isDestroyed()) opponentScore++;
+					if (redKingTower.isDestroyed()) opponentScore++;
+
+					if (playerScore > opponentScore){
+
+					}
+				}
+
 				if ( elixerTime >= 1.0 ) {
 					timeOffset ++ ;
 					elixer = Math.min(elixer + 1 , 10) ;
@@ -296,8 +313,6 @@ public class GameManager {
 
 				// TODO : Test
 				dummyBot() ;
-				System.err.println("ELIXER BOT : " + getElixerBot()) ;
-
 				loadBattleMap() ;
 				elixerField.setText(String.valueOf(elixer)) ;
 
