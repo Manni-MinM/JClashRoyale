@@ -43,12 +43,12 @@
             <Font name="Swis721 BT Bold" size="15.0" />
          </font>
       </Button>
-      <ImageView fitHeight="175.0" fitWidth="324.0" layoutX="66.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="175.0" fitWidth="324.0" layoutX="66.0" layoutY="389.0" onMouseClicked="#switchToAdvancedAI" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/advanced_AI.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="175.0" fitWidth="324.0" layoutX="65.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="175.0" fitWidth="324.0" layoutX="65.0" layoutY="197.0" onMouseClicked="#switchToIdiotAI" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/idiot_AI.png" />
          </image>

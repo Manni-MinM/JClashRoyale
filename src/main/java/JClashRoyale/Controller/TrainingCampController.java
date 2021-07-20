@@ -47,4 +47,17 @@ public class TrainingCampController {
         App.setRoot("secondary");
     }
 
+    @FXML
+    private void switchToIdiotAI() throws IOException {
+        if (App.music) SoundSystem.stopMainMenuMusic();
+        SoundSystem.mouseClickSFX();
+        App.setRoot("battle");
+    }
+
+    @FXML
+    private void switchToAdvancedAI() throws IOException {
+        SoundSystem.mouseClickSFX();
+        App.setRoot("battle");
+    }
+
 }
