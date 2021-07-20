@@ -9,7 +9,9 @@ import javax.sound.sampled.LineEvent.Type;
 
 public class SoundSystem {
     static SimpleAudioPlayer maintheme;
-    private static AudioInputStream audioStream;
+    static SimpleAudioPlayer battleTheme;
+    private static AudioInputStream mainThemeAudioStream;
+    private static AudioInputStream battleThemeAudioStream;
 
     public static void mouseClickSFX() {
         if (!App.sfx)
@@ -45,9 +47,22 @@ public class SoundSystem {
             InputStream audioSrc = SoundSystem.class.getResourceAsStream("/JClashRoyale/assets/sfx/menu_theme.wav");
             assert audioSrc != null;
             InputStream bufferedIn = new BufferedInputStream(audioSrc);
-            audioStream = AudioSystem.getAudioInputStream(bufferedIn);
-            maintheme = new SimpleAudioPlayer(audioStream);
+            mainThemeAudioStream = AudioSystem.getAudioInputStream(bufferedIn);
+            maintheme = new SimpleAudioPlayer(mainThemeAudioStream);
             maintheme.start();
+        } catch (UnsupportedAudioFileException | IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void battleTheme() {
+        try {
+            InputStream audioSrc = SoundSystem.class.getResourceAsStream("/JClashRoyale/assets/sfx/battle_theme.wav");
+            assert audioSrc != null;
+            InputStream bufferedIn = new BufferedInputStream(audioSrc);
+            battleThemeAudioStream = AudioSystem.getAudioInputStream(bufferedIn);
+            battleTheme = new SimpleAudioPlayer(battleThemeAudioStream);
+            battleTheme.start();
         } catch (UnsupportedAudioFileException | IOException e) {
             System.out.println(e.getMessage());
         }
@@ -57,6 +72,14 @@ public class SoundSystem {
         if (!App.music)
             maintheme.interrupt();
         else mainMenuTheme();
+    }
+
+    public static void stopBattleMusic() {
+        battleTheme.interrupt();
+    }
+
+    public static void stopMainMenuMusic() {
+        maintheme.interrupt();
     }
 
 
@@ -115,12 +138,11 @@ public class SoundSystem {
                 clip.addLineListener(listener);
                 clip.open(audioInputStream);
                 clip.start();
-                if (audioInputStream.equals(audioStream))
+                if (audioInputStream.equals(mainThemeAudioStream))
                     clip.loop(Clip.LOOP_CONTINUOUSLY);
                 listener.waitUntilDone();
             } catch (InterruptedException e) {
                 if (App.music) {
-                    System.out.println("KIR");
                     handleClip(clip);
                 } else clip.stop();
 
