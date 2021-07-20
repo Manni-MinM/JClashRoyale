@@ -90,7 +90,8 @@ public class GameManager {
 	private ArcherTower blueArcherTowerRight ;
 	// Constructor
 	public GameManager() {
-		elixer = 0 ;
+		elixer = 5 ;
+		elixerBot = 5 ;
 
 		canvas = new Canvas(315 , 480) ;
 		graphics = canvas.getGraphicsContext2D() ;
@@ -355,10 +356,11 @@ public class GameManager {
 				elixerBar.setProgress(elixer / 10.0);
 				BattleController.updateAvailability(elixer);
 
-				dummyBot() ;
 				graphics.clearRect(0 , 0 , 315 , 480) ;
 				loadBattleMap() ;
 				elixerField.setText(String.valueOf(elixer)) ;
+
+				dummyBot() ;
 
 				ArrayList<Sprite> walkingSprites = new ArrayList<Sprite>() ;
 				ArrayList<Sprite> attackingSprites = new ArrayList<Sprite>() ;
