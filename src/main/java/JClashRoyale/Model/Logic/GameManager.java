@@ -334,12 +334,12 @@ public class GameManager {
 						Player.player.setCup(Player.player.getCup() + 30);
 						Player.player.setXp(Player.player.getXP() + 200);
 						System.out.println(Player.player.getCup());
-						return;
+						this.stop() ;
 					} else {
 						Player.player.setCup(Player.player.getCup() - 30);
 						Player.player.setXp(Player.player.getXP() + 70);
 						System.out.println(Player.player.getCup());
-						return;
+						this.stop() ;
 					}
 				}
 
