@@ -44,17 +44,17 @@
             <Font name="Swis721 BT Bold" size="15.0" />
          </font>
       </Button>
-      <PieChart layoutX="104.0" layoutY="51.0" prefHeight="242.0" prefWidth="242.0" />
-      <ScrollPane layoutX="48.0" layoutY="317.0" prefHeight="242.0" prefWidth="353.0">
+      <PieChart fx:id="pieChart" layoutX="91.0" layoutY="50.0" prefHeight="266.0" prefWidth="266.0" />
+      <ScrollPane layoutX="39.0" layoutY="345.0" prefHeight="218.0" prefWidth="370.0">
          <content>
-            <VBox prefHeight="236.0" prefWidth="338.0">
+            <VBox prefHeight="216.0" prefWidth="354.0">
                <children>
                   <GridPane fx:id="gridPane" gridLinesVisible="true" styleClass="grid">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="86.20001220703125" minWidth="10.0" prefWidth="67.80002059936524" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.59998321533203" minWidth="10.0" prefWidth="90.40001220703124" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.39998779296877" minWidth="10.0" prefWidth="91.99998779296874" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.20003967285157" minWidth="10.0" prefWidth="113.20003967285157" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -64,5 +64,6 @@
             </VBox>
          </content>
       </ScrollPane>
+      <Label fx:id="WLlabel" alignment="CENTER" layoutX="17.0" layoutY="36.0" prefHeight="28.0" prefWidth="414.0" text="Label" />
    </children>
 </AnchorPane>
