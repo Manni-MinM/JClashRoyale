@@ -355,8 +355,8 @@ public class GameManager {
 				elixerBar.setProgress(elixer / 10.0);
 				BattleController.updateAvailability(elixer);
 
-				// TODO : Test
 				dummyBot() ;
+				graphics.clearRect(0 , 0 , 315 , 480) ;
 				loadBattleMap() ;
 				elixerField.setText(String.valueOf(elixer)) ;
 
