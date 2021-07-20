@@ -310,7 +310,11 @@ public class GameManager {
 				double timeNow = ((currentNanoTime - startNanoTime) / 1000000000.0) ;
 				double elixerTime = timeNow - timeOffset ;
 				double elixerBotTime = timeNow - timeOffset ;
-				timerField.setText((int) ((180 - timeNow) / 60) + ":" + (int) (180 - timeNow)%60);
+				if ( (int) (180 - timeNow) % 60 < 10 ) {
+					timerField.setText((int) ((180 - timeNow) / 60) + ":0" + (int) (180 - timeNow)%60);
+				} else {
+					timerField.setText((int) ((180 - timeNow) / 60) + ":" + (int) (180 - timeNow)%60);
+				}
 
 				if (blueKingTower.isDestroyed() || redKingTower.isDestroyed() || (timeNow >= 180)){
 					int playerScore = 0;
