@@ -10,18 +10,18 @@ public abstract class Card {
     private String imageAddress;
     public static ArrayList<Card> gameCards = new ArrayList<>();
     static {
-        gameCards.add(new Archer());
-        gameCards.add(new Arrows());
-        gameCards.add(new BabyDragon());
-        gameCards.add(new Barbarians());
-        gameCards.add(new Cannon());
-        gameCards.add(new Fireball());
-        gameCards.add(new Giant());
-        gameCards.add(new InfernoTower());
-        gameCards.add(new MiniPekka());
-        gameCards.add(new Rage());
-        gameCards.add(new Valkyrie());
-        gameCards.add(new Wizard());
+        gameCards.add(new ArcherCard());
+        gameCards.add(new ArrowsCard());
+        gameCards.add(new BabyDragonCard());
+        gameCards.add(new BarbariansCard());
+        gameCards.add(new CannonCard());
+        gameCards.add(new FireballCard());
+        gameCards.add(new GiantCard());
+        gameCards.add(new InfernoTowerCard());
+        gameCards.add(new MiniPekkaCard());
+        gameCards.add(new RageCard());
+        gameCards.add(new ValkyrieCard());
+        gameCards.add(new WizardCard());
     }
 
 

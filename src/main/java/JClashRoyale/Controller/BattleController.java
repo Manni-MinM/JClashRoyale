@@ -2,11 +2,12 @@
 
 package JClashRoyale.Controller;
 
-import JClashRoyale.Model.Cards.Card;
-import JClashRoyale.Model.Player;
 import javafx.fxml.FXML;
 
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
@@ -16,9 +17,42 @@ import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import JClashRoyale.Model.Logic.GameStarter;
-
 import java.util.*;
+
+import JClashRoyale.Model.Player ;
+
+import JClashRoyale.Model.Cards.Card ;
+import JClashRoyale.Model.Cards.GiantCard ;
+import JClashRoyale.Model.Cards.ArcherCard ;
+import JClashRoyale.Model.Cards.WizardCard ;
+import JClashRoyale.Model.Cards.RageCard ;
+import JClashRoyale.Model.Cards.ArrowsCard ;
+import JClashRoyale.Model.Cards.CannonCard ;
+import JClashRoyale.Model.Cards.FireballCard ;
+import JClashRoyale.Model.Cards.ValkyrieCard ;
+import JClashRoyale.Model.Cards.MiniPekkaCard ;
+import JClashRoyale.Model.Cards.BarbariansCard ;
+import JClashRoyale.Model.Cards.BabyDragonCard ;
+import JClashRoyale.Model.Cards.InfernoTowerCard ;
+
+import JClashRoyale.Model.Elements.Spell ;
+import JClashRoyale.Model.Elements.Sprite ;
+import JClashRoyale.Model.Elements.Enums.ColorType ;
+import JClashRoyale.Model.Elements.Spells.Rage ;
+import JClashRoyale.Model.Elements.Spells.Arrows ;
+import JClashRoyale.Model.Elements.Spells.Fireball ;
+import JClashRoyale.Model.Elements.Sprites.Troops.Giant ;
+import JClashRoyale.Model.Elements.Sprites.Troops.Archer ;
+import JClashRoyale.Model.Elements.Sprites.Troops.Wizard ;
+import JClashRoyale.Model.Elements.Sprites.Troops.Valkyrie ;
+import JClashRoyale.Model.Elements.Sprites.Troops.MiniPekka ;
+import JClashRoyale.Model.Elements.Sprites.Troops.Barbarian ;
+import JClashRoyale.Model.Elements.Sprites.Troops.BabyDragon ;
+import JClashRoyale.Model.Elements.Sprites.Buildings.Cannon ;
+import JClashRoyale.Model.Elements.Sprites.Buildings.InfernoTower ;
+
+import JClashRoyale.Model.Logic.GameStarter ;
+import JClashRoyale.Model.Logic.GameManager ;
 
 public class BattleController {
     // Fields
@@ -28,28 +62,22 @@ public class BattleController {
     private final ArrayList<Card> outOfHandCards = new ArrayList<>();
     private ImagePackage selectedCard;
     private ImagePackage nextCard;
+    public static HashMap<ImagePackage , Rectangle> bannedCards = new HashMap<>();
 
+    GameStarter gameStarter ;
+	GameManager gameManager ;
 
-    GameStarter gameStarter;
-
-    @FXML
-    private Pane titlePane;
-    @FXML
-    private TextField timer;
-    @FXML
-    private TextField result;
-    @FXML
-    private TextField elixer;
-    @FXML
-    private Label messageLabel;
-    @FXML
-    private Pane deckViewPane;
-    @FXML
-    private Pane gameViewPane;
-    @FXML
-    private ImageView btnMinimize, btnClose;
-    @FXML
-    private ImageView one, two, three, four, next;
+    @FXML private Pane titlePane;
+    @FXML private TextField timer;
+    @FXML private TextField result;
+    @FXML private TextField elixer;
+    @FXML private ProgressBar elixerBar;
+    @FXML private Label messageLabel;
+    @FXML private Pane deckViewPane;
+    @FXML private Pane gameViewPane;
+    @FXML private ImageView btnMinimize, btnClose;
+    @FXML private ImageView one, two, three, four, next;
+    @FXML private Rectangle cardBan1 , cardBan2 , cardBan3 , cardBan4;
 
     // Methods
     public void init(Stage stage) {
@@ -68,13 +96,14 @@ public class BattleController {
         Collections.shuffle(deck);
         initCards();
         cards.forEach(card -> card.getImageView().setOnMouseClicked(mouseEvent -> deckCardOnMousePressedAction(card.getImageView())));
+        gameViewPane.setOnMouseClicked(this::deployCard);
     }
 
     public void start() {
-        gameStarter = new GameStarter();
+        gameStarter = new GameStarter() ;
+		gameManager = gameStarter.getGameManager() ;
 
-        gameStarter.initDeck(deckViewPane);
-        gameStarter.initBattle(gameViewPane);
+		gameStarter.initBattle(timer , result , elixer , elixerBar , gameViewPane) ;
     }
 
     private void initCards() {
@@ -82,6 +111,10 @@ public class BattleController {
                 new ImagePackage(two, deck.get(1)),
                 new ImagePackage(three, deck.get(2)),
                 new ImagePackage(four, deck.get(3))));
+        bannedCards.put(cards.get(0), cardBan1);
+        bannedCards.put(cards.get(1), cardBan2);
+        bannedCards.put(cards.get(2), cardBan3);
+        bannedCards.put(cards.get(3), cardBan4);
         nextCard = new ImagePackage(next, deck.get(4));
         for (int i = 5; i < 8; i++) outOfHandCards.add(deck.get(i));
     }
@@ -108,7 +141,171 @@ public class BattleController {
         return null;
     }
 
-    public void deployCard() {
+    public void deployCard(MouseEvent event) {
+		if ( selectedCard.getCard() instanceof ArcherCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
+			Archer archer = new Archer(ColorType.BLUE) ;
+			archer.setHitpoints(selectedCard.getCard().getHP()) ;
+			archer.setDamage(selectedCard.getCard().getDamage()) ;
+			archer.setLocation(event.getX() , event.getY()) ;
+			if ( gameManager.getElixer() >= archer.getCost() ) {
+				gameManager.addSprite(archer) ;
+				gameManager.consumeElixer(archer.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard.getCard() instanceof BabyDragonCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
+			BabyDragon babyDragon = new BabyDragon(ColorType.BLUE) ;
+			babyDragon.setHitpoints(selectedCard.getCard().getHP()) ;
+			babyDragon.setDamage(selectedCard.getCard().getDamage()) ;
+			babyDragon.setLocation(event.getX() , event.getY()) ;
+			if ( gameManager.getElixer() >= babyDragon.getCost() ) {
+				gameManager.addSprite(babyDragon) ;
+				gameManager.consumeElixer(babyDragon.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard.getCard() instanceof BarbariansCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
+			Barbarian barbarian = new Barbarian(ColorType.BLUE) ;
+			barbarian.setLocation(event.getX() , event.getY()) ;
+			barbarian.setHitpoints(selectedCard.getCard().getHP()) ;
+			barbarian.setDamage(selectedCard.getCard().getDamage()) ;
+			if ( gameManager.getElixer() >= barbarian.getCost() ) {
+				gameManager.addSprite(barbarian) ;
+				gameManager.consumeElixer(barbarian.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard.getCard() instanceof GiantCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
+			Giant giant = new Giant(ColorType.BLUE) ;
+			giant.setLocation(event.getX() , event.getY()) ;
+			giant.setHitpoints(selectedCard.getCard().getHP()) ;
+			giant.setDamage(selectedCard.getCard().getDamage()) ;
+			if ( gameManager.getElixer() >= giant.getCost() ) {
+				gameManager.addSprite(giant) ;
+				gameManager.consumeElixer(giant.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard.getCard() instanceof MiniPekkaCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
+			MiniPekka miniPekka = new MiniPekka(ColorType.BLUE) ;
+			miniPekka.setLocation(event.getX() , event.getY()) ;
+			miniPekka.setHitpoints(selectedCard.getCard().getHP()) ;
+			miniPekka.setDamage(selectedCard.getCard().getDamage()) ;
+			if ( gameManager.getElixer() >= miniPekka.getCost() ) {
+				gameManager.addSprite(miniPekka) ;
+				gameManager.consumeElixer(miniPekka.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard.getCard() instanceof ValkyrieCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
+			Valkyrie valkyrie = new Valkyrie(ColorType.BLUE) ;
+			valkyrie.setLocation(event.getX() , event.getY()) ;
+			valkyrie.setHitpoints(selectedCard.getCard().getHP()) ;
+			valkyrie.setDamage(selectedCard.getCard().getDamage()) ;
+			if ( gameManager.getElixer() >= valkyrie.getCost() ) {
+				gameManager.addSprite(valkyrie) ;
+				gameManager.consumeElixer(valkyrie.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard.getCard() instanceof WizardCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
+			Wizard wizard = new Wizard(ColorType.BLUE) ;
+			wizard.setLocation(event.getX() , event.getY()) ;
+			wizard.setHitpoints(selectedCard.getCard().getHP()) ;
+			wizard.setDamage(selectedCard.getCard().getDamage()) ;
+			if ( gameManager.getElixer() >= wizard.getCost() ) {
+				gameManager.addSprite(wizard) ;
+				gameManager.consumeElixer(wizard.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard.getCard() instanceof CannonCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
+			Cannon cannon = new Cannon(ColorType.BLUE) ;
+			cannon.setLocation(event.getX() , event.getY()) ;
+			cannon.setHitpoints(selectedCard.getCard().getHP()) ;
+			cannon.setDamage(selectedCard.getCard().getDamage()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			cannon.setDeploymentTime(timeNow) ;
+			if ( gameManager.getElixer() >= cannon.getCost() ) {
+				gameManager.addSprite(cannon) ;
+				gameManager.consumeElixer(cannon.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard.getCard() instanceof InfernoTowerCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
+			InfernoTower infernoTower = new InfernoTower(ColorType.BLUE) ;
+			infernoTower.setLocation(event.getX() , event.getY()) ;
+			infernoTower.setHitpoints(selectedCard.getCard().getHP()) ;
+			infernoTower.setDamage(selectedCard.getCard().getDamage()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			infernoTower.setDeploymentTime(timeNow) ;
+			if ( gameManager.getElixer() >= infernoTower.getCost() ) {
+				gameManager.addSprite(infernoTower) ;
+				gameManager.consumeElixer(infernoTower.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard.getCard() instanceof RageCard ) {
+			RageCard rageCard = (RageCard)selectedCard.getCard() ;
+			Rage rage = new Rage(ColorType.BLUE) ;
+			rage.setLocation(event.getX() , event.getY()) ;
+			rage.setDuration(rageCard.getAttribute()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			rage.setDeploymentTime(timeNow) ;
+			if ( gameManager.getElixer() >= rage.getCost() ) {
+				gameManager.addSpell(rage) ;
+				gameManager.consumeElixer(rage.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard.getCard() instanceof FireballCard ) {
+			FireballCard fireballCard = (FireballCard)selectedCard.getCard() ;
+			Fireball fireball = new Fireball(ColorType.BLUE) ;
+			fireball.setLocation(event.getX() , event.getY()) ;
+			fireball.setDamage(fireballCard.getAttribute()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			fireball.setDeploymentTime(timeNow) ;
+			if ( gameManager.getElixer() >= fireball.getCost() ) {
+				gameManager.addSpell(fireball) ;
+				gameManager.consumeElixer(fireball.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard.getCard() instanceof ArrowsCard ) {
+			ArrowsCard arrowsCard = (ArrowsCard)selectedCard.getCard() ;
+			Arrows arrows = new Arrows(ColorType.BLUE) ;
+			arrows.setLocation(event.getX() , event.getY()) ;
+			arrows.setDamage(arrowsCard.getAttribute()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			arrows.setDeploymentTime(timeNow) ;
+			if ( gameManager.getElixer() >= arrows.getCost() ) {
+				gameManager.addSpell(arrows) ;
+				gameManager.consumeElixer(arrows.getCost()) ;
+			} else {
+				return ;
+			}
+		} else {
+			// Pass
+		}
+
         Card temp = selectedCard.getCard();
         selectedCard.getImageView().setOpacity(1);
         selectedCard.setCard(nextCard.getCard());
@@ -118,6 +315,47 @@ public class BattleController {
         selectedCard = null;
     }
 
+    public static void updateAvailability( int elixer ){
+        for (ImagePackage imagePackage : bannedCards.keySet()) {
+            if (elixer >= getCost(imagePackage)){
+                bannedCards.get(imagePackage).setDisable(true);
+                bannedCards.get(imagePackage).setVisible(false);
+            } else {
+                bannedCards.get(imagePackage).setDisable(false);
+                bannedCards.get(imagePackage).setVisible(true);
+            }
+        }
+    }
+
+    private static int getCost(ImagePackage imagePackage) {
+        if ( imagePackage.getCard() instanceof ArcherCard ) {
+            return 3;
+        } else if ( imagePackage.getCard() instanceof BabyDragonCard ) {
+            return 4;
+        } else if ( imagePackage.getCard() instanceof BarbariansCard ) {
+            return 5;
+        } else if ( imagePackage.getCard() instanceof GiantCard ) {
+            return 5;
+        } else if ( imagePackage.getCard() instanceof MiniPekkaCard ) {
+            return 4;
+        } else if ( imagePackage.getCard() instanceof ValkyrieCard ) {
+            return 4;
+        } else if ( imagePackage.getCard() instanceof WizardCard ) {
+            return 5;
+        } else if ( imagePackage.getCard() instanceof CannonCard ) {
+            return 3;
+        } else if ( imagePackage.getCard() instanceof RageCard ) {
+            return 2;
+        } else if ( imagePackage.getCard() instanceof ArrowsCard ) {
+            return 3;
+        } else if ( imagePackage.getCard() instanceof FireballCard ) {
+            return 4;
+        } else if ( imagePackage.getCard() instanceof InfernoTowerCard ) {
+            return 5;
+        }
+
+        return 0;
+    }
 
     static class ImagePackage {
         private final ImageView imageView;

@@ -7,9 +7,6 @@ public class Enums {
 		RED , BLUE	
 	} ;
 	public enum TroopType {
-		AERIAL , GROUND , BUILDING
-	} ;
-	public enum TargetType {
 		AERIAL , GROUND , BUILDING , ALL
 	} ;
 }

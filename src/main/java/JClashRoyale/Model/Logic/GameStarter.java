@@ -2,10 +2,12 @@
 
 package JClashRoyale.Model.Logic ;
 
+import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage ;
 
 import javafx.scene.paint.Color ;
 import javafx.scene.layout.Pane ;
+import javafx.scene.control.TextField;
 import javafx.scene.canvas.Canvas ;
 import javafx.scene.canvas.GraphicsContext ;
 
@@ -15,16 +17,17 @@ public class GameStarter {
 	// Fields
 	GameManager gameManager ;
 	// Fields : Final
-	String BATTLE_MAP_PATH = "/JClashRoyale/assets/battle_map.png" ;
+	String BATTLE_MAP_PATH = "/JClashRoyale/assets/map.png" ;
 	// Constructor
 	public GameStarter() {
 		gameManager = new GameManager() ;
 	}
-	// Methods
-	public void initDeck(Pane deckViewPane) {
-		// TODO
+	// Methods : Getters
+	public GameManager getGameManager() {
+		return this.gameManager ;
 	}
-	public void initBattle(Pane battleViewPane) {
+	// Methods : Other
+	public void initBattle(TextField timer , TextField result , TextField elixer , ProgressBar elixerBar, Pane battleViewPane) {
 		gameManager.setBattleMap(BATTLE_MAP_PATH) ;
 
 		Canvas canvas = gameManager.getCanvas() ;
@@ -32,8 +35,7 @@ public class GameStarter {
 
 		battleViewPane.getChildren().add(canvas) ;
 
-		// TODO
-//		gameManager.update() ;
+		gameManager.update(timer , result , elixer , elixerBar) ;
 	}
 }
 

@@ -4,11 +4,14 @@ package JClashRoyale.Model.Elements ;
 
 import javafx.geometry.Point2D ;
 import javafx.scene.image.Image ;
+import javafx.scene.paint.Color ;
 import javafx.scene.shape.Circle ;
 import javafx.scene.canvas.GraphicsContext ;
 
+import java.util.ArrayList ;
+
+import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
-import JClashRoyale.Model.Elements.Enums.TargetType ;
 
 public abstract class Sprite {
 	// Fields
@@ -25,25 +28,39 @@ public abstract class Sprite {
 	protected double runSpeed ;
 	protected double hitpoints ;
 	protected double attackSpeed ;
+	protected double lastAttack ;
+	protected boolean attackState ;
+	protected ColorType colorType ;
 	protected TroopType troopType ;
-	protected TargetType targetType ;
+	protected TroopType targetType ;
 
 	protected Image stateImage ;
 	// Constructor
 	public Sprite() {
-		// Pass
+		lastAttack = -100.0 ;
+		attackState = false ;
 	}
 	// Methods : Setters
 	public void setLocation(double x , double y) {
 		this.location = new Point2D(x , y) ;
-		this.rangeCircle = new Circle(location.getX() , location.getY() , rangeCircleRadius) ;
-		this.healthCircle = new Circle(location.getX() , location.getY() , healthCircleRadius) ;
+
+		double offsetX = stateImage.getWidth() / 2.0 ;
+		double offsetY = stateImage.getHeight() / 2.0 ;
+
+		this.rangeCircle = new Circle(location.getX() + offsetX , location.getY() + offsetY , rangeCircleRadius) ;
+		this.healthCircle = new Circle(location.getX() + offsetX , location.getY() + offsetY , healthCircleRadius) ;
 	}
 	public void setRangeCircleRadius(double radius) {
 		this.rangeCircleRadius = radius ;
 	}
 	public void setHealthCircleRadius(double radius) {
 		this.healthCircleRadius = radius ;
+	}
+	public void removeRangeCircle() {
+		this.rangeCircle = null ;
+	}
+	public void removeHealthCircle() {
+		this.healthCircle = null ;
 	}
 	public void setCost(int cost) {
 		this.cost = cost ;	
@@ -60,10 +77,19 @@ public abstract class Sprite {
 	public void setAttackSpeed(double speed) {
 		this.attackSpeed = speed ;	
 	}
+	public void setLastAttack(double lastAttack) {
+		this.lastAttack = lastAttack ;
+	}
+	public void setAttackState(boolean attackState) {
+		this.attackState = attackState ;
+	}
+	public void setColorType(ColorType color) {
+		this.colorType = color ;
+	}
 	public void setTroopType(TroopType type) {
 		this.troopType = type ;
 	}
-	public void setTargetType(TargetType target) {
+	public void setTargetType(TroopType target) {
 		this.targetType = target ;
 	}
 	public void setStateImage(Image stateImage) {
@@ -97,10 +123,19 @@ public abstract class Sprite {
 	public double getAttackSpeed() {
 		return this.attackSpeed ;
 	}
+	public double getLastAttack() {
+		return this.lastAttack ;
+	}
+	public boolean getAttackState() {
+		return this.attackState ;
+	}
+	public ColorType getColorType() {
+		return this.colorType ;
+	}
 	public TroopType getTroopType() {
 		return this.troopType ;
 	}
-	public TargetType getTargetType() {
+	public TroopType getTargetType() {
 		return this.targetType ;
 	}
 	public Image getStateImage() {
@@ -123,12 +158,35 @@ public abstract class Sprite {
 	public boolean healthIntersects(Circle circle) {
 		return circleIntersects(healthCircle , circle) ;
 	}
+	public boolean canAttack(Sprite defender) {
+		if ( this.getColorType() == defender.getColorType() )
+			return false ;
+		if ( !this.rangeIntersects(defender.getHealthCircle()) )
+			return false ;
+		return (this.getTargetType() == TroopType.ALL || this.getTargetType() == defender.getTroopType() || defender.getTroopType() == TroopType.BUILDING) ;
+	}
 	public void showRangeCircle(GraphicsContext graphics) {
-		graphics.fillOval(this.getX() , this.getY() , rangeCircle.getRadius() , rangeCircle.getRadius()) ;
+		double offsetX = (stateImage.getWidth() - rangeCircleRadius) / 2.0 ;
+		double offsetY = (stateImage.getHeight() - rangeCircleRadius) / 2.0 ;
+		graphics.setFill(Color.BLUE) ;
+		graphics.fillOval(this.getX() + offsetX , this.getY() + offsetY , rangeCircle.getRadius() , rangeCircle.getRadius()) ;
 	}
 	public void showHealthCircle(GraphicsContext graphics) {
-		graphics.fillOval(this.getX() , this.getY() , healthCircle.getRadius() , healthCircle.getRadius()) ;
+		double offsetX = (stateImage.getWidth() - healthCircleRadius) / 2.0 ;
+		double offsetY = (stateImage.getHeight() - healthCircleRadius) / 2.0 ;
+		graphics.setFill(Color.RED) ;
+		graphics.fillOval(this.getX() + offsetX , this.getY() + offsetY , healthCircle.getRadius() , healthCircle.getRadius()) ;
 	}
+	public void attack(ArrayList<Sprite> defenders) {
+		this.setAttackState(true) ;
+		for ( Sprite defender : defenders )
+			defender.setHitpoints(defender.getHitpoints() - this.getDamage()) ;
+	}
+	// Methods : Abstract
+	public abstract void walkForward() ;
+	public abstract void walkBridge() ;
+	public abstract void walkKingTower() ;
+	public abstract void walk(boolean leftArcherTowerDestroyed , boolean rightArcherTowerDestroyed) ;
 	public abstract void draw(GraphicsContext graphics) ;
 }
 

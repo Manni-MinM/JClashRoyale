@@ -2,51 +2,152 @@
 
 package JClashRoyale.Model.Elements.Sprites ;
 
+import javafx.geometry.Point2D ;
 import javafx.scene.image.Image ;
 import javafx.scene.canvas.GraphicsContext ;
 
-import JClashRoyale.Model.Elements.Enums ;
 import JClashRoyale.Model.Elements.Sprite ;
+import JClashRoyale.Model.Elements.Enums.ColorType ;
+
+import java.util.Objects;
 
 public class SingleTargetTroop extends Sprite {
 	// Fields
+	protected boolean bridgeReached ;
+
+	protected Point2D destinationBridge ;
+	protected Point2D destinationKingTower ;
+
 	protected Image runAnimationLeft ;
 	protected Image runAnimationRight ;
-	protected Image battleAnimationFirst ;
-	protected Image battleAnimationSecond ;
+	protected Image runAnimationForward ;
+	protected Image battleAnimation ;
 	// Constructor
 	public SingleTargetTroop() {
-		// Pass
+		bridgeReached = false ;
 	}
 	// Methods : Setters
 	public void setRunAnimationLeft(String path , double width , double height) {
-		this.runAnimationLeft = new Image(path , width , height , false , false) ;
+		this.runAnimationLeft = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
 	}
 	public void setRunAnimationRight(String path , double width , double height) {
-		this.runAnimationRight = new Image(path , width , height , false , false) ;
+		this.runAnimationRight = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
 	}
-	public void setBattleAnimationFirst(String path , double width , double height) {
-		this.battleAnimationFirst = new Image(path , width , height , false , false) ;
+	public void setRunAnimationForward(String path , double width , double height) {
+		this.runAnimationForward = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
 	}
-	public void setBattleAnimationSecond(String path , double width , double height) {
-		this.battleAnimationSecond = new Image(path , width , height , false , false) ;
+	public void setBattleAnimation(String path , double width , double height) {
+		this.battleAnimation = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
 	}
 	// Methods : Getters
 	
 	// Methods : Other
 	public void draw(GraphicsContext graphics) {
+		if ( attackState )
+			setStateImage(battleAnimation) ;
+
 		graphics.drawImage(getStateImage() , getX() , getY()) ;
 	}
-	public void walk(int frameCount) {
+	public void walkForward() {
 		double x = getX() ;
-		double y = getY() + (0.017) * runSpeed ;
+		double y = getY() ;
+		if ( getColorType() == ColorType.BLUE ) {
+			y -= (0.017) * runSpeed ;
+		} else if ( getColorType() == ColorType.RED ) {
+			y += (0.017) * runSpeed ;
+		}
 		setLocation(x , y) ;
+		setStateImage(runAnimationForward) ;
+	}
+	public void walkBridge() {
+		double distance = location.distance(destinationBridge) ;
 
-		if ( (frameCount / 15) % 2 == 0 ) {
-			setStateImage(runAnimationLeft) ;
-		} else { 
+		double cos = (getX() - destinationBridge.getX()) / distance ;
+		double sin = (getY() - destinationBridge.getY()) / distance ;
+
+		double x = getX() ;
+		double y = getY() ;
+		x -= (0.017) * runSpeed * cos ;
+		y -= (0.017) * runSpeed * sin ;
+
+		setLocation(x , y) ;
+		if ( cos < 0.0 ) {
 			setStateImage(runAnimationRight) ;
-		
+		} else {
+			setStateImage(runAnimationLeft) ;
+		}
+	}
+	public void walkKingTower() {
+		double distance = location.distance(destinationKingTower) ;
+
+		double cos = (getX() - destinationKingTower.getX()) / distance ;
+		double sin = (getY() - destinationKingTower.getY()) / distance ;
+
+		double x = getX() ;
+		double y = getY() ;
+		x -= (0.017) * runSpeed * cos ;
+		y -= (0.017) * runSpeed * sin ;
+
+		setLocation(x , y) ;
+		if ( cos < 0.0 ) {
+			setStateImage(runAnimationRight) ;
+		} else {
+			setStateImage(runAnimationLeft) ;
+		}
+	}
+	public void walk(boolean leftArcherTowerDestroyed , boolean rightArcherTowerDestroyed) {
+		if ( getX() > 155.0 ) {
+			if ( getColorType() == ColorType.RED ) {
+				// (230 , 200)
+				destinationBridge = new Point2D(230 , 200) ;
+				// (180 , 390)
+				destinationKingTower = new Point2D(180 , 390) ;
+			} else if ( getColorType() == ColorType.BLUE ) {
+				// (230 , 250)
+				destinationBridge = new Point2D(230 , 250) ;
+				// (180 , 70)
+				destinationKingTower = new Point2D(180 , 70) ;
+			} else {
+				// Pass
+			}
+		} else {
+			if ( getColorType() == ColorType.RED ) {
+				// (60 , 200)
+				destinationBridge = new Point2D(60 , 200) ;
+				// (120 , 390)
+				destinationKingTower = new Point2D(125 , 390) ;
+			} else if ( getColorType() == ColorType.BLUE ) {
+				// (60 , 250)
+				destinationBridge = new Point2D(60 , 250) ;
+				// (120 , 70)
+				destinationKingTower = new Point2D(125 , 70) ;
+			} else {
+				// Pass
+			}
+		}
+
+		double distanceBridge = location.distance(destinationBridge) ;
+		double distanceKingTower = location.distance(destinationKingTower) ;
+
+		if ( distanceBridge < 3.0 )
+			bridgeReached = true ;
+
+		if ( !bridgeReached ) {
+			walkBridge() ;
+		} else if ( bridgeReached ) {
+			if ( getX() > 155.0 ) {
+				if ( rightArcherTowerDestroyed ) {
+					walkKingTower() ;
+				} else {
+					walkForward() ;
+				}
+			} else {
+				if ( leftArcherTowerDestroyed ) {
+					walkKingTower() ;
+				} else {
+					walkForward() ;
+				}
+			}
 		}
 	}
 }

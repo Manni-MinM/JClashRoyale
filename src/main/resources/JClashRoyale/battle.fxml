@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JClashRoyale.Controller.BattleController">
@@ -37,7 +38,6 @@
          </children></Pane>
       <Pane layoutX="12.0" layoutY="44.0" prefHeight="50.0" prefWidth="375.0">
          <children>
-            <TextField fx:id="elixer" editable="false" layoutX="14.0" layoutY="6.0" prefHeight="40.0" prefWidth="85.0" />
             <TextField fx:id="result" editable="false" layoutX="145.0" layoutY="5.0" prefHeight="40.0" prefWidth="85.0" />
             <TextField fx:id="timer" editable="false" layoutX="276.0" layoutY="5.0" prefHeight="40.0" prefWidth="85.0" />
          </children>
@@ -63,8 +63,18 @@
                </font>
             </Label>
             <ImageView fx:id="next" fitHeight="63.0" fitWidth="52.0" layoutX="5.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
+            <Rectangle fx:id="cardBan1" arcHeight="5.0" arcWidth="5.0" height="90.0" layoutX="73.0" layoutY="31.0" opacity="0.45" stroke="BLACK" strokeType="INSIDE" width="67.0" />
+            <Rectangle fx:id="cardBan2" arcHeight="5.0" arcWidth="5.0" height="90.0" layoutX="149.0" layoutY="31.0" opacity="0.45" stroke="BLACK" strokeType="INSIDE" width="67.0" />
+            <Rectangle fx:id="cardBan3" arcHeight="5.0" arcWidth="5.0" height="90.0" layoutX="225.0" layoutY="31.0" opacity="0.45" stroke="BLACK" strokeType="INSIDE" width="67.0" />
+            <Rectangle fx:id="cardBan4" arcHeight="5.0" arcWidth="5.0" height="90.0" layoutX="302.0" layoutY="31.0" opacity="0.45" stroke="BLACK" strokeType="INSIDE" width="67.0" />
          </children>
       </Pane>
-      <Button layoutX="347.0" layoutY="551.0" mnemonicParsing="false" onAction="#deployCard" text="deploy" />
+      <ProgressBar fx:id="elixerBar" layoutX="-174.0" layoutY="302.0" prefHeight="28.0" prefWidth="400.0" progress="0.6" rotate="270.0" style="-fx-accent: D21BCFFF;" />
+      <TextField fx:id="elixer" alignment="CENTER" editable="false" layoutX="9.0" layoutY="501.0" prefHeight="29.0" prefWidth="32.0" />
+      <ImageView fitHeight="400.0" fitWidth="28.0" layoutX="12.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/elixirbar.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
