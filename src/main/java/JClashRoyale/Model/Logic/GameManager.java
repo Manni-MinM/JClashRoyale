@@ -128,6 +128,9 @@ public class GameManager {
 		return this.graphics ;
 	}
 	// Methods : Other
+	public void addSpell(Spell spell) {
+		spells.add(spell) ;
+	}
 	public void addSprite(Sprite sprite) {
 		sprites.add(sprite) ;
 	}
@@ -177,6 +180,21 @@ public class GameManager {
 				}
 
 				ArrayList<Sprite> toBeRemoved = new ArrayList<Sprite>() ;
+				ArrayList<Spell> toBeRemovedSpell = new ArrayList<Spell>() ;
+				for ( int it = 0 ; it < spells.size() ; it ++ ) {
+					Spell spell = spells.get(it) ;
+					ArrayList<Sprite> affectedSprites = new ArrayList<Sprite>() ;
+					for ( int jt = 0 ; jt < sprites.size() ; jt ++ ) {
+						if ( it == jt )
+							continue ;
+						Sprite sprite = sprites.get(jt) ;
+						if ( spell.canAffect(sprite) ) {
+							affectedSprites.add(sprite) ;
+						}
+					}
+					for ( Sprite sprite : affectedSprites )
+						spell.affect(sprite) ;
+				}
 				for ( int it = 0 ; it < sprites.size() ; it ++ ) {
 					Sprite attacker = sprites.get(it) ;
 					ArrayList<Sprite> defenders = new ArrayList<Sprite>() ;
@@ -221,14 +239,21 @@ public class GameManager {
 				for ( Sprite sprite : sprites )
 					if ( sprite instanceof Cannon || sprite instanceof InfernoTower ) {
 						Building building = (Building)sprite ;
-						// TODO : Test
-						System.err.println("ELAPSED : " + ((currentNanoTime / 1000000000.0) - building.getDeploymentTime()) + " LIFETIME : " + building.getLifetime()) ;
 						if ( (currentNanoTime / 1000000000.0) - building.getDeploymentTime() >= building.getLifetime() )
 							toBeRemoved.add(building) ;
 					}
 				for ( Sprite sprite : toBeRemoved )
 						sprites.remove(sprite) ;
 
+				for ( Spell spell : spells )
+					if ( (currentNanoTime / 1000000000.0) - spell.getDeploymentTime() >= spell.getDuration() )
+						toBeRemovedSpell.add(spell) ;
+				for ( Spell spell : toBeRemovedSpell )
+					spells.remove(spell) ;
+
+				for ( Spell spell : spells ) {
+					spell.draw(graphics) ;
+				}
 				for ( Sprite sprite : sprites ) {
 //					sprite.showRangeCircle(graphics) ;
 //					sprite.showHealthCircle(graphics) ;

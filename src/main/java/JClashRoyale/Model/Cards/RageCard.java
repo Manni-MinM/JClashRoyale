@@ -6,7 +6,7 @@ import JClashRoyale.Model.Player;
  * @author Amir Iravanimanesh & Manni Moghimi
  * @since 7/13/2021
  */
-public class RageCard extends Card implements Spell{
+public class RageCard extends Card {
     public RageCard(){
         setImageAddress("/JClashRoyale/assets/rage.png");
     }
@@ -21,8 +21,6 @@ public class RageCard extends Card implements Spell{
         return 0;
     }
 
-
-    @Override
     public double getAttribute() {
         switch (Player.player.getLevel()) {
             case 1:

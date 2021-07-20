@@ -35,8 +35,12 @@ import JClashRoyale.Model.Cards.BarbariansCard ;
 import JClashRoyale.Model.Cards.BabyDragonCard ;
 import JClashRoyale.Model.Cards.InfernoTowerCard ;
 
+import JClashRoyale.Model.Elements.Spell ;
 import JClashRoyale.Model.Elements.Sprite ;
 import JClashRoyale.Model.Elements.Enums.ColorType ;
+import JClashRoyale.Model.Elements.Spells.Rage ;
+import JClashRoyale.Model.Elements.Spells.Arrows ;
+import JClashRoyale.Model.Elements.Spells.Fireball ;
 import JClashRoyale.Model.Elements.Sprites.Troops.Giant ;
 import JClashRoyale.Model.Elements.Sprites.Troops.Archer ;
 import JClashRoyale.Model.Elements.Sprites.Troops.Wizard ;
@@ -142,7 +146,7 @@ public class BattleController {
 //		if ( event.getY() > 450.0 || event.getY() < 250 )
 //			return ;
 		if ( selectedCard.getCard() instanceof ArcherCard ) {
-			Archer archer = new Archer(ColorType.RED) ;
+			Archer archer = new Archer(ColorType.BLUE) ;
 			archer.setHitpoints(selectedCard.getCard().getHP()) ;
 			archer.setDamage(selectedCard.getCard().getDamage()) ;
 			archer.setLocation(event.getX() , event.getY()) ;
@@ -241,6 +245,45 @@ public class BattleController {
 			if ( gameManager.getElixer() >= infernoTower.getCost() ) {
 				gameManager.addSprite(infernoTower) ;
 				gameManager.consumeElixer(infernoTower.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard.getCard() instanceof RageCard ) {
+			RageCard rageCard = (RageCard)selectedCard.getCard() ;
+			Rage rage = new Rage(ColorType.BLUE) ;
+			rage.setLocation(event.getX() , event.getY()) ;
+			rage.setDuration(rageCard.getAttribute()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			rage.setDeploymentTime(timeNow) ;
+			if ( gameManager.getElixer() >= rage.getCost() ) {
+				gameManager.addSpell(rage) ;
+				gameManager.consumeElixer(rage.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard.getCard() instanceof FireballCard ) {
+			FireballCard fireballCard = (FireballCard)selectedCard.getCard() ;
+			Fireball fireball = new Fireball(ColorType.BLUE) ;
+			fireball.setLocation(event.getX() , event.getY()) ;
+			fireball.setDamage(fireballCard.getAttribute()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			fireball.setDeploymentTime(timeNow) ;
+			if ( gameManager.getElixer() >= fireball.getCost() ) {
+				gameManager.addSpell(fireball) ;
+				gameManager.consumeElixer(fireball.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard.getCard() instanceof ArrowsCard ) {
+			ArrowsCard arrowsCard = (ArrowsCard)selectedCard.getCard() ;
+			Arrows arrows = new Arrows(ColorType.BLUE) ;
+			arrows.setLocation(event.getX() , event.getY()) ;
+			arrows.setDamage(arrowsCard.getAttribute()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			arrows.setDeploymentTime(timeNow) ;
+			if ( gameManager.getElixer() >= arrows.getCost() ) {
+				gameManager.addSpell(arrows) ;
+				gameManager.consumeElixer(arrows.getCost()) ;
 			} else {
 				return ;
 			}

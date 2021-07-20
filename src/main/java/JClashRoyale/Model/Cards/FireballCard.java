@@ -6,7 +6,7 @@ import JClashRoyale.Model.Player;
  * @author Amir Iravanimanesh & Manni Moghimi
  * @since 7/13/2021
  */
-public class FireballCard extends Card implements Spell {
+public class FireballCard extends Card {
     public FireballCard() {
         setImageAddress("/JClashRoyale/assets/fire_fireball.png");
     }
@@ -21,7 +21,6 @@ public class FireballCard extends Card implements Spell {
         return 0;
     }
 
-    @Override
     public double getAttribute() {
         switch (Player.player.getLevel()) {
             case 1:
