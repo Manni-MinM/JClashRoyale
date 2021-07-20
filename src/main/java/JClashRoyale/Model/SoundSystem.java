@@ -41,8 +41,6 @@ public class SoundSystem {
     }
 
     public static void mainMenuTheme() {
-        if (!App.sfx)
-            return;
         try {
             InputStream audioSrc = SoundSystem.class.getResourceAsStream("/JClashRoyale/assets/sfx/menu_theme.wav");
             assert audioSrc != null;

@@ -40,3 +40,26 @@
 .saveBtn {
     -fx-background-color: linear-gradient(to bottom right, #81FBB8, #28C76F);
 }
+
+.scroll-pane{
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+.grid Line {
+    -fx-stroke   : white;
+}
+
+.chart-pie-label {
+    -fx-fill: #ffffff;
+}
+
+.chart-pie-title {
+    -fx-fill: #ffffff;
+}
+
+.default-color0.chart-pie { -fx-pie-color: #46ec09; }
+.default-color1.chart-pie { -fx-pie-color: #e50b0b; }

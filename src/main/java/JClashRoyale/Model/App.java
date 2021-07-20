@@ -53,6 +53,10 @@ public class App extends Application {
             ((ProfileSectionController) fxmlLoader.getController()).init(stage);
         else if (fxmlLoader.getController() instanceof BattleDeckSectionController)
             ((BattleDeckSectionController) fxmlLoader.getController()).init(stage);
+        else if (fxmlLoader.getController() instanceof TrainingCampController)
+            ((TrainingCampController) fxmlLoader.getController()).init(stage);
+        else if (fxmlLoader.getController() instanceof BattleHistoryController)
+            ((BattleHistoryController) fxmlLoader.getController()).init(stage);
         stage.hide();
         stage.show();
     }

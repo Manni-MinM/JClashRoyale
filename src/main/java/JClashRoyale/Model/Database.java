@@ -2,10 +2,7 @@ package JClashRoyale.Model;
 
 import JClashRoyale.Model.Cards.Card;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * @author Amir Iravanimanesh & Manni Moghimi
@@ -71,6 +68,38 @@ public class Database {
                     "root", "pashmak64bit");
             Statement statement = connection.createStatement();
             statement.execute(update);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static ResultSet getBattleResult(String player) {
+        String check = "SELECT * FROM battles WHERE player='" + player +
+                "'";
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/JClashRoyale",
+                    "root", "pashmak64bit");
+            Statement statement = connection.createStatement();
+            statement.execute(check);
+            if (statement.getResultSet().next()) {
+                return statement.getResultSet();
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public static void addBattleResult(String player, String opponent, int playerScore, int opponentScore, boolean playerWon) {
+        String insertion = "INSERT INTO battles(player,opponent,playerScore,opponentScore,playerWon)" +
+                " values (\"" + player + "\" , \"" + opponent + "\"" +
+                ", " + playerScore +
+                ", " + opponentScore + ", " + playerWon + ")";
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/JClashRoyale",
+                    "root", "pashmak64bit");
+            Statement statement = connection.createStatement();
+            statement.execute(insertion);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
