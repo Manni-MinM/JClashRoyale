@@ -13,6 +13,8 @@ import JClashRoyale.Model.Elements.Spells.Arrows ;
 import JClashRoyale.Model.Elements.Spells.Fireball ;
 import JClashRoyale.Model.Elements.Enums.ColorType ;
 
+import java.util.Objects;
+
 public abstract class Spell {
 	// Fields
 	protected Point2D location ;
@@ -66,7 +68,7 @@ public abstract class Spell {
 		this.attackSpeedBoost = attackSpeedBoost ;
 	}
 	public void setAnimation(String path , double width , double height) {
-		this.animation = new Image(path , width , height , false , false) ;
+		this.animation = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , width , height , false , false) ;
 	}
 	public void setColorType(ColorType color) {
 		this.color = color ;
