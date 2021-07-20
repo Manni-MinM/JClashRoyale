@@ -45,7 +45,7 @@ public class Database {
             statement.execute(check);
             if (statement.getResultSet().next()) {
                 Player.player = new Player(statement.getResultSet().getString(1), statement.getResultSet().getInt(4)
-                        , statement.getResultSet().getInt(3), "11-8-2-3-10-4-6-9"/*statement.getResultSet().getString(5)*/);
+                        , statement.getResultSet().getInt(3), statement.getResultSet().getString(5));
             } else return false;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -62,6 +62,34 @@ public class Database {
         }
         String update = "UPDATE accounts " +
                 "SET deck = '" + deck + "'" +
+                "WHERE username = '" + Player.player.getUsername() + "';";
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/JClashRoyale",
+                    "root", "pashmak64bit");
+            Statement statement = connection.createStatement();
+            statement.execute(update);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void updateXP() {
+        String update = "UPDATE accounts " +
+                "SET xp = '" + Player.player.getXP() + "'" +
+                "WHERE username = '" + Player.player.getUsername() + "';";
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/JClashRoyale",
+                    "root", "pashmak64bit");
+            Statement statement = connection.createStatement();
+            statement.execute(update);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void updateCup() {
+        String update = "UPDATE accounts " +
+                "SET cup = '" + Player.player.getCup() + "'" +
                 "WHERE username = '" + Player.player.getUsername() + "';";
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/JClashRoyale",
