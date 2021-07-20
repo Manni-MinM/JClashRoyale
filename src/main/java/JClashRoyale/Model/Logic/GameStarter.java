@@ -2,7 +2,10 @@
 
 package JClashRoyale.Model.Logic ;
 
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage ;
 
 import javafx.scene.paint.Color ;
@@ -27,7 +30,8 @@ public class GameStarter {
 		return this.gameManager ;
 	}
 	// Methods : Other
-	public void initBattle(TextField timer , TextField result , TextField elixer , ProgressBar elixerBar, Pane battleViewPane) {
+	public void initBattle(TextField timer , TextField result , TextField elixer , ProgressBar elixerBar, Pane battleViewPane
+	, Rectangle endGame, Label resultLabel, Button backButton) {
 		gameManager.setBattleMap(BATTLE_MAP_PATH) ;
 
 		Canvas canvas = gameManager.getCanvas() ;
@@ -35,7 +39,7 @@ public class GameStarter {
 
 		battleViewPane.getChildren().add(canvas) ;
 
-		gameManager.update(timer , result , elixer , elixerBar) ;
+		gameManager.update(timer , result , elixer , elixerBar , endGame , resultLabel , backButton) ;
 	}
 }
 
