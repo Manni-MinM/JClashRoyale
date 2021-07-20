@@ -42,6 +42,7 @@ public class Player {
     public void setCup(int cup) {
         this.cup = cup;
         setLeague();
+        Database.updateCup();
     }
 
     public int getXP() {
@@ -58,6 +59,7 @@ public class Player {
 
     public void setXp(int xp) {
         this.xp = xp;
+        Database.updateXP();
     }
 
     public String getUsername() {
