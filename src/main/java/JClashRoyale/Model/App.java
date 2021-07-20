@@ -25,7 +25,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage1) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/JClashRoyale/" + "battle" + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/JClashRoyale/" + "primary" + ".fxml"));
         scene = new Scene(fxmlLoader.load());
         scene.setFill(Color.TRANSPARENT);
         stage = stage1;
@@ -35,10 +35,7 @@ public class App extends Application {
         stage.setTitle("JClashRoyale");
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/JClashRoyale/assets/icon.png"))));
 
-		BattleController battleController = (BattleController)fxmlLoader.getController() ;
-        battleController.init(stage) ;
-		battleController.start() ;
-
+        ((PrimaryController) fxmlLoader.getController()).init(stage);
         stage.show();
     }
 
@@ -57,6 +54,8 @@ public class App extends Application {
             ((TrainingCampController) fxmlLoader.getController()).init(stage);
         else if (fxmlLoader.getController() instanceof BattleHistoryController)
             ((BattleHistoryController) fxmlLoader.getController()).init(stage);
+        else if (fxmlLoader.getController() instanceof BattleController)
+            ((BattleController) fxmlLoader.getController()).init(stage);
         stage.hide();
         stage.show();
     }
