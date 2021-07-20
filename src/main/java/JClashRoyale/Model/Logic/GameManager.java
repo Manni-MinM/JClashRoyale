@@ -2,6 +2,7 @@
 
 package JClashRoyale.Model.Logic ;
 
+import java.util.Random ;
 import java.util.Objects ;
 import java.util.ArrayList ;
 
@@ -22,8 +23,26 @@ import JClashRoyale.Model.Elements.Sprite ;
 import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
 
+import JClashRoyale.Model.Cards.Card ;
+import JClashRoyale.Model.Cards.GiantCard ;
+import JClashRoyale.Model.Cards.ArcherCard ;
+import JClashRoyale.Model.Cards.WizardCard ;
+import JClashRoyale.Model.Cards.RageCard ;
+import JClashRoyale.Model.Cards.ArrowsCard ;
+import JClashRoyale.Model.Cards.CannonCard ;
+import JClashRoyale.Model.Cards.FireballCard ;
+import JClashRoyale.Model.Cards.ValkyrieCard ;
+import JClashRoyale.Model.Cards.MiniPekkaCard ;
+import JClashRoyale.Model.Cards.BarbariansCard ;
+import JClashRoyale.Model.Cards.BabyDragonCard ;
+import JClashRoyale.Model.Cards.InfernoTowerCard ;
+
 import JClashRoyale.Model.Cards.KingTowerCard ;
 import JClashRoyale.Model.Cards.ArcherTowerCard ;
+
+import JClashRoyale.Model.Elements.Spells.Rage ;
+import JClashRoyale.Model.Elements.Spells.Arrows ;
+import JClashRoyale.Model.Elements.Spells.Fireball ;
 
 import JClashRoyale.Model.Elements.Sprites.Building ;
 import JClashRoyale.Model.Elements.Sprites.AreaSplashTroop ;
@@ -45,6 +64,7 @@ import JClashRoyale.Model.Elements.Sprites.Buildings.InfernoTower ;
 public class GameManager {
 	// Fields
 	private int elixer ;
+	private int elixerBot ;
 
 	private Image battleMap ;
 
@@ -117,15 +137,21 @@ public class GameManager {
 		this.elixer -= value ;
 		BattleController.updateAvailability(elixer);
 	}
-	// Methods : Getters
-	public int getElixer() {
-		return elixer ;
+	public void consumeElixerBot(int value) {
+		this.elixerBot -= value ;
 	}
+	// Methods : Getters
 	public Canvas getCanvas() {
 		return this.canvas ;
 	}
 	public GraphicsContext getGraphics() {
 		return this.graphics ;
+	}
+	public int getElixer() {
+		return this.elixer ;
+	}
+	public int getElixerBot() {
+		return this.elixerBot ;
 	}
 	// Methods : Other
 	public void addSpell(Spell spell) {
@@ -137,6 +163,115 @@ public class GameManager {
 	public void loadBattleMap() {
 		graphics.drawImage(battleMap , 0 , 0) ;
 	}
+	public void dummyBot() {
+		if ( getElixerBot() < 5 )
+			return ;
+
+		Random random = new Random() ;
+		int randomInt = random.nextInt(8) ;
+		double randomX = random.nextDouble() * 250 + 25 ;
+		double randomY = random.nextDouble() * 200 + 20 ;
+
+		if ( randomInt == 0 ) {
+			ArcherCard archerCard = new ArcherCard() ;
+			Archer archer = new Archer(ColorType.RED) ;
+			archer.setHitpoints(archerCard.getHP()) ;
+			archer.setDamage(archerCard.getDamage()) ;
+			archer.setLocation(randomX , randomY) ;
+			if ( getElixerBot() >= archer.getCost() ) {
+				addSprite(archer) ;
+				consumeElixerBot(archer.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( randomInt == 1 ) {
+			BabyDragonCard babyDragonCard = new BabyDragonCard() ;
+			BabyDragon babyDragon = new BabyDragon(ColorType.RED) ;
+			babyDragon.setHitpoints(babyDragonCard.getHP()) ;
+			babyDragon.setDamage(babyDragonCard.getDamage()) ;
+			babyDragon.setLocation(randomX , randomY) ;
+			if ( getElixerBot() >= babyDragon.getCost() ) {
+				addSprite(babyDragon) ;
+				consumeElixerBot(babyDragon.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( randomInt == 2 ) {
+			BarbariansCard barbariansCard = new BarbariansCard() ;
+			Barbarian barbarian = new Barbarian(ColorType.RED) ;
+			barbarian.setLocation(randomX , randomY) ;
+			barbarian.setHitpoints(barbariansCard.getHP()) ;
+			barbarian.setDamage(barbariansCard.getDamage()) ;
+			if ( getElixerBot() >= barbarian.getCost() ) {
+				addSprite(barbarian) ;
+				consumeElixerBot(barbarian.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( randomInt == 3 ) {
+			GiantCard giantCard = new GiantCard() ;
+			Giant giant = new Giant(ColorType.RED) ;
+			giant.setLocation(randomX , randomY) ;
+			giant.setHitpoints(giantCard.getHP()) ;
+			giant.setDamage(giantCard.getDamage()) ;
+			if ( getElixerBot() >= giant.getCost() ) {
+				addSprite(giant) ;
+				consumeElixerBot(giant.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( randomInt == 4 ) {
+			MiniPekkaCard miniPekkaCard = new MiniPekkaCard() ;
+			MiniPekka miniPekka = new MiniPekka(ColorType.RED) ;
+			miniPekka.setLocation(randomX , randomY) ;
+			miniPekka.setHitpoints(miniPekkaCard.getHP()) ;
+			miniPekka.setDamage(miniPekkaCard.getDamage()) ;
+			if ( getElixerBot() >= miniPekka.getCost() ) {
+				addSprite(miniPekka) ;
+				consumeElixerBot(miniPekka.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( randomInt == 5 ) {
+			ValkyrieCard valkyrieCard = new ValkyrieCard() ;
+			Valkyrie valkyrie = new Valkyrie(ColorType.RED) ;
+			valkyrie.setLocation(randomX , randomY) ;
+			valkyrie.setHitpoints(valkyrieCard.getHP()) ;
+			valkyrie.setDamage(valkyrieCard.getDamage()) ;
+			if ( getElixerBot() >= valkyrie.getCost() ) {
+				addSprite(valkyrie) ;
+				consumeElixerBot(valkyrie.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( randomInt == 6 ) {
+			RageCard rageCard = new RageCard() ;
+			Rage rage = new Rage(ColorType.RED) ;
+			rage.setLocation(randomX , randomY) ;
+			rage.setDuration(rageCard.getAttribute()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			rage.setDeploymentTime(timeNow) ;
+			if ( getElixerBot() >= rage.getCost() ) {
+				addSpell(rage) ;
+				consumeElixerBot(rage.getCost()) ;
+			} else {
+				return ;
+			}
+		} else if ( randomInt == 7 ) {
+			FireballCard fireballCard = new FireballCard() ;
+			Fireball fireball = new Fireball(ColorType.RED) ;
+			fireball.setLocation(randomX , randomY) ;
+			fireball.setDamage(fireballCard.getAttribute()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			fireball.setDeploymentTime(timeNow) ;
+			if ( getElixerBot() >= fireball.getCost() ) {
+				addSpell(fireball) ;
+				consumeElixerBot(fireball.getCost()) ;
+			} else {
+				return ;
+			}
+		} 
+	}
 	public void update(TextField timerField , TextField resultField , TextField elixerField , ProgressBar elixerBar) {
 		final long startNanoTime = System.nanoTime() ;
 		new AnimationTimer() {
@@ -145,10 +280,12 @@ public class GameManager {
 			public void handle(long currentNanoTime) {
 				double timeNow = ((currentNanoTime - startNanoTime) / 1000000000.0) ;
 				double elixerTime = timeNow - timeOffset ;
+				double elixerBotTime = timeNow - timeOffset ;
 
 				if ( elixerTime >= 1.0 ) {
 					timeOffset ++ ;
 					elixer = Math.min(elixer + 1 , 10) ;
+					elixerBot = Math.min(elixerBot + 1 , 10) ;
 				} else {
 					// Pass
 				}
@@ -156,6 +293,10 @@ public class GameManager {
 				elixerField.setText(String.valueOf(elixer)) ;
 				elixerBar.setProgress(elixer / 10.0);
 				BattleController.updateAvailability(elixer);
+
+				// TODO : Test
+				dummyBot() ;
+				System.err.println("ELIXER BOT : " + getElixerBot()) ;
 
 				loadBattleMap() ;
 				elixerField.setText(String.valueOf(elixer)) ;

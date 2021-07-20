@@ -142,10 +142,9 @@ public class BattleController {
     }
 
     public void deployCard(MouseEvent event) {
-		// TODO : Test
-//		if ( event.getY() > 450.0 || event.getY() < 250 )
-//			return ;
 		if ( selectedCard.getCard() instanceof ArcherCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
 			Archer archer = new Archer(ColorType.BLUE) ;
 			archer.setHitpoints(selectedCard.getCard().getHP()) ;
 			archer.setDamage(selectedCard.getCard().getDamage()) ;
@@ -157,6 +156,8 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof BabyDragonCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
 			BabyDragon babyDragon = new BabyDragon(ColorType.BLUE) ;
 			babyDragon.setHitpoints(selectedCard.getCard().getHP()) ;
 			babyDragon.setDamage(selectedCard.getCard().getDamage()) ;
@@ -168,7 +169,9 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof BarbariansCard ) {
-			Barbarian barbarian = new Barbarian(ColorType.RED) ;
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
+			Barbarian barbarian = new Barbarian(ColorType.BLUE) ;
 			barbarian.setLocation(event.getX() , event.getY()) ;
 			barbarian.setHitpoints(selectedCard.getCard().getHP()) ;
 			barbarian.setDamage(selectedCard.getCard().getDamage()) ;
@@ -179,6 +182,8 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof GiantCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
 			Giant giant = new Giant(ColorType.BLUE) ;
 			giant.setLocation(event.getX() , event.getY()) ;
 			giant.setHitpoints(selectedCard.getCard().getHP()) ;
@@ -190,6 +195,8 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof MiniPekkaCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
 			MiniPekka miniPekka = new MiniPekka(ColorType.BLUE) ;
 			miniPekka.setLocation(event.getX() , event.getY()) ;
 			miniPekka.setHitpoints(selectedCard.getCard().getHP()) ;
@@ -201,6 +208,8 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof ValkyrieCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
 			Valkyrie valkyrie = new Valkyrie(ColorType.BLUE) ;
 			valkyrie.setLocation(event.getX() , event.getY()) ;
 			valkyrie.setHitpoints(selectedCard.getCard().getHP()) ;
@@ -212,6 +221,8 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof WizardCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
 			Wizard wizard = new Wizard(ColorType.BLUE) ;
 			wizard.setLocation(event.getX() , event.getY()) ;
 			wizard.setHitpoints(selectedCard.getCard().getHP()) ;
@@ -223,6 +234,8 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof CannonCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
 			Cannon cannon = new Cannon(ColorType.BLUE) ;
 			cannon.setLocation(event.getX() , event.getY()) ;
 			cannon.setHitpoints(selectedCard.getCard().getHP()) ;
@@ -236,6 +249,8 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof InfernoTowerCard ) {
+			if ( event.getY() > 450.0 || event.getY() < 250 )
+				return ;
 			InfernoTower infernoTower = new InfernoTower(ColorType.BLUE) ;
 			infernoTower.setLocation(event.getX() , event.getY()) ;
 			infernoTower.setHitpoints(selectedCard.getCard().getHP()) ;
