@@ -25,6 +25,7 @@ import JClashRoyale.Model.Elements.Enums.TroopType ;
 import JClashRoyale.Model.Cards.KingTowerCard ;
 import JClashRoyale.Model.Cards.ArcherTowerCard ;
 
+import JClashRoyale.Model.Elements.Sprites.Building ;
 import JClashRoyale.Model.Elements.Sprites.AreaSplashTroop ;
 import JClashRoyale.Model.Elements.Sprites.SingleTargetTroop ;
 
@@ -217,6 +218,14 @@ public class GameManager {
 						// Pass
 					}
 				}
+				for ( Sprite sprite : sprites )
+					if ( sprite instanceof Cannon || sprite instanceof InfernoTower ) {
+						Building building = (Building)sprite ;
+						// TODO : Test
+						System.err.println("ELAPSED : " + ((currentNanoTime / 1000000000.0) - building.getDeploymentTime()) + " LIFETIME : " + building.getLifetime()) ;
+						if ( (currentNanoTime / 1000000000.0) - building.getDeploymentTime() >= building.getLifetime() )
+							toBeRemoved.add(building) ;
+					}
 				for ( Sprite sprite : toBeRemoved )
 						sprites.remove(sprite) ;
 

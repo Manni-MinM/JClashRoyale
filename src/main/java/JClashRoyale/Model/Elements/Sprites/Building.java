@@ -8,6 +8,7 @@ import JClashRoyale.Model.Elements.Enums.TroopType ;
 public abstract class Building extends Sprite {
 	// Fields
 	protected double lifetime ;
+	protected double deploymentTime ;
 	// Constructor
 	public Building() {
 		// Pass
@@ -16,9 +17,15 @@ public abstract class Building extends Sprite {
 	public void setLifetime(double lifetime) {
 		this.lifetime = lifetime ;
 	}
+	public void setDeploymentTime(double deploymentTime) {
+		this.deploymentTime = deploymentTime ;
+	}
 	// Methods : Getters
 	public double getLifetime() {
 		return this.lifetime ;
+	}
+	public double getDeploymentTime() {
+		return this.deploymentTime ;
 	}
 	// Methods : Other
 	public void walkForward() {

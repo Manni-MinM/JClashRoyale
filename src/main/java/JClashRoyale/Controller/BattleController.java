@@ -164,7 +164,7 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof BarbariansCard ) {
-			Barbarian barbarian = new Barbarian(ColorType.BLUE) ;
+			Barbarian barbarian = new Barbarian(ColorType.RED) ;
 			barbarian.setLocation(event.getX() , event.getY()) ;
 			barbarian.setHitpoints(selectedCard.getCard().getHP()) ;
 			barbarian.setDamage(selectedCard.getCard().getDamage()) ;
@@ -223,6 +223,8 @@ public class BattleController {
 			cannon.setLocation(event.getX() , event.getY()) ;
 			cannon.setHitpoints(selectedCard.getCard().getHP()) ;
 			cannon.setDamage(selectedCard.getCard().getDamage()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			cannon.setDeploymentTime(timeNow) ;
 			if ( gameManager.getElixer() >= cannon.getCost() ) {
 				gameManager.addSprite(cannon) ;
 				gameManager.consumeElixer(cannon.getCost()) ;
@@ -234,6 +236,8 @@ public class BattleController {
 			infernoTower.setLocation(event.getX() , event.getY()) ;
 			infernoTower.setHitpoints(selectedCard.getCard().getHP()) ;
 			infernoTower.setDamage(selectedCard.getCard().getDamage()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			infernoTower.setDeploymentTime(timeNow) ;
 			if ( gameManager.getElixer() >= infernoTower.getCost() ) {
 				gameManager.addSprite(infernoTower) ;
 				gameManager.consumeElixer(infernoTower.getCost()) ;

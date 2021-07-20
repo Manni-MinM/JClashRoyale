@@ -13,20 +13,18 @@ import java.util.Objects;
 
 public class InfernoTower extends Building {
 	// Fields : Final
-	private final double RANGE_RADIUS = 0.0 ; // TODO : ?
-	private final double HEALTH_RADIUS = 0.0 ; // TODO : ?
+	private final double RANGE_RADIUS = 180.0 ;
+	private final double HEALTH_RADIUS = 55.0 ;
 
 	private final int COST = 5 ;
-	private final double DAMAGE = 0.0 ; // TODO : Read From DB
-	private final double HITPOINTS = 0.0 ; // TODO : Read From DB
 	private final double RUN_SPEED = 0.0 ;
-	private final double ATTACK_SPEED = 400.0 ;
-	private final double LIFETIME = 40000.0 ;
+	private final double ATTACK_SPEED = 0.4 ;
+	private final double LIFETIME = 40.0 ;
 	private final TroopType TROOP_TYPE = TroopType.BUILDING ;
 	private final TroopType TARGET_TYPE = TroopType.ALL ;
 
-	private final double WIDTH = 30.0 ;
-	private final double HEIGHT = 30.0 ;
+	private final double WIDTH = 40.0 ;
+	private final double HEIGHT = 50.0 ;
 
 	private final String RED_BODY_PATH = "/JClashRoyale/assets/sprites/inferno_tower/inferno_tower_red_body.png" ;
 	private final String BLUE_BODY_PATH = "/JClashRoyale/assets/sprites/inferno_tower/inferno_tower_blue_body.png" ;
@@ -40,9 +38,7 @@ public class InfernoTower extends Building {
 		setHealthCircleRadius(HEALTH_RADIUS) ;
 
 		setCost(COST) ;
-		setDamage(DAMAGE) ;
 		setRunSpeed(RUN_SPEED) ;
-		setHitpoints(HITPOINTS) ;
 		setAttackSpeed(ATTACK_SPEED) ;
 		setLifetime(LIFETIME) ;
 		setTroopType(TROOP_TYPE) ;
@@ -55,6 +51,8 @@ public class InfernoTower extends Building {
 		} else {
 			// Pass
 		}
+	
+		setStateImage(body) ;
 	}
 	// Methods : Setters
 	private void setBody(String path) {
