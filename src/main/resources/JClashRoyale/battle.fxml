@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
@@ -38,8 +39,10 @@
          </children></Pane>
       <Pane layoutX="12.0" layoutY="44.0" prefHeight="50.0" prefWidth="375.0">
          <children>
-            <TextField fx:id="result" editable="false" layoutX="145.0" layoutY="5.0" prefHeight="40.0" prefWidth="85.0" />
-            <TextField fx:id="timer" editable="false" layoutX="276.0" layoutY="5.0" prefHeight="40.0" prefWidth="85.0" />
+            <TextField fx:id="timer" alignment="CENTER" editable="false" layoutX="145.0" layoutY="5.0" prefHeight="40.0" prefWidth="85.0">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
          </children>
          <cursor>
             <Cursor fx:constant="NONE" />
@@ -76,5 +79,12 @@
             <Image url="@assets/elixirbar.png" />
          </image>
       </ImageView>
+      <Rectangle fx:id="endGame" arcHeight="5.0" arcWidth="5.0" disable="true" height="480.0" layoutX="42.0" layoutY="110.0" opacity="0.45" stroke="BLACK" strokeType="INSIDE" visible="false" width="315.0" />
+      <Label fx:id="resultLabel" alignment="CENTER" disable="true" layoutX="110.0" layoutY="200.0" prefHeight="139.0" prefWidth="193.0" text="abbas" textFill="WHITE" visible="false" />
+      <Button fx:id="backButton" disable="true" layoutX="165.0" layoutY="450.0" mnemonicParsing="false" onAction="#switchToSecondary" prefHeight="30.0" prefWidth="85.0" styleClass="LOBtn" text="Back" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Swis721 BT Bold" size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

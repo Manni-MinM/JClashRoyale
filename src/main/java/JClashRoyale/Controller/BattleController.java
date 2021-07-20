@@ -2,8 +2,11 @@
 
 package JClashRoyale.Controller;
 
+import JClashRoyale.Model.App;
+import JClashRoyale.Model.SoundSystem;
 import javafx.fxml.FXML;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -17,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.util.*;
 
 import JClashRoyale.Model.Player ;
@@ -78,6 +82,11 @@ public class BattleController {
     @FXML private ImageView btnMinimize, btnClose;
     @FXML private ImageView one, two, three, four, next;
     @FXML private Rectangle cardBan1 , cardBan2 , cardBan3 , cardBan4;
+    @FXML private Rectangle endGame;
+    @FXML private Button backButton;
+    @FXML private Label resultLabel;
+
+
 
     // Methods
     public void init(Stage stage) {
@@ -91,19 +100,28 @@ public class BattleController {
             stage.setY(mouseEvent.getScreenY() - y);
         });
 
+        if (App.music) SoundSystem.battleTheme();
+
         btnClose.setOnMouseClicked(mouseEvent -> stage.close());
         btnMinimize.setOnMouseClicked(mouseEvent -> stage.setIconified(true));
+        start();
         Collections.shuffle(deck);
         initCards();
         cards.forEach(card -> card.getImageView().setOnMouseClicked(mouseEvent -> deckCardOnMousePressedAction(card.getImageView())));
         gameViewPane.setOnMouseClicked(this::deployCard);
     }
 
+	@FXML
+	private void switchToSecondary() throws IOException {
+		SoundSystem.mouseClickSFX();
+		App.setRoot("secondary");
+	}
+
     public void start() {
         gameStarter = new GameStarter() ;
 		gameManager = gameStarter.getGameManager() ;
 
-		gameStarter.initBattle(timer , result , elixer , elixerBar , gameViewPane) ;
+		gameStarter.initBattle(timer , result , elixer , elixerBar , gameViewPane, endGame, resultLabel, backButton) ;
     }
 
     private void initCards() {
