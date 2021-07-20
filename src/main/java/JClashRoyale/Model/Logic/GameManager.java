@@ -6,9 +6,14 @@ import java.util.Random ;
 import java.util.Objects ;
 import java.util.ArrayList ;
 
+import JClashRoyale.Model.App;
 import JClashRoyale.Model.Database;
+import JClashRoyale.Model.Player;
+import JClashRoyale.Model.SoundSystem;
 import javafx.animation.AnimationTimer ;
 
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar ;
 import javafx.scene.image.Image ;
 import javafx.scene.paint.Color ;
@@ -61,6 +66,7 @@ import JClashRoyale.Model.Elements.Sprites.Buildings.Cannon ;
 import JClashRoyale.Model.Elements.Sprites.Buildings.KingTower ;
 import JClashRoyale.Model.Elements.Sprites.Buildings.ArcherTower ;
 import JClashRoyale.Model.Elements.Sprites.Buildings.InfernoTower ;
+import javafx.scene.shape.Rectangle;
 
 public class GameManager {
 	// Fields
@@ -273,7 +279,8 @@ public class GameManager {
 			}
 		} 
 	}
-	public void update(TextField timerField , TextField resultField , TextField elixerField , ProgressBar elixerBar) {
+	public void update(TextField timerField , TextField resultField , TextField elixerField , ProgressBar elixerBar
+	, Rectangle endGame , Label resultLabel , Button backButton) {
 		final long startNanoTime = System.nanoTime() ;
 		new AnimationTimer() {
 			int timeOffset = 0 ;
@@ -282,20 +289,57 @@ public class GameManager {
 				double timeNow = ((currentNanoTime - startNanoTime) / 1000000000.0) ;
 				double elixerTime = timeNow - timeOffset ;
 				double elixerBotTime = timeNow - timeOffset ;
+				timerField.setText((int) ((180 - timeNow) / 60) + ":" + (int) (180 - timeNow)%60);
 
 				if (blueKingTower.isDestroyed() || redKingTower.isDestroyed() || (timeNow >= 180)){
 					int playerScore = 0;
 					int opponentScore = 0;
+					boolean won;
 
-					if (blueArcherTowerLeft.isDestroyed()) playerScore++;
-					if (blueArcherTowerRight.isDestroyed()) playerScore++;
-					if (blueKingTower.isDestroyed()) playerScore++;
-					if (redArcherTowerLeft.isDestroyed()) opponentScore++;
-					if (redArcherTowerRight.isDestroyed()) opponentScore++;
-					if (redKingTower.isDestroyed()) opponentScore++;
+					if (blueArcherTowerLeft.isDestroyed()) opponentScore++;
+					if (blueArcherTowerRight.isDestroyed()) opponentScore++;
+					if (blueKingTower.isDestroyed()) opponentScore = 3;
+					if (redArcherTowerLeft.isDestroyed()) playerScore++;
+					if (redArcherTowerRight.isDestroyed()) playerScore++;
+					if (redKingTower.isDestroyed()) playerScore = 3;
 
 					if (playerScore > opponentScore){
+						won = true;
+						Database.addBattleResult(Player.player.getUsername(),"Idiot Bot", playerScore, opponentScore,true);
+					} else if (opponentScore > playerScore){
+						won = false;
+						Database.addBattleResult(Player.player.getUsername(),"Idiot Bot", playerScore, opponentScore,false);
+					} else {
+						double playerHP = blueArcherTowerLeft.getHitpoints() + blueArcherTowerRight.getHitpoints() + blueKingTower.getHitpoints();
+						double opponentHP = redArcherTowerLeft.getHitpoints() + redArcherTowerRight.getHitpoints() + redKingTower.getHitpoints();
+						if (playerHP > opponentHP){
+							won = true;
+							Database.addBattleResult(Player.player.getUsername(),"Idiot Bot", playerScore + 1, opponentScore,true);
+						} else {
+							won = false;
+							Database.addBattleResult(Player.player.getUsername(),"Idiot Bot", playerScore, opponentScore + 1,false);
+						}
+					}
+					resultLabel.setVisible(true);
+					resultLabel.setDisable(false);
+					endGame.setVisible(true);
+					endGame.setDisable(false);
+					backButton.setVisible(true);
+					backButton.setDisable(false);
+					if (won) resultLabel.setText("You: " + playerScore + " --- Opponent: " + opponentScore + " YOU WON");
+					else resultLabel.setText("You: " + playerScore + " --- Opponent: " + opponentScore + " YOU LOST!!!");
+					if (App.music) SoundSystem.stopBattleMusic();
 
+					if (won){
+						Player.player.setCup(Player.player.getCup() + 30);
+						Player.player.setXp(Player.player.getXP() + 200);
+						System.out.println(Player.player.getCup());
+						return;
+					} else {
+						Player.player.setCup(Player.player.getCup() - 30);
+						Player.player.setXp(Player.player.getXP() + 70);
+						System.out.println(Player.player.getCup());
+						return;
 					}
 				}
 
