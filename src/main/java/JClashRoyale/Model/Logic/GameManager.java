@@ -306,6 +306,9 @@ public class GameManager {
 			}
 		} 
 	}
+	public void advancedBot() {
+		// TODO
+	}
 	public void update(TextField timerField , TextField resultField , TextField elixerField , ProgressBar elixerBar
 	, Rectangle endGame , Label resultLabel , Button backButton) {
 		final long startNanoTime = System.nanoTime() ;

@@ -162,15 +162,15 @@ public class BattleController {
 
     public void deployCard(MouseEvent event) {
 		if ( selectedCard.getCard() instanceof ArcherCard ) {
-			if ( gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
-						return ;
+			if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
+					return ;
 			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
 				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
 					return ;
-			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 140 )
-					return ;
+			} else if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+						return ;
 			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
 			} else {
@@ -198,15 +198,15 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof BabyDragonCard ) {
-			if ( gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+			if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
 					return ;
 			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
 				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
 					return ;
-			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 140 )
-					return ;
+			} else if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+						return ;
 			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
 			} else {
@@ -229,15 +229,15 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof BarbariansCard ) {
-			if ( gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+			if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
 					return ;
 			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
 				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
 					return ;
-			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 140 )
-					return ;
+			} else if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+						return ;
 			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
 			} else {
@@ -275,15 +275,15 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof GiantCard ) {
-			if ( gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+			if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
 					return ;
 			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
 				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
 					return ;
-			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 140 )
-					return ;
+			} else if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+						return ;
 			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
 			} else {
@@ -306,15 +306,15 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof MiniPekkaCard ) {
-			if ( gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
-						return ;
+			if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
+					return ;
 			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
 				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
 					return ;
-			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 140 )
-					return ;
+			} else if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+						return ;
 			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
 			} else {
@@ -337,15 +337,15 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof ValkyrieCard ) {
-			if ( gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+			if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
 					return ;
 			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
 				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
 					return ;
-			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 140 )
-					return ;
+			} else if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+						return ;
 			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
 			} else {
@@ -368,15 +368,15 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof WizardCard ) {
-			if ( gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+			if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
 					return ;
 			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
 				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
 					return ;
-			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 140 )
-					return ;
+			} else if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+						return ;
 			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
 			} else {
@@ -399,15 +399,15 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof CannonCard ) {
-			if ( gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+			if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
 					return ;
 			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
 				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
 					return ;
-			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 140 )
-					return ;
+			} else if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+						return ;
 			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
 			} else {
@@ -432,15 +432,15 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof InfernoTowerCard ) {
-			if ( gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+			if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
 					return ;
 			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
 				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
 					return ;
-			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
-				if ( event.getY() < 140 )
-					return ;
+			} else if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+						return ;
 			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
 			} else {
