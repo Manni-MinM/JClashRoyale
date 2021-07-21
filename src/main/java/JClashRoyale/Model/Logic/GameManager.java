@@ -418,8 +418,24 @@ public class GameManager {
 							affectedSprites.add(sprite) ;
 						}
 					}
-					for ( Sprite sprite : affectedSprites )
-						spell.affect(sprite) ;
+					for ( Sprite defender : affectedSprites ) {
+						spell.affect(defender) ;
+						if ( defender.getHitpoints() <= 0 ) {
+							if ( defender instanceof KingTower ) {
+								KingTower kingTower = (KingTower)defender ;
+								kingTower.destroy() ;
+							} else if ( defender instanceof ArcherTower ) {
+								ArcherTower archerTower = (ArcherTower)defender ;
+								archerTower.destroy() ;
+							} else {
+								toBeRemoved.add(defender) ;
+							}
+						} else {
+							// Pass
+						}
+					}
+					if ( spell instanceof Arrows || spell instanceof Fireball )
+						spell.setDamage(0) ;
 				}
 				for ( int it = 0 ; it < sprites.size() ; it ++ ) {
 					Sprite attacker = sprites.get(it) ;
@@ -444,6 +460,7 @@ public class GameManager {
 						attacker.setLastAttack(timeNow) ;
 						for ( Sprite defender : defenders ) {
 							if ( defender.getHitpoints() <= 0 ) {
+								
 								attacker.setAttackState(false) ;
 								if ( defender instanceof KingTower ) {
 									KingTower kingTower = (KingTower)defender ;
