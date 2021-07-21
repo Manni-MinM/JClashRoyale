@@ -131,6 +131,12 @@ public class SingleTargetTroop extends Sprite {
 
 		if ( distanceBridge < 3.0 )
 			bridgeReached = true ;
+		if ( getColorType() == ColorType.BLUE ) {
+			if ( rightArcherTowerDestroyed && getX() > 155.0 && getY() < 230.0 )
+				bridgeReached = true ;
+			if ( leftArcherTowerDestroyed && getX() <= 155.0 && getY() < 230.0 )
+				bridgeReached = true ;
+		}
 
 		if ( !bridgeReached ) {
 			walkBridge() ;

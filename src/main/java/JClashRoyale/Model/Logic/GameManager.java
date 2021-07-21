@@ -161,6 +161,12 @@ public class GameManager {
 	public int getElixerBot() {
 		return this.elixerBot ;
 	}
+	public boolean leftArcherTowerIsDestroyed() {
+		return this.redArcherTowerLeft.isDestroyed() ;
+	}
+	public boolean rightArcherTowerIsDestroyed() {
+		return this.redArcherTowerRight.isDestroyed() ;
+	}
 	// Methods : Other
 	public void addSpell(Spell spell) {
 		spells.add(spell) ;

@@ -162,15 +162,27 @@ public class BattleController {
 
     public void deployCard(MouseEvent event) {
 		if ( selectedCard.getCard() instanceof ArcherCard ) {
-			if ( event.getY() > 450.0 || event.getY() < 250 )
+			if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+						return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
+					return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
+					return ;
+			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
+			} else {
+				// Pass
+			}
 			ArcherCard archerCard = (ArcherCard)selectedCard.getCard() ;
 
 			Archer archer1 = new Archer(ColorType.BLUE) ;
 			Archer archer2 = new Archer(ColorType.BLUE) ;
 
-			double X = event.getX() - (archer1.getStateImage().getHeight()) / 2.0 ;
-			double Y = event.getY() - (archer1.getStateImage().getHeight()) / 2.0 ;
+			double X = event.getX() - (archer1.getStateImage().getWidth() / 2.0) ;
+			double Y = event.getY() - (archer1.getStateImage().getHeight() / 2.0) ;
 
 			archer1.setHitpoints(archerCard.getHP()) ;
 			archer1.setDamage(archerCard.getDamage()) ;
@@ -186,18 +198,30 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof BabyDragonCard ) {
-			if ( event.getY() > 450.0 || event.getY() < 250 )
+			if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+					return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
+					return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
+					return ;
+			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
+			} else {
+				// Pass
+			}
 			BabyDragonCard babyDragonCard = (BabyDragonCard)selectedCard.getCard() ;
 
 			BabyDragon babyDragon = new BabyDragon(ColorType.BLUE) ;
 
-			double X = event.getX() - (babyDragon.getStateImage().getHeight()) / 2.0 ;
-			double Y = event.getY() - (babyDragon.getStateImage().getHeight()) / 2.0 ;
+			double X = event.getX() - (babyDragon.getStateImage().getWidth() / 2.0) ;
+			double Y = event.getY() - (babyDragon.getStateImage().getHeight() / 2.0) ;
 
 			babyDragon.setHitpoints(selectedCard.getCard().getHP()) ;
 			babyDragon.setDamage(selectedCard.getCard().getDamage()) ;
-			babyDragon.setLocation(event.getX() , event.getY()) ;
+			babyDragon.setLocation(X , Y) ;
 			if ( gameManager.getElixer() >= babyDragon.getCost() ) {
 				gameManager.addSprite(babyDragon) ;
 				gameManager.consumeElixer(babyDragon.getCost()) ;
@@ -205,8 +229,20 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof BarbariansCard ) {
-			if ( event.getY() > 450.0 || event.getY() < 250 )
+			if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+					return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
+					return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
+					return ;
+			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
+			} else {
+				// Pass
+			}
 			BarbariansCard barbariansCard = (BarbariansCard)selectedCard.getCard() ;
 
 			Barbarian barbarian1 = new Barbarian(ColorType.BLUE) ;
@@ -214,8 +250,8 @@ public class BattleController {
 			Barbarian barbarian3 = new Barbarian(ColorType.BLUE) ;
 			Barbarian barbarian4 = new Barbarian(ColorType.BLUE) ;
 
-			double X = event.getX() - (barbarian1.getStateImage().getHeight()) / 2.0 ;
-			double Y = event.getY() - (barbarian1.getStateImage().getHeight()) / 2.0 ;
+			double X = event.getX() - (barbarian1.getStateImage().getWidth() / 2.0) ;
+			double Y = event.getY() - (barbarian1.getStateImage().getHeight() / 2.0) ;
 
 			barbarian1.setHitpoints(barbariansCard.getHP()) ;
 			barbarian1.setDamage(barbariansCard.getDamage()) ;
@@ -239,14 +275,26 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof GiantCard ) {
-			if ( event.getY() > 450.0 || event.getY() < 250 )
+			if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+					return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
+					return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
+					return ;
+			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
+			} else {
+				// Pass
+			}
 			GiantCard giantCard = (GiantCard)selectedCard.getCard() ;
 
 			Giant giant = new Giant(ColorType.BLUE) ;
 
-			double X = event.getX() - (giant.getStateImage().getHeight()) / 2.0 ;
-			double Y = event.getY() - (giant.getStateImage().getHeight()) / 2.0 ;
+			double X = event.getX() - (giant.getStateImage().getWidth() / 2.0) ;
+			double Y = event.getY() - (giant.getStateImage().getHeight() / 2.0) ;
 
 			giant.setLocation(X , Y) ;
 			giant.setHitpoints(selectedCard.getCard().getHP()) ;
@@ -258,14 +306,26 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof MiniPekkaCard ) {
-			if ( event.getY() > 450.0 || event.getY() < 250 )
+			if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+						return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
+					return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
+					return ;
+			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
+			} else {
+				// Pass
+			}
 			MiniPekkaCard miniPekkaCard = (MiniPekkaCard)selectedCard.getCard() ;
 
 			MiniPekka miniPekka = new MiniPekka(ColorType.BLUE) ;
 
-			double X = event.getX() - (miniPekka.getStateImage().getHeight()) / 2.0 ;
-			double Y = event.getY() - (miniPekka.getStateImage().getHeight()) / 2.0 ;
+			double X = event.getX() - (miniPekka.getStateImage().getWidth() / 2.0) ;
+			double Y = event.getY() - (miniPekka.getStateImage().getHeight() / 2.0) ;
 
 			miniPekka.setLocation(X , Y) ;
 			miniPekka.setHitpoints(selectedCard.getCard().getHP()) ;
@@ -277,14 +337,26 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof ValkyrieCard ) {
-			if ( event.getY() > 450.0 || event.getY() < 250 )
+			if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+					return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
+					return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
+					return ;
+			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
+			} else {
+				// Pass
+			}
 			ValkyrieCard valkyrieCard = (ValkyrieCard)selectedCard.getCard() ;
 
 			Valkyrie valkyrie = new Valkyrie(ColorType.BLUE) ;
 
-			double X = event.getX() - (valkyrie.getStateImage().getHeight()) / 2.0 ;
-			double Y = event.getY() - (valkyrie.getStateImage().getHeight()) / 2.0 ;
+			double X = event.getX() - (valkyrie.getStateImage().getWidth() / 2.0) ;
+			double Y = event.getY() - (valkyrie.getStateImage().getHeight() / 2.0) ;
 
 			valkyrie.setLocation(X , Y) ;
 			valkyrie.setHitpoints(selectedCard.getCard().getHP()) ;
@@ -296,14 +368,26 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof WizardCard ) {
-			if ( event.getY() > 450.0 || event.getY() < 250 )
+			if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+					return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
+					return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
+					return ;
+			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
+			} else {
+				// Pass
+			}
 			WizardCard wizardCard = (WizardCard)selectedCard.getCard() ;
 
 			Wizard wizard = new Wizard(ColorType.BLUE) ;
 
-			double X = event.getX() - (wizard.getStateImage().getHeight()) / 2.0 ;
-			double Y = event.getY() - (wizard.getStateImage().getHeight()) / 2.0 ;
+			double X = event.getX() - (wizard.getStateImage().getWidth() / 2.0) ;
+			double Y = event.getY() - (wizard.getStateImage().getHeight() / 2.0) ;
 
 			wizard.setLocation(X , Y) ;
 			wizard.setHitpoints(selectedCard.getCard().getHP()) ;
@@ -315,16 +399,28 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof CannonCard ) {
-			if ( event.getY() > 450.0 || event.getY() < 250 )
+			if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+					return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
+					return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
+					return ;
+			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
+			} else {
+				// Pass
+			}
 			CannonCard cannonCard = (CannonCard)selectedCard.getCard() ;
 
 			Cannon cannon = new Cannon(ColorType.BLUE) ;
 
-			double X = event.getX() - (cannon.getStateImage().getHeight()) / 2.0 ;
-			double Y = event.getY() - (cannon.getStateImage().getHeight()) / 2.0 ;
+			double X = event.getX() - (cannon.getStateImage().getWidth() / 2.0) ;
+			double Y = event.getY() - (cannon.getStateImage().getHeight() / 2.0) ;
 
-			cannon.setLocation(event.getX() , event.getY()) ;
+			cannon.setLocation(X , Y) ;
 			cannon.setHitpoints(selectedCard.getCard().getHP()) ;
 			cannon.setDamage(selectedCard.getCard().getDamage()) ;
 			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
@@ -336,14 +432,26 @@ public class BattleController {
 				return ;
 			}
 		} else if ( selectedCard.getCard() instanceof InfernoTowerCard ) {
-			if ( event.getY() > 450.0 || event.getY() < 250 )
+			if ( gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() < 155) )
+					return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 230 && (event.getY() < 140 || event.getX() >= 155) )
+					return ;
+			} else if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
+				if ( event.getY() < 140 )
+					return ;
+			} else if ( event.getY() > 450.0 || event.getY() < 230 ) {
 				return ;
+			} else {
+				// Pass
+			}
 			InfernoTowerCard infernoTowerCard = (InfernoTowerCard)selectedCard.getCard() ;
 
 			InfernoTower infernoTower = new InfernoTower(ColorType.BLUE) ;
 
-			double X = event.getX() - (infernoTower.getStateImage().getHeight()) / 2.0 ;
-			double Y = event.getY() - (infernoTower.getStateImage().getHeight()) / 2.0 ;
+			double X = event.getX() - (infernoTower.getStateImage().getWidth() / 2.0) ;
+			double Y = event.getY() - (infernoTower.getStateImage().getHeight() / 2.0) ;
 
 			infernoTower.setLocation(X , Y) ;
 			infernoTower.setHitpoints(selectedCard.getCard().getHP()) ;
@@ -360,8 +468,8 @@ public class BattleController {
 			RageCard rageCard = (RageCard)selectedCard.getCard() ;
 			Rage rage = new Rage(ColorType.BLUE) ;
 
-			double X = event.getX() - (rage.getStateImage().getHeight()) / 2.0 ;
-			double Y = event.getY() - (rage.getStateImage().getHeight()) / 2.0 ;
+			double X = event.getX() - (rage.getStateImage().getWidth() / 2.0) ;
+			double Y = event.getY() - (rage.getStateImage().getHeight() / 2.0) ;
 
 			rage.setLocation(X , Y) ;
 			rage.setDuration(rageCard.getAttribute()) ;
@@ -377,8 +485,8 @@ public class BattleController {
 			FireballCard fireballCard = (FireballCard)selectedCard.getCard() ;
 			Fireball fireball = new Fireball(ColorType.BLUE) ;
 
-			double X = event.getX() - (fireball.getStateImage().getHeight()) / 2.0 ;
-			double Y = event.getY() - (fireball.getStateImage().getHeight()) / 2.0 ;
+			double X = event.getX() - (fireball.getStateImage().getWidth() / 2.0) ;
+			double Y = event.getY() - (fireball.getStateImage().getHeight() / 2.0) ;
 
 			fireball.setLocation(X , Y) ;
 			fireball.setDamage(fireballCard.getAttribute()) ;
@@ -394,8 +502,8 @@ public class BattleController {
 			ArrowsCard arrowsCard = (ArrowsCard)selectedCard.getCard() ;
 			Arrows arrows = new Arrows(ColorType.BLUE) ;
 
-			double X = event.getX() - (arrows.getStateImage().getHeight()) / 2.0 ;
-			double Y = event.getY() - (arrows.getStateImage().getHeight()) / 2.0 ;
+			double X = event.getX() - (arrows.getStateImage().getWidth() / 2.0) ;
+			double Y = event.getY() - (arrows.getStateImage().getHeight() / 2.0) ;
 
 			arrows.setLocation(X , Y) ;
 			arrows.setDamage(arrowsCard.getAttribute()) ;
