@@ -30,7 +30,19 @@ public class InfernoTowerCard extends Card implements AdjustableDamage{
 
     @Override
     public int getDamage() {
-        return 0;
+        switch (Player.player.getLevel()) {
+            case 1:
+                return 20;
+            case 2:
+                return 22;
+            case 3:
+                return 24;
+            case 4:
+                return 26;
+            case 5:
+                return 29;
+        }
+        return 20;
     }
 
     @Override

@@ -13,6 +13,8 @@ import java.util.ArrayList ;
 import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
 
+import JClashRoyale.Model.Elements.Sprites.Buildings.InfernoTower ;
+
 public abstract class Sprite {
 	// Fields
 	protected Point2D location ;
@@ -82,6 +84,8 @@ public abstract class Sprite {
 	}
 	public void setAttackState(boolean attackState) {
 		this.attackState = attackState ;
+		if ( this instanceof InfernoTower && !attackState )
+			this.setDamage(20) ;
 	}
 	public void setColorType(ColorType color) {
 		this.colorType = color ;
@@ -181,6 +185,8 @@ public abstract class Sprite {
 		this.setAttackState(true) ;
 		for ( Sprite defender : defenders )
 			defender.setHitpoints(defender.getHitpoints() - this.getDamage()) ;
+		if ( this instanceof InfernoTower )
+			this.setDamage(Math.max(this.getDamage() + 20 , 400.0)) ;
 	}
 	// Methods : Abstract
 	public abstract void walkForward() ;

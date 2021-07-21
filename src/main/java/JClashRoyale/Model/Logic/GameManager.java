@@ -469,7 +469,6 @@ public class GameManager {
 						attacker.setLastAttack(timeNow) ;
 						for ( Sprite defender : defenders ) {
 							if ( defender.getHitpoints() <= 0 ) {
-								
 								attacker.setAttackState(false) ;
 								if ( defender instanceof KingTower ) {
 									KingTower kingTower = (KingTower)defender ;
