@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar ;
 import javafx.scene.image.Image ;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color ;
 import javafx.scene.control.TextField;
 import javafx.scene.canvas.Canvas ;
@@ -88,6 +89,10 @@ public class GameManager {
 	private KingTower blueKingTower ;
 	private ArcherTower blueArcherTowerLeft ;
 	private ArcherTower blueArcherTowerRight ;
+
+	private final ArrayList<Card> botDeck = new ArrayList<>();
+	private final ArrayList<Card> botOutOfHands = new ArrayList<>();
+
 	// Constructor
 	public GameManager() {
 		elixer = 5 ;
@@ -136,6 +141,13 @@ public class GameManager {
 		sprites.add(blueKingTower) ;
 		sprites.add(blueArcherTowerLeft) ;
 		sprites.add(blueArcherTowerRight) ;
+
+		for (int i = 0; i < 4; i++) {
+			botDeck.add(Player.player.getDeck().get(i));
+		}
+		for (int i = 4; i < 8; i++) {
+			botOutOfHands.add(Player.player.getDeck().get(i));
+		}
 	}
 	// Methods : Setters
 	public void setBattleMap(String path) {
@@ -307,10 +319,264 @@ public class GameManager {
 		} 
 	}
 	public void advancedBot() {
-		// TODO
+		if ( getElixerBot() < 5 )
+			return ;
+
+		Random random = new Random() ;
+		int randomInt = random.nextInt(4) ;
+		double randomX = random.nextDouble() * 250 + 25 ;
+		double randomY = random.nextDouble() * 200 + 20 ;
+		System.out.println(botDeck);
+		if (blueArcherTowerLeft.getHitpoints() <= 400 && (doesHaveCard(new ArrowsCard()) | doesHaveCard(new FireballCard()))) {
+			deployCard(blueArcherTowerLeft.getX(), blueArcherTowerLeft.getY(), findCardInDeck(new ArrowsCard()));
+			deployCard(blueArcherTowerLeft.getX(), blueArcherTowerLeft.getY(), findCardInDeck(new FireballCard()));
+		}
+		else if (blueArcherTowerRight.getHitpoints() <= 400 && (doesHaveCard(new ArrowsCard()) | doesHaveCard(new FireballCard()))) {
+			deployCard(blueArcherTowerRight.getX(), blueArcherTowerRight.getY(), findCardInDeck(new ArrowsCard()));
+			deployCard(blueArcherTowerRight.getX(), blueArcherTowerRight.getY(), findCardInDeck(new FireballCard()));
+		}
+
+
+
+
+
+		deployCard(randomX,randomY,botDeck.get(randomInt));
+
 	}
-	public void update(TextField timerField , TextField resultField , TextField elixerField , ProgressBar elixerBar
-	, Rectangle endGame , Label resultLabel , Button backButton) {
+
+	private boolean doesHaveCard (Card card){
+		for (Card card1 : botDeck) {
+			if (card.getClass().getName().equalsIgnoreCase(card1.getClass().getName())){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private Card findCardInDeck(Card card){
+		for (Card card1 : botDeck) {
+			if (card.getClass().getName().equalsIgnoreCase(card1.getClass().getName())){
+				return card1;
+			}
+		}
+		return null;
+	}
+
+
+	public void deployCard(double randomX , double randomY, Card selectedCard) {
+		if ( selectedCard instanceof ArcherCard ) {
+
+			Archer archer1 = new Archer(ColorType.RED) ;
+			Archer archer2 = new Archer(ColorType.RED) ;
+
+
+
+			archer1.setHitpoints(selectedCard.getHP()) ;
+			archer1.setDamage(selectedCard.getDamage()) ;
+			archer1.setLocation(randomX - 10 , randomY) ;
+			archer2.setHitpoints(selectedCard.getHP()) ;
+			archer2.setDamage(selectedCard.getDamage()) ;
+			archer2.setLocation(randomX + 10 , randomY) ;
+			if ( getElixerBot() >= archer1.getCost() ) {
+				addSprite(archer1) ;
+				addSprite(archer2) ;
+				consumeElixerBot(archer1.getCost()); ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard instanceof BabyDragonCard ) {
+
+			BabyDragon babyDragon = new BabyDragon(ColorType.RED) ;
+
+
+			babyDragon.setHitpoints(selectedCard.getHP()) ;
+			babyDragon.setDamage(selectedCard.getDamage()) ;
+			babyDragon.setLocation(randomX , randomY) ;
+			if ( getElixerBot() >= babyDragon.getCost() ) {
+				addSprite(babyDragon) ;
+				consumeElixerBot(babyDragon.getCost()); ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard instanceof BarbariansCard ) {
+			BarbariansCard barbariansCard = (BarbariansCard)selectedCard ;
+
+			Barbarian barbarian1 = new Barbarian(ColorType.RED) ;
+			Barbarian barbarian2 = new Barbarian(ColorType.RED) ;
+			Barbarian barbarian3 = new Barbarian(ColorType.RED) ;
+			Barbarian barbarian4 = new Barbarian(ColorType.RED) ;
+
+
+			barbarian1.setHitpoints(barbariansCard.getHP()) ;
+			barbarian1.setDamage(barbariansCard.getDamage()) ;
+			barbarian1.setLocation(randomX + 15 , randomY + 10) ;
+			barbarian2.setHitpoints(barbariansCard.getHP()) ;
+			barbarian2.setDamage(barbariansCard.getDamage()) ;
+			barbarian2.setLocation(randomX - 15 , randomY + 10) ;
+			barbarian3.setHitpoints(barbariansCard.getHP()) ;
+			barbarian3.setDamage(barbariansCard.getDamage()) ;
+			barbarian3.setLocation(randomX + 15 , randomY - 10) ;
+			barbarian4.setHitpoints(barbariansCard.getHP()) ;
+			barbarian4.setDamage(barbariansCard.getDamage()) ;
+			barbarian4.setLocation(randomX - 15 , randomY - 10) ;
+			if ( getElixerBot() >= barbarian1.getCost() ) {
+				addSprite(barbarian1) ;
+				addSprite(barbarian2) ;
+				addSprite(barbarian3) ;
+				addSprite(barbarian4) ;
+				consumeElixerBot(barbarian1.getCost()); ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard instanceof GiantCard ) {
+
+			Giant giant = new Giant(ColorType.RED) ;
+
+
+			giant.setLocation(randomX , randomY) ;
+			giant.setHitpoints(selectedCard.getHP()) ;
+			giant.setDamage(selectedCard.getDamage()) ;
+			if ( getElixerBot() >= giant.getCost() ) {
+				addSprite(giant) ;
+				consumeElixerBot(giant.getCost()); ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard instanceof MiniPekkaCard ) {
+
+			MiniPekka miniPekka = new MiniPekka(ColorType.RED) ;
+
+
+			miniPekka.setLocation(randomX , randomY) ;
+			miniPekka.setHitpoints(selectedCard.getHP()) ;
+			miniPekka.setDamage(selectedCard.getDamage()) ;
+			if ( getElixerBot() >= miniPekka.getCost() ) {
+				addSprite(miniPekka) ;
+				consumeElixerBot(miniPekka.getCost()); ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard instanceof ValkyrieCard ) {
+
+			Valkyrie valkyrie = new Valkyrie(ColorType.RED) ;
+
+
+			valkyrie.setLocation(randomX , randomY) ;
+			valkyrie.setHitpoints(selectedCard.getHP()) ;
+			valkyrie.setDamage(selectedCard.getDamage()) ;
+			if ( getElixerBot() >= valkyrie.getCost() ) {
+				addSprite(valkyrie) ;
+				consumeElixerBot(valkyrie.getCost()); ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard instanceof WizardCard ) {
+
+			Wizard wizard = new Wizard(ColorType.RED) ;
+
+
+			wizard.setLocation(randomX , randomY) ;
+			wizard.setHitpoints(selectedCard.getHP()) ;
+			wizard.setDamage(selectedCard.getDamage()) ;
+			if ( getElixerBot() >= wizard.getCost() ) {
+				addSprite(wizard) ;
+				consumeElixerBot(wizard.getCost()); ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard instanceof CannonCard ) {
+
+			Cannon cannon = new Cannon(ColorType.RED) ;
+
+
+			cannon.setLocation(randomX , randomY) ;
+			cannon.setHitpoints(selectedCard.getHP()) ;
+			cannon.setDamage(selectedCard.getDamage()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			cannon.setDeploymentTime(timeNow) ;
+			if ( getElixerBot() >= cannon.getCost() ) {
+				addSprite(cannon) ;
+				consumeElixerBot(cannon.getCost()); ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard instanceof InfernoTowerCard ) {
+
+			InfernoTower infernoTower = new InfernoTower(ColorType.RED) ;
+
+
+			infernoTower.setLocation(randomX , randomY) ;
+			infernoTower.setHitpoints(selectedCard.getHP()) ;
+			infernoTower.setDamage(selectedCard.getDamage()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			infernoTower.setDeploymentTime(timeNow) ;
+			if ( getElixerBot() >= infernoTower.getCost() ) {
+				addSprite(infernoTower) ;
+				consumeElixerBot(infernoTower.getCost()); ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard instanceof RageCard ) {
+			RageCard rageCard = (RageCard)selectedCard ;
+			Rage rage = new Rage(ColorType.RED) ;
+
+
+			rage.setLocation(randomX , randomY) ;
+			rage.setDuration(rageCard.getAttribute()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			rage.setDeploymentTime(timeNow) ;
+			if ( getElixerBot() >= rage.getCost() ) {
+				addSpell(rage) ;
+				consumeElixerBot(rage.getCost()); ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard instanceof FireballCard ) {
+			FireballCard fireballCard = (FireballCard)selectedCard ;
+			Fireball fireball = new Fireball(ColorType.RED) ;
+
+
+			fireball.setLocation(randomX , randomY) ;
+			fireball.setDamage(fireballCard.getAttribute()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			fireball.setDeploymentTime(timeNow) ;
+			if ( getElixerBot() >= fireball.getCost() ) {
+				addSpell(fireball) ;
+				consumeElixerBot(fireball.getCost()); ;
+			} else {
+				return ;
+			}
+		} else if ( selectedCard instanceof ArrowsCard ) {
+			ArrowsCard arrowsCard = (ArrowsCard)selectedCard ;
+			Arrows arrows = new Arrows(ColorType.RED) ;
+
+
+			arrows.setLocation(randomX , randomY) ;
+			arrows.setDamage(arrowsCard.getAttribute()) ;
+			double timeNow = ((long)System.nanoTime()) / 1000000000.0 ;
+			arrows.setDeploymentTime(timeNow) ;
+			if ( getElixerBot() >= arrows.getCost() ) {
+				addSpell(arrows) ;
+				consumeElixerBot(arrows.getCost()); ;
+			} else {
+				return ;
+			}
+		} else {
+			// Pass
+		}
+		botDeck.remove(selectedCard);
+		botDeck.add(botOutOfHands.get(0));
+		botOutOfHands.remove(0);
+		botOutOfHands.add(selectedCard);
+
+
+	}
+
+
+
+
+	public void update(TextField timerField, TextField elixerField, ProgressBar elixerBar
+			, Rectangle endGame, Label resultLabel, Button backButton) {
 		final long startNanoTime = System.nanoTime() ;
 		new AnimationTimer() {
 			int timeOffset = 0 ;
@@ -393,7 +659,9 @@ public class GameManager {
 				loadBattleMap() ;
 				elixerField.setText(String.valueOf(elixer)) ;
 
-				dummyBot() ;
+				if (!App.advancedAI)
+					dummyBot() ;
+				else advancedBot();
 
 				ArrayList<Sprite> walkingSprites = new ArrayList<Sprite>() ;
 				ArrayList<Sprite> attackingSprites = new ArrayList<Sprite>() ;
