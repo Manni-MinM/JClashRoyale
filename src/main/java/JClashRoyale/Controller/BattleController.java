@@ -122,7 +122,7 @@ public class BattleController {
         gameStarter = new GameStarter() ;
 		gameManager = gameStarter.getGameManager() ;
 
-		gameStarter.initBattle(timer , result , elixer , elixerBar , gameViewPane, endGame, resultLabel, backButton) ;
+		gameStarter.initBattle(timer ,  elixer , elixerBar , gameViewPane, endGame, resultLabel, backButton) ;
     }
 
     private void initCards() {
