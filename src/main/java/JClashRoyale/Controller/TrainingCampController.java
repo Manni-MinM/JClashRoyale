@@ -56,6 +56,8 @@ public class TrainingCampController {
 
     @FXML
     private void switchToAdvancedAI() throws IOException {
+        if (App.music) SoundSystem.stopMainMenuMusic();
+        App.advancedAI = true;
         SoundSystem.mouseClickSFX();
         App.setRoot("battle");
     }

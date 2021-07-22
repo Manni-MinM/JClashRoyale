@@ -20,6 +20,7 @@ public class App extends Application {
 
     public static boolean sfx = true;
     public static boolean music = true;
+    public static boolean advancedAI = false;
     private static Scene scene;
     private static Stage stage;
 
