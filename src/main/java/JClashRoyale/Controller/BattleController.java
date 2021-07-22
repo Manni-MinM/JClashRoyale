@@ -114,6 +114,7 @@ public class BattleController {
 	@FXML
 	private void switchToSecondary() throws IOException {
 		SoundSystem.mouseClickSFX();
+		if (App.music) SoundSystem.mainMenuTheme();
 		App.setRoot("secondary");
 	}
 
