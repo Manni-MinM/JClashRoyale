@@ -3,10 +3,15 @@ package JClashRoyale.Model.Cards;
 import JClashRoyale.Model.Player;
 
 /**
+ * The type Mini pekka card.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/13/2021
+ * @since 7 /13/2021
  */
 public class MiniPekkaCard extends Card{
+    /**
+     * Instantiates a new Mini pekka card.
+     */
     public MiniPekkaCard(){
         setImageAddress("/JClashRoyale/assets/mini_pekka.png");
     }

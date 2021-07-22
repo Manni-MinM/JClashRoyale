@@ -23,8 +23,10 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 /**
+ * The type Battle history controller.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/20/2021
+ * @since 7 /20/2021
  */
 public class BattleHistoryController {
     private double x, y;
@@ -40,6 +42,11 @@ public class BattleHistoryController {
     @FXML
     private Label WLlabel;
 
+    /**
+     * Init.
+     *
+     * @param stage the stage
+     */
     public void init(Stage stage) {
         titlePane.setOnMousePressed(mouseEvent -> {
             x = mouseEvent.getSceneX();

@@ -6,6 +6,9 @@ import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
 import JClashRoyale.Model.Elements.Sprites.SingleTargetTroop ;
 
+/**
+ * The type Barbarian.
+ */
 public class Barbarian extends SingleTargetTroop {
 	// Fields : Final
 	private final double RANGE_RADIUS = 40.0 ;
@@ -28,7 +31,13 @@ public class Barbarian extends SingleTargetTroop {
 	private final String BLUE_RUN_ANIMATION_FORWARD_PATH = "/JClashRoyale/assets/sprites/barbarian/barbarian_blue_run_forward.gif" ;
 	private final String RED_BATTLE_ANIMATION_PATH = "/JClashRoyale/assets/sprites/barbarian/barbarian_red_battle.gif" ;
 	private final String BLUE_BATTLE_ANIMATION_PATH = "/JClashRoyale/assets/sprites/barbarian/barbarian_blue_battle.gif" ;
-	// Constructor
+
+	/**
+	 * Instantiates a new Barbarian.
+	 *
+	 * @param color the color
+	 */
+// Constructor
 	public Barbarian(ColorType color) {
 		setColorType(color) ;
 

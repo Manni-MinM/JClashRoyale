@@ -69,6 +69,9 @@ import JClashRoyale.Model.Elements.Sprites.Buildings.ArcherTower ;
 import JClashRoyale.Model.Elements.Sprites.Buildings.InfernoTower ;
 import javafx.scene.shape.Rectangle;
 
+/**
+ * The type Game manager.
+ */
 public class GameManager {
 	// Fields
 	private int elixer ;
@@ -93,7 +96,10 @@ public class GameManager {
 	private final ArrayList<Card> botDeck = new ArrayList<>();
 	private final ArrayList<Card> botOutOfHands = new ArrayList<>();
 
-	// Constructor
+	/**
+	 * Instantiates a new Game manager.
+	 */
+// Constructor
 	public GameManager() {
 		elixer = 5 ;
 		elixerBot = 5 ;
@@ -149,46 +155,120 @@ public class GameManager {
 			botOutOfHands.add(Player.player.getDeck().get(i));
 		}
 	}
-	// Methods : Setters
+
+	/**
+	 * Sets battle map.
+	 *
+	 * @param path the path
+	 */
+// Methods : Setters
 	public void setBattleMap(String path) {
 		this.battleMap = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , 315 , 480 , false , false) ;
 	}
+
+	/**
+	 * Consume elixer.
+	 *
+	 * @param value the value
+	 */
 	public void consumeElixer(int value) {
 		this.elixer -= value ;
 		BattleController.updateAvailability(elixer);
 	}
+
+	/**
+	 * Consume elixer bot.
+	 *
+	 * @param value the value
+	 */
 	public void consumeElixerBot(int value) {
 		this.elixerBot -= value ;
 	}
-	// Methods : Getters
+
+	/**
+	 * Gets canvas.
+	 *
+	 * @return the canvas
+	 */
+// Methods : Getters
 	public Canvas getCanvas() {
 		return this.canvas ;
 	}
+
+	/**
+	 * Gets graphics.
+	 *
+	 * @return the graphics
+	 */
 	public GraphicsContext getGraphics() {
 		return this.graphics ;
 	}
+
+	/**
+	 * Gets elixer.
+	 *
+	 * @return the elixer
+	 */
 	public int getElixer() {
 		return this.elixer ;
 	}
+
+	/**
+	 * Gets elixer bot.
+	 *
+	 * @return the elixer bot
+	 */
 	public int getElixerBot() {
 		return this.elixerBot ;
 	}
+
+	/**
+	 * Left archer tower is destroyed boolean.
+	 *
+	 * @return the boolean
+	 */
 	public boolean leftArcherTowerIsDestroyed() {
 		return this.redArcherTowerLeft.isDestroyed() ;
 	}
+
+	/**
+	 * Right archer tower is destroyed boolean.
+	 *
+	 * @return the boolean
+	 */
 	public boolean rightArcherTowerIsDestroyed() {
 		return this.redArcherTowerRight.isDestroyed() ;
 	}
-	// Methods : Other
+
+	/**
+	 * Add spell.
+	 *
+	 * @param spell the spell
+	 */
+// Methods : Other
 	public void addSpell(Spell spell) {
 		spells.add(spell) ;
 	}
+
+	/**
+	 * Add sprite.
+	 *
+	 * @param sprite the sprite
+	 */
 	public void addSprite(Sprite sprite) {
 		sprites.add(sprite) ;
 	}
+
+	/**
+	 * Load battle map.
+	 */
 	public void loadBattleMap() {
 		graphics.drawImage(battleMap , 0 , 0) ;
 	}
+
+	/**
+	 * Dummy bot.
+	 */
 	public void dummyBot() {
 		if ( getElixerBot() < 5 )
 			return ;
@@ -318,6 +398,10 @@ public class GameManager {
 			}
 		} 
 	}
+
+	/**
+	 * Advanced bot.
+	 */
 	public void advancedBot() {
 		if ( getElixerBot() < 5 )
 			return ;
@@ -407,6 +491,13 @@ public class GameManager {
 	}
 
 
+	/**
+	 * Deploy card.
+	 *
+	 * @param randomX      the random x
+	 * @param randomY      the random y
+	 * @param selectedCard the selected card
+	 */
 	public void deployCard(double randomX , double randomY, Card selectedCard) {
 		if ( selectedCard instanceof ArcherCard ) {
 
@@ -617,8 +708,16 @@ public class GameManager {
 	}
 
 
-
-
+	/**
+	 * Update.
+	 *
+	 * @param timerField  the timer field
+	 * @param elixerField the elixer field
+	 * @param elixerBar   the elixer bar
+	 * @param endGame     the end game
+	 * @param resultLabel the result label
+	 * @param backButton  the back button
+	 */
 	public void update(TextField timerField, TextField elixerField, ProgressBar elixerBar
 			, Rectangle endGame, Label resultLabel, Button backButton) {
 		final long startNanoTime = System.nanoTime() ;
@@ -674,6 +773,7 @@ public class GameManager {
 					if (won) resultLabel.setText("You: " + playerScore + " --- Opponent: " + opponentScore + " YOU WON");
 					else resultLabel.setText("You: " + playerScore + " --- Opponent: " + opponentScore + " YOU LOST!!!");
 					if (App.music) SoundSystem.stopBattleMusic();
+					App.advancedAI = false;
 					int xp;
 					int cup;
 					if (App.advancedAI){
@@ -686,12 +786,10 @@ public class GameManager {
 					if (won){
 						Player.player.setCup(Player.player.getCup() + cup);
 						Player.player.setXp(Player.player.getXP() + xp);
-						System.out.println(Player.player.getCup());
 						this.stop() ;
 					} else {
 						Player.player.setCup(Player.player.getCup() - cup);
 						Player.player.setXp(Player.player.getXP() + 70);
-						System.out.println(Player.player.getCup());
 						this.stop() ;
 					}
 				}

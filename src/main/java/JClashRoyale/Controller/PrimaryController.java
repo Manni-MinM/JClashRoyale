@@ -17,6 +17,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 
+/**
+ * The type Primary controller.
+ */
 public class PrimaryController {
     @FXML
     private Pane titlePane;
@@ -31,6 +34,11 @@ public class PrimaryController {
 
     private double x, y;
 
+    /**
+     * Init.
+     *
+     * @param stage the stage
+     */
     public void init(Stage stage) {
         titlePane.setOnMousePressed(mouseEvent -> {
             x = mouseEvent.getSceneX();
@@ -51,6 +59,11 @@ public class PrimaryController {
     }
 
 
+    /**
+     * Login button on action.
+     *
+     * @param e the e
+     */
     public void loginButtonOnAction(ActionEvent e) {
         SoundSystem.mouseClickSFX();
         if (usernameTextField.getText().isBlank() || passwordPasswordField.getText().isBlank()) {
@@ -70,6 +83,11 @@ public class PrimaryController {
             loginFailure();
     }
 
+    /**
+     * Register button on action.
+     *
+     * @param e the e
+     */
     public void registerButtonOnAction(ActionEvent e) {
         SoundSystem.mouseClickSFX();
         if (usernameTextField.getText().isBlank() || passwordPasswordField.getText().isBlank()) {

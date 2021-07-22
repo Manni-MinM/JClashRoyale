@@ -12,20 +12,51 @@ import javafx.scene.control.TextField;
 import javafx.scene.canvas.Canvas ;
 import javafx.scene.canvas.GraphicsContext ;
 
+/**
+ * The type Game starter.
+ */
 public class GameStarter {
-	// Fields
+    /**
+     * The Game manager.
+     */
+// Fields
 	GameManager gameManager ;
-	// Fields : Final
+    /**
+     * The Battle map path.
+     */
+// Fields : Final
 	String BATTLE_MAP_PATH = "/JClashRoyale/assets/map.png" ;
-	// Constructor
+
+    /**
+     * Instantiates a new Game starter.
+     */
+// Constructor
 	public GameStarter() {
 		gameManager = new GameManager() ;
 	}
-	// Methods : Getters
+
+    /**
+     * Gets game manager.
+     *
+     * @return the game manager
+     */
+// Methods : Getters
 	public GameManager getGameManager() {
 		return this.gameManager ;
 	}
-	// Methods : Other
+
+    /**
+     * Init battle.
+     *
+     * @param timer          the timer
+     * @param elixer         the elixer
+     * @param elixerBar      the elixer bar
+     * @param battleViewPane the battle view pane
+     * @param endGame        the end game
+     * @param resultLabel    the result label
+     * @param backButton     the back button
+     */
+// Methods : Other
 	public void initBattle(TextField timer , TextField elixer , ProgressBar elixerBar, Pane battleViewPane
 	, Rectangle endGame, Label resultLabel, Button backButton) {
 		gameManager.setBattleMap(BATTLE_MAP_PATH) ;

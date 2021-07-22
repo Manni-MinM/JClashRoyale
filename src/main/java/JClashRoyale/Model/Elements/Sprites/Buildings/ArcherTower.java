@@ -11,6 +11,9 @@ import JClashRoyale.Model.Elements.Sprites.Building ;
 
 import java.util.Objects;
 
+/**
+ * The type Archer tower.
+ */
 public class ArcherTower extends Building {
 	// Fields : Final
 	private final double RANGE_RADIUS = 225.0 ;
@@ -36,7 +39,13 @@ public class ArcherTower extends Building {
 	private Image idleTower ;
 	private Image battleTower ;
 	private Image destroyedTower ;
-	// Constructor
+
+	/**
+	 * Instantiates a new Archer tower.
+	 *
+	 * @param color the color
+	 */
+// Constructor
 	public ArcherTower(ColorType color) {
 		isDestroyed = false ;
 
@@ -73,11 +82,21 @@ public class ArcherTower extends Building {
 	private void setDestroyedTower(String path) {
 		this.destroyedTower = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , WIDTH , HEIGHT , false , false);
 	}
-	// Methods : Getters
+
+	/**
+	 * Is destroyed boolean.
+	 *
+	 * @return the boolean
+	 */
+// Methods : Getters
 	public boolean isDestroyed() {
 		return this.isDestroyed ;
 	}
-	// Methods : Other
+
+	/**
+	 * Destroy.
+	 */
+// Methods : Other
 	public void destroy() {
 		isDestroyed = true ;
 		setRangeCircleRadius(0) ;

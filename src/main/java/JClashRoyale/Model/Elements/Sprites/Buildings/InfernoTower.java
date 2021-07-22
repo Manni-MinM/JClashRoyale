@@ -11,6 +11,9 @@ import JClashRoyale.Model.Elements.Sprites.Building ;
 
 import java.util.Objects;
 
+/**
+ * The type Inferno tower.
+ */
 public class InfernoTower extends Building {
 	// Fields : Final
 	private final double RANGE_RADIUS = 180.0 ;
@@ -30,7 +33,13 @@ public class InfernoTower extends Building {
 	private final String BLUE_BODY_PATH = "/JClashRoyale/assets/sprites/inferno_tower/inferno_tower_blue_body.png" ;
 	// Fields : Other
 	private Image body ;
-	// Constructor
+
+	/**
+	 * Instantiates a new Inferno tower.
+	 *
+	 * @param color the color
+	 */
+// Constructor
 	public InfernoTower(ColorType color) {
 		setColorType(color) ;
 

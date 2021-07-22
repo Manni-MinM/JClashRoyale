@@ -58,17 +58,36 @@ import JClashRoyale.Model.Elements.Sprites.Buildings.InfernoTower ;
 import JClashRoyale.Model.Logic.GameStarter ;
 import JClashRoyale.Model.Logic.GameManager ;
 
+/**
+ * The type Battle controller.
+ */
 public class BattleController {
-    // Fields
-    double x, y;
+	/**
+	 * The X.
+	 */
+// Fields
+    double x,
+	/**
+	 * The Y.
+	 */
+	y;
     private final ArrayList<Card> deck = new ArrayList<>(Player.player.getDeck());
     private final ArrayList<ImagePackage> cards = new ArrayList<>();
     private final ArrayList<Card> outOfHandCards = new ArrayList<>();
     private ImagePackage selectedCard;
     private ImagePackage nextCard;
-    public static HashMap<ImagePackage , Rectangle> bannedCards = new HashMap<>();
+	/**
+	 * The constant bannedCards.
+	 */
+	public static HashMap<ImagePackage , Rectangle> bannedCards = new HashMap<>();
 
-    GameStarter gameStarter ;
+	/**
+	 * The Game starter.
+	 */
+	GameStarter gameStarter ;
+	/**
+	 * The Game manager.
+	 */
 	GameManager gameManager ;
 
     @FXML private Pane titlePane;
@@ -87,8 +106,12 @@ public class BattleController {
     @FXML private Label resultLabel;
 
 
-
-    // Methods
+	/**
+	 * Init.
+	 *
+	 * @param stage the stage
+	 */
+// Methods
     public void init(Stage stage) {
 
         titlePane.setOnMousePressed(mouseEvent -> {
@@ -118,7 +141,10 @@ public class BattleController {
 		App.setRoot("secondary");
 	}
 
-    public void start() {
+	/**
+	 * Start.
+	 */
+	public void start() {
         gameStarter = new GameStarter() ;
 		gameManager = gameStarter.getGameManager() ;
 
@@ -160,7 +186,12 @@ public class BattleController {
         return null;
     }
 
-    public void deployCard(MouseEvent event) {
+	/**
+	 * Deploy card.
+	 *
+	 * @param event the event
+	 */
+	public void deployCard(MouseEvent event) {
 		if ( selectedCard.getCard() instanceof ArcherCard ) {
 			if ( gameManager.leftArcherTowerIsDestroyed() && gameManager.rightArcherTowerIsDestroyed() ) {
 				if ( event.getY() < 140 )
@@ -528,7 +559,12 @@ public class BattleController {
         selectedCard = null;
     }
 
-    public static void updateAvailability( int elixer ){
+	/**
+	 * Update availability.
+	 *
+	 * @param elixer the elixer
+	 */
+	public static void updateAvailability( int elixer ){
         for (ImagePackage imagePackage : bannedCards.keySet()) {
             if (elixer >= getCost(imagePackage)){
                 bannedCards.get(imagePackage).setDisable(true);
@@ -570,11 +606,20 @@ public class BattleController {
         return 0;
     }
 
-    static class ImagePackage {
+	/**
+	 * The type Image package.
+	 */
+	static class ImagePackage {
         private final ImageView imageView;
         private Card card;
 
-        public ImagePackage(ImageView imageView, Card card) {
+		/**
+		 * Instantiates a new Image package.
+		 *
+		 * @param imageView the image view
+		 * @param card      the card
+		 */
+		public ImagePackage(ImageView imageView, Card card) {
             this.imageView = imageView;
             this.card = card;
             if (card != null) {
@@ -583,15 +628,30 @@ public class BattleController {
             }
         }
 
-        public ImageView getImageView() {
+		/**
+		 * Gets image view.
+		 *
+		 * @return the image view
+		 */
+		public ImageView getImageView() {
             return imageView;
         }
 
-        public Card getCard() {
+		/**
+		 * Gets card.
+		 *
+		 * @return the card
+		 */
+		public Card getCard() {
             return card;
         }
 
-        public void setCard(Card card) {
+		/**
+		 * Sets card.
+		 *
+		 * @param card the card
+		 */
+		public void setCard(Card card) {
             this.card = card;
             this.imageView.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(this.card.getImageAddress()
             ))));

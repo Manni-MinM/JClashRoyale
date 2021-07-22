@@ -8,6 +8,9 @@ import JClashRoyale.Model.Elements.Enums.ColorType ;
 
 import java.util.ArrayList ;
 
+/**
+ * The type Rage.
+ */
 public class Rage extends Spell {
 	// Fields : Final
 	private final double RANGE_RADIUS = 150.0 ;
@@ -24,7 +27,13 @@ public class Rage extends Spell {
 	private ArrayList<Sprite> affected = new ArrayList<Sprite>() ;
 
 	private final String ANIMATION_PATH = "/JClashRoyale/assets/sprites/rage/rage.gif" ;
-	// Constructor
+
+    /**
+     * Instantiates a new Rage.
+     *
+     * @param color the color
+     */
+// Constructor
 	public Rage(ColorType color) {
 		setColorType(color) ;
 

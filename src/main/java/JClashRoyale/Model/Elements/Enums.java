@@ -2,12 +2,44 @@
 
 package JClashRoyale.Model.Elements ;
 
+/**
+ * The type Enums.
+ */
 public class Enums {
-	public enum ColorType {
-		RED , BLUE	
+    /**
+     * The enum Color type.
+     */
+    public enum ColorType {
+        /**
+         * Red color type.
+         */
+        RED ,
+        /**
+         * Blue color type.
+         */
+        BLUE
 	} ;
-	public enum TroopType {
-		AERIAL , GROUND , BUILDING , ALL
+
+    /**
+     * The enum Troop type.
+     */
+    public enum TroopType {
+        /**
+         * Aerial troop type.
+         */
+        AERIAL ,
+        /**
+         * Ground troop type.
+         */
+        GROUND ,
+        /**
+         * Building troop type.
+         */
+        BUILDING ,
+        /**
+         * All troop type.
+         */
+        ALL
 	} ;
 }
 

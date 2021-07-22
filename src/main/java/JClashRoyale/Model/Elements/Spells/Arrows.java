@@ -6,6 +6,9 @@ import JClashRoyale.Model.Elements.Spell ;
 import JClashRoyale.Model.Elements.Sprite ;
 import JClashRoyale.Model.Elements.Enums.ColorType ;
 
+/**
+ * The type Arrows.
+ */
 public class Arrows extends Spell {
 	// Fields : Final
 	private final double RANGE_RADIUS = 120.0 ;
@@ -20,7 +23,13 @@ public class Arrows extends Spell {
 	private final double HEIGHT = 120.0 ;
 
 	private final String ANIMATION_PATH = "/JClashRoyale/assets/sprites/arrows/arrows.gif" ;
-	// Constructor
+
+    /**
+     * Instantiates a new Arrows.
+     *
+     * @param color the color
+     */
+// Constructor
 	public Arrows(ColorType color) {
 		setColorType(color) ;
 

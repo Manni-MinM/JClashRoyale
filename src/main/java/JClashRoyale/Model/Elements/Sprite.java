@@ -16,34 +16,96 @@ import JClashRoyale.Model.Elements.Enums.TroopType ;
 
 import JClashRoyale.Model.Elements.Sprites.Buildings.InfernoTower ;
 
+/**
+ * The type Sprite.
+ */
 public abstract class Sprite {
-	// Fields
+    /**
+     * The Location.
+     */
+// Fields
 	protected Point2D location ;
 
-	protected Circle rangeCircle ;
-	protected Circle healthCircle ;
+    /**
+     * The Range circle.
+     */
+    protected Circle rangeCircle ;
+    /**
+     * The Health circle.
+     */
+    protected Circle healthCircle ;
 
-	protected double rangeCircleRadius ;
-	protected double healthCircleRadius ;
+    /**
+     * The Range circle radius.
+     */
+    protected double rangeCircleRadius ;
+    /**
+     * The Health circle radius.
+     */
+    protected double healthCircleRadius ;
 
-	protected int cost ;
-	protected double damage ;
-	protected double runSpeed ;
-	protected double hitpoints ;
-	protected double attackSpeed ;
-	protected double lastAttack ;
-	protected boolean attackState ;
-	protected ColorType colorType ;
-	protected TroopType troopType ;
-	protected TroopType targetType ;
+    /**
+     * The Cost.
+     */
+    protected int cost ;
+    /**
+     * The Damage.
+     */
+    protected double damage ;
+    /**
+     * The Run speed.
+     */
+    protected double runSpeed ;
+    /**
+     * The Hitpoints.
+     */
+    protected double hitpoints ;
+    /**
+     * The Attack speed.
+     */
+    protected double attackSpeed ;
+    /**
+     * The Last attack.
+     */
+    protected double lastAttack ;
+    /**
+     * The Attack state.
+     */
+    protected boolean attackState ;
+    /**
+     * The Color type.
+     */
+    protected ColorType colorType ;
+    /**
+     * The Troop type.
+     */
+    protected TroopType troopType ;
+    /**
+     * The Target type.
+     */
+    protected TroopType targetType ;
 
-	protected Image stateImage ;
-	// Constructor
+    /**
+     * The State image.
+     */
+    protected Image stateImage ;
+
+    /**
+     * Instantiates a new Sprite.
+     */
+// Constructor
 	public Sprite() {
 		lastAttack = -100.0 ;
 		attackState = false ;
 	}
-	// Methods : Setters
+
+    /**
+     * Sets location.
+     *
+     * @param x the x
+     * @param y the y
+     */
+// Methods : Setters
 	public void setLocation(double x , double y) {
 		this.location = new Point2D(x , y) ;
 
@@ -53,97 +115,273 @@ public abstract class Sprite {
 		this.rangeCircle = new Circle(location.getX() + offsetX , location.getY() + offsetY , rangeCircleRadius) ;
 		this.healthCircle = new Circle(location.getX() + offsetX , location.getY() + offsetY , healthCircleRadius) ;
 	}
-	public void setRangeCircleRadius(double radius) {
+
+    /**
+     * Sets range circle radius.
+     *
+     * @param radius the radius
+     */
+    public void setRangeCircleRadius(double radius) {
 		this.rangeCircleRadius = radius ;
 	}
-	public void setHealthCircleRadius(double radius) {
+
+    /**
+     * Sets health circle radius.
+     *
+     * @param radius the radius
+     */
+    public void setHealthCircleRadius(double radius) {
 		this.healthCircleRadius = radius ;
 	}
-	public void removeRangeCircle() {
+
+    /**
+     * Remove range circle.
+     */
+    public void removeRangeCircle() {
 		this.rangeCircle = null ;
 	}
-	public void removeHealthCircle() {
+
+    /**
+     * Remove health circle.
+     */
+    public void removeHealthCircle() {
 		this.healthCircle = null ;
 	}
-	public void setCost(int cost) {
+
+    /**
+     * Sets cost.
+     *
+     * @param cost the cost
+     */
+    public void setCost(int cost) {
 		this.cost = cost ;	
 	}
-	public void setDamage(double damage) {
+
+    /**
+     * Sets damage.
+     *
+     * @param damage the damage
+     */
+    public void setDamage(double damage) {
 		this.damage = damage ;
 	}
-	public void setRunSpeed(double speed) {
+
+    /**
+     * Sets run speed.
+     *
+     * @param speed the speed
+     */
+    public void setRunSpeed(double speed) {
 		this.runSpeed = speed ;
 	}
-	public void setHitpoints(double hitpoints) {
+
+    /**
+     * Sets hitpoints.
+     *
+     * @param hitpoints the hitpoints
+     */
+    public void setHitpoints(double hitpoints) {
 		this.hitpoints = hitpoints ;
 	}
-	public void setAttackSpeed(double speed) {
+
+    /**
+     * Sets attack speed.
+     *
+     * @param speed the speed
+     */
+    public void setAttackSpeed(double speed) {
 		this.attackSpeed = speed ;	
 	}
-	public void setLastAttack(double lastAttack) {
+
+    /**
+     * Sets last attack.
+     *
+     * @param lastAttack the last attack
+     */
+    public void setLastAttack(double lastAttack) {
 		this.lastAttack = lastAttack ;
 	}
-	public void setAttackState(boolean attackState) {
+
+    /**
+     * Sets attack state.
+     *
+     * @param attackState the attack state
+     */
+    public void setAttackState(boolean attackState) {
 		this.attackState = attackState ;
 		if ( this instanceof InfernoTower && !attackState )
 			this.setDamage(20) ;
 	}
-	public void setColorType(ColorType color) {
+
+    /**
+     * Sets color type.
+     *
+     * @param color the color
+     */
+    public void setColorType(ColorType color) {
 		this.colorType = color ;
 	}
-	public void setTroopType(TroopType type) {
+
+    /**
+     * Sets troop type.
+     *
+     * @param type the type
+     */
+    public void setTroopType(TroopType type) {
 		this.troopType = type ;
 	}
-	public void setTargetType(TroopType target) {
+
+    /**
+     * Sets target type.
+     *
+     * @param target the target
+     */
+    public void setTargetType(TroopType target) {
 		this.targetType = target ;
 	}
-	public void setStateImage(Image stateImage) {
+
+    /**
+     * Sets state image.
+     *
+     * @param stateImage the state image
+     */
+    public void setStateImage(Image stateImage) {
 		this.stateImage = stateImage ;
 	}
-	// Methods : Getters
+
+    /**
+     * Gets x.
+     *
+     * @return the x
+     */
+// Methods : Getters
 	public double getX() {
 		return this.location.getX() ;
 	}
-	public double getY() {
+
+    /**
+     * Gets y.
+     *
+     * @return the y
+     */
+    public double getY() {
 		return this.location.getY() ;
 	}
-	public Circle getRangeCircle() {
+
+    /**
+     * Gets range circle.
+     *
+     * @return the range circle
+     */
+    public Circle getRangeCircle() {
 		return this.rangeCircle ;
 	}
-	public Circle getHealthCircle() {
+
+    /**
+     * Gets health circle.
+     *
+     * @return the health circle
+     */
+    public Circle getHealthCircle() {
 		return this.healthCircle ;
 	}
-	public int getCost() {
+
+    /**
+     * Gets cost.
+     *
+     * @return the cost
+     */
+    public int getCost() {
 		return this.cost ;
 	}
-	public double getDamage() {
+
+    /**
+     * Gets damage.
+     *
+     * @return the damage
+     */
+    public double getDamage() {
 		return this.damage ;
 	}
-	public double getRunSpeed() {
+
+    /**
+     * Gets run speed.
+     *
+     * @return the run speed
+     */
+    public double getRunSpeed() {
 		return this.runSpeed ;
 	}
-	public double getHitpoints() {
+
+    /**
+     * Gets hitpoints.
+     *
+     * @return the hitpoints
+     */
+    public double getHitpoints() {
 		return this.hitpoints ;
 	}
-	public double getAttackSpeed() {
+
+    /**
+     * Gets attack speed.
+     *
+     * @return the attack speed
+     */
+    public double getAttackSpeed() {
 		return this.attackSpeed ;
 	}
-	public double getLastAttack() {
+
+    /**
+     * Gets last attack.
+     *
+     * @return the last attack
+     */
+    public double getLastAttack() {
 		return this.lastAttack ;
 	}
-	public boolean getAttackState() {
+
+    /**
+     * Gets attack state.
+     *
+     * @return the attack state
+     */
+    public boolean getAttackState() {
 		return this.attackState ;
 	}
-	public ColorType getColorType() {
+
+    /**
+     * Gets color type.
+     *
+     * @return the color type
+     */
+    public ColorType getColorType() {
 		return this.colorType ;
 	}
-	public TroopType getTroopType() {
+
+    /**
+     * Gets troop type.
+     *
+     * @return the troop type
+     */
+    public TroopType getTroopType() {
 		return this.troopType ;
 	}
-	public TroopType getTargetType() {
+
+    /**
+     * Gets target type.
+     *
+     * @return the target type
+     */
+    public TroopType getTargetType() {
 		return this.targetType ;
 	}
-	public Image getStateImage() {
+
+    /**
+     * Gets state image.
+     *
+     * @return the state image
+     */
+    public Image getStateImage() {
 		return this.stateImage ;
 	}
 	// Methods : Private
@@ -156,33 +394,72 @@ public abstract class Sprite {
 
 		return (firstCenter.distance(secondCenter) < (first.getRadius() + second.getRadius()) / 2.0) ;
 	}
-	// Methods : Public
+
+    /**
+     * Range intersects boolean.
+     *
+     * @param circle the circle
+     * @return the boolean
+     */
+// Methods : Public
 	public boolean rangeIntersects(Circle circle) {
 		return circleIntersects(rangeCircle , circle) ;
 	}
-	public boolean healthIntersects(Circle circle) {
+
+    /**
+     * Health intersects boolean.
+     *
+     * @param circle the circle
+     * @return the boolean
+     */
+    public boolean healthIntersects(Circle circle) {
 		return circleIntersects(healthCircle , circle) ;
 	}
-	public boolean canAttack(Sprite defender) {
+
+    /**
+     * Can attack boolean.
+     *
+     * @param defender the defender
+     * @return the boolean
+     */
+    public boolean canAttack(Sprite defender) {
 		if ( this.getColorType() == defender.getColorType() )
 			return false ;
 		if ( !this.rangeIntersects(defender.getHealthCircle()) )
 			return false ;
 		return (this.getTargetType() == TroopType.ALL || this.getTargetType() == defender.getTroopType() || defender.getTroopType() == TroopType.BUILDING) ;
 	}
-	public void showRangeCircle(GraphicsContext graphics) {
+
+    /**
+     * Show range circle.
+     *
+     * @param graphics the graphics
+     */
+    public void showRangeCircle(GraphicsContext graphics) {
 		double offsetX = (stateImage.getWidth() - rangeCircleRadius) / 2.0 ;
 		double offsetY = (stateImage.getHeight() - rangeCircleRadius) / 2.0 ;
 		graphics.setFill(Color.BLUE) ;
 		graphics.fillOval(this.getX() + offsetX , this.getY() + offsetY , rangeCircle.getRadius() , rangeCircle.getRadius()) ;
 	}
-	public void showHealthCircle(GraphicsContext graphics) {
+
+    /**
+     * Show health circle.
+     *
+     * @param graphics the graphics
+     */
+    public void showHealthCircle(GraphicsContext graphics) {
 		double offsetX = (stateImage.getWidth() - healthCircleRadius) / 2.0 ;
 		double offsetY = (stateImage.getHeight() - healthCircleRadius) / 2.0 ;
 		graphics.setFill(Color.RED) ;
 		graphics.fillOval(this.getX() + offsetX , this.getY() + offsetY , healthCircle.getRadius() , healthCircle.getRadius()) ;
 	}
-	public void attack(ArrayList<Sprite> defenders) {
+
+    /**
+     * Attack.
+     *
+     * @param defenders the defenders
+     */
+    public void attack(ArrayList<Sprite> defenders) {
 		this.setAttackState(true) ;
 		for ( Sprite defender : defenders )
 			defender.setHitpoints(defender.getHitpoints() - this.getDamage()) ;
@@ -191,11 +468,36 @@ public abstract class Sprite {
 			this.setDamage(Math.max(this.getDamage() + 5, temp.getRange() ));
 		}
 	}
-	// Methods : Abstract
+
+    /**
+     * Walk forward.
+     */
+// Methods : Abstract
 	public abstract void walkForward() ;
-	public abstract void walkBridge() ;
-	public abstract void walkKingTower() ;
-	public abstract void walk(boolean leftArcherTowerDestroyed , boolean rightArcherTowerDestroyed) ;
-	public abstract void draw(GraphicsContext graphics) ;
+
+    /**
+     * Walk bridge.
+     */
+    public abstract void walkBridge() ;
+
+    /**
+     * Walk king tower.
+     */
+    public abstract void walkKingTower() ;
+
+    /**
+     * Walk.
+     *
+     * @param leftArcherTowerDestroyed  the left archer tower destroyed
+     * @param rightArcherTowerDestroyed the right archer tower destroyed
+     */
+    public abstract void walk(boolean leftArcherTowerDestroyed , boolean rightArcherTowerDestroyed) ;
+
+    /**
+     * Draw.
+     *
+     * @param graphics the graphics
+     */
+    public abstract void draw(GraphicsContext graphics) ;
 }
 

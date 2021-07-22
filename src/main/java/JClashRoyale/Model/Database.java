@@ -5,12 +5,17 @@ import JClashRoyale.Model.Cards.Card;
 import java.sql.*;
 
 /**
+ * The type Database.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/9/2021
+ * @since 7 /9/2021
  */
 public class Database {
     private static Connection connection;
 
+    /**
+     * Instantiates a new Database.
+     */
     public Database() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -21,6 +26,13 @@ public class Database {
         }
     }
 
+    /**
+     * Register done boolean.
+     *
+     * @param username the username
+     * @param password the password
+     * @return the boolean
+     */
     public static boolean registerDone(String username, String password) {
         String insertion = "INSERT INTO accounts(username,password,xp,cup,deck) values (\"" + username + "\" , \"" + password + "\"" +
                 ", 0, 0, '0-1-2-3-4-5-6-7')";
@@ -35,6 +47,13 @@ public class Database {
         return true;
     }
 
+    /**
+     * Successful login boolean.
+     *
+     * @param username the username
+     * @param password the password
+     * @return the boolean
+     */
     public static boolean successfulLogin(String username, String password) {
         String check = "SELECT * FROM accounts WHERE username='" + username +
                 "'AND password='" + password + "'";
@@ -53,6 +72,9 @@ public class Database {
         return true;
     }
 
+    /**
+     * Update deck.
+     */
     public static void updateDeck() {
         String deck = "";
         for (Card card : Player.player.getDeck()) {
@@ -73,6 +95,9 @@ public class Database {
         }
     }
 
+    /**
+     * Update xp.
+     */
     public static void updateXP() {
         String update = "UPDATE accounts " +
                 "SET xp = '" + Player.player.getXP() + "'" +
@@ -87,6 +112,9 @@ public class Database {
         }
     }
 
+    /**
+     * Update cup.
+     */
     public static void updateCup() {
         String update = "UPDATE accounts " +
                 "SET cup = '" + Player.player.getCup() + "'" +
@@ -101,6 +129,12 @@ public class Database {
         }
     }
 
+    /**
+     * Gets battle result.
+     *
+     * @param player the player
+     * @return the battle result
+     */
     public static ResultSet getBattleResult(String player) {
         String check = "SELECT * FROM battles WHERE player='" + player +
                 "'";
@@ -118,6 +152,15 @@ public class Database {
         return null;
     }
 
+    /**
+     * Add battle result.
+     *
+     * @param player        the player
+     * @param opponent      the opponent
+     * @param playerScore   the player score
+     * @param opponentScore the opponent score
+     * @param playerWon     the player won
+     */
     public static void addBattleResult(String player, String opponent, int playerScore, int opponentScore, boolean playerWon) {
         String insertion = "INSERT INTO battles(player,opponent,playerScore,opponentScore,playerWon)" +
                 " values (\"" + player + "\" , \"" + opponent + "\"" +

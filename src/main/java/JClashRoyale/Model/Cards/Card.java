@@ -3,11 +3,16 @@ package JClashRoyale.Model.Cards;
 import java.util.ArrayList;
 
 /**
+ * The type Card.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/13/2021
+ * @since 7 /13/2021
  */
 public abstract class Card {
     private String imageAddress;
+    /**
+     * The constant gameCards.
+     */
     public static ArrayList<Card> gameCards = new ArrayList<>();
     static {
         gameCards.add(new ArcherCard());
@@ -25,15 +30,35 @@ public abstract class Card {
     }
 
 
+    /**
+     * Gets image address.
+     *
+     * @return the image address
+     */
     public String getImageAddress() {
         return imageAddress;
     }
 
+    /**
+     * Sets image address.
+     *
+     * @param imageAddress the image address
+     */
     public void setImageAddress(String imageAddress) {
         this.imageAddress = imageAddress;
     }
 
+    /**
+     * Gets hp.
+     *
+     * @return the hp
+     */
     public abstract int getHP();
 
+    /**
+     * Gets damage.
+     *
+     * @return the damage
+     */
     public abstract int getDamage();
 }

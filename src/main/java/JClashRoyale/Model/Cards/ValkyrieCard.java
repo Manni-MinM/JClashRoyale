@@ -3,10 +3,15 @@ package JClashRoyale.Model.Cards;
 import JClashRoyale.Model.Player;
 
 /**
+ * The type Valkyrie card.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/13/2021
+ * @since 7 /13/2021
  */
 public class ValkyrieCard extends Card {
+    /**
+     * Instantiates a new Valkyrie card.
+     */
     public ValkyrieCard() {
         setImageAddress("/JClashRoyale/assets/valkyrie.png");
     }

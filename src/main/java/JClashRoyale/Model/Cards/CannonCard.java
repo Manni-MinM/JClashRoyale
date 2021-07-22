@@ -3,10 +3,15 @@ package JClashRoyale.Model.Cards;
 import JClashRoyale.Model.Player;
 
 /**
+ * The type Cannon card.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/13/2021
+ * @since 7 /13/2021
  */
 public class CannonCard extends Card{
+    /**
+     * Instantiates a new Cannon card.
+     */
     public CannonCard(){
         setImageAddress("/JClashRoyale/assets/cannon.png");
     }

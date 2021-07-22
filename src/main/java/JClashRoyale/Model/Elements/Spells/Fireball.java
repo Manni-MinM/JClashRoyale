@@ -6,6 +6,9 @@ import JClashRoyale.Model.Elements.Spell ;
 import JClashRoyale.Model.Elements.Sprite ;
 import JClashRoyale.Model.Elements.Enums.ColorType ;
 
+/**
+ * The type Fireball.
+ */
 public class Fireball extends Spell {
 	// Fields : Final
 	private final double RANGE_RADIUS = 75.0 ;
@@ -20,7 +23,13 @@ public class Fireball extends Spell {
 	private final double HEIGHT = 75.0 ;
 
 	private final String ANIMATION_PATH = "/JClashRoyale/assets/sprites/fireball/fireball.gif" ;
-	// Constructor
+
+    /**
+     * Instantiates a new Fireball.
+     *
+     * @param color the color
+     */
+// Constructor
 	public Fireball(ColorType color) {
 		setColorType(color) ;
 

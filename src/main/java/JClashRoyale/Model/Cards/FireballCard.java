@@ -3,10 +3,15 @@ package JClashRoyale.Model.Cards;
 import JClashRoyale.Model.Player;
 
 /**
+ * The type Fireball card.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/13/2021
+ * @since 7 /13/2021
  */
 public class FireballCard extends Card {
+    /**
+     * Instantiates a new Fireball card.
+     */
     public FireballCard() {
         setImageAddress("/JClashRoyale/assets/fire_fireball.png");
     }
@@ -21,6 +26,11 @@ public class FireballCard extends Card {
         return 0;
     }
 
+    /**
+     * Gets attribute.
+     *
+     * @return the attribute
+     */
     public double getAttribute() {
         switch (Player.player.getLevel()) {
             case 1:

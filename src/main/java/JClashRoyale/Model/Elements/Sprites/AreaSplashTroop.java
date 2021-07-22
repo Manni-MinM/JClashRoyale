@@ -11,33 +11,93 @@ import JClashRoyale.Model.Elements.Enums.ColorType ;
 
 import java.util.Objects;
 
+/**
+ * The type Area splash troop.
+ */
 public class AreaSplashTroop extends Sprite {
-	// Fields
+    /**
+     * The Bridge reached.
+     */
+// Fields
 	protected boolean bridgeReached ;
 
-	protected Point2D destinationBridge ;
-	protected Point2D destinationKingTower ;
+    /**
+     * The Destination bridge.
+     */
+    protected Point2D destinationBridge ;
+    /**
+     * The Destination king tower.
+     */
+    protected Point2D destinationKingTower ;
 
-	protected Image runAnimationLeft ;
-	protected Image runAnimationRight ;
-	protected Image runAnimationForward ;
-	protected Image battleAnimation ;
-	// Constructor
+    /**
+     * The Run animation left.
+     */
+    protected Image runAnimationLeft ;
+    /**
+     * The Run animation right.
+     */
+    protected Image runAnimationRight ;
+    /**
+     * The Run animation forward.
+     */
+    protected Image runAnimationForward ;
+    /**
+     * The Battle animation.
+     */
+    protected Image battleAnimation ;
+
+    /**
+     * Instantiates a new Area splash troop.
+     */
+// Constructor
 	public AreaSplashTroop() {
 		bridgeReached = false ;
 
 	}
-	// Methods : Setters
+
+    /**
+     * Sets run animation left.
+     *
+     * @param path   the path
+     * @param width  the width
+     * @param height the height
+     */
+// Methods : Setters
 	public void setRunAnimationLeft(String path , double width , double height) {
 		this.runAnimationLeft = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
 	}
-	public void setRunAnimationRight(String path , double width , double height) {
+
+    /**
+     * Sets run animation right.
+     *
+     * @param path   the path
+     * @param width  the width
+     * @param height the height
+     */
+    public void setRunAnimationRight(String path , double width , double height) {
 		this.runAnimationRight = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
 	}
-	public void setRunAnimationForward(String path , double width , double height) {
+
+    /**
+     * Sets run animation forward.
+     *
+     * @param path   the path
+     * @param width  the width
+     * @param height the height
+     */
+    public void setRunAnimationForward(String path , double width , double height) {
 		this.runAnimationForward = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
 	}
-	public void setBattleAnimation(String path , double width , double height) {
+
+    /**
+     * Sets battle animation.
+     *
+     * @param path   the path
+     * @param width  the width
+     * @param height the height
+     */
+    public void setBattleAnimation(String path , double width , double height) {
 		this.battleAnimation = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path))  , width , height , false , false) ;
 	}
 	// Methods : Getters

@@ -16,8 +16,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
+ * The type Training camp controller.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/11/2021
+ * @since 7 /11/2021
  */
 public class TrainingCampController {
     @FXML
@@ -27,6 +29,11 @@ public class TrainingCampController {
 
     private double x, y;
 
+    /**
+     * Init.
+     *
+     * @param stage the stage
+     */
     public void init(Stage stage) {
         titlePane.setOnMousePressed(mouseEvent -> {
             x = mouseEvent.getSceneX();

@@ -3,10 +3,15 @@ package JClashRoyale.Model.Cards;
 import JClashRoyale.Model.Player;
 
 /**
+ * The type Arrows card.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/13/2021
+ * @since 7 /13/2021
  */
 public class ArrowsCard extends Card{
+    /**
+     * Instantiates a new Arrows card.
+     */
     public ArrowsCard(){
         setImageAddress("/JClashRoyale/assets/arrows.png");
     }
@@ -21,6 +26,11 @@ public class ArrowsCard extends Card{
         return 0;
     }
 
+    /**
+     * Gets attribute.
+     *
+     * @return the attribute
+     */
     public double getAttribute() {
 
         switch (Player.player.getLevel()) {

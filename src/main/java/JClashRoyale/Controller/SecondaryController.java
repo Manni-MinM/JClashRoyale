@@ -13,6 +13,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * The type Secondary controller.
+ */
 public class SecondaryController {
 
     @FXML
@@ -36,6 +39,11 @@ public class SecondaryController {
 
     private double x, y;
 
+    /**
+     * Init.
+     *
+     * @param stage the stage
+     */
     public void init(Stage stage) {
         titlePane.setOnMousePressed(mouseEvent -> {
             x = mouseEvent.getSceneX();
@@ -138,10 +146,16 @@ public class SecondaryController {
 
     }
 
+    /**
+     * Update sfx.
+     */
     public void updateSFX() {
         App.sfx = SFX.isSelected();
     }
 
+    /**
+     * Update music.
+     */
     public void updateMusic() {
         App.music = music.isSelected();
         SoundSystem.updateMusic();

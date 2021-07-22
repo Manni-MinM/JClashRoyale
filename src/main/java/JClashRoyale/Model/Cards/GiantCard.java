@@ -3,10 +3,15 @@ package JClashRoyale.Model.Cards;
 import JClashRoyale.Model.Player;
 
 /**
+ * The type Giant card.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/13/2021
+ * @since 7 /13/2021
  */
 public class GiantCard extends Card{
+    /**
+     * Instantiates a new Giant card.
+     */
     public GiantCard(){
         setImageAddress("/JClashRoyale/assets/giant.png");
     }

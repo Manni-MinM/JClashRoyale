@@ -11,6 +11,9 @@ import JClashRoyale.Model.Elements.Sprites.Building ;
 
 import java.util.Objects;
 
+/**
+ * The type Cannon.
+ */
 public class Cannon extends Building {
 	// Fields : Final
 	private final double RANGE_RADIUS = 165.0 ;
@@ -31,7 +34,13 @@ public class Cannon extends Building {
 	// Fields : Other
 	private Image body ;
 	private Image blaster ;
-	// Constructor
+
+	/**
+	 * Instantiates a new Cannon.
+	 *
+	 * @param color the color
+	 */
+// Constructor
 	public Cannon(ColorType color) {
 		setColorType(color) ;
 

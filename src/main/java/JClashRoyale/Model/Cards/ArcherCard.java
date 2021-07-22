@@ -3,10 +3,15 @@ package JClashRoyale.Model.Cards;
 import JClashRoyale.Model.Player;
 
 /**
+ * The type Archer card.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/13/2021
+ * @since 7 /13/2021
  */
 public class ArcherCard extends Card{
+    /**
+     * Instantiates a new Archer card.
+     */
     public ArcherCard(){
         setImageAddress("/JClashRoyale/assets/archers.png");
     }

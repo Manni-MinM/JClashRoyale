@@ -6,6 +6,9 @@ import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
 import JClashRoyale.Model.Elements.Sprites.AreaSplashTroop ;
 
+/**
+ * The type Wizard.
+ */
 public class Wizard extends AreaSplashTroop {
 	// Fields : Final
 	private final double RANGE_RADIUS = 150.0 ;
@@ -28,7 +31,13 @@ public class Wizard extends AreaSplashTroop {
 	private final String BLUE_RUN_ANIMATION_FORWARD_PATH = "/JClashRoyale/assets/sprites/wizard/wizard_blue_run_forward.gif" ;
 	private final String RED_BATTLE_ANIMATION_PATH = "/JClashRoyale/assets/sprites/wizard/wizard_red_battle.gif" ;
 	private final String BLUE_BATTLE_ANIMATION_PATH = "/JClashRoyale/assets/sprites/wizard/wizard_blue_battle.gif" ;
-	// Constructor
+
+	/**
+	 * Instantiates a new Wizard.
+	 *
+	 * @param color the color
+	 */
+// Constructor
 	public Wizard(ColorType color) {
 		setColorType(color) ;
 

@@ -3,10 +3,15 @@ package JClashRoyale.Model.Cards;
 import JClashRoyale.Model.Player;
 
 /**
+ * The type Baby dragon card.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/13/2021
+ * @since 7 /13/2021
  */
 public class BabyDragonCard extends Card{
+    /**
+     * Instantiates a new Baby dragon card.
+     */
     public BabyDragonCard(){
         setImageAddress("/JClashRoyale/assets/baby_dragon.png");
     }

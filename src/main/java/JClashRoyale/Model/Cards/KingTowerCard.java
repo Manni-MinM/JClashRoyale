@@ -3,10 +3,17 @@ package JClashRoyale.Model.Cards;
 import JClashRoyale.Model.Player;
 
 /**
+ * The type King tower card.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/19/2021
+ * @since 7 /19/2021
  */
 public class KingTowerCard {
+    /**
+     * Gets hp.
+     *
+     * @return the hp
+     */
     public static int getHP() {
         switch (Player.player.getLevel()) {
             case 1:
@@ -23,6 +30,11 @@ public class KingTowerCard {
         return 2400;
     }
 
+    /**
+     * Gets damage.
+     *
+     * @return the damage
+     */
     public static int getDamage() {
         switch (Player.player.getLevel()) {
             case 1:

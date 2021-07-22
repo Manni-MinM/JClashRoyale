@@ -16,8 +16,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
+ * The type Profile section controller.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/11/2021
+ * @since 7 /11/2021
  */
 public class ProfileSectionController {
     @FXML
@@ -55,6 +57,11 @@ public class ProfileSectionController {
 
     private double x, y;
 
+    /**
+     * Init.
+     *
+     * @param stage the stage
+     */
     public void init(Stage stage) {
         titlePane.setOnMousePressed(mouseEvent -> {
             x = mouseEvent.getSceneX();

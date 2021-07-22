@@ -20,8 +20,10 @@ import java.util.Objects;
 
 
 /**
+ * The type Battle deck section controller.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/11/2021
+ * @since 7 /11/2021
  */
 public class BattleDeckSectionController {
     @FXML
@@ -63,6 +65,11 @@ public class BattleDeckSectionController {
 
     private double x, y;
 
+    /**
+     * Init.
+     *
+     * @param stage the stage
+     */
     public void init(Stage stage) {
         titlePane.setOnMousePressed(mouseEvent -> {
             x = mouseEvent.getSceneX();
@@ -141,6 +148,9 @@ public class BattleDeckSectionController {
         selectedCard = null;
     }
 
+    /**
+     * Save deck.
+     */
     public void saveDeck() {
         Player.player.getDeck().removeAll(Player.player.getDeck());
         for (ImagePackage card : cards) {
@@ -158,10 +168,19 @@ public class BattleDeckSectionController {
         return null;
     }
 
+    /**
+     * The type Image package.
+     */
     static class ImagePackage {
         private final ImageView imageView;
         private Card card;
 
+        /**
+         * Instantiates a new Image package.
+         *
+         * @param imageView the image view
+         * @param card      the card
+         */
         public ImagePackage(ImageView imageView, Card card) {
             this.imageView = imageView;
             this.card = card;
@@ -171,14 +190,29 @@ public class BattleDeckSectionController {
             }
         }
 
+        /**
+         * Gets image view.
+         *
+         * @return the image view
+         */
         public ImageView getImageView() {
             return imageView;
         }
 
+        /**
+         * Gets card.
+         *
+         * @return the card
+         */
         public Card getCard() {
             return card;
         }
 
+        /**
+         * Sets card.
+         *
+         * @param card the card
+         */
         public void setCard(Card card) {
             this.card = card;
             this.imageView.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(this.card.getImageAddress()

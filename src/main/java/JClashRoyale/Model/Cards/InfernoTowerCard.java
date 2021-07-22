@@ -3,10 +3,15 @@ package JClashRoyale.Model.Cards;
 import JClashRoyale.Model.Player;
 
 /**
+ * The type Inferno tower card.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/13/2021
+ * @since 7 /13/2021
  */
 public class InfernoTowerCard extends Card implements AdjustableDamage{
+    /**
+     * Instantiates a new Inferno tower card.
+     */
     public InfernoTowerCard(){
         setImageAddress("/JClashRoyale/assets/inferno_tower.png");
     }

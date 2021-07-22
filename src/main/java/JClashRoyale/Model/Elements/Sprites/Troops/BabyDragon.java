@@ -6,6 +6,9 @@ import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
 import JClashRoyale.Model.Elements.Sprites.AreaSplashTroop ;
 
+/**
+ * The type Baby dragon.
+ */
 public class BabyDragon extends AreaSplashTroop {
 	// Fields : Final
 	private final double RANGE_RADIUS = 105.0 ;
@@ -28,7 +31,13 @@ public class BabyDragon extends AreaSplashTroop {
 	private final String BLUE_RUN_ANIMATION_FORWARD_PATH = "/JClashRoyale/assets/sprites/baby_dragon/baby_dragon_blue_run_forward.gif" ;
 	private final String RED_BATTLE_ANIMATION_PATH = "/JClashRoyale/assets/sprites/baby_dragon/baby_dragon_red_battle.gif" ;
 	private final String BLUE_BATTLE_ANIMATION_PATH = "/JClashRoyale/assets/sprites/baby_dragon/baby_dragon_blue_battle.gif" ;
-	// Constructor
+
+	/**
+	 * Instantiates a new Baby dragon.
+	 *
+	 * @param color the color
+	 */
+// Constructor
 	public BabyDragon(ColorType color) {
 		setColorType(color) ;
 

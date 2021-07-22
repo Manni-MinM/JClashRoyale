@@ -6,6 +6,9 @@ import JClashRoyale.Model.Elements.Enums.ColorType ;
 import JClashRoyale.Model.Elements.Enums.TroopType ;
 import JClashRoyale.Model.Elements.Sprites.SingleTargetTroop ;
 
+/**
+ * The type Giant.
+ */
 public class Giant extends SingleTargetTroop {
 	// Fields : Final
 	private final double RANGE_RADIUS = 40.0 ;
@@ -28,7 +31,13 @@ public class Giant extends SingleTargetTroop {
 	private final String BLUE_RUN_ANIMATION_FORWARD_PATH = "/JClashRoyale/assets/sprites/giant/giant_blue_run_forward.gif" ;
 	private final String RED_BATTLE_ANIMATION_PATH = "/JClashRoyale/assets/sprites/giant/giant_red_battle.gif" ;
 	private final String BLUE_BATTLE_ANIMATION_PATH = "/JClashRoyale/assets/sprites/giant/giant_blue_battle.gif" ;
-	// Constructor
+
+	/**
+	 * Instantiates a new Giant.
+	 *
+	 * @param color the color
+	 */
+// Constructor
 	public Giant(ColorType color) {
 		setColorType(color) ;
 

@@ -3,10 +3,15 @@ package JClashRoyale.Model.Cards;
 import JClashRoyale.Model.Player;
 
 /**
+ * The type Barbarians card.
+ *
  * @author Amir Iravanimanesh & Manni Moghimi
- * @since 7/13/2021
+ * @since 7 /13/2021
  */
 public class BarbariansCard extends Card{
+    /**
+     * Instantiates a new Barbarians card.
+     */
     public BarbariansCard(){
         setImageAddress("/JClashRoyale/assets/barbarians.png");
     }

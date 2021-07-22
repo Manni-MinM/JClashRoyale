@@ -7,12 +7,24 @@ import javax.sound.sampled.*;
 import javax.sound.sampled.LineEvent.Type;
 
 
+/**
+ * The type Sound system.
+ */
 public class SoundSystem {
+    /**
+     * The Maintheme.
+     */
     static SimpleAudioPlayer maintheme;
+    /**
+     * The Battle theme.
+     */
     static SimpleAudioPlayer battleTheme;
     private static AudioInputStream mainThemeAudioStream;
     private static AudioInputStream battleThemeAudioStream;
 
+    /**
+     * Mouse click sfx.
+     */
     public static void mouseClickSFX() {
         if (!App.sfx)
             return;
@@ -27,6 +39,9 @@ public class SoundSystem {
         }
     }
 
+    /**
+     * Card swap sfx.
+     */
     public static void cardSwapSFX() {
         if (!App.sfx)
             return;
@@ -42,6 +57,9 @@ public class SoundSystem {
         }
     }
 
+    /**
+     * Main menu theme.
+     */
     public static void mainMenuTheme() {
         try {
             InputStream audioSrc = SoundSystem.class.getResourceAsStream("/JClashRoyale/assets/sfx/menu_theme.wav");
@@ -55,6 +73,9 @@ public class SoundSystem {
         }
     }
 
+    /**
+     * Battle theme.
+     */
     public static void battleTheme() {
         try {
             InputStream audioSrc = SoundSystem.class.getResourceAsStream("/JClashRoyale/assets/sfx/battle_theme.wav");
@@ -68,16 +89,25 @@ public class SoundSystem {
         }
     }
 
+    /**
+     * Update music.
+     */
     public static void updateMusic() {
         if (!App.music)
             maintheme.interrupt();
         else mainMenuTheme();
     }
 
+    /**
+     * Stop battle music.
+     */
     public static void stopBattleMusic() {
         battleTheme.interrupt();
     }
 
+    /**
+     * Stop main menu music.
+     */
     public static void stopMainMenuMusic() {
         maintheme.interrupt();
     }
@@ -111,7 +141,8 @@ public class SoundSystem {
          * Constructor. You can create an {@link AudioInputStream} with: {@link
          *
          * @param audioInputStream The {@link AudioInputStream} linked to the sound to play. You            can create an {@link AudioInputStream} using the            {@link AudioSystem} object.
-         * @link AudioSystem#getAudioInputStream(java.io.File)}* ,
+         * @param audioInputStream the audio input stream
+         * @link AudioSystem#getAudioInputStream(java.io.File)}** ,
          * {@link AudioSystem#getAudioInputStream(java.io.InputStream)},
          * {@link AudioSystem#getAudioInputStream(java.net.URL)}
          */
@@ -126,6 +157,7 @@ public class SoundSystem {
          *
          * @throws LineUnavailableException if the {@link Clip} object can't be created
          * @throws IOException              if the audio file can't be find
+         * @throws InterruptedException     the interrupted exception
          */
         protected void play() throws LineUnavailableException, IOException, InterruptedException {
             Clip clip = AudioSystem.getClip();

@@ -11,6 +11,9 @@ import JClashRoyale.Model.Elements.Sprites.Building ;
 
 import java.util.Objects;
 
+/**
+ * The type King tower.
+ */
 public class KingTower extends Building {
 	// Fields : Final
 	private final double RANGE_RADIUS = 210.0 ;
@@ -33,7 +36,13 @@ public class KingTower extends Building {
 
 	private Image tower ;
 	private Image destroyedTower ;
-	// Constructor
+
+	/**
+	 * Instantiates a new King tower.
+	 *
+	 * @param color the color
+	 */
+// Constructor
 	public KingTower(ColorType color) {
 		isDestroyed = false ;
 
@@ -65,11 +74,21 @@ public class KingTower extends Building {
 	private void setDestroyedTower(String path) {
 		this.destroyedTower = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)) , WIDTH , HEIGHT , false , false);
 	}
-	// Methods : Getters
+
+	/**
+	 * Is destroyed boolean.
+	 *
+	 * @return the boolean
+	 */
+// Methods : Getters
 	public boolean isDestroyed() {
 		return this.isDestroyed ;
 	}
-	// Methods : Other
+
+	/**
+	 * Destroy.
+	 */
+// Methods : Other
 	public void destroy() {
 		isDestroyed = true ;
 		setRangeCircleRadius(0) ;

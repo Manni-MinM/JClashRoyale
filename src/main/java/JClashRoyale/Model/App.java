@@ -18,8 +18,17 @@ import java.util.Objects;
  */
 public class App extends Application {
 
+    /**
+     * The constant sfx.
+     */
     public static boolean sfx = true;
+    /**
+     * The constant music.
+     */
     public static boolean music = true;
+    /**
+     * The constant advancedAI.
+     */
     public static boolean advancedAI = false;
     private static Scene scene;
     private static Stage stage;
@@ -40,6 +49,12 @@ public class App extends Application {
         stage.show();
     }
 
+    /**
+     * Sets root.
+     *
+     * @param fxml the fxml
+     * @throws IOException the io exception
+     */
     public static void setRoot(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/JClashRoyale/" + fxml + ".fxml"));
         scene.setRoot(fxmlLoader.load());
@@ -61,6 +76,9 @@ public class App extends Application {
         stage.show();
     }
 
+    /**
+     * Run.
+     */
     public void run() {
         launch();
     }
