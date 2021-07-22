@@ -410,15 +410,14 @@ public class GameManager {
 		int randomInt = random.nextInt(4) ;
 		double randomX = random.nextDouble() * 250 + 25 ;
 		double randomY = random.nextDouble() * 200 + 20 ;
-		System.out.println(botDeck);
-		if (blueArcherTowerLeft.getHitpoints() <= 400 && (doesHaveCard(new ArrowsCard()) | doesHaveCard(new FireballCard()))) {
+		if ((blueArcherTowerLeft.getHitpoints() <= 400 && (!blueArcherTowerLeft.isDestroyed())) && ((doesHaveCard(new ArrowsCard()) | doesHaveCard(new FireballCard())))) {
 			if (findCardInDeck(new ArrowsCard()) != null)
 				deployCard(blueArcherTowerLeft.getX(), blueArcherTowerLeft.getY(), findCardInDeck(new ArrowsCard()));
 			else
 				deployCard(blueArcherTowerLeft.getX(), blueArcherTowerLeft.getY(), findCardInDeck(new FireballCard()));
 			return;
 		}
-		else if (blueArcherTowerRight.getHitpoints() <= 400 && (doesHaveCard(new ArrowsCard()) | doesHaveCard(new FireballCard()))) {
+		else if ((blueArcherTowerRight.getHitpoints() <= 400 && (!blueArcherTowerLeft.isDestroyed())) &&  ((doesHaveCard(new ArrowsCard()) | doesHaveCard(new FireballCard())))) {
 			if (findCardInDeck(new ArrowsCard()) != null)
 				deployCard(blueArcherTowerRight.getX(), blueArcherTowerRight.getY(), findCardInDeck(new ArrowsCard()));
 			else
@@ -489,7 +488,6 @@ public class GameManager {
 		}
 		return null;
 	}
-
 
 	/**
 	 * Deploy card.
@@ -773,7 +771,6 @@ public class GameManager {
 					if (won) resultLabel.setText("You: " + playerScore + " --- Opponent: " + opponentScore + " YOU WON");
 					else resultLabel.setText("You: " + playerScore + " --- Opponent: " + opponentScore + " YOU LOST!!!");
 					if (App.music) SoundSystem.stopBattleMusic();
-					App.advancedAI = false;
 					int xp;
 					int cup;
 					if (App.advancedAI){
@@ -783,6 +780,7 @@ public class GameManager {
 						xp = 200;
 						cup = 30;
 					}
+					App.advancedAI = false;
 					if (won){
 						Player.player.setCup(Player.player.getCup() + cup);
 						Player.player.setXp(Player.player.getXP() + xp);
@@ -795,7 +793,7 @@ public class GameManager {
 				}
 				if (timeNow <= 120) {
 					if (elixerTime >= 2.0) {
-						timeOffset++;
+						timeOffset += 2;
 						elixer = Math.min(elixer + 1, 10);
 						elixerBot = Math.min(elixerBot + 1, 10);
 					} else {
