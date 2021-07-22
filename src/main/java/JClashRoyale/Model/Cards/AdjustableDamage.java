@@ -5,5 +5,5 @@ package JClashRoyale.Model.Cards;
  * @since 7/13/2021
  */
 public interface AdjustableDamage {
-    String getRange();
+    int getRange();
 }

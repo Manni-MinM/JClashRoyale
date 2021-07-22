@@ -328,14 +328,50 @@ public class GameManager {
 		double randomY = random.nextDouble() * 200 + 20 ;
 		System.out.println(botDeck);
 		if (blueArcherTowerLeft.getHitpoints() <= 400 && (doesHaveCard(new ArrowsCard()) | doesHaveCard(new FireballCard()))) {
-			deployCard(blueArcherTowerLeft.getX(), blueArcherTowerLeft.getY(), findCardInDeck(new ArrowsCard()));
-			deployCard(blueArcherTowerLeft.getX(), blueArcherTowerLeft.getY(), findCardInDeck(new FireballCard()));
+			if (findCardInDeck(new ArrowsCard()) != null)
+				deployCard(blueArcherTowerLeft.getX(), blueArcherTowerLeft.getY(), findCardInDeck(new ArrowsCard()));
+			else
+				deployCard(blueArcherTowerLeft.getX(), blueArcherTowerLeft.getY(), findCardInDeck(new FireballCard()));
+			return;
 		}
 		else if (blueArcherTowerRight.getHitpoints() <= 400 && (doesHaveCard(new ArrowsCard()) | doesHaveCard(new FireballCard()))) {
-			deployCard(blueArcherTowerRight.getX(), blueArcherTowerRight.getY(), findCardInDeck(new ArrowsCard()));
-			deployCard(blueArcherTowerRight.getX(), blueArcherTowerRight.getY(), findCardInDeck(new FireballCard()));
+			if (findCardInDeck(new ArrowsCard()) != null)
+				deployCard(blueArcherTowerRight.getX(), blueArcherTowerRight.getY(), findCardInDeck(new ArrowsCard()));
+			else
+				deployCard(blueArcherTowerRight.getX(), blueArcherTowerRight.getY(), findCardInDeck(new FireballCard()));
+			return;
 		}
 
+		if (doesHaveCard(new RageCard()) && findSpriteInMap() != null) {
+			deployCard(findSpriteInMap().getX() - findSpriteInMap().getStateImage()
+					.getWidth() / 2, findSpriteInMap().getY() - findSpriteInMap().getStateImage()
+					.getHeight() / 2, findCardInDeck(new RageCard()));
+			return;
+
+		}
+
+
+		if (redArcherTowerLeft.getHitpoints() <= 1000 && (doesHaveCard(new CannonCard()) | doesHaveCard(new InfernoTowerCard()))) {
+			if (findCardInDeck(new CannonCard()) != null)
+				deployCard(random.nextDouble() * 155 + 25, random.nextDouble() * 230 + 20, findCardInDeck(new CannonCard()));
+			else
+				deployCard(random.nextDouble() * 155 + 25, random.nextDouble() * 230 + 20, findCardInDeck(new InfernoTowerCard()));
+			return;
+		}
+		else if (redArcherTowerRight.getHitpoints() <= 1000 && (doesHaveCard(new CannonCard()) | doesHaveCard(new InfernoTowerCard()))) {
+			if (findCardInDeck(new CannonCard()) != null)
+				deployCard(random.nextDouble() * 155 + 130, random.nextDouble() * 230 + 20, findCardInDeck(new CannonCard()));
+			else
+				deployCard(random.nextDouble() * 155 + 130, random.nextDouble() * 230 + 20, findCardInDeck(new InfernoTowerCard()));
+			return;
+		}
+		else if (redKingTower.getHitpoints() <= 1000 && (doesHaveCard(new CannonCard()) | doesHaveCard(new InfernoTowerCard()))) {
+			if (findCardInDeck(new CannonCard()) != null)
+				deployCard(randomX, random.nextDouble() * 230 + 20, findCardInDeck(new CannonCard()));
+			else
+				deployCard(randomX, random.nextDouble() * 230 + 20, findCardInDeck(new InfernoTowerCard()));
+			return;
+		}
 
 
 
@@ -351,6 +387,14 @@ public class GameManager {
 			}
 		}
 		return false;
+	}
+
+	private Sprite findSpriteInMap(){
+		for (Sprite sprite : sprites) {
+			if ((sprite instanceof KingTower) | (sprite instanceof ArcherTower | (sprite.getColorType().equals(ColorType.BLUE)))) continue;
+			return sprite;
+		}
+		return null;
 	}
 
 	private Card findCardInDeck(Card card){
@@ -602,22 +646,23 @@ public class GameManager {
 					if (redArcherTowerLeft.isDestroyed()) playerScore++;
 					if (redArcherTowerRight.isDestroyed()) playerScore++;
 					if (redKingTower.isDestroyed()) playerScore = 3;
-
+					String opponent = "Idiot Bot";
+					if (App.advancedAI) opponent = "Advanced AI";
 					if (playerScore > opponentScore){
 						won = true;
-						Database.addBattleResult(Player.player.getUsername(),"Idiot Bot", playerScore, opponentScore,true);
+						Database.addBattleResult(Player.player.getUsername(),opponent, playerScore, opponentScore,true);
 					} else if (opponentScore > playerScore){
 						won = false;
-						Database.addBattleResult(Player.player.getUsername(),"Idiot Bot", playerScore, opponentScore,false);
+						Database.addBattleResult(Player.player.getUsername(),opponent, playerScore, opponentScore,false);
 					} else {
 						double playerHP = blueArcherTowerLeft.getHitpoints() + blueArcherTowerRight.getHitpoints() + blueKingTower.getHitpoints();
 						double opponentHP = redArcherTowerLeft.getHitpoints() + redArcherTowerRight.getHitpoints() + redKingTower.getHitpoints();
 						if (playerHP > opponentHP){
 							won = true;
-							Database.addBattleResult(Player.player.getUsername(),"Idiot Bot", playerScore + 1, opponentScore,true);
+							Database.addBattleResult(Player.player.getUsername(),opponent, playerScore + 1, opponentScore,true);
 						} else {
 							won = false;
-							Database.addBattleResult(Player.player.getUsername(),"Idiot Bot", playerScore, opponentScore + 1,false);
+							Database.addBattleResult(Player.player.getUsername(),opponent, playerScore, opponentScore + 1,false);
 						}
 					}
 					resultLabel.setVisible(true);
@@ -629,26 +674,43 @@ public class GameManager {
 					if (won) resultLabel.setText("You: " + playerScore + " --- Opponent: " + opponentScore + " YOU WON");
 					else resultLabel.setText("You: " + playerScore + " --- Opponent: " + opponentScore + " YOU LOST!!!");
 					if (App.music) SoundSystem.stopBattleMusic();
-
+					int xp;
+					int cup;
+					if (App.advancedAI){
+						xp = 400;
+						cup = 40;
+					} else {
+						xp = 200;
+						cup = 30;
+					}
 					if (won){
-						Player.player.setCup(Player.player.getCup() + 30);
-						Player.player.setXp(Player.player.getXP() + 200);
+						Player.player.setCup(Player.player.getCup() + cup);
+						Player.player.setXp(Player.player.getXP() + xp);
 						System.out.println(Player.player.getCup());
 						this.stop() ;
 					} else {
-						Player.player.setCup(Player.player.getCup() - 30);
+						Player.player.setCup(Player.player.getCup() - cup);
 						Player.player.setXp(Player.player.getXP() + 70);
 						System.out.println(Player.player.getCup());
 						this.stop() ;
 					}
 				}
-
-				if ( elixerTime >= 1.0 ) {
-					timeOffset ++ ;
-					elixer = Math.min(elixer + 1 , 10) ;
-					elixerBot = Math.min(elixerBot + 1 , 10) ;
+				if (timeNow <= 120) {
+					if (elixerTime >= 2.0) {
+						timeOffset++;
+						elixer = Math.min(elixer + 1, 10);
+						elixerBot = Math.min(elixerBot + 1, 10);
+					} else {
+						// Pass
+					}
 				} else {
-					// Pass
+					if (elixerTime >= 1.0) {
+						timeOffset++;
+						elixer = Math.min(elixer + 1, 10);
+						elixerBot = Math.min(elixerBot + 1, 10);
+					} else {
+						// Pass
+					}
 				}
 
 				elixerField.setText(String.valueOf(elixer)) ;

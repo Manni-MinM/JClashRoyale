@@ -2,6 +2,7 @@
 
 package JClashRoyale.Model.Elements ;
 
+import JClashRoyale.Model.Cards.InfernoTowerCard;
 import javafx.geometry.Point2D ;
 import javafx.scene.image.Image ;
 import javafx.scene.paint.Color ;
@@ -185,8 +186,10 @@ public abstract class Sprite {
 		this.setAttackState(true) ;
 		for ( Sprite defender : defenders )
 			defender.setHitpoints(defender.getHitpoints() - this.getDamage()) ;
-		if ( this instanceof InfernoTower )
-			this.setDamage(Math.max(this.getDamage() + 20 , 400.0)) ;
+		if ( this instanceof InfernoTower ) {
+			InfernoTowerCard temp = new InfernoTowerCard();
+			this.setDamage(Math.max(this.getDamage() + 5, temp.getRange() ));
+		}
 	}
 	// Methods : Abstract
 	public abstract void walkForward() ;

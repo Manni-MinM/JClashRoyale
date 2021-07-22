@@ -46,19 +46,19 @@ public class InfernoTowerCard extends Card implements AdjustableDamage{
     }
 
     @Override
-    public String getRange() {
+    public int getRange() {
         switch (Player.player.getLevel()) {
             case 1:
-                return "20-400";
+                return 400;
             case 2:
-                return "22-440";
+                return 440;
             case 3:
-                return "24-484";
+                return 484;
             case 4:
-                return "26-532";
+                return 532;
             case 5:
-                return "29-584";
+                return 584;
         }
-        return null;
+        return 0;
     }
 }
